@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>牛客题解-NC37合并区间</title>
+    <url>/posts/7551feb3.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给出一组区间，请合并所有重叠的区间。</p>
+<p>请保证合并后的区间按区间起点升序排列。</p>
+<p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[<span class="number">10</span>,<span class="number">30</span>],[<span class="number">20</span>,<span class="number">60</span>],[<span class="number">80</span>,<span class="number">100</span>],[<span class="number">150</span>,<span class="number">180</span>]]</span><br></pre></td></tr></table></figure>
+
+<p>返回值：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[<span class="number">10</span>,<span class="number">60</span>],[<span class="number">80</span>,<span class="number">100</span>],[<span class="number">150</span>,<span class="number">180</span>]]</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>利用<code>Collections.sort()</code>方法对每一个区间的左区间进行排序，然后从第一个序列进行遍历，当后一个区间的右区间，小于或者等于后一个区间的左区间时，然后继续遍历下一个区间的左区间，并与下下个区间的右区间继续比较……直到后一个左区间大于后一个的右区间时，合并前面的多个区间，并寻找下一个合并区间，直到结束。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for an interval.</span></span><br><span class="line"><span class="comment"> * public class Interval &#123;</span></span><br><span class="line"><span class="comment"> *     int start;</span></span><br><span class="line"><span class="comment"> *     int end;</span></span><br><span class="line"><span class="comment"> *     Interval() &#123; start = 0; end = 0; &#125;</span></span><br><span class="line"><span class="comment"> *     Interval(int s, int e) &#123; start = s; end = e; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;Interval&gt; <span class="title function_">merge</span><span class="params">(ArrayList&lt;Interval&gt; intervals)</span> &#123;</span><br><span class="line">        ArrayList&lt;Interval&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Collections.sort(intervals,(a,b)-&gt;a.start-b.start);</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> intervals.size();</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> intervals.get(i).start;</span><br><span class="line">            <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> intervals.get(i).end;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; len-<span class="number">1</span> &amp;&amp; intervals.get(i+<span class="number">1</span>).start &lt;= right) &#123;</span><br><span class="line">                right = Math.max(right,intervals.get(i+<span class="number">1</span>).end);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            res.add(<span class="keyword">new</span> <span class="title class_">Interval</span>(left,right));</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>排序</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>牛客题解-NC54数组中相加和为0三元组</title>
     <url>/posts/a042c421.html</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给出一个有n个元素的数组S，S中是否有元素a,b,c满足a+b+c&#x3D;0？找出数组S中所有满足条件的三元组。</p>
@@ -29,34 +55,8 @@
       </categories>
       <tags>
         <tag>Java</tag>
+        <tag>数组</tag>
         <tag>双指针</tag>
-        <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC37合并区间</title>
-    <url>/posts/7551feb3.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给出一组区间，请合并所有重叠的区间。</p>
-<p>请保证合并后的区间按区间起点升序排列。</p>
-<p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[<span class="number">10</span>,<span class="number">30</span>],[<span class="number">20</span>,<span class="number">60</span>],[<span class="number">80</span>,<span class="number">100</span>],[<span class="number">150</span>,<span class="number">180</span>]]</span><br></pre></td></tr></table></figure>
-
-<p>返回值：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[<span class="number">10</span>,<span class="number">60</span>],[<span class="number">80</span>,<span class="number">100</span>],[<span class="number">150</span>,<span class="number">180</span>]]</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>利用<code>Collections.sort()</code>方法对每一个区间的左区间进行排序，然后从第一个序列进行遍历，当后一个区间的右区间，小于或者等于后一个区间的左区间时，然后继续遍历下一个区间的左区间，并与下下个区间的右区间继续比较……直到后一个左区间大于后一个的右区间时，合并前面的多个区间，并寻找下一个合并区间，直到结束。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for an interval.</span></span><br><span class="line"><span class="comment"> * public class Interval &#123;</span></span><br><span class="line"><span class="comment"> *     int start;</span></span><br><span class="line"><span class="comment"> *     int end;</span></span><br><span class="line"><span class="comment"> *     Interval() &#123; start = 0; end = 0; &#125;</span></span><br><span class="line"><span class="comment"> *     Interval(int s, int e) &#123; start = s; end = e; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;Interval&gt; <span class="title function_">merge</span><span class="params">(ArrayList&lt;Interval&gt; intervals)</span> &#123;</span><br><span class="line">        ArrayList&lt;Interval&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Collections.sort(intervals,(a,b)-&gt;a.start-b.start);</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> intervals.size();</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> intervals.get(i).start;</span><br><span class="line">            <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> intervals.get(i).end;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; len-<span class="number">1</span> &amp;&amp; intervals.get(i+<span class="number">1</span>).start &lt;= right) &#123;</span><br><span class="line">                right = Math.max(right,intervals.get(i+<span class="number">1</span>).end);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            res.add(<span class="keyword">new</span> <span class="title class_">Interval</span>(left,right));</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>数组</tag>
-        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -216,6 +216,36 @@
       </tags>
   </entry>
   <entry>
+    <title>牛客题解-NC1大数加法</title>
+    <url>/posts/640c1916.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>以字符串的形式读入两个数字，编写一个函数计算它们的和，以字符串形式返回。</p>
+<p>（字符串长度不大于100000，保证字符串仅由’0’~’9’这10种字符组成）</p>
+<p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;1&quot;</span>,<span class="string">&quot;99&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;100&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Tips：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>+<span class="number">99</span>=<span class="number">100</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>该题目重点在于获取当前栈中的min值。</p>
+<p>考虑为原栈stack1，新建一个stack2栈用来维持stack1中的最小数。由于栈FILO的特性，只需要保证stack2中的栈顶元素维持在一个最小值水平即可。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * 计算两个数之和</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s string字符串 表示第一个整数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> t string字符串 表示第二个整数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string字符串</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">solve</span> <span class="params">(String s, String t)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> s.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> t.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">carry</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> || carry != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> i &lt; <span class="number">0</span> ? <span class="number">0</span> : s.charAt(i--) - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> j &lt; <span class="number">0</span> ? <span class="number">0</span> : t.charAt(j--) - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> x + y + carry;</span><br><span class="line">            sb.append(sum % <span class="number">10</span>);</span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>字符串</tag>
+        <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>牛客题解-NC15求二叉树的层序遍历</title>
     <url>/posts/5fc98f80.html</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个二叉树，返回该二叉树层序遍历的结果，（从左到右，一层一层地遍历）<br>例如：<br>给定的二叉树是{3,9,20,#,#,15,7},</p>
@@ -251,36 +281,6 @@
         <tag>Java</tag>
         <tag>树</tag>
         <tag>bfs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC1大数加法</title>
-    <url>/posts/640c1916.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>以字符串的形式读入两个数字，编写一个函数计算它们的和，以字符串形式返回。</p>
-<p>（字符串长度不大于100000，保证字符串仅由’0’~’9’这10种字符组成）</p>
-<p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;1&quot;</span>,<span class="string">&quot;99&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;100&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>Tips：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>+<span class="number">99</span>=<span class="number">100</span> </span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>该题目重点在于获取当前栈中的min值。</p>
-<p>考虑为原栈stack1，新建一个stack2栈用来维持stack1中的最小数。由于栈FILO的特性，只需要保证stack2中的栈顶元素维持在一个最小值水平即可。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * 计算两个数之和</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s string字符串 表示第一个整数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> t string字符串 表示第二个整数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string字符串</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">solve</span> <span class="params">(String s, String t)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> s.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> t.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">carry</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> || carry != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> i &lt; <span class="number">0</span> ? <span class="number">0</span> : s.charAt(i--) - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> j &lt; <span class="number">0</span> ? <span class="number">0</span> : t.charAt(j--) - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> x + y + carry;</span><br><span class="line">            sb.append(sum % <span class="number">10</span>);</span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>字符串</tag>
-        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -331,33 +331,6 @@
       </tags>
   </entry>
   <entry>
-    <title>牛客题解-NC25删除有序链表中重复的元素</title>
-    <url>/posts/46772ae5.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>删除给出链表中的重复元素（链表中元素从小到大有序），使链表中的所有元素都只出现一次<br>例如：<br>给出的链表为1\to1\to21→1→2,返回1 \to 21→2.<br>给出的链表为1\to1\to 2 \to 3 \to 31→1→2→3→3,返回1\to 2 \to 31→2→3.</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>用一个指针就可以实现，对指针当前位置和下一位置的值进行比较。</p>
-<p>相同：删除下一位置的节点</p>
-<p>不同：指针移动到下一位置</p>
-<p>直到链表尾。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *   int val;</span></span><br><span class="line"><span class="comment"> *   ListNode next = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> head ListNode类 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> ListNode类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">deleteDuplicates</span> <span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">tmp</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span>(tmp.next!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(tmp.next.val == tmp.val)&#123;</span><br><span class="line">                tmp.next = tmp.next.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                tmp = tmp.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>牛客题解-NC3链表中环的入口节点</title>
     <url>/posts/e8e45288.html</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>对于一个给定的链表，返回环的入口节点，如果没有环，返回null</p>
@@ -376,38 +349,6 @@
         <tag>Java</tag>
         <tag>双指针</tag>
         <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC38螺旋矩阵</title>
-    <url>/posts/36804329.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个m x n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212049.png"></p>
-<p>分别需要实现四个遍历：</p>
-<p>左→右</p>
-<p>上→下</p>
-<p>右→左</p>
-<p>下→上</p>
-<p>需要特别注意的是不要遍历重复数据。left、right、top、bottom的指针变化方式尤为重要。</p>
-<p>另外还要注意限制条件top！&#x3D; bottom 和 left！&#x3D; right</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212338.png"></p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = matrix[<span class="number">0</span>].length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">top</span> <span class="operator">=</span> <span class="number">0</span>, bottom = matrix.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(top &lt; (matrix.length + <span class="number">1</span>) / <span class="number">2</span> &amp;&amp; left &lt; (matrix[<span class="number">0</span>].length + <span class="number">1</span>) / <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> left; i &lt;= right; i++)&#123;</span><br><span class="line">                res.add(matrix[top][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> top + <span class="number">1</span>; i &lt;= bottom; i++)&#123;</span><br><span class="line">                res.add(matrix[i][right]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> right - <span class="number">1</span>; i &gt;= left &amp;&amp; top != bottom; i--)&#123;</span><br><span class="line">                res.add(matrix[bottom][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> bottom - <span class="number">1</span>; i &gt;= top + <span class="number">1</span> &amp;&amp; left != right; i--)&#123;</span><br><span class="line">                res.add(matrix[i][left]);</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            top++;</span><br><span class="line">            right--;</span><br><span class="line">            bottom--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -451,6 +392,65 @@
       <tags>
         <tag>Java</tag>
         <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>牛客题解-NC25删除有序链表中重复的元素</title>
+    <url>/posts/46772ae5.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>删除给出链表中的重复元素（链表中元素从小到大有序），使链表中的所有元素都只出现一次<br>例如：<br>给出的链表为1\to1\to21→1→2,返回1 \to 21→2.<br>给出的链表为1\to1\to 2 \to 3 \to 31→1→2→3→3,返回1\to 2 \to 31→2→3.</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>用一个指针就可以实现，对指针当前位置和下一位置的值进行比较。</p>
+<p>相同：删除下一位置的节点</p>
+<p>不同：指针移动到下一位置</p>
+<p>直到链表尾。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *   int val;</span></span><br><span class="line"><span class="comment"> *   ListNode next = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> head ListNode类 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> ListNode类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">deleteDuplicates</span> <span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">tmp</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span>(tmp.next!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(tmp.next.val == tmp.val)&#123;</span><br><span class="line">                tmp.next = tmp.next.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                tmp = tmp.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>牛客题解-NC38螺旋矩阵</title>
+    <url>/posts/36804329.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个m x n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212049.png"></p>
+<p>分别需要实现四个遍历：</p>
+<p>左→右</p>
+<p>上→下</p>
+<p>右→左</p>
+<p>下→上</p>
+<p>需要特别注意的是不要遍历重复数据。left、right、top、bottom的指针变化方式尤为重要。</p>
+<p>另外还要注意限制条件top！&#x3D; bottom 和 left！&#x3D; right</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212338.png"></p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = matrix[<span class="number">0</span>].length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">top</span> <span class="operator">=</span> <span class="number">0</span>, bottom = matrix.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(top &lt; (matrix.length + <span class="number">1</span>) / <span class="number">2</span> &amp;&amp; left &lt; (matrix[<span class="number">0</span>].length + <span class="number">1</span>) / <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> left; i &lt;= right; i++)&#123;</span><br><span class="line">                res.add(matrix[top][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> top + <span class="number">1</span>; i &lt;= bottom; i++)&#123;</span><br><span class="line">                res.add(matrix[i][right]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> right - <span class="number">1</span>; i &gt;= left &amp;&amp; top != bottom; i--)&#123;</span><br><span class="line">                res.add(matrix[bottom][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> bottom - <span class="number">1</span>; i &gt;= top + <span class="number">1</span> &amp;&amp; left != right; i--)&#123;</span><br><span class="line">                res.add(matrix[i][left]);</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            top++;</span><br><span class="line">            right--;</span><br><span class="line">            bottom--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -1033,6 +1033,69 @@
       </tags>
   </entry>
   <entry>
+    <title>请教我学Java（一）浅析重写equals方法后必须重写hashCode方法</title>
+    <url>/posts/674e848.html</url>
+    <content><![CDATA[<p>根据“<strong>类是否覆盖equals()方法</strong>”，将它分为2类。</p>
+<p>(01) 若某个类没有覆盖equals()方法，当它的通过equals()比较两个对象时，实际上是比较两个对象是不是同一个对象。这时，等价于通过“&#x3D;&#x3D;”去比较这两个对象。</p>
+<p>(02) 我们可以覆盖类的equals()方法，来让equals()通过其它方式比较两个对象是否相等。通常的做法是：若两个对象的内容相等，则equals()方法返回true；否则，返回fasle。</p>
+<p>“hashCode() 和 equals() ”是有关系的：</p>
+<p>​    1)、如果两个对象相等，那么它们的hashCode()值一定相同。</p>
+<p>​       这里的相等是指，通过equals()比较两个对象时返回true。</p>
+<p>​    2)、如果两个对象hashCode()相等，它们并不一定相等。</p>
+<p>​        因为在散列表中，hashCode()相等，即两个键值对的哈希值相等。然而哈希值相等</p>
+<p><strong>参考代码</strong> (ConflictHashCodeTest1.java)：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="number">2</span> <span class="keyword">import</span> java.lang.Comparable;</span><br><span class="line"><span class="number">3</span> </span><br><span class="line"><span class="number">4</span> <span class="comment">/**</span></span><br><span class="line"><span class="comment">5 * <span class="doctag">@desc</span> 比较equals() 返回true 以及 返回false时， hashCode()的值。</span></span><br><span class="line"><span class="comment">6 *</span></span><br><span class="line"><span class="comment">7 * <span class="doctag">@author</span> skywang</span></span><br><span class="line"><span class="comment">8 * <span class="doctag">@emai</span> kuiwu-wang@163.com</span></span><br><span class="line"><span class="comment">9 */</span></span><br><span class="line"><span class="number">10</span> <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConflictHashCodeTest1</span>&#123;</span><br><span class="line"><span class="number">11</span> </span><br><span class="line"><span class="number">12</span>   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"><span class="number">13</span>     <span class="comment">// 新建Person对象，</span></span><br><span class="line"><span class="number">14</span>     <span class="type">Person</span> <span class="variable">p1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;eee&quot;</span>, <span class="number">100</span>);</span><br><span class="line"><span class="number">15</span>     <span class="type">Person</span> <span class="variable">p2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;eee&quot;</span>, <span class="number">100</span>);</span><br><span class="line"><span class="number">16</span>     <span class="type">Person</span> <span class="variable">p3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;aaa&quot;</span>, <span class="number">200</span>);</span><br><span class="line"><span class="number">17</span> </span><br><span class="line"><span class="number">18</span>     <span class="comment">// 新建HashSet对象 </span></span><br><span class="line"><span class="number">19</span>     <span class="type">HashSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashSet</span>();</span><br><span class="line"><span class="number">20</span>     set.add(p1);</span><br><span class="line"><span class="number">21</span>     set.add(p2);</span><br><span class="line"><span class="number">22</span>     set.add(p3);</span><br><span class="line"><span class="number">23</span> </span><br><span class="line"><span class="number">24</span>     <span class="comment">// 比较p1 和 p2， 并打印它们的hashCode()</span></span><br><span class="line"><span class="number">25</span>     System.out.printf(<span class="string">&quot;p1.equals(p2) : %s; p1(%d) p2(%d)\n&quot;</span>, p1.equals(p2), p1.hashCode(), p2.hashCode());</span><br><span class="line"><span class="number">26</span>     <span class="comment">// 打印set</span></span><br><span class="line"><span class="number">27</span>     System.out.printf(<span class="string">&quot;set:%s\n&quot;</span>, set);</span><br><span class="line"><span class="number">28</span>   &#125;</span><br><span class="line"><span class="number">29</span> </span><br><span class="line"><span class="number">30</span>   <span class="comment">/**</span></span><br><span class="line"><span class="comment">31   * <span class="doctag">@desc</span> Person类。</span></span><br><span class="line"><span class="comment">32   */</span></span><br><span class="line"><span class="number">33</span>   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"><span class="number">34</span>     <span class="type">int</span> age;</span><br><span class="line"><span class="number">35</span>     String name;</span><br><span class="line"><span class="number">36</span> </span><br><span class="line"><span class="number">37</span>     <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line"><span class="number">38</span>       <span class="built_in">this</span>.name = name;</span><br><span class="line"><span class="number">39</span>       <span class="built_in">this</span>.age = age;</span><br><span class="line"><span class="number">40</span>     &#125;</span><br><span class="line"><span class="number">41</span> </span><br><span class="line"><span class="number">42</span>     <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line"><span class="number">43</span>       <span class="keyword">return</span> <span class="string">&quot;(&quot;</span>+name + <span class="string">&quot;, &quot;</span> +age+<span class="string">&quot;)&quot;</span>;</span><br><span class="line"><span class="number">44</span>     &#125;</span><br><span class="line"><span class="number">45</span> </span><br><span class="line"><span class="number">46</span>     <span class="comment">/** </span></span><br><span class="line"><span class="comment">47     * <span class="doctag">@desc</span> 覆盖equals方法 </span></span><br><span class="line"><span class="comment">48     */</span> </span><br><span class="line"><span class="number">49</span>     <span class="meta">@Override</span></span><br><span class="line"><span class="number">50</span>     <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object obj)</span>&#123; </span><br><span class="line"><span class="number">51</span>       <span class="keyword">if</span>(obj == <span class="literal">null</span>)&#123; </span><br><span class="line"><span class="number">52</span>         <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line"><span class="number">53</span>       &#125; </span><br><span class="line"><span class="number">54</span>        </span><br><span class="line"><span class="number">55</span>       <span class="comment">//如果是同一个对象返回true，反之返回false </span></span><br><span class="line"><span class="number">56</span>       <span class="keyword">if</span>(<span class="built_in">this</span> == obj)&#123; </span><br><span class="line"><span class="number">57</span>         <span class="keyword">return</span> <span class="literal">true</span>; </span><br><span class="line"><span class="number">58</span>       &#125; </span><br><span class="line"><span class="number">59</span>        </span><br><span class="line"><span class="number">60</span>       <span class="comment">//判断是否类型相同 </span></span><br><span class="line"><span class="number">61</span>       <span class="keyword">if</span>(<span class="built_in">this</span>.getClass() != obj.getClass())&#123; </span><br><span class="line"><span class="number">62</span>         <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line"><span class="number">63</span>       &#125; </span><br><span class="line"><span class="number">64</span>        </span><br><span class="line"><span class="number">65</span>       <span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> (Person)obj; </span><br><span class="line"><span class="number">66</span>       <span class="keyword">return</span> name.equals(person.name) &amp;&amp; age==person.age; </span><br><span class="line"><span class="number">67</span>     &#125; </span><br><span class="line"><span class="number">68</span>   &#125;</span><br><span class="line"><span class="number">69</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="javascript:void(0);"><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/02/clip_image001.gif" alt="复制代码"></a></p>
+<p><strong>运行结果</strong>：</p>
+<p>p1.equals(p2) : true; p1(1169863946) p2(1690552137)<br> set:[(eee, 100), (eee, 100), (aaa, 200)]</p>
+<p><strong>结果分析</strong>：</p>
+<p>​    我们重写了Person的equals()。但是，很奇怪的发现：HashSet中仍然有重复元素：p1 和 p2。为什么会出现这种情况呢？</p>
+<p>​    这是因为虽然p1 和 p2的内容相等，但是它们的hashCode()不等；所以，HashSet在添加p1和p2的时候，认为它们不相等。</p>
+<p>下面，我们同时覆盖equals() 和 hashCode()方法。</p>
+<p>参考代码 (ConflictHashCodeTest2.java)：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">import</span> java.util.*;</span><br><span class="line"> <span class="number">2</span> <span class="keyword">import</span> java.lang.Comparable;</span><br><span class="line"> <span class="number">3</span> </span><br><span class="line"> <span class="number">4</span> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> 5 * <span class="doctag">@desc</span> 比较equals() 返回true 以及 返回false时， hashCode()的值。</span></span><br><span class="line"><span class="comment"> 6 *</span></span><br><span class="line"><span class="comment"> 7 * <span class="doctag">@author</span> skywang</span></span><br><span class="line"><span class="comment"> 8 * <span class="doctag">@emai</span> kuiwu-wang@163.com</span></span><br><span class="line"><span class="comment"> 9 */</span></span><br><span class="line"> <span class="number">10</span> <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConflictHashCodeTest2</span>&#123;</span><br><span class="line"> <span class="number">11</span> </span><br><span class="line"> <span class="number">12</span>   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"> <span class="number">13</span>     <span class="comment">// 新建Person对象，</span></span><br><span class="line"> <span class="number">14</span>     <span class="type">Person</span> <span class="variable">p1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;eee&quot;</span>, <span class="number">100</span>);</span><br><span class="line"> <span class="number">15</span>     <span class="type">Person</span> <span class="variable">p2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;eee&quot;</span>, <span class="number">100</span>);</span><br><span class="line"> <span class="number">16</span>     <span class="type">Person</span> <span class="variable">p3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;aaa&quot;</span>, <span class="number">200</span>);</span><br><span class="line"> <span class="number">17</span>     <span class="type">Person</span> <span class="variable">p4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;EEE&quot;</span>, <span class="number">100</span>);</span><br><span class="line"> <span class="number">18</span> </span><br><span class="line"> <span class="number">19</span>     <span class="comment">// 新建HashSet对象 </span></span><br><span class="line"> <span class="number">20</span>     <span class="type">HashSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashSet</span>();</span><br><span class="line"> <span class="number">21</span>     set.add(p1);</span><br><span class="line"> <span class="number">22</span>     set.add(p2);</span><br><span class="line"> <span class="number">23</span>     set.add(p3);</span><br><span class="line"> <span class="number">24</span> </span><br><span class="line"> <span class="number">25</span>     <span class="comment">// 比较p1 和 p2， 并打印它们的hashCode()</span></span><br><span class="line"> <span class="number">26</span>     System.out.printf(<span class="string">&quot;p1.equals(p2) : %s; p1(%d) p2(%d)\n&quot;</span>, p1.equals(p2), p1.hashCode(), p2.hashCode());</span><br><span class="line"> <span class="number">27</span>     <span class="comment">// 比较p1 和 p4， 并打印它们的hashCode()</span></span><br><span class="line"> <span class="number">28</span>     System.out.printf(<span class="string">&quot;p1.equals(p4) : %s; p1(%d) p4(%d)\n&quot;</span>, p1.equals(p4), p1.hashCode(), p4.hashCode());</span><br><span class="line"> <span class="number">29</span>     <span class="comment">// 打印set</span></span><br><span class="line"> <span class="number">30</span>     System.out.printf(<span class="string">&quot;set:%s\n&quot;</span>, set);</span><br><span class="line"> <span class="number">31</span>   &#125;</span><br><span class="line"> <span class="number">32</span> </span><br><span class="line"> <span class="number">33</span>   <span class="comment">/**</span></span><br><span class="line"><span class="comment"> 34   * <span class="doctag">@desc</span> Person类。</span></span><br><span class="line"><span class="comment"> 35   */</span></span><br><span class="line"> <span class="number">36</span>   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"> <span class="number">37</span>     <span class="type">int</span> age;</span><br><span class="line"> <span class="number">38</span>     String name;</span><br><span class="line"> <span class="number">39</span> </span><br><span class="line"> <span class="number">40</span>     <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line"> <span class="number">41</span>       <span class="built_in">this</span>.name = name;</span><br><span class="line"> <span class="number">42</span>       <span class="built_in">this</span>.age = age;</span><br><span class="line"> <span class="number">43</span>     &#125;</span><br><span class="line"> <span class="number">44</span> </span><br><span class="line"> <span class="number">45</span>     <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line"> <span class="number">46</span>       <span class="keyword">return</span> name + <span class="string">&quot; - &quot;</span> +age;</span><br><span class="line"> <span class="number">47</span>     &#125;</span><br><span class="line"> <span class="number">48</span> </span><br><span class="line"> <span class="number">49</span>     <span class="comment">/** </span></span><br><span class="line"><span class="comment"> 50     * <span class="doctag">@desc</span>重写hashCode </span></span><br><span class="line"><span class="comment"> 51     */</span> </span><br><span class="line"> <span class="number">52</span>     <span class="meta">@Override</span></span><br><span class="line"> <span class="number">53</span>     <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span>&#123; </span><br><span class="line"> <span class="number">54</span>       <span class="type">int</span> <span class="variable">nameHash</span> <span class="operator">=</span> name.toUpperCase().hashCode();</span><br><span class="line"> <span class="number">55</span>       <span class="keyword">return</span> nameHash ^ age;</span><br><span class="line"> <span class="number">56</span>     &#125;</span><br><span class="line"> <span class="number">57</span> </span><br><span class="line"> <span class="number">58</span>     <span class="comment">/** </span></span><br><span class="line"><span class="comment"> 59     * <span class="doctag">@desc</span> 覆盖equals方法 </span></span><br><span class="line"><span class="comment"> 60     */</span> </span><br><span class="line"> <span class="number">61</span>     <span class="meta">@Override</span></span><br><span class="line"> <span class="number">62</span>     <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object obj)</span>&#123; </span><br><span class="line"> <span class="number">63</span>       <span class="keyword">if</span>(obj == <span class="literal">null</span>)&#123; </span><br><span class="line"> <span class="number">64</span>         <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line"> <span class="number">65</span>       &#125; </span><br><span class="line"> <span class="number">66</span>        </span><br><span class="line"> <span class="number">67</span>       <span class="comment">//如果是同一个对象返回true，反之返回false </span></span><br><span class="line"> <span class="number">68</span>       <span class="keyword">if</span>(<span class="built_in">this</span> == obj)&#123; </span><br><span class="line"> <span class="number">69</span>         <span class="keyword">return</span> <span class="literal">true</span>; </span><br><span class="line"> <span class="number">70</span>       &#125; </span><br><span class="line"> <span class="number">71</span>        </span><br><span class="line"> <span class="number">72</span>       <span class="comment">//判断是否类型相同 </span></span><br><span class="line"> <span class="number">73</span>       <span class="keyword">if</span>(<span class="built_in">this</span>.getClass() != obj.getClass())&#123; </span><br><span class="line"> <span class="number">74</span>         <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line"> <span class="number">75</span>       &#125; </span><br><span class="line"> <span class="number">76</span>        </span><br><span class="line"> <span class="number">77</span>       <span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> (Person)obj; </span><br><span class="line"> <span class="number">78</span>       <span class="keyword">return</span> name.equals(person.name) &amp;&amp; age==person.age; </span><br><span class="line"> <span class="number">79</span>     &#125; </span><br><span class="line"> <span class="number">80</span>   &#125;</span><br><span class="line"> <span class="number">81</span> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>运行结果</strong>：</p>
+<p>p1.equals(p2) : true; p1(68545) p2(68545)<br> p1.equals(p4) : false; p1(68545) p4(68545)<br> set:[aaa - 200, eee - 100]</p>
+<p><strong>结果分析</strong>：</p>
+<p>​    这下，equals()生效了，HashSet中没有重复元素。</p>
+<p>​    <em>比较p1和p2</em>，我们发现：它们的hashCode()相等，通过equals()比较它们也返回true。所以，p1和p2被视为相等。</p>
+<p>​    <em>比较p1和p4</em>，我们发现：虽然它们的hashCode()相等；但是，通过equals()比较它们返回false。所以，p1和p4被视为不相等。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>hashCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>请教我学Java（二）ConcurrentHashMap为什么是线程安全的</title>
+    <url>/posts/13e1009d.html</url>
+    <content><![CDATA[<h1 id="HashMap线程不安全"><a href="#HashMap线程不安全" class="headerlink" title="HashMap线程不安全"></a>HashMap线程不安全</h1><font size = 3>
+
+<p>HashMap在扩容的时候会调用resize（）方法，这样的并发操作容易在一个桶上形成环形链表。当获取一个不存在的key时，计算出的index正好时环形链表的下标时就会出现如下的死循环。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191153.png"></p>
+<h1 id="ConcurrentHashMap线程安全"><a href="#ConcurrentHashMap线程安全" class="headerlink" title="ConcurrentHashMap线程安全"></a>ConcurrentHashMap线程安全</h1><p>引入了如下的Segment数组</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191307.png"></p>
+<p>其中的核心数据，例如value和链表都是由volatile修饰的，保证了数据的可见性。</p>
+<p>原理上来说：ConcurrentHashMap 采用了分段锁技术，其中 Segment 继承于 ReentrantLock。不会像 HashTable 那样不管是 put 还是 get 操作都需要做同步处理，理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量)的线程并发。每当一个线程占用锁访问一个 Segment 时，不会影响到其他的 Segment。</p>
+<p>jdk1.8抛弃了原有的segment锁，而使用CAS(Compare ans Swap) + synchronized的方式实现。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191607.png"></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>HashMap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>请教我学数据结构（一）排序</title>
     <url>/posts/47991e6b.html</url>
     <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><font size=3>
@@ -1126,69 +1189,6 @@
       </categories>
       <tags>
         <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>请教我学Java（一）浅析重写equals方法后必须重写hashCode方法</title>
-    <url>/posts/674e848.html</url>
-    <content><![CDATA[<p>根据“<strong>类是否覆盖equals()方法</strong>”，将它分为2类。</p>
-<p>(01) 若某个类没有覆盖equals()方法，当它的通过equals()比较两个对象时，实际上是比较两个对象是不是同一个对象。这时，等价于通过“&#x3D;&#x3D;”去比较这两个对象。</p>
-<p>(02) 我们可以覆盖类的equals()方法，来让equals()通过其它方式比较两个对象是否相等。通常的做法是：若两个对象的内容相等，则equals()方法返回true；否则，返回fasle。</p>
-<p>“hashCode() 和 equals() ”是有关系的：</p>
-<p>​    1)、如果两个对象相等，那么它们的hashCode()值一定相同。</p>
-<p>​       这里的相等是指，通过equals()比较两个对象时返回true。</p>
-<p>​    2)、如果两个对象hashCode()相等，它们并不一定相等。</p>
-<p>​        因为在散列表中，hashCode()相等，即两个键值对的哈希值相等。然而哈希值相等</p>
-<p><strong>参考代码</strong> (ConflictHashCodeTest1.java)：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="number">2</span> <span class="keyword">import</span> java.lang.Comparable;</span><br><span class="line"><span class="number">3</span> </span><br><span class="line"><span class="number">4</span> <span class="comment">/**</span></span><br><span class="line"><span class="comment">5 * <span class="doctag">@desc</span> 比较equals() 返回true 以及 返回false时， hashCode()的值。</span></span><br><span class="line"><span class="comment">6 *</span></span><br><span class="line"><span class="comment">7 * <span class="doctag">@author</span> skywang</span></span><br><span class="line"><span class="comment">8 * <span class="doctag">@emai</span> kuiwu-wang@163.com</span></span><br><span class="line"><span class="comment">9 */</span></span><br><span class="line"><span class="number">10</span> <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConflictHashCodeTest1</span>&#123;</span><br><span class="line"><span class="number">11</span> </span><br><span class="line"><span class="number">12</span>   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"><span class="number">13</span>     <span class="comment">// 新建Person对象，</span></span><br><span class="line"><span class="number">14</span>     <span class="type">Person</span> <span class="variable">p1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;eee&quot;</span>, <span class="number">100</span>);</span><br><span class="line"><span class="number">15</span>     <span class="type">Person</span> <span class="variable">p2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;eee&quot;</span>, <span class="number">100</span>);</span><br><span class="line"><span class="number">16</span>     <span class="type">Person</span> <span class="variable">p3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;aaa&quot;</span>, <span class="number">200</span>);</span><br><span class="line"><span class="number">17</span> </span><br><span class="line"><span class="number">18</span>     <span class="comment">// 新建HashSet对象 </span></span><br><span class="line"><span class="number">19</span>     <span class="type">HashSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashSet</span>();</span><br><span class="line"><span class="number">20</span>     set.add(p1);</span><br><span class="line"><span class="number">21</span>     set.add(p2);</span><br><span class="line"><span class="number">22</span>     set.add(p3);</span><br><span class="line"><span class="number">23</span> </span><br><span class="line"><span class="number">24</span>     <span class="comment">// 比较p1 和 p2， 并打印它们的hashCode()</span></span><br><span class="line"><span class="number">25</span>     System.out.printf(<span class="string">&quot;p1.equals(p2) : %s; p1(%d) p2(%d)\n&quot;</span>, p1.equals(p2), p1.hashCode(), p2.hashCode());</span><br><span class="line"><span class="number">26</span>     <span class="comment">// 打印set</span></span><br><span class="line"><span class="number">27</span>     System.out.printf(<span class="string">&quot;set:%s\n&quot;</span>, set);</span><br><span class="line"><span class="number">28</span>   &#125;</span><br><span class="line"><span class="number">29</span> </span><br><span class="line"><span class="number">30</span>   <span class="comment">/**</span></span><br><span class="line"><span class="comment">31   * <span class="doctag">@desc</span> Person类。</span></span><br><span class="line"><span class="comment">32   */</span></span><br><span class="line"><span class="number">33</span>   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"><span class="number">34</span>     <span class="type">int</span> age;</span><br><span class="line"><span class="number">35</span>     String name;</span><br><span class="line"><span class="number">36</span> </span><br><span class="line"><span class="number">37</span>     <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line"><span class="number">38</span>       <span class="built_in">this</span>.name = name;</span><br><span class="line"><span class="number">39</span>       <span class="built_in">this</span>.age = age;</span><br><span class="line"><span class="number">40</span>     &#125;</span><br><span class="line"><span class="number">41</span> </span><br><span class="line"><span class="number">42</span>     <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line"><span class="number">43</span>       <span class="keyword">return</span> <span class="string">&quot;(&quot;</span>+name + <span class="string">&quot;, &quot;</span> +age+<span class="string">&quot;)&quot;</span>;</span><br><span class="line"><span class="number">44</span>     &#125;</span><br><span class="line"><span class="number">45</span> </span><br><span class="line"><span class="number">46</span>     <span class="comment">/** </span></span><br><span class="line"><span class="comment">47     * <span class="doctag">@desc</span> 覆盖equals方法 </span></span><br><span class="line"><span class="comment">48     */</span> </span><br><span class="line"><span class="number">49</span>     <span class="meta">@Override</span></span><br><span class="line"><span class="number">50</span>     <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object obj)</span>&#123; </span><br><span class="line"><span class="number">51</span>       <span class="keyword">if</span>(obj == <span class="literal">null</span>)&#123; </span><br><span class="line"><span class="number">52</span>         <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line"><span class="number">53</span>       &#125; </span><br><span class="line"><span class="number">54</span>        </span><br><span class="line"><span class="number">55</span>       <span class="comment">//如果是同一个对象返回true，反之返回false </span></span><br><span class="line"><span class="number">56</span>       <span class="keyword">if</span>(<span class="built_in">this</span> == obj)&#123; </span><br><span class="line"><span class="number">57</span>         <span class="keyword">return</span> <span class="literal">true</span>; </span><br><span class="line"><span class="number">58</span>       &#125; </span><br><span class="line"><span class="number">59</span>        </span><br><span class="line"><span class="number">60</span>       <span class="comment">//判断是否类型相同 </span></span><br><span class="line"><span class="number">61</span>       <span class="keyword">if</span>(<span class="built_in">this</span>.getClass() != obj.getClass())&#123; </span><br><span class="line"><span class="number">62</span>         <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line"><span class="number">63</span>       &#125; </span><br><span class="line"><span class="number">64</span>        </span><br><span class="line"><span class="number">65</span>       <span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> (Person)obj; </span><br><span class="line"><span class="number">66</span>       <span class="keyword">return</span> name.equals(person.name) &amp;&amp; age==person.age; </span><br><span class="line"><span class="number">67</span>     &#125; </span><br><span class="line"><span class="number">68</span>   &#125;</span><br><span class="line"><span class="number">69</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="javascript:void(0);"><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/02/clip_image001.gif" alt="复制代码"></a></p>
-<p><strong>运行结果</strong>：</p>
-<p>p1.equals(p2) : true; p1(1169863946) p2(1690552137)<br> set:[(eee, 100), (eee, 100), (aaa, 200)]</p>
-<p><strong>结果分析</strong>：</p>
-<p>​    我们重写了Person的equals()。但是，很奇怪的发现：HashSet中仍然有重复元素：p1 和 p2。为什么会出现这种情况呢？</p>
-<p>​    这是因为虽然p1 和 p2的内容相等，但是它们的hashCode()不等；所以，HashSet在添加p1和p2的时候，认为它们不相等。</p>
-<p>下面，我们同时覆盖equals() 和 hashCode()方法。</p>
-<p>参考代码 (ConflictHashCodeTest2.java)：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">import</span> java.util.*;</span><br><span class="line"> <span class="number">2</span> <span class="keyword">import</span> java.lang.Comparable;</span><br><span class="line"> <span class="number">3</span> </span><br><span class="line"> <span class="number">4</span> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> 5 * <span class="doctag">@desc</span> 比较equals() 返回true 以及 返回false时， hashCode()的值。</span></span><br><span class="line"><span class="comment"> 6 *</span></span><br><span class="line"><span class="comment"> 7 * <span class="doctag">@author</span> skywang</span></span><br><span class="line"><span class="comment"> 8 * <span class="doctag">@emai</span> kuiwu-wang@163.com</span></span><br><span class="line"><span class="comment"> 9 */</span></span><br><span class="line"> <span class="number">10</span> <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConflictHashCodeTest2</span>&#123;</span><br><span class="line"> <span class="number">11</span> </span><br><span class="line"> <span class="number">12</span>   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"> <span class="number">13</span>     <span class="comment">// 新建Person对象，</span></span><br><span class="line"> <span class="number">14</span>     <span class="type">Person</span> <span class="variable">p1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;eee&quot;</span>, <span class="number">100</span>);</span><br><span class="line"> <span class="number">15</span>     <span class="type">Person</span> <span class="variable">p2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;eee&quot;</span>, <span class="number">100</span>);</span><br><span class="line"> <span class="number">16</span>     <span class="type">Person</span> <span class="variable">p3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;aaa&quot;</span>, <span class="number">200</span>);</span><br><span class="line"> <span class="number">17</span>     <span class="type">Person</span> <span class="variable">p4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;EEE&quot;</span>, <span class="number">100</span>);</span><br><span class="line"> <span class="number">18</span> </span><br><span class="line"> <span class="number">19</span>     <span class="comment">// 新建HashSet对象 </span></span><br><span class="line"> <span class="number">20</span>     <span class="type">HashSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashSet</span>();</span><br><span class="line"> <span class="number">21</span>     set.add(p1);</span><br><span class="line"> <span class="number">22</span>     set.add(p2);</span><br><span class="line"> <span class="number">23</span>     set.add(p3);</span><br><span class="line"> <span class="number">24</span> </span><br><span class="line"> <span class="number">25</span>     <span class="comment">// 比较p1 和 p2， 并打印它们的hashCode()</span></span><br><span class="line"> <span class="number">26</span>     System.out.printf(<span class="string">&quot;p1.equals(p2) : %s; p1(%d) p2(%d)\n&quot;</span>, p1.equals(p2), p1.hashCode(), p2.hashCode());</span><br><span class="line"> <span class="number">27</span>     <span class="comment">// 比较p1 和 p4， 并打印它们的hashCode()</span></span><br><span class="line"> <span class="number">28</span>     System.out.printf(<span class="string">&quot;p1.equals(p4) : %s; p1(%d) p4(%d)\n&quot;</span>, p1.equals(p4), p1.hashCode(), p4.hashCode());</span><br><span class="line"> <span class="number">29</span>     <span class="comment">// 打印set</span></span><br><span class="line"> <span class="number">30</span>     System.out.printf(<span class="string">&quot;set:%s\n&quot;</span>, set);</span><br><span class="line"> <span class="number">31</span>   &#125;</span><br><span class="line"> <span class="number">32</span> </span><br><span class="line"> <span class="number">33</span>   <span class="comment">/**</span></span><br><span class="line"><span class="comment"> 34   * <span class="doctag">@desc</span> Person类。</span></span><br><span class="line"><span class="comment"> 35   */</span></span><br><span class="line"> <span class="number">36</span>   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"> <span class="number">37</span>     <span class="type">int</span> age;</span><br><span class="line"> <span class="number">38</span>     String name;</span><br><span class="line"> <span class="number">39</span> </span><br><span class="line"> <span class="number">40</span>     <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line"> <span class="number">41</span>       <span class="built_in">this</span>.name = name;</span><br><span class="line"> <span class="number">42</span>       <span class="built_in">this</span>.age = age;</span><br><span class="line"> <span class="number">43</span>     &#125;</span><br><span class="line"> <span class="number">44</span> </span><br><span class="line"> <span class="number">45</span>     <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line"> <span class="number">46</span>       <span class="keyword">return</span> name + <span class="string">&quot; - &quot;</span> +age;</span><br><span class="line"> <span class="number">47</span>     &#125;</span><br><span class="line"> <span class="number">48</span> </span><br><span class="line"> <span class="number">49</span>     <span class="comment">/** </span></span><br><span class="line"><span class="comment"> 50     * <span class="doctag">@desc</span>重写hashCode </span></span><br><span class="line"><span class="comment"> 51     */</span> </span><br><span class="line"> <span class="number">52</span>     <span class="meta">@Override</span></span><br><span class="line"> <span class="number">53</span>     <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span>&#123; </span><br><span class="line"> <span class="number">54</span>       <span class="type">int</span> <span class="variable">nameHash</span> <span class="operator">=</span> name.toUpperCase().hashCode();</span><br><span class="line"> <span class="number">55</span>       <span class="keyword">return</span> nameHash ^ age;</span><br><span class="line"> <span class="number">56</span>     &#125;</span><br><span class="line"> <span class="number">57</span> </span><br><span class="line"> <span class="number">58</span>     <span class="comment">/** </span></span><br><span class="line"><span class="comment"> 59     * <span class="doctag">@desc</span> 覆盖equals方法 </span></span><br><span class="line"><span class="comment"> 60     */</span> </span><br><span class="line"> <span class="number">61</span>     <span class="meta">@Override</span></span><br><span class="line"> <span class="number">62</span>     <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object obj)</span>&#123; </span><br><span class="line"> <span class="number">63</span>       <span class="keyword">if</span>(obj == <span class="literal">null</span>)&#123; </span><br><span class="line"> <span class="number">64</span>         <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line"> <span class="number">65</span>       &#125; </span><br><span class="line"> <span class="number">66</span>        </span><br><span class="line"> <span class="number">67</span>       <span class="comment">//如果是同一个对象返回true，反之返回false </span></span><br><span class="line"> <span class="number">68</span>       <span class="keyword">if</span>(<span class="built_in">this</span> == obj)&#123; </span><br><span class="line"> <span class="number">69</span>         <span class="keyword">return</span> <span class="literal">true</span>; </span><br><span class="line"> <span class="number">70</span>       &#125; </span><br><span class="line"> <span class="number">71</span>        </span><br><span class="line"> <span class="number">72</span>       <span class="comment">//判断是否类型相同 </span></span><br><span class="line"> <span class="number">73</span>       <span class="keyword">if</span>(<span class="built_in">this</span>.getClass() != obj.getClass())&#123; </span><br><span class="line"> <span class="number">74</span>         <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line"> <span class="number">75</span>       &#125; </span><br><span class="line"> <span class="number">76</span>        </span><br><span class="line"> <span class="number">77</span>       <span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> (Person)obj; </span><br><span class="line"> <span class="number">78</span>       <span class="keyword">return</span> name.equals(person.name) &amp;&amp; age==person.age; </span><br><span class="line"> <span class="number">79</span>     &#125; </span><br><span class="line"> <span class="number">80</span>   &#125;</span><br><span class="line"> <span class="number">81</span> &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>运行结果</strong>：</p>
-<p>p1.equals(p2) : true; p1(68545) p2(68545)<br> p1.equals(p4) : false; p1(68545) p4(68545)<br> set:[aaa - 200, eee - 100]</p>
-<p><strong>结果分析</strong>：</p>
-<p>​    这下，equals()生效了，HashSet中没有重复元素。</p>
-<p>​    <em>比较p1和p2</em>，我们发现：它们的hashCode()相等，通过equals()比较它们也返回true。所以，p1和p2被视为相等。</p>
-<p>​    <em>比较p1和p4</em>，我们发现：虽然它们的hashCode()相等；但是，通过equals()比较它们返回false。所以，p1和p4被视为不相等。</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>hashCode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>请教我学Java（二）ConcurrentHashMap为什么是线程安全的</title>
-    <url>/posts/13e1009d.html</url>
-    <content><![CDATA[<h1 id="HashMap线程不安全"><a href="#HashMap线程不安全" class="headerlink" title="HashMap线程不安全"></a>HashMap线程不安全</h1><font size = 3>
-
-<p>HashMap在扩容的时候会调用resize（）方法，这样的并发操作容易在一个桶上形成环形链表。当获取一个不存在的key时，计算出的index正好时环形链表的下标时就会出现如下的死循环。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191153.png"></p>
-<h1 id="ConcurrentHashMap线程安全"><a href="#ConcurrentHashMap线程安全" class="headerlink" title="ConcurrentHashMap线程安全"></a>ConcurrentHashMap线程安全</h1><p>引入了如下的Segment数组</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191307.png"></p>
-<p>其中的核心数据，例如value和链表都是由volatile修饰的，保证了数据的可见性。</p>
-<p>原理上来说：ConcurrentHashMap 采用了分段锁技术，其中 Segment 继承于 ReentrantLock。不会像 HashTable 那样不管是 put 还是 get 操作都需要做同步处理，理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量)的线程并发。每当一个线程占用锁访问一个 Segment 时，不会影响到其他的 Segment。</p>
-<p>jdk1.8抛弃了原有的segment锁，而使用CAS(Compare ans Swap) + synchronized的方式实现。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191607.png"></p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>HashMap</tag>
       </tags>
   </entry>
   <entry>
@@ -1299,266 +1299,6 @@
         <tag>HTTP</tag>
         <tag>DNS</tag>
         <tag>会话</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>请教我学操作系统（二）IO多路复用技术</title>
-    <url>/posts/3e93542c.html</url>
-    <content><![CDATA[<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><font size=3>
-
-<ol>
-<li><p>服务器端编程经常需要构造高性能的IO模型，常见的IO模型有四种：</p>
-<p>（1）同步阻塞IO（Blocking IO）：即传统的IO模型。</p>
-<p>（2）同步非阻塞IO（Non-blocking IO）：默认创建的socket都是阻塞的，非阻塞IO要求socket被设置为NONBLOCK。注意这里所说的NIO并非Java的NIO（New IO）库。</p>
-<p>（3）IO多路复用（IO Multiplexing）：即经典的Reactor设计模式，有时也称为异步阻塞IO，Java中的Selector和Linux中的epoll都是这种模型。</p>
-<p>（4）异步IO（Asynchronous IO）：即经典的Proactor设计模式，也称为异步非阻塞IO。</p>
-<p><strong>同步和异步</strong>的概念描述的是用户线程与内核的交互方式：同步是指<strong>用户线程发起IO请求后需要等待或者轮询内核IO操作完成后才能继续执行</strong>；而异步是指用户线程发起IO请求后仍继续执行，当内核IO操作完成后会通知用户线程，或者调用用户线程注册的回调函数。</p>
-<p><strong>阻塞和非阻塞</strong>的概念描述的是用户线程调用内核IO操作的方式：<strong>阻塞是指IO操作需要彻底完成后才返回到用户空间</strong>；而非阻塞是指IO操作被调用后立即返回给用户一个状态值，无需等到IO操作彻底完成。</p>
-</li>
-</ol>
-<h1 id="同步阻塞"><a href="#同步阻塞" class="headerlink" title="同步阻塞"></a>同步阻塞</h1><p>同步阻塞IO模型是最简单的IO模型，用户线程在内核进行IO操作时被阻塞。</p>
-<p> <img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095213.png"></p>
-<h1 id="同步非阻塞IO"><a href="#同步非阻塞IO" class="headerlink" title="同步非阻塞IO"></a>同步非阻塞IO</h1><p>同步非阻塞IO是在同步阻塞IO的基础上，将socket设置为NONBLOCK。这样做用户线程可以在发起IO请求后可以立即返回。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095300.png"></p>
-<p>整个IO请求的过程中，虽然用户线程每次发起IO请求后可以立即返回，但是为了等到数据，仍需要<strong>不断地轮询、重复请求</strong>，消耗了大量的CPU的资源。一般很少直接使用这种模型，而是在其他IO模型中使用非阻塞IO这一特性。</p>
-<h1 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h1><p>流程上来看，使用select函数进行IO请求和同步阻塞模型没有太大的区别，甚至还多了添加监视socket，以及调用select函数的额外操作，效率更差。但是，使用select以后最大的优势是用户可以在一个线程内同时处理多个socket的IO请求。用户可以注册多个socket，然后不断地调用select读取被激活的socket，即可达到在同<strong>一个线程内同时处理多个IO请求的目的</strong>。而在同步阻塞模型中，必须通过多线程的方式才能达到这个目的。</p>
-<p> <img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095402.png"></p>
-<p>通过Reactor的方式，可以将用户线程轮询IO操作状态的工作统一交给handle_events事件循环进行处理。用户线程注册事件处理器之后可以继续执行做其他的工作（异步），而<strong>Reactor线程负责调用内核的select函数检查socket状态</strong>。当有socket被激活时，则通知相应的用户线程（或执行用户线程的回调函数），执行handle_event进行数据读取、处理的工作。由于select函数是阻塞的，因此多路IO复用模型也被称为异步阻塞IO模型。注意，这里的所说的阻塞是指select函数执行时线程被阻塞，而不是指socket。一般在使用IO多路复用模型时，socket都是设置为NONBLOCK的，不过这并不会产生影响，因为用户发起IO请求时，数据已经到达了，用户线程一定不会被阻塞。</p>
-<h1 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h1><p>“真正”的异步IO需要操作系统更强的支持。在IO多路复用模型中，事件循环将文件句柄的状态事件通知给用户线程，由用户线程自行读取数据、处理数据。而在异步IO模型中，当用户线程收到通知时，数据已经被内核读取完毕，并放在了用户线程指定的缓冲区内，内核在IO完成后通知用户线程直接使用即可。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095443.png"></p>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>IO</tag>
-        <tag>线程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>请教我学设计模式（一）单例模式的常用实现方法</title>
-    <url>/posts/b2ef857.html</url>
-    <content><![CDATA[<h1 id="单例模式是什么？"><a href="#单例模式是什么？" class="headerlink" title="单例模式是什么？"></a>单例模式是什么？</h1><font size = 3>
-
-<p>单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。</p>
-<p>这种模式涉及到一个单一的类，该类负责创建自己的对象，同时<strong>确保只有单个对象被创建</strong>。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。</p>
-<h1 id="单例模式实现方式"><a href="#单例模式实现方式" class="headerlink" title="单例模式实现方式"></a>单例模式实现方式</h1><h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><p>类加载的时候就创建了实例<br>优点：类加载的时候创建一次实例，避免了多线程同步问题</p>
-<p>缺点：即使单例没被用到也会创建，浪费内存</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><h3 id="非线程安全"><a href="#非线程安全" class="headerlink" title="非线程安全"></a>非线程安全</h3><p>优点：需要时才去创建<br>缺点：没有考虑线程安全问题，多个线程并发调用getInstance，可能会创建多个实例</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h3><p>缺点：性能问题，添加了synchronized的函数比一般方法慢得多，若多次调用getInstance，则累积的性能损耗特别大。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Synchronized Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="双重校验锁"><a href="#双重校验锁" class="headerlink" title="双重校验锁"></a>双重校验锁</h2><p>大部分情况下，同步代码块都不会执行到，提高了程序的性能。</p>
-<p>有一种情况，两个线程ThreadA，ThreadB，如果threadA执行到了第一个if条件判断，instance &#x3D; null；ThreadB也执行到了if条件判断instance &#x3D; null，所以A和B会依次执行同步代码块里的代码。为了避免创建两个实例，因此又在同步代码块里添加了if条件进行二重检验。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>隐患：</p>
-<p>1、此处涉及Java的指令重排优化。指令重排优化是指在不改变原语义的情况下，通过调整指令的执行顺序让程序运行地更快。</p>
-<p>2、JVM中没有规定编译器优化的相关内容，也即JVM可以自由地进行指令重排序的优化。</p>
-<p>3、此问题的关键在于由于指令重排序优化的存在，导致初始化Singleton和将对象地址赋给instance字段的顺序是不确定的。</p>
-<p>4、在某个线程创建单例对象时，在构造函数被调用前，就为该对象分配了内存空间并将对象的字段设置为默认值。此时就可以将分配的内存地址赋值给instance字段了，然而该对象可能还没初始化。若紧接着另一个线程来调用getInstance，获取到的就是状态不正确的对象，程序出错。</p>
-<p>JDK5的修正：以上是双重校验锁失效的原因，不过在JDK1.5之后的版本添加了volatile关键字。</p>
-<p>1、volatile的一个语义是禁止指令重排序优化，也就保证了instance变量被赋值的时候对象已经是初始化过的，从而避免了上述问题。</p>
-<p>2、Java中的volatile变量是什么？</p>
-<p>（1）关键字的作用有两个：</p>
-<p>​      ①多线程主要围绕可见性和原子性两个特性展开，使用volatile关键字修饰的变量，保证了其在多线程之间的可见性，即每次读取到的volatile变量，一定是最新的数据。</p>
-<p>​     ②代码底层执行的顺序是Java代码–&gt;字节码–&gt;根据字节码执行对应的C&#x2F;C++代码–&gt;C&#x2F;C++代码被编译成汇编语言–&gt;和硬件电路交互。实际中，为了获取更好的性能，JVM可能会对指令进行重排序，多线程下可能会出现一些意想不到的问题。使用volatile则会禁止语义重排序，也一定程度上降低了代码执行效率。实践角度而言，volatile的一个重要作用就是和CAS结合，保证了原子性。</p>
-<p>   （2）volatile是一个特殊的修饰符，只有成员变量才能使用它。在Java并发程序缺少同步类的情况下，多线程对成员变量的操作对其他线程是透明的。volatile变量可以保证下一个读取操作会在前一个写操作之后发生。<br>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="literal">null</span>)&#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-        <tag>单例</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>请教我学操作系统（一）进线程与内存管理</title>
-    <url>/posts/d5d6861e.html</url>
-    <content><![CDATA[<h2 id="什么是操作系统"><a href="#什么是操作系统" class="headerlink" title="什么是操作系统"></a>什么是操作系统</h2><ol>
-<li><p>操作系统是管理计算机软硬件资源的程序，是计算机的基石。</p>
-</li>
-<li><p>本质上是一个应用程序。</p>
-</li>
-<li><p>操作系统的存在屏蔽了硬件设备的复杂性，由操作系统统一管理和分配。</p>
-</li>
-<li><p>内核是操作系统的核心部分。负责系统的内存管理，硬件设备管理，文件系统管理和应用程序管理。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327105916.png"></p>
-</li>
-</ol>
-<h1 id="什么是系统调用"><a href="#什么是系统调用" class="headerlink" title="什么是系统调用"></a>什么是系统调用</h1><p>用户态：该状态运行的进程可以直接读取用户程序的数据。</p>
-<p>系统态：该状态运行的进程或程序可以访问计算机任意资源。</p>
-<p>程序运行在用户态时想要调用操作系统提供的系统态子功能时需要进行系统调用。</p>
-<p>系统调用按功能大致分为：</p>
-<p><strong>设备管理</strong>。完成设备的请求或释放，以及设备启动等功能。</p>
-<p><strong>⽂件管理</strong>。完成⽂件的读、写、创建及删除等功能。</p>
-<p><strong>进程控制</strong>。完成进程的创建、撤销、阻塞及唤醒等功能。</p>
-<p><strong>进程通信</strong>。完成进程之间的消息传递或信号传递等功能。</p>
-<p><strong>内存管理</strong>。完成内存的分配、回收以及获取作业占⽤内存区⼤⼩及地址等功能。</p>
-<h1 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h1><ol>
-<li><p>区别：线程时进程划分成的更小的运行单位。进程之间基本相互独立，而线程之间可能相互影响。线程执行开销小，但不利于资源的管理和保护，而进程则相反。</p>
-</li>
-<li><p>进程的状态：</p>
-<p>创建状态**(new)** ：进程正在被创建，尚未到就绪状态。</p>
-<p>就绪状态**(ready)** ：进程已处于准备运⾏状态，即进程获得了除了处理器之外的⼀切所需资</p>
-<p>源，⼀旦得到处理器资源(处理器分配的时间⽚)即可运⾏。</p>
-<p>运⾏状态**(running)** ：进程正在处理器上上运⾏(单核 CPU 下任意时刻只有⼀个进程处于运</p>
-<p>⾏状态)。</p>
-<p>阻塞状态**(waiting)** ：⼜称为等待状态，进程正在等待某⼀事件⽽暂停运⾏如等待某资源为</p>
-<p>可⽤或等待 IO 操作完成。即使处理器空闲，该进程也不能运⾏。</p>
-<p>结束状态**(terminated)** ：进程正在从系统中消失。可能是进程正常结束或其他原因中断退出运⾏。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327110050.png"></p>
-</li>
-<li><p>进程间的通信方式：</p>
-<p>（1）管道（匿名管道）：用于有情缘关系的进程。</p>
-<p>（2）有名管道： 任意进程，先进先出。</p>
-<p>（3） 信号： 通知接收进程某个事件已经发生。</p>
-<p>（4） 消息队列： 存放在内核中。克服了信号承载信息量少，管道只能承载无格式字节流以及缓冲区大小受限的缺陷。</p>
-<p>（5） 信号量：计数器，多进程对共享数据的访问。进程间同步。</p>
-<p>（6） 共享内存： 多个进程访问同一快内存空间</p>
-<p>（7）套接字：用于客户端和服务器之间通过网络进行通信。</p>
-</li>
-<li><p>线程间的同步方式：</p>
-<p>（1） 互斥量</p>
-<p>（2） 信号量：允许同⼀时刻多个线程访问同⼀资源，但是需要控制同⼀时刻访问此资源的最⼤线程数量</p>
-<p>（3） 事件：通过通知操作的⽅式来保持多线程同步，还可以⽅便的实现多线程优先级的⽐较操做</p>
-</li>
-<li><p>进程的调度算法：</p>
-<p>（1） 先到先服务（FCFS）</p>
-<p>（2） 短作业优先（SJF）</p>
-<p>（3） 时间片轮转</p>
-<p>（4） 多级反馈队列调度算法：多级反馈队列调度算法既能使⾼优先级的作业得到响应⼜能使短作业（进程）迅速完成。，因⽽它是⽬前被公认的⼀种较好的进程调度算法</p>
-<p>（5）优先级调度：同一优先级采用FCFS调度</p>
-</li>
-</ol>
-<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><h2 id="常见的内存管理机制"><a href="#常见的内存管理机制" class="headerlink" title="常见的内存管理机制"></a>常见的内存管理机制</h2><ol>
-<li><p>连续分配管理方式：为⼀个⽤户程序分配⼀个连续的内存空间 </p>
-<p>（1）块式管理：在每个块中未被利⽤的空间，我们称之为碎⽚ </p>
-</li>
-<li><p>非连续分配管理方式：允许⼀个程序使⽤的内存分布在离散或者说不相邻的内存中 </p>
-<p>（1）页式管理：主存分为⼤⼩相等且固定的⼀⻚⼀⻚的形式 ，通过⻚表对应逻辑地址和物理地址</p>
-<p>（2）段式管理：段式管理把主存分为⼀段段的，每⼀段的空间⼜要⽐⼀⻚的空间⼩很多 。段式管理通过段表对应逻辑地址和物理地址 。</p>
-<p>（3）段页式管理：结合了段式管理和⻚式管理的优点。简单来说段⻚式管理机制就是把主存先分成若⼲段，每个段⼜分成若⼲⻚，也就是说 段⻚式管理机制 中段与段之间以及段的内部的都是离散的</p>
-</li>
-</ol>
-<h2 id="快表和多级页表"><a href="#快表和多级页表" class="headerlink" title="快表和多级页表"></a>快表和多级页表</h2><p>在分⻚内存管理中，很重要的两点是：</p>
-<ol>
-<li><p>虚拟地址到物理地址的转换要快。</p>
-</li>
-<li><p>解决虚拟地址空间⼤，⻚表也会很⼤的问题。</p>
-</li>
-</ol>
-<p>快表：把快表理解为⼀种特殊的⾼速缓冲存储器（Cache），其中的内容是⻚表的⼀部分或者全部内容。 采⽤⻚表做地址转换，读写内存数据时 CPU 要访问两次主存。有了快表，有时只要访问⼀次⾼速缓冲存储器，⼀次主存，这样可加速查找并提⾼指令执⾏速度 。</p>
-<p>快表的地址转换流程：</p>
-<ol>
-<li><p>根据虚拟地址中的⻚号查快表；</p>
-</li>
-<li><p>如果该⻚在快表中，直接从快表中读取相应的物理地址；</p>
-</li>
-<li><p>如果该⻚不在快表中，就访问内存中的⻚表，再从⻚表中得到物理地址，同时将⻚表中的该</p>
-</li>
-</ol>
-<p>映射表项添加到快表中；</p>
-<ol start="4">
-<li>当快表填满后，⼜要登记新⻚时，就按照⼀定的淘汰策略淘汰掉快表中的⼀个⻚。</li>
-</ol>
-<p>多级页表：引⼊多级⻚表的主要⽬的是为了避免把全部⻚表⼀直放在内存中占⽤过多空间，特别是那些根本就不需要的⻚表就不需要保留在内存中。多级⻚表属于时间换空间的典型场景。 </p>
-<h2 id="分页机制和分段机制的异同"><a href="#分页机制和分段机制的异同" class="headerlink" title="分页机制和分段机制的异同"></a>分页机制和分段机制的异同</h2><ol>
-<li><p>共同点：</p>
-<p>（1）分⻚机制和分段机制都是为了提⾼内存利⽤率，减少内存碎⽚。</p>
-<p>（2）⻚和段都是离散存储的，所以两者都是离散分配内存的⽅式。但是，每个⻚和段中的内存是连续的 </p>
-</li>
-<li><p>不同点：</p>
-<p>（1）⻚的⼤⼩是固定的，由操作系统决定；⽽段的⼤⼩不固定，取决于我们当前运⾏程序。</p>
-<p>（2）分⻚仅仅是为了满⾜操作系统内存管理的需求，⽽段是逻辑信息的单位，在程序中可以体现为代码段，数据段，能够更好满⾜⽤户的需要。</p>
-</li>
-</ol>
-<h2 id="逻辑（虚拟地址）和物理地址"><a href="#逻辑（虚拟地址）和物理地址" class="headerlink" title="逻辑（虚拟地址）和物理地址"></a>逻辑（虚拟地址）和物理地址</h2><p>   指针⾥⾯存储的数值就可以理解成为内存⾥的⼀个地址，这个地址也就是我们说的逻辑地址，逻辑地址由操作系统决定。物理地址指的是真实物理内存中地址，更具体⼀点来说就是内存地址寄存器中的地址。物理地址是内存单元真正的地址。</p>
-<h2 id="CPU寻址，为什么需要虚拟地址空间"><a href="#CPU寻址，为什么需要虚拟地址空间" class="headerlink" title="CPU寻址，为什么需要虚拟地址空间"></a>CPU寻址，为什么需要虚拟地址空间</h2><p>使⽤虚拟寻址， <strong>CPU</strong>需要将<strong>虚拟地址翻译成物理地址<strong><strong>（由</strong></strong>CPU****中内存管理单元硬件完成）</strong>，这样才能访问到真实的物理内存。 </p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327110407.png"></p>
-<p>为什么要有虚拟地址空间：没有时，程序直接访问操作物理内存。可能造成操作系统崩溃，运行多个程序特别困难。</p>
-<p><strong>通过虚拟地址访问内存有以下优势：</strong></p>
-<p>程序可以使⽤⼀系列<strong>相邻的虚拟地址</strong>来访问<strong>物理内存中不相邻</strong>的⼤内存缓冲区。</p>
-<p>程序可以使⽤⼀系列虚拟地址来访问<strong>⼤于可⽤物理内存的内存缓冲区</strong>。当物理内存的供应量变⼩时，内存管理器会将物理内存⻚（通常⼤⼩为 4 KB）保存到磁盘⽂件。数据或代码⻚会根据需要在物理内存与磁盘之间移动。</p>
-<p>不同进程使⽤的<strong>虚拟地址彼此隔离</strong>。⼀个进程中的代码⽆法更改正在由另⼀进程或操作系统使⽤的物理内存。</p>
-<h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><h3 id="什么是虚拟内存"><a href="#什么是虚拟内存" class="headerlink" title="什么是虚拟内存"></a>什么是虚拟内存</h3><p>虚拟内存 可以让程序可以拥有超过系统物理内存⼤⼩的可⽤内存空间。另外， 虚拟内存为每个进程提供了⼀个⼀致的、私有的地址空间，它让每个进程产⽣了⼀种⾃⼰在独享主存的错觉（每个进程拥有⼀⽚连续完整的内存空间） 。 </p>
-<p>虚拟内存的重要意义是它定义了⼀个连续的虚拟地址空间，并且 把内存扩展到硬盘空间。 </p>
-<h3 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h3><p>虚拟内存技术的基础，正是因为程序运⾏具有局部性原理，才可以只装⼊部分程序到内存就开始运⾏。 </p>
-<ol>
-<li>时间局部性 ：如果程序中的某条指令⼀旦执⾏，不久以后该指令可能再次执⾏；如果某数据被访问过，不久以后该数据可能再次被访问。产⽣时间局部性的典型原因，是由于在程序中存在着⼤量的循环操作。</li>
-<li>空间局部性 ：⼀旦程序访问了某个存储单元，在不久之后，其附近的存储单元也将被访问，即程序在⼀段时间内所访问的地址，可能集中在⼀定的范围之内，这是因为指令通常是顺序存放、顺序执⾏的，数据也⼀般是以向量、数组、表等形式簇聚存储的。</li>
-</ol>
-<p>时间局部性是通过将近来使⽤的指令和数据保存到⾼速缓存存储器中，并使⽤⾼速缓存的层次结构实现。空间局部性通常是使⽤较⼤的⾼速缓存，并将预取机制集成到⾼速缓存控制逻辑中实现。虚拟内存技术实际上就是建⽴了 “内存⼀外存”的两级存储器的结构，利⽤局部性原理实现髙速缓存。 </p>
-<h3 id="虚拟内存的技术实现"><a href="#虚拟内存的技术实现" class="headerlink" title="虚拟内存的技术实现"></a>虚拟内存的技术实现</h3><p>建⽴在离散分配的内存管理⽅式的基础上 </p>
-<ol>
-<li><p>请求分⻚存储管理 ：建⽴在分⻚管理之上，为了⽀持虚拟存储器功能⽽增加了请求调⻚功能和⻚⾯置换功能。 </p>
-</li>
-<li><p>请求分段存储管理 ：建⽴在分段存储管理之上，增加了请求调段功能、分段置换功能。 </p>
-</li>
-<li><p>请求段⻚式存储管理</p>
-</li>
-</ol>
-<p>补充：</p>
-<p>缺⻚中断：如果需执⾏的指令或访问的数据尚未在内存 称为缺⻚或缺段），则由处理器通</p>
-<p>知操作系统将相应的⻚⾯或段调⼊到内存，然后继续执⾏程序 。</p>
-<h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3><p>⻚⾯置换算法的作⽤**?**常⻅的⻚⾯置换算法有哪些 ？</p>
-<p>当发⽣缺⻚中断时，如果当前内存中并没有空闲的⻚⾯，操作系统就必须在内存选择⼀个⻚⾯将其移出内存，以便为即将调⼊的⻚⾯让出空间。 </p>
-<ol>
-<li>OPT（最佳页面置换算法）：换出后续永不会再用到的页面，只在理论上存在。</li>
-<li>FIFO</li>
-<li>LRU（最近最久未使用页面置换算法）</li>
-<li>LFU（最少使用页面置换算法）</li>
-</ol>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>线程</tag>
-        <tag>进程</tag>
-        <tag>虚拟内存</tag>
-        <tag>内存管理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>请教我学MySQL（一）乐观锁vs悲观锁</title>
-    <url>/posts/688743a7.html</url>
-    <content><![CDATA[<h1 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h1><font size = 3>
-
-<p>当要对数据库中的一条数据进行修改的时候，为了避免同时被其他人修改，最好的办法就是直接对该数据进行加锁以防止并发。这种借助数据库锁机制，在修改数据之前先锁定，再修改的方式被称之为悲观并发控制【Pessimistic Concurrency Control，缩写“PCC”，又名“悲观锁”】。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210330102059.png"></p>
-<p>之所以叫做悲观锁，是因为这是一种对数据的修改持有悲观态度的并发控制方式。总是<strong>假设最坏的情况</strong>，每次读取数据的时候都默认其他线程会更改数据，因此需要进行加锁操作，当其他线程想要访问数据时，都需要阻塞挂起。悲观锁的实现：</p>
-<ol>
-<li>传统的关系型数据库使用这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。</li>
-<li>Java 里面的同步 synchronized]关键字的实现。</li>
-</ol>
-<p><strong>悲观锁分为共享（读）锁和排他（写）锁</strong></p>
-<p><strong>共享锁</strong>【shared locks】又称为读锁，简称S锁。顾名思义，共享锁就是多个事务对于同一数据可以共享一把锁，都能访问到数据，但是只能读不能修改。</p>
-<p><strong>排他锁</strong>【exclusive locks】又称为写锁，简称X锁。顾名思义，排他锁就是不能与其他锁并存，如果一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁，包括共享锁和排他锁，但是获取排他锁的事务是可以对数据行读取和修改。</p>
-<h1 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h1><p>乐观锁是相对悲观锁而言的，乐观锁假设数据一般情况下不会造成冲突，所以在<strong>数据进行提交更新的时候，才会正式对数据的冲突与否进行检测</strong>，如果发现冲突了，则返回给用户错误的信息，让用户决定如何去做。乐观锁适用于读操作多的场景，这样可以提高程序的吞吐量。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210330102206.png"></p>
-<p>乐观锁机制采取了更加宽松的加锁机制。乐观锁是相对悲观锁而言，也是为了避免数据库幻读、业务处理时间过长等原因引起数据处理错误的一种机制，但乐观锁不会刻意使用数据库本身的锁机制，而是依据数据本身来保证数据的正确性。乐观锁的实现：</p>
-<ol>
-<li>CAS 实现：Java 中java.util.concurrent.atomic包下面的原子变量使用了乐观锁的一种 CAS 实现方式。</li>
-<li>版本号控制：一般是在数据表中加上一个数据版本号 version 字段，表示数据被修改的次数。当数据被修改时，version 值会+1。当线程A要更新数据值时，在读取数据的同时也会读取 version 值，在提交更新时，若刚才读取到的 version 值与当前数据库中的 version 值相等时才更新，否则重试更新操作，直到更新成功。</li>
-</ol>
-<p> 乐观并发控制相信事务之间的数据竞争(data race)的概率是比较小的，因此尽可能直接做下去，直到提交的时候才去锁定，所以不会产生任何锁和死锁。</p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>锁</tag>
       </tags>
   </entry>
   <entry>
@@ -1781,6 +1521,234 @@
       </tags>
   </entry>
   <entry>
+    <title>请教我学操作系统（一）进线程与内存管理</title>
+    <url>/posts/d5d6861e.html</url>
+    <content><![CDATA[<h2 id="什么是操作系统"><a href="#什么是操作系统" class="headerlink" title="什么是操作系统"></a>什么是操作系统</h2><ol>
+<li><p>操作系统是管理计算机软硬件资源的程序，是计算机的基石。</p>
+</li>
+<li><p>本质上是一个应用程序。</p>
+</li>
+<li><p>操作系统的存在屏蔽了硬件设备的复杂性，由操作系统统一管理和分配。</p>
+</li>
+<li><p>内核是操作系统的核心部分。负责系统的内存管理，硬件设备管理，文件系统管理和应用程序管理。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327105916.png"></p>
+</li>
+</ol>
+<h1 id="什么是系统调用"><a href="#什么是系统调用" class="headerlink" title="什么是系统调用"></a>什么是系统调用</h1><p>用户态：该状态运行的进程可以直接读取用户程序的数据。</p>
+<p>系统态：该状态运行的进程或程序可以访问计算机任意资源。</p>
+<p>程序运行在用户态时想要调用操作系统提供的系统态子功能时需要进行系统调用。</p>
+<p>系统调用按功能大致分为：</p>
+<p><strong>设备管理</strong>。完成设备的请求或释放，以及设备启动等功能。</p>
+<p><strong>⽂件管理</strong>。完成⽂件的读、写、创建及删除等功能。</p>
+<p><strong>进程控制</strong>。完成进程的创建、撤销、阻塞及唤醒等功能。</p>
+<p><strong>进程通信</strong>。完成进程之间的消息传递或信号传递等功能。</p>
+<p><strong>内存管理</strong>。完成内存的分配、回收以及获取作业占⽤内存区⼤⼩及地址等功能。</p>
+<h1 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h1><ol>
+<li><p>区别：线程时进程划分成的更小的运行单位。进程之间基本相互独立，而线程之间可能相互影响。线程执行开销小，但不利于资源的管理和保护，而进程则相反。</p>
+</li>
+<li><p>进程的状态：</p>
+<p>创建状态**(new)** ：进程正在被创建，尚未到就绪状态。</p>
+<p>就绪状态**(ready)** ：进程已处于准备运⾏状态，即进程获得了除了处理器之外的⼀切所需资</p>
+<p>源，⼀旦得到处理器资源(处理器分配的时间⽚)即可运⾏。</p>
+<p>运⾏状态**(running)** ：进程正在处理器上上运⾏(单核 CPU 下任意时刻只有⼀个进程处于运</p>
+<p>⾏状态)。</p>
+<p>阻塞状态**(waiting)** ：⼜称为等待状态，进程正在等待某⼀事件⽽暂停运⾏如等待某资源为</p>
+<p>可⽤或等待 IO 操作完成。即使处理器空闲，该进程也不能运⾏。</p>
+<p>结束状态**(terminated)** ：进程正在从系统中消失。可能是进程正常结束或其他原因中断退出运⾏。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327110050.png"></p>
+</li>
+<li><p>进程间的通信方式：</p>
+<p>（1）管道（匿名管道）：用于有情缘关系的进程。</p>
+<p>（2）有名管道： 任意进程，先进先出。</p>
+<p>（3） 信号： 通知接收进程某个事件已经发生。</p>
+<p>（4） 消息队列： 存放在内核中。克服了信号承载信息量少，管道只能承载无格式字节流以及缓冲区大小受限的缺陷。</p>
+<p>（5） 信号量：计数器，多进程对共享数据的访问。进程间同步。</p>
+<p>（6） 共享内存： 多个进程访问同一快内存空间</p>
+<p>（7）套接字：用于客户端和服务器之间通过网络进行通信。</p>
+</li>
+<li><p>线程间的同步方式：</p>
+<p>（1） 互斥量</p>
+<p>（2） 信号量：允许同⼀时刻多个线程访问同⼀资源，但是需要控制同⼀时刻访问此资源的最⼤线程数量</p>
+<p>（3） 事件：通过通知操作的⽅式来保持多线程同步，还可以⽅便的实现多线程优先级的⽐较操做</p>
+</li>
+<li><p>进程的调度算法：</p>
+<p>（1） 先到先服务（FCFS）</p>
+<p>（2） 短作业优先（SJF）</p>
+<p>（3） 时间片轮转</p>
+<p>（4） 多级反馈队列调度算法：多级反馈队列调度算法既能使⾼优先级的作业得到响应⼜能使短作业（进程）迅速完成。，因⽽它是⽬前被公认的⼀种较好的进程调度算法</p>
+<p>（5）优先级调度：同一优先级采用FCFS调度</p>
+</li>
+</ol>
+<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><h2 id="常见的内存管理机制"><a href="#常见的内存管理机制" class="headerlink" title="常见的内存管理机制"></a>常见的内存管理机制</h2><ol>
+<li><p>连续分配管理方式：为⼀个⽤户程序分配⼀个连续的内存空间 </p>
+<p>（1）块式管理：在每个块中未被利⽤的空间，我们称之为碎⽚ </p>
+</li>
+<li><p>非连续分配管理方式：允许⼀个程序使⽤的内存分布在离散或者说不相邻的内存中 </p>
+<p>（1）页式管理：主存分为⼤⼩相等且固定的⼀⻚⼀⻚的形式 ，通过⻚表对应逻辑地址和物理地址</p>
+<p>（2）段式管理：段式管理把主存分为⼀段段的，每⼀段的空间⼜要⽐⼀⻚的空间⼩很多 。段式管理通过段表对应逻辑地址和物理地址 。</p>
+<p>（3）段页式管理：结合了段式管理和⻚式管理的优点。简单来说段⻚式管理机制就是把主存先分成若⼲段，每个段⼜分成若⼲⻚，也就是说 段⻚式管理机制 中段与段之间以及段的内部的都是离散的</p>
+</li>
+</ol>
+<h2 id="快表和多级页表"><a href="#快表和多级页表" class="headerlink" title="快表和多级页表"></a>快表和多级页表</h2><p>在分⻚内存管理中，很重要的两点是：</p>
+<ol>
+<li><p>虚拟地址到物理地址的转换要快。</p>
+</li>
+<li><p>解决虚拟地址空间⼤，⻚表也会很⼤的问题。</p>
+</li>
+</ol>
+<p>快表：把快表理解为⼀种特殊的⾼速缓冲存储器（Cache），其中的内容是⻚表的⼀部分或者全部内容。 采⽤⻚表做地址转换，读写内存数据时 CPU 要访问两次主存。有了快表，有时只要访问⼀次⾼速缓冲存储器，⼀次主存，这样可加速查找并提⾼指令执⾏速度 。</p>
+<p>快表的地址转换流程：</p>
+<ol>
+<li><p>根据虚拟地址中的⻚号查快表；</p>
+</li>
+<li><p>如果该⻚在快表中，直接从快表中读取相应的物理地址；</p>
+</li>
+<li><p>如果该⻚不在快表中，就访问内存中的⻚表，再从⻚表中得到物理地址，同时将⻚表中的该</p>
+</li>
+</ol>
+<p>映射表项添加到快表中；</p>
+<ol start="4">
+<li>当快表填满后，⼜要登记新⻚时，就按照⼀定的淘汰策略淘汰掉快表中的⼀个⻚。</li>
+</ol>
+<p>多级页表：引⼊多级⻚表的主要⽬的是为了避免把全部⻚表⼀直放在内存中占⽤过多空间，特别是那些根本就不需要的⻚表就不需要保留在内存中。多级⻚表属于时间换空间的典型场景。 </p>
+<h2 id="分页机制和分段机制的异同"><a href="#分页机制和分段机制的异同" class="headerlink" title="分页机制和分段机制的异同"></a>分页机制和分段机制的异同</h2><ol>
+<li><p>共同点：</p>
+<p>（1）分⻚机制和分段机制都是为了提⾼内存利⽤率，减少内存碎⽚。</p>
+<p>（2）⻚和段都是离散存储的，所以两者都是离散分配内存的⽅式。但是，每个⻚和段中的内存是连续的 </p>
+</li>
+<li><p>不同点：</p>
+<p>（1）⻚的⼤⼩是固定的，由操作系统决定；⽽段的⼤⼩不固定，取决于我们当前运⾏程序。</p>
+<p>（2）分⻚仅仅是为了满⾜操作系统内存管理的需求，⽽段是逻辑信息的单位，在程序中可以体现为代码段，数据段，能够更好满⾜⽤户的需要。</p>
+</li>
+</ol>
+<h2 id="逻辑（虚拟地址）和物理地址"><a href="#逻辑（虚拟地址）和物理地址" class="headerlink" title="逻辑（虚拟地址）和物理地址"></a>逻辑（虚拟地址）和物理地址</h2><p>   指针⾥⾯存储的数值就可以理解成为内存⾥的⼀个地址，这个地址也就是我们说的逻辑地址，逻辑地址由操作系统决定。物理地址指的是真实物理内存中地址，更具体⼀点来说就是内存地址寄存器中的地址。物理地址是内存单元真正的地址。</p>
+<h2 id="CPU寻址，为什么需要虚拟地址空间"><a href="#CPU寻址，为什么需要虚拟地址空间" class="headerlink" title="CPU寻址，为什么需要虚拟地址空间"></a>CPU寻址，为什么需要虚拟地址空间</h2><p>使⽤虚拟寻址， <strong>CPU</strong>需要将<strong>虚拟地址翻译成物理地址<strong><strong>（由</strong></strong>CPU****中内存管理单元硬件完成）</strong>，这样才能访问到真实的物理内存。 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327110407.png"></p>
+<p>为什么要有虚拟地址空间：没有时，程序直接访问操作物理内存。可能造成操作系统崩溃，运行多个程序特别困难。</p>
+<p><strong>通过虚拟地址访问内存有以下优势：</strong></p>
+<p>程序可以使⽤⼀系列<strong>相邻的虚拟地址</strong>来访问<strong>物理内存中不相邻</strong>的⼤内存缓冲区。</p>
+<p>程序可以使⽤⼀系列虚拟地址来访问<strong>⼤于可⽤物理内存的内存缓冲区</strong>。当物理内存的供应量变⼩时，内存管理器会将物理内存⻚（通常⼤⼩为 4 KB）保存到磁盘⽂件。数据或代码⻚会根据需要在物理内存与磁盘之间移动。</p>
+<p>不同进程使⽤的<strong>虚拟地址彼此隔离</strong>。⼀个进程中的代码⽆法更改正在由另⼀进程或操作系统使⽤的物理内存。</p>
+<h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><h3 id="什么是虚拟内存"><a href="#什么是虚拟内存" class="headerlink" title="什么是虚拟内存"></a>什么是虚拟内存</h3><p>虚拟内存 可以让程序可以拥有超过系统物理内存⼤⼩的可⽤内存空间。另外， 虚拟内存为每个进程提供了⼀个⼀致的、私有的地址空间，它让每个进程产⽣了⼀种⾃⼰在独享主存的错觉（每个进程拥有⼀⽚连续完整的内存空间） 。 </p>
+<p>虚拟内存的重要意义是它定义了⼀个连续的虚拟地址空间，并且 把内存扩展到硬盘空间。 </p>
+<h3 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h3><p>虚拟内存技术的基础，正是因为程序运⾏具有局部性原理，才可以只装⼊部分程序到内存就开始运⾏。 </p>
+<ol>
+<li>时间局部性 ：如果程序中的某条指令⼀旦执⾏，不久以后该指令可能再次执⾏；如果某数据被访问过，不久以后该数据可能再次被访问。产⽣时间局部性的典型原因，是由于在程序中存在着⼤量的循环操作。</li>
+<li>空间局部性 ：⼀旦程序访问了某个存储单元，在不久之后，其附近的存储单元也将被访问，即程序在⼀段时间内所访问的地址，可能集中在⼀定的范围之内，这是因为指令通常是顺序存放、顺序执⾏的，数据也⼀般是以向量、数组、表等形式簇聚存储的。</li>
+</ol>
+<p>时间局部性是通过将近来使⽤的指令和数据保存到⾼速缓存存储器中，并使⽤⾼速缓存的层次结构实现。空间局部性通常是使⽤较⼤的⾼速缓存，并将预取机制集成到⾼速缓存控制逻辑中实现。虚拟内存技术实际上就是建⽴了 “内存⼀外存”的两级存储器的结构，利⽤局部性原理实现髙速缓存。 </p>
+<h3 id="虚拟内存的技术实现"><a href="#虚拟内存的技术实现" class="headerlink" title="虚拟内存的技术实现"></a>虚拟内存的技术实现</h3><p>建⽴在离散分配的内存管理⽅式的基础上 </p>
+<ol>
+<li><p>请求分⻚存储管理 ：建⽴在分⻚管理之上，为了⽀持虚拟存储器功能⽽增加了请求调⻚功能和⻚⾯置换功能。 </p>
+</li>
+<li><p>请求分段存储管理 ：建⽴在分段存储管理之上，增加了请求调段功能、分段置换功能。 </p>
+</li>
+<li><p>请求段⻚式存储管理</p>
+</li>
+</ol>
+<p>补充：</p>
+<p>缺⻚中断：如果需执⾏的指令或访问的数据尚未在内存 称为缺⻚或缺段），则由处理器通</p>
+<p>知操作系统将相应的⻚⾯或段调⼊到内存，然后继续执⾏程序 。</p>
+<h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3><p>⻚⾯置换算法的作⽤**?**常⻅的⻚⾯置换算法有哪些 ？</p>
+<p>当发⽣缺⻚中断时，如果当前内存中并没有空闲的⻚⾯，操作系统就必须在内存选择⼀个⻚⾯将其移出内存，以便为即将调⼊的⻚⾯让出空间。 </p>
+<ol>
+<li>OPT（最佳页面置换算法）：换出后续永不会再用到的页面，只在理论上存在。</li>
+<li>FIFO</li>
+<li>LRU（最近最久未使用页面置换算法）</li>
+<li>LFU（最少使用页面置换算法）</li>
+</ol>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>进程</tag>
+        <tag>线程</tag>
+        <tag>虚拟内存</tag>
+        <tag>内存管理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>请教我学操作系统（二）IO多路复用技术</title>
+    <url>/posts/3e93542c.html</url>
+    <content><![CDATA[<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><font size=3>
+
+<ol>
+<li><p>服务器端编程经常需要构造高性能的IO模型，常见的IO模型有四种：</p>
+<p>（1）同步阻塞IO（Blocking IO）：即传统的IO模型。</p>
+<p>（2）同步非阻塞IO（Non-blocking IO）：默认创建的socket都是阻塞的，非阻塞IO要求socket被设置为NONBLOCK。注意这里所说的NIO并非Java的NIO（New IO）库。</p>
+<p>（3）IO多路复用（IO Multiplexing）：即经典的Reactor设计模式，有时也称为异步阻塞IO，Java中的Selector和Linux中的epoll都是这种模型。</p>
+<p>（4）异步IO（Asynchronous IO）：即经典的Proactor设计模式，也称为异步非阻塞IO。</p>
+<p><strong>同步和异步</strong>的概念描述的是用户线程与内核的交互方式：同步是指<strong>用户线程发起IO请求后需要等待或者轮询内核IO操作完成后才能继续执行</strong>；而异步是指用户线程发起IO请求后仍继续执行，当内核IO操作完成后会通知用户线程，或者调用用户线程注册的回调函数。</p>
+<p><strong>阻塞和非阻塞</strong>的概念描述的是用户线程调用内核IO操作的方式：<strong>阻塞是指IO操作需要彻底完成后才返回到用户空间</strong>；而非阻塞是指IO操作被调用后立即返回给用户一个状态值，无需等到IO操作彻底完成。</p>
+</li>
+</ol>
+<h1 id="同步阻塞"><a href="#同步阻塞" class="headerlink" title="同步阻塞"></a>同步阻塞</h1><p>同步阻塞IO模型是最简单的IO模型，用户线程在内核进行IO操作时被阻塞。</p>
+<p> <img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095213.png"></p>
+<h1 id="同步非阻塞IO"><a href="#同步非阻塞IO" class="headerlink" title="同步非阻塞IO"></a>同步非阻塞IO</h1><p>同步非阻塞IO是在同步阻塞IO的基础上，将socket设置为NONBLOCK。这样做用户线程可以在发起IO请求后可以立即返回。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095300.png"></p>
+<p>整个IO请求的过程中，虽然用户线程每次发起IO请求后可以立即返回，但是为了等到数据，仍需要<strong>不断地轮询、重复请求</strong>，消耗了大量的CPU的资源。一般很少直接使用这种模型，而是在其他IO模型中使用非阻塞IO这一特性。</p>
+<h1 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h1><p>流程上来看，使用select函数进行IO请求和同步阻塞模型没有太大的区别，甚至还多了添加监视socket，以及调用select函数的额外操作，效率更差。但是，使用select以后最大的优势是用户可以在一个线程内同时处理多个socket的IO请求。用户可以注册多个socket，然后不断地调用select读取被激活的socket，即可达到在同<strong>一个线程内同时处理多个IO请求的目的</strong>。而在同步阻塞模型中，必须通过多线程的方式才能达到这个目的。</p>
+<p> <img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095402.png"></p>
+<p>通过Reactor的方式，可以将用户线程轮询IO操作状态的工作统一交给handle_events事件循环进行处理。用户线程注册事件处理器之后可以继续执行做其他的工作（异步），而<strong>Reactor线程负责调用内核的select函数检查socket状态</strong>。当有socket被激活时，则通知相应的用户线程（或执行用户线程的回调函数），执行handle_event进行数据读取、处理的工作。由于select函数是阻塞的，因此多路IO复用模型也被称为异步阻塞IO模型。注意，这里的所说的阻塞是指select函数执行时线程被阻塞，而不是指socket。一般在使用IO多路复用模型时，socket都是设置为NONBLOCK的，不过这并不会产生影响，因为用户发起IO请求时，数据已经到达了，用户线程一定不会被阻塞。</p>
+<h1 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h1><p>“真正”的异步IO需要操作系统更强的支持。在IO多路复用模型中，事件循环将文件句柄的状态事件通知给用户线程，由用户线程自行读取数据、处理数据。而在异步IO模型中，当用户线程收到通知时，数据已经被内核读取完毕，并放在了用户线程指定的缓冲区内，内核在IO完成后通知用户线程直接使用即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095443.png"></p>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>线程</tag>
+        <tag>IO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>请教我学设计模式（一）单例模式的常用实现方法</title>
+    <url>/posts/b2ef857.html</url>
+    <content><![CDATA[<h1 id="单例模式是什么？"><a href="#单例模式是什么？" class="headerlink" title="单例模式是什么？"></a>单例模式是什么？</h1><font size = 3>
+
+<p>单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。</p>
+<p>这种模式涉及到一个单一的类，该类负责创建自己的对象，同时<strong>确保只有单个对象被创建</strong>。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。</p>
+<h1 id="单例模式实现方式"><a href="#单例模式实现方式" class="headerlink" title="单例模式实现方式"></a>单例模式实现方式</h1><h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><p>类加载的时候就创建了实例<br>优点：类加载的时候创建一次实例，避免了多线程同步问题</p>
+<p>缺点：即使单例没被用到也会创建，浪费内存</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><h3 id="非线程安全"><a href="#非线程安全" class="headerlink" title="非线程安全"></a>非线程安全</h3><p>优点：需要时才去创建<br>缺点：没有考虑线程安全问题，多个线程并发调用getInstance，可能会创建多个实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h3><p>缺点：性能问题，添加了synchronized的函数比一般方法慢得多，若多次调用getInstance，则累积的性能损耗特别大。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Synchronized Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="双重校验锁"><a href="#双重校验锁" class="headerlink" title="双重校验锁"></a>双重校验锁</h2><p>大部分情况下，同步代码块都不会执行到，提高了程序的性能。</p>
+<p>有一种情况，两个线程ThreadA，ThreadB，如果threadA执行到了第一个if条件判断，instance &#x3D; null；ThreadB也执行到了if条件判断instance &#x3D; null，所以A和B会依次执行同步代码块里的代码。为了避免创建两个实例，因此又在同步代码块里添加了if条件进行二重检验。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>隐患：</p>
+<p>1、此处涉及Java的指令重排优化。指令重排优化是指在不改变原语义的情况下，通过调整指令的执行顺序让程序运行地更快。</p>
+<p>2、JVM中没有规定编译器优化的相关内容，也即JVM可以自由地进行指令重排序的优化。</p>
+<p>3、此问题的关键在于由于指令重排序优化的存在，导致初始化Singleton和将对象地址赋给instance字段的顺序是不确定的。</p>
+<p>4、在某个线程创建单例对象时，在构造函数被调用前，就为该对象分配了内存空间并将对象的字段设置为默认值。此时就可以将分配的内存地址赋值给instance字段了，然而该对象可能还没初始化。若紧接着另一个线程来调用getInstance，获取到的就是状态不正确的对象，程序出错。</p>
+<p>JDK5的修正：以上是双重校验锁失效的原因，不过在JDK1.5之后的版本添加了volatile关键字。</p>
+<p>1、volatile的一个语义是禁止指令重排序优化，也就保证了instance变量被赋值的时候对象已经是初始化过的，从而避免了上述问题。</p>
+<p>2、Java中的volatile变量是什么？</p>
+<p>（1）关键字的作用有两个：</p>
+<p>​      ①多线程主要围绕可见性和原子性两个特性展开，使用volatile关键字修饰的变量，保证了其在多线程之间的可见性，即每次读取到的volatile变量，一定是最新的数据。</p>
+<p>​     ②代码底层执行的顺序是Java代码–&gt;字节码–&gt;根据字节码执行对应的C&#x2F;C++代码–&gt;C&#x2F;C++代码被编译成汇编语言–&gt;和硬件电路交互。实际中，为了获取更好的性能，JVM可能会对指令进行重排序，多线程下可能会出现一些意想不到的问题。使用volatile则会禁止语义重排序，也一定程度上降低了代码执行效率。实践角度而言，volatile的一个重要作用就是和CAS结合，保证了原子性。</p>
+<p>   （2）volatile是一个特殊的修饰符，只有成员变量才能使用它。在Java并发程序缺少同步类的情况下，多线程对成员变量的操作对其他线程是透明的。volatile变量可以保证下一个读取操作会在前一个写操作之后发生。<br>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="literal">null</span>)&#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>单例</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringMVC（一）简介</title>
     <url>/posts/678e6659.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ssm: mybatis + spring + springMVC</p>
@@ -1839,58 +1807,35 @@
       </tags>
   </entry>
   <entry>
-    <title>Spring(三)JDBC与事务控制</title>
-    <url>/posts/91b8dde3.html</url>
-    <content><![CDATA[<h1 id="Spring-JdbcTemplate基本使用"><a href="#Spring-JdbcTemplate基本使用" class="headerlink" title="Spring JdbcTemplate基本使用"></a>Spring JdbcTemplate基本使用</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    它是spring框架中提供的一个对象，是对原始繁琐的JdbcAPI对象的简单封装。spring框架为我们提供了很多的操作模板类。例如:操作关系型数据的JdbcTemplate和bernateTemplate，操作nosql数据库的RedisTemplate，操作消息队列的JmsTemplate等等。</p>
-<h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><p>（1）导入Spring-jdbc和spring-tx（transaction事务）坐标</p>
-<p>（2）创建数据库表和实体</p>
-<p>（3）创建JdbcTemplate对象</p>
-<p>（4）执行数据库操作</p>
-<h2 id="Spring产生JdbcTemplate对象"><a href="#Spring产生JdbcTemplate对象" class="headerlink" title="Spring产生JdbcTemplate对象"></a>Spring产生JdbcTemplate对象</h2><p>​    可以将JdbcTemplate的创建权交给Spring，将DataSource的创建权也交给Spring，在Spring</p>
-<p>容器内部将数据源DataSource注入到JdbcTemplate模版对象中，配置如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111426.png"></p>
-<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111454.png"></p>
-<h1 id="Spring的事务控制"><a href="#Spring的事务控制" class="headerlink" title="Spring的事务控制"></a>Spring的事务控制</h1><h2 id="编程式事务控制相关对象（了解）"><a href="#编程式事务控制相关对象（了解）" class="headerlink" title="编程式事务控制相关对象（了解）"></a>编程式事务控制相关对象（了解）</h2><ol>
-<li>PlateformTransactionManager（接口，封装事务行为）</li>
+    <title>请教我学MySQL（一）乐观锁vs悲观锁</title>
+    <url>/posts/688743a7.html</url>
+    <content><![CDATA[<h1 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h1><font size = 3>
+
+<p>当要对数据库中的一条数据进行修改的时候，为了避免同时被其他人修改，最好的办法就是直接对该数据进行加锁以防止并发。这种借助数据库锁机制，在修改数据之前先锁定，再修改的方式被称之为悲观并发控制【Pessimistic Concurrency Control，缩写“PCC”，又名“悲观锁”】。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210330102059.png"></p>
+<p>之所以叫做悲观锁，是因为这是一种对数据的修改持有悲观态度的并发控制方式。总是<strong>假设最坏的情况</strong>，每次读取数据的时候都默认其他线程会更改数据，因此需要进行加锁操作，当其他线程想要访问数据时，都需要阻塞挂起。悲观锁的实现：</p>
+<ol>
+<li>传统的关系型数据库使用这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。</li>
+<li>Java 里面的同步 synchronized]关键字的实现。</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111530.png"></p>
-<ol start="2">
-<li><p>TransactionDefinition（封装事务参数）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111552.png"></p>
-</li>
-<li><p>TransactionStatus（封装事务状态信息）</p>
-</li>
+<p><strong>悲观锁分为共享（读）锁和排他（写）锁</strong></p>
+<p><strong>共享锁</strong>【shared locks】又称为读锁，简称S锁。顾名思义，共享锁就是多个事务对于同一数据可以共享一把锁，都能访问到数据，但是只能读不能修改。</p>
+<p><strong>排他锁</strong>【exclusive locks】又称为写锁，简称X锁。顾名思义，排他锁就是不能与其他锁并存，如果一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁，包括共享锁和排他锁，但是获取排他锁的事务是可以对数据行读取和修改。</p>
+<h1 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h1><p>乐观锁是相对悲观锁而言的，乐观锁假设数据一般情况下不会造成冲突，所以在<strong>数据进行提交更新的时候，才会正式对数据的冲突与否进行检测</strong>，如果发现冲突了，则返回给用户错误的信息，让用户决定如何去做。乐观锁适用于读操作多的场景，这样可以提高程序的吞吐量。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210330102206.png"></p>
+<p>乐观锁机制采取了更加宽松的加锁机制。乐观锁是相对悲观锁而言，也是为了避免数据库幻读、业务处理时间过长等原因引起数据处理错误的一种机制，但乐观锁不会刻意使用数据库本身的锁机制，而是依据数据本身来保证数据的正确性。乐观锁的实现：</p>
+<ol>
+<li>CAS 实现：Java 中java.util.concurrent.atomic包下面的原子变量使用了乐观锁的一种 CAS 实现方式。</li>
+<li>版本号控制：一般是在数据表中加上一个数据版本号 version 字段，表示数据被修改的次数。当数据被修改时，version 值会+1。当线程A要更新数据值时，在读取数据的同时也会读取 version 值，在提交更新时，若刚才读取到的 version 值与当前数据库中的 version 值相等时才更新，否则重试更新操作，直到更新成功。</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111614.png"></p>
-<h2 id="基于XML的声明式事务控制"><a href="#基于XML的声明式事务控制" class="headerlink" title="基于XML的声明式事务控制"></a>基于XML的声明式事务控制</h2><ol>
-<li><p>什么是声明式事务控制</p>
-<p>Spring的声明式事务顾名思义就是<strong>采用声明的方式来处理事务</strong>。这里所说的声明，就是指在配置文件中声明，</p>
-<p>用在Spring配置文件中声明式的处理事务来代替代码式的处理事务。</p>
-<p>Spring声明式事务控制底层就是AOP</p>
-</li>
-<li><p>声明式事务控制明确事项：</p>
-<p>（1）谁是切点</p>
-<p>（2）谁是通知</p>
-<p>（3）配置切面</p>
-</li>
-<li><p>配置要点</p>
-<p>（1）平台事务管理器配置</p>
-<p>（2）事务通知配置</p>
-<p>（3）事务aop织入配置</p>
-</li>
-</ol>
-<h2 id="基于注解的声明式事务控制"><a href="#基于注解的声明式事务控制" class="headerlink" title="基于注解的声明式事务控制"></a>基于注解的声明式事务控制</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111724.png"></p>
-<h1 id="Spring集成web环境"><a href="#Spring集成web环境" class="headerlink" title="Spring集成web环境"></a>Spring集成web环境</h1><h2 id="ApplicationContext应用上下文获取方式"><a href="#ApplicationContext应用上下文获取方式" class="headerlink" title="ApplicationContext应用上下文获取方式"></a>ApplicationContext应用上下文获取方式</h2><p>​    应用上下文对象是通过new ClasspathXmIApplicationContext(spring配置文件)方式获取的，但是每次从容器中获得Bean时都要编写new ClasspathXmIApplicationContext(spring配置文件)，这样的弊端是配置文件加载多次，应用上下文对象创建多次。</p>
-<p>​    在Web项目中，可以使用ServletContextListener监听Web应用的启动，我们可以在Web应用启动时，就加载Spring的配置文件，创建应用上下文对象ApplicationContext，在将其存储到最大的域servletContext域中，这样就可以在任意位置从域中获得应用上下文ApplicationContext对象了。</p>
-<h2 id="Spring提供获取应用上下文的工具"><a href="#Spring提供获取应用上下文的工具" class="headerlink" title="Spring提供获取应用上下文的工具"></a>Spring提供获取应用上下文的工具</h2><p>​    上面的分析不用手动实现，Spring提供了一个监听器ContextLoaderListener就是对上述功能的封装，该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext域中，提供了一个客户端工具WebApplicationContextUtils供使用者获得应用上下文对象。</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>（1）在web.xml中配置ContextLoaderListener监听器(导入spring-web坐标)</p>
-<p>（2）使用WebApplicationContextUtils获得应用上下文对象ApplicationContext</p>
+<p> 乐观并发控制相信事务之间的数据竞争(data race)的概率是比较小的，因此尽可能直接做下去，直到提交的时候才去锁定，所以不会产生任何锁和死锁。</p>
 ]]></content>
       <categories>
-        <category>Spring</category>
+        <category>数据库</category>
       </categories>
       <tags>
-        <tag>Spring</tag>
+        <tag>MySQL</tag>
+        <tag>锁</tag>
       </tags>
   </entry>
   <entry>
@@ -2021,6 +1966,61 @@
 </ol>
 <h1 id="Spring整合Junit"><a href="#Spring整合Junit" class="headerlink" title="Spring整合Junit"></a>Spring整合Junit</h1><p>​    Spring集成Junit步骤</p>
 <p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105545.png"></p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring(三)JDBC与事务控制</title>
+    <url>/posts/91b8dde3.html</url>
+    <content><![CDATA[<h1 id="Spring-JdbcTemplate基本使用"><a href="#Spring-JdbcTemplate基本使用" class="headerlink" title="Spring JdbcTemplate基本使用"></a>Spring JdbcTemplate基本使用</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    它是spring框架中提供的一个对象，是对原始繁琐的JdbcAPI对象的简单封装。spring框架为我们提供了很多的操作模板类。例如:操作关系型数据的JdbcTemplate和bernateTemplate，操作nosql数据库的RedisTemplate，操作消息队列的JmsTemplate等等。</p>
+<h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><p>（1）导入Spring-jdbc和spring-tx（transaction事务）坐标</p>
+<p>（2）创建数据库表和实体</p>
+<p>（3）创建JdbcTemplate对象</p>
+<p>（4）执行数据库操作</p>
+<h2 id="Spring产生JdbcTemplate对象"><a href="#Spring产生JdbcTemplate对象" class="headerlink" title="Spring产生JdbcTemplate对象"></a>Spring产生JdbcTemplate对象</h2><p>​    可以将JdbcTemplate的创建权交给Spring，将DataSource的创建权也交给Spring，在Spring</p>
+<p>容器内部将数据源DataSource注入到JdbcTemplate模版对象中，配置如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111426.png"></p>
+<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111454.png"></p>
+<h1 id="Spring的事务控制"><a href="#Spring的事务控制" class="headerlink" title="Spring的事务控制"></a>Spring的事务控制</h1><h2 id="编程式事务控制相关对象（了解）"><a href="#编程式事务控制相关对象（了解）" class="headerlink" title="编程式事务控制相关对象（了解）"></a>编程式事务控制相关对象（了解）</h2><ol>
+<li>PlateformTransactionManager（接口，封装事务行为）</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111530.png"></p>
+<ol start="2">
+<li><p>TransactionDefinition（封装事务参数）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111552.png"></p>
+</li>
+<li><p>TransactionStatus（封装事务状态信息）</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111614.png"></p>
+<h2 id="基于XML的声明式事务控制"><a href="#基于XML的声明式事务控制" class="headerlink" title="基于XML的声明式事务控制"></a>基于XML的声明式事务控制</h2><ol>
+<li><p>什么是声明式事务控制</p>
+<p>Spring的声明式事务顾名思义就是<strong>采用声明的方式来处理事务</strong>。这里所说的声明，就是指在配置文件中声明，</p>
+<p>用在Spring配置文件中声明式的处理事务来代替代码式的处理事务。</p>
+<p>Spring声明式事务控制底层就是AOP</p>
+</li>
+<li><p>声明式事务控制明确事项：</p>
+<p>（1）谁是切点</p>
+<p>（2）谁是通知</p>
+<p>（3）配置切面</p>
+</li>
+<li><p>配置要点</p>
+<p>（1）平台事务管理器配置</p>
+<p>（2）事务通知配置</p>
+<p>（3）事务aop织入配置</p>
+</li>
+</ol>
+<h2 id="基于注解的声明式事务控制"><a href="#基于注解的声明式事务控制" class="headerlink" title="基于注解的声明式事务控制"></a>基于注解的声明式事务控制</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111724.png"></p>
+<h1 id="Spring集成web环境"><a href="#Spring集成web环境" class="headerlink" title="Spring集成web环境"></a>Spring集成web环境</h1><h2 id="ApplicationContext应用上下文获取方式"><a href="#ApplicationContext应用上下文获取方式" class="headerlink" title="ApplicationContext应用上下文获取方式"></a>ApplicationContext应用上下文获取方式</h2><p>​    应用上下文对象是通过new ClasspathXmIApplicationContext(spring配置文件)方式获取的，但是每次从容器中获得Bean时都要编写new ClasspathXmIApplicationContext(spring配置文件)，这样的弊端是配置文件加载多次，应用上下文对象创建多次。</p>
+<p>​    在Web项目中，可以使用ServletContextListener监听Web应用的启动，我们可以在Web应用启动时，就加载Spring的配置文件，创建应用上下文对象ApplicationContext，在将其存储到最大的域servletContext域中，这样就可以在任意位置从域中获得应用上下文ApplicationContext对象了。</p>
+<h2 id="Spring提供获取应用上下文的工具"><a href="#Spring提供获取应用上下文的工具" class="headerlink" title="Spring提供获取应用上下文的工具"></a>Spring提供获取应用上下文的工具</h2><p>​    上面的分析不用手动实现，Spring提供了一个监听器ContextLoaderListener就是对上述功能的封装，该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext域中，提供了一个客户端工具WebApplicationContextUtils供使用者获得应用上下文对象。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>（1）在web.xml中配置ContextLoaderListener监听器(导入spring-web坐标)</p>
+<p>（2）使用WebApplicationContextUtils获得应用上下文对象ApplicationContext</p>
 ]]></content>
       <categories>
         <category>Spring</category>
