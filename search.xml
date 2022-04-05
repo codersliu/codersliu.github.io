@@ -171,6 +171,23 @@
       </tags>
   </entry>
   <entry>
+    <title>牛客题解-NC66两个链表的第一个公共节点</title>
+    <url>/posts/bd369e07.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入两个链表，找出它们的第一个公共结点。（注意因为传入数据是链表，所以错误测试数据的提示是用其他方式显示的，保证传入数据是正确的）</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>从两个链表的头节点出发，同时向后移动，当某一个链表的指针为空后，此时到了链表尾，指向另一个链表的头节点，这样，最终两个指针会在两个链表的同一相对位置。此时继续遍历就能找到第一个公共节点。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325194213.png"></p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">public class ListNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    ListNode next = null;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment">        this.val = val;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">FindFirstCommonNode</span><span class="params">(ListNode pHead1, ListNode pHead2)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(pHead1==<span class="literal">null</span> || pHead2==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l1</span> <span class="operator">=</span> pHead1;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l2</span> <span class="operator">=</span> pHead2;</span><br><span class="line">        <span class="keyword">while</span>(l1 != l2)&#123;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">            <span class="keyword">if</span>(l1 != l2)&#123;</span><br><span class="line">                <span class="keyword">if</span>(l1 == <span class="literal">null</span>) l1 = pHead2;</span><br><span class="line">                <span class="keyword">if</span>(l2 == <span class="literal">null</span>) l2 = pHead1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>牛客题解-NC90设计getMin功能的栈</title>
     <url>/posts/e03df8f0.html</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>实现一个特殊功能的栈，在实现栈的基本功能的基础上，再实现返回栈中最小元素的操作。</p>
@@ -199,12 +216,24 @@
       </tags>
   </entry>
   <entry>
-    <title>牛客题解-NC66两个链表的第一个公共节点</title>
-    <url>/posts/bd369e07.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入两个链表，找出它们的第一个公共结点。（注意因为传入数据是链表，所以错误测试数据的提示是用其他方式显示的，保证传入数据是正确的）</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>从两个链表的头节点出发，同时向后移动，当某一个链表的指针为空后，此时到了链表尾，指向另一个链表的头节点，这样，最终两个指针会在两个链表的同一相对位置。此时继续遍历就能找到第一个公共节点。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325194213.png"></p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">public class ListNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    ListNode next = null;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment">        this.val = val;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">FindFirstCommonNode</span><span class="params">(ListNode pHead1, ListNode pHead2)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(pHead1==<span class="literal">null</span> || pHead2==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l1</span> <span class="operator">=</span> pHead1;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l2</span> <span class="operator">=</span> pHead2;</span><br><span class="line">        <span class="keyword">while</span>(l1 != l2)&#123;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">            <span class="keyword">if</span>(l1 != l2)&#123;</span><br><span class="line">                <span class="keyword">if</span>(l1 == <span class="literal">null</span>) l1 = pHead2;</span><br><span class="line">                <span class="keyword">if</span>(l2 == <span class="literal">null</span>) l2 = pHead1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>牛客题解-NC1大数加法</title>
+    <url>/posts/640c1916.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>以字符串的形式读入两个数字，编写一个函数计算它们的和，以字符串形式返回。</p>
+<p>（字符串长度不大于100000，保证字符串仅由’0’~’9’这10种字符组成）</p>
+<p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;1&quot;</span>,<span class="string">&quot;99&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;100&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Tips：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>+<span class="number">99</span>=<span class="number">100</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>该题目重点在于获取当前栈中的min值。</p>
+<p>考虑为原栈stack1，新建一个stack2栈用来维持stack1中的最小数。由于栈FILO的特性，只需要保证stack2中的栈顶元素维持在一个最小值水平即可。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * 计算两个数之和</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s string字符串 表示第一个整数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> t string字符串 表示第二个整数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string字符串</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">solve</span> <span class="params">(String s, String t)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> s.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> t.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">carry</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> || carry != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> i &lt; <span class="number">0</span> ? <span class="number">0</span> : s.charAt(i--) - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> j &lt; <span class="number">0</span> ? <span class="number">0</span> : t.charAt(j--) - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> x + y + carry;</span><br><span class="line">            sb.append(sum % <span class="number">10</span>);</span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -212,7 +241,8 @@
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>链表</tag>
+        <tag>字符串</tag>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -251,36 +281,6 @@
         <tag>Java</tag>
         <tag>树</tag>
         <tag>bfs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC1大数加法</title>
-    <url>/posts/640c1916.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>以字符串的形式读入两个数字，编写一个函数计算它们的和，以字符串形式返回。</p>
-<p>（字符串长度不大于100000，保证字符串仅由’0’~’9’这10种字符组成）</p>
-<p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;1&quot;</span>,<span class="string">&quot;99&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;100&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>Tips：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>+<span class="number">99</span>=<span class="number">100</span> </span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>该题目重点在于获取当前栈中的min值。</p>
-<p>考虑为原栈stack1，新建一个stack2栈用来维持stack1中的最小数。由于栈FILO的特性，只需要保证stack2中的栈顶元素维持在一个最小值水平即可。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * 计算两个数之和</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s string字符串 表示第一个整数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> t string字符串 表示第二个整数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string字符串</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">solve</span> <span class="params">(String s, String t)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> s.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> t.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">carry</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> || carry != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> i &lt; <span class="number">0</span> ? <span class="number">0</span> : s.charAt(i--) - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> j &lt; <span class="number">0</span> ? <span class="number">0</span> : t.charAt(j--) - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> x + y + carry;</span><br><span class="line">            sb.append(sum % <span class="number">10</span>);</span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>字符串</tag>
-        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -454,34 +454,6 @@
       </tags>
   </entry>
   <entry>
-    <title>牛客题解-NC69链表中倒数第k个节点</title>
-    <url>/posts/46c69418.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入一个链表，输出该链表中倒数第k个结点。</p>
-<p>如果该链表长度小于k，请返回空。</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;,<span class="number">1</span> </span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>首先让一个指针first先走k步。</p>
-<p>此时再引出一个res指针从head节点开始。</p>
-<p>first 和res 指针同时前进。</p>
-<p>当first走到尾部时，此时res为倒数第k个节点。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *   int val;</span></span><br><span class="line"><span class="comment"> *   ListNode next = null;</span></span><br><span class="line"><span class="comment"> *   public ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *   &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pHead ListNode类 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> k int整型 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> ListNode类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">FindKthToTail</span> <span class="params">(ListNode pHead, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">first</span> <span class="operator">=</span> pHead;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i&lt;k; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(first==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            first = first.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">res</span> <span class="operator">=</span> pHead;</span><br><span class="line">        <span class="keyword">while</span>(first != <span class="literal">null</span>)&#123;</span><br><span class="line">            res = res.next;</span><br><span class="line">            first = first.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git学习日记（一）安装与时光机</title>
     <url>/posts/b861857a.html</url>
     <content><![CDATA[<font size = 3>
@@ -569,6 +541,107 @@
       <tags>
         <tag>Git</tag>
         <tag>仓库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>牛客题解-NC69链表中倒数第k个节点</title>
+    <url>/posts/46c69418.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入一个链表，输出该链表中倒数第k个结点。</p>
+<p>如果该链表长度小于k，请返回空。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;,<span class="number">1</span> </span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>首先让一个指针first先走k步。</p>
+<p>此时再引出一个res指针从head节点开始。</p>
+<p>first 和res 指针同时前进。</p>
+<p>当first走到尾部时，此时res为倒数第k个节点。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *   int val;</span></span><br><span class="line"><span class="comment"> *   ListNode next = null;</span></span><br><span class="line"><span class="comment"> *   public ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *   &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pHead ListNode类 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> k int整型 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> ListNode类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">FindKthToTail</span> <span class="params">(ListNode pHead, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">first</span> <span class="operator">=</span> pHead;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i&lt;k; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(first==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            first = first.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">res</span> <span class="operator">=</span> pHead;</span><br><span class="line">        <span class="keyword">while</span>(first != <span class="literal">null</span>)&#123;</span><br><span class="line">            res = res.next;</span><br><span class="line">            first = first.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>牛客题解-NC135股票（两次交易）</title>
+    <url>/posts/55b71ebb.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>假定你知道某只股票每一天价格的变动。</p>
+<p>你最多可以同时持有一只股票。但你最多只能进行<strong>两次</strong>交易（一次买进和一次卖出记为一次交易。买进和卖出均无手续费）。</p>
+<p>请设计一个函数，计算你所能获得的最大收益。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">8</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>tips：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">第三天买进，第四天卖出，第五天买进，第六天卖出。总收益为<span class="number">4</span>。 </span><br><span class="line">总天数不大于<span class="number">200000</span>。保证股票每一天的价格在[<span class="number">1</span>,<span class="number">100</span>]范围内。</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>该问题为动态规划问题，关键在于找到初始值以及动态规划转移方程。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326215805.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326215841.png"></p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210326215918814.png" alt="image-20210326215918814"></p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * 两次交易所能获得的最大收益</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> prices int整型一维数组 股票每一天的价格</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int整型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span> <span class="params">(<span class="type">int</span>[] prices)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">if</span>(prices.length == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[prices.length][<span class="number">5</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = -<span class="number">1</span> * prices[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">3</span>] = -<span class="number">1</span> * prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i&lt;prices.length; i++)&#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = dp[i-<span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">            dp[i][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>], dp[i-<span class="number">1</span>][<span class="number">0</span>] - prices[i]);</span><br><span class="line">            dp[i][<span class="number">2</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">2</span>], dp[i-<span class="number">1</span>][<span class="number">1</span>] + prices[i]);</span><br><span class="line">            dp[i][<span class="number">3</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">3</span>], dp[i-<span class="number">1</span>][<span class="number">2</span>] - prices[i]);</span><br><span class="line">            dp[i][<span class="number">4</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">4</span>], dp[i-<span class="number">1</span>][<span class="number">3</span>] + prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[prices.length-<span class="number">1</span>][<span class="number">4</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>牛客题解-NC92最长公共子序列</title>
+    <url>/posts/44aa7f49.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定两个字符串str1和str2，输出连个字符串的最长公共子序列。如过最长公共子序列为空，则输出-1。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;1A2C3D4B56&quot;</span>,<span class="string">&quot;B1D23CA45B6A&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;123456&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>tips：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1≤∣str 1∣,∣str 2∣≤5000</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>首先需要科普一下，最长公共子序列（longest common sequence）和最长公共子串（longest common substring）不是一回事儿。什么是子序列呢？即一个给定的序列的子序列，就是将给定序列中零个或多个元素去掉之后得到的结果。什么是子串呢？给定串中任意个连续的字符组成的子序列称为该串的子串。给一个图再解释一下：<br><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210329200226.png"></p>
+<p>   求解LCS问题，不能使用暴力搜索方法。一个长度为n的序列拥有 2的n次方个子序列，它的时间复杂度是指数阶，太恐怖了。解决LCS问题，需要借助动态规划的思想。<br>       动态规划算法通常用于求解具有某种最优性质的问题。在这类问题中，可能会有许多可行解。每一个解都对应于一个值，我们希望找到具有最优值的解。动态规划算法与分治法类似，其基本思想也是将待求解问题分解成若干个子问题，先求解子问题，然后从这些子问题的解得到原问题的解。与分治法不同的是，适合于用动态规划求解的问题，经分解得到子问题往往不是互相独立的。若用分治法来解这类问题，则分解得到的子问题数目太多，有些子问题被重复计算了很多次。如果我们能够保存已解决的子问题的答案，而在需要时再找出已求得的答案，这样就可以避免大量的重复计算，节省时间。我们可以用一个表来记录所有已解的子问题的答案。不管该子问题以后是否被用到，只要它被计算过，就将其结果填入表中。这就是动态规划法的基本思路。</p>
+<p>解决LCS问题，需要把原问题分解成若干个子问题，所以需要刻画LCS的特征。</p>
+<p>   设A&#x3D;“a0，a1，…，am”，B&#x3D;“b0，b1，…，bn”，且Z&#x3D;“z0，z1，…，zk”为它们的最长公共子序列。不难证明有以下性质：<br>   如果am&#x3D;bn，则zk&#x3D;am&#x3D;bn，且“z0，z1，…，z(k-1)”是“a0，a1，…，a(m-1)”和“b0，b1，…，b(n-1)”的一个最长公共子序列；<br>   如果am!&#x3D;bn，则若zk!&#x3D;am，蕴涵“z0，z1，…，zk”是“a0，a1，…，a(m-1)”和“b0，b1，…，bn”的一个最长公共子序列；<br>   如果am!&#x3D;bn，则若zk!&#x3D;bn，蕴涵“z0，z1，…，zk”是“a0，a1，…，am”和“b0，b1，…，b(n-1)”的一个最长公共子序列。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210329200311.png"></p>
+<p>  假如S1的最后一个元素 与 S2的最后一个元素相等，那么S1和S2的LCS就等于 {S1减去最后一个元素} 与 {S2减去最后一个元素} 的 LCS  再加上 S1和S2相等的最后一个元素。</p>
+<p>   假如S1的最后一个元素 与 S2的最后一个元素不等（本例子就是属于这种情况），那么S1和S2的LCS就等于 ： {S1减去最后一个元素} 与 S2 的LCS， {S2减去最后一个元素} 与 S1 的LCS 中的最大的那个序列。</p>
+<p>假设我需要求 a1 … am 和 b1 .. b(n-1)的LCS 和 a1 … a(m-1) 和 b1 .. bn的LCS，一定会递归地并且重复地把如a1… a(m-1) 与 b1 … b(n-1) 的 LCS 计算几次。所以我们需要一个数据结构来记录中间结果，避免重复计算。</p>
+<p>​    假设我们用c[i,j]表示Xi 和 Yj 的LCS的长度（直接保存最长公共子序列的中间结果不现实，需要先借助LCS的长度）。其中X &#x3D; {x1 … xm}，Y &#x3D;{y1…yn}，Xi &#x3D; {x1 … xi}，Yj&#x3D;{y1… yj}。可得递归公式如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210329200424.png"></p>
+<p> 本文S1和S2的最LCS并不是只有1个，本文并不是着重讲输出两个序列的所有LCS，只是介绍如何通过上表，输出其中一个LCS。</p>
+<p>   我们根据递归公式构建了上表，我们将从最后一个元素c[8][9]倒推出S1和S2的LCS。</p>
+<p>   c[8][9] &#x3D; 5，且S1[8] !&#x3D; S2[9]，所以倒推回去，c[8][9]的值来源于c[8][8]的值(因为c[8][8] &gt; c[7][9])。</p>
+<p>   c[8][8] &#x3D; 5,  且S1[8] &#x3D; S2[8], 所以倒推回去，c[8][8]的值来源于 c[7][7]。</p>
+<p>   以此类推，如果遇到S1[i] !&#x3D; S2[j] ，且c[i-1][j] &#x3D; c[i][j-1] 这种存在分支的情况，这里请都选择一个方向（之后遇到这样的情况，也选择相同的方向）。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * longest common subsequence</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s1 string字符串 the string</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s2 string字符串 the string</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string字符串</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">LCS</span> <span class="params">(String s1, String s2)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">l1</span> <span class="operator">=</span> s1.length(), l2 = s2.length();</span><br><span class="line">        <span class="keyword">if</span>(s1 == <span class="literal">null</span>||s2 == <span class="literal">null</span>|| s1 == <span class="string">&quot;&quot;</span> || s2 == <span class="string">&quot;&quot;</span>) <span class="keyword">return</span> <span class="string">&quot;-1&quot;</span>;</span><br><span class="line">        <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[l1 + <span class="number">1</span>][l2 + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= l1; i++) &#123;dp[i][<span class="number">0</span>] = <span class="number">0</span>;&#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt;= l2; j++) &#123;dp[<span class="number">0</span>][j] = <span class="number">0</span>;&#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= l1; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= l2; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i == <span class="number">0</span> || j == <span class="number">0</span>)&#123;</span><br><span class="line">                        dp[i][j] = <span class="number">0</span>;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(s1.charAt(i-<span class="number">1</span>) == s2.charAt(j-<span class="number">1</span>))&#123;</span><br><span class="line">                        dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    dp[i][j] = Math.max(dp[i-<span class="number">1</span>][j], dp[i][j-<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">while</span>(l1 != <span class="number">0</span> &amp;&amp; l2 != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s1.charAt(l1-<span class="number">1</span>) == s2.charAt(l2 - <span class="number">1</span>))&#123;</span><br><span class="line">                sb.append(s1.charAt(l1-<span class="number">1</span>));</span><br><span class="line">                l1 --;</span><br><span class="line">                l2 --;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(dp[l1 - <span class="number">1</span>][l2] &gt; dp[l1][l2-<span class="number">1</span>])&#123;</span><br><span class="line">                    l1--;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    l2--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sb.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;-1&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -773,79 +846,6 @@
         <tag>Java</tag>
         <tag>树</tag>
         <tag>dfs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC135股票（两次交易）</title>
-    <url>/posts/55b71ebb.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>假定你知道某只股票每一天价格的变动。</p>
-<p>你最多可以同时持有一只股票。但你最多只能进行<strong>两次</strong>交易（一次买进和一次卖出记为一次交易。买进和卖出均无手续费）。</p>
-<p>请设计一个函数，计算你所能获得的最大收益。</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">8</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-<p>tips：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">第三天买进，第四天卖出，第五天买进，第六天卖出。总收益为<span class="number">4</span>。 </span><br><span class="line">总天数不大于<span class="number">200000</span>。保证股票每一天的价格在[<span class="number">1</span>,<span class="number">100</span>]范围内。</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>该问题为动态规划问题，关键在于找到初始值以及动态规划转移方程。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326215805.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326215841.png"></p>
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210326215918814.png" alt="image-20210326215918814"></p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * 两次交易所能获得的最大收益</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> prices int整型一维数组 股票每一天的价格</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int整型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span> <span class="params">(<span class="type">int</span>[] prices)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">if</span>(prices.length == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[prices.length][<span class="number">5</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = -<span class="number">1</span> * prices[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">3</span>] = -<span class="number">1</span> * prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i&lt;prices.length; i++)&#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = dp[i-<span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">            dp[i][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>], dp[i-<span class="number">1</span>][<span class="number">0</span>] - prices[i]);</span><br><span class="line">            dp[i][<span class="number">2</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">2</span>], dp[i-<span class="number">1</span>][<span class="number">1</span>] + prices[i]);</span><br><span class="line">            dp[i][<span class="number">3</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">3</span>], dp[i-<span class="number">1</span>][<span class="number">2</span>] - prices[i]);</span><br><span class="line">            dp[i][<span class="number">4</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">4</span>], dp[i-<span class="number">1</span>][<span class="number">3</span>] + prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[prices.length-<span class="number">1</span>][<span class="number">4</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC92最长公共子序列</title>
-    <url>/posts/44aa7f49.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定两个字符串str1和str2，输出连个字符串的最长公共子序列。如过最长公共子序列为空，则输出-1。</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;1A2C3D4B56&quot;</span>,<span class="string">&quot;B1D23CA45B6A&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;123456&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>tips：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1≤∣str 1∣,∣str 2∣≤5000</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>首先需要科普一下，最长公共子序列（longest common sequence）和最长公共子串（longest common substring）不是一回事儿。什么是子序列呢？即一个给定的序列的子序列，就是将给定序列中零个或多个元素去掉之后得到的结果。什么是子串呢？给定串中任意个连续的字符组成的子序列称为该串的子串。给一个图再解释一下：<br><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210329200226.png"></p>
-<p>   求解LCS问题，不能使用暴力搜索方法。一个长度为n的序列拥有 2的n次方个子序列，它的时间复杂度是指数阶，太恐怖了。解决LCS问题，需要借助动态规划的思想。<br>       动态规划算法通常用于求解具有某种最优性质的问题。在这类问题中，可能会有许多可行解。每一个解都对应于一个值，我们希望找到具有最优值的解。动态规划算法与分治法类似，其基本思想也是将待求解问题分解成若干个子问题，先求解子问题，然后从这些子问题的解得到原问题的解。与分治法不同的是，适合于用动态规划求解的问题，经分解得到子问题往往不是互相独立的。若用分治法来解这类问题，则分解得到的子问题数目太多，有些子问题被重复计算了很多次。如果我们能够保存已解决的子问题的答案，而在需要时再找出已求得的答案，这样就可以避免大量的重复计算，节省时间。我们可以用一个表来记录所有已解的子问题的答案。不管该子问题以后是否被用到，只要它被计算过，就将其结果填入表中。这就是动态规划法的基本思路。</p>
-<p>解决LCS问题，需要把原问题分解成若干个子问题，所以需要刻画LCS的特征。</p>
-<p>   设A&#x3D;“a0，a1，…，am”，B&#x3D;“b0，b1，…，bn”，且Z&#x3D;“z0，z1，…，zk”为它们的最长公共子序列。不难证明有以下性质：<br>   如果am&#x3D;bn，则zk&#x3D;am&#x3D;bn，且“z0，z1，…，z(k-1)”是“a0，a1，…，a(m-1)”和“b0，b1，…，b(n-1)”的一个最长公共子序列；<br>   如果am!&#x3D;bn，则若zk!&#x3D;am，蕴涵“z0，z1，…，zk”是“a0，a1，…，a(m-1)”和“b0，b1，…，bn”的一个最长公共子序列；<br>   如果am!&#x3D;bn，则若zk!&#x3D;bn，蕴涵“z0，z1，…，zk”是“a0，a1，…，am”和“b0，b1，…，b(n-1)”的一个最长公共子序列。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210329200311.png"></p>
-<p>  假如S1的最后一个元素 与 S2的最后一个元素相等，那么S1和S2的LCS就等于 {S1减去最后一个元素} 与 {S2减去最后一个元素} 的 LCS  再加上 S1和S2相等的最后一个元素。</p>
-<p>   假如S1的最后一个元素 与 S2的最后一个元素不等（本例子就是属于这种情况），那么S1和S2的LCS就等于 ： {S1减去最后一个元素} 与 S2 的LCS， {S2减去最后一个元素} 与 S1 的LCS 中的最大的那个序列。</p>
-<p>假设我需要求 a1 … am 和 b1 .. b(n-1)的LCS 和 a1 … a(m-1) 和 b1 .. bn的LCS，一定会递归地并且重复地把如a1… a(m-1) 与 b1 … b(n-1) 的 LCS 计算几次。所以我们需要一个数据结构来记录中间结果，避免重复计算。</p>
-<p>​    假设我们用c[i,j]表示Xi 和 Yj 的LCS的长度（直接保存最长公共子序列的中间结果不现实，需要先借助LCS的长度）。其中X &#x3D; {x1 … xm}，Y &#x3D;{y1…yn}，Xi &#x3D; {x1 … xi}，Yj&#x3D;{y1… yj}。可得递归公式如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210329200424.png"></p>
-<p> 本文S1和S2的最LCS并不是只有1个，本文并不是着重讲输出两个序列的所有LCS，只是介绍如何通过上表，输出其中一个LCS。</p>
-<p>   我们根据递归公式构建了上表，我们将从最后一个元素c[8][9]倒推出S1和S2的LCS。</p>
-<p>   c[8][9] &#x3D; 5，且S1[8] !&#x3D; S2[9]，所以倒推回去，c[8][9]的值来源于c[8][8]的值(因为c[8][8] &gt; c[7][9])。</p>
-<p>   c[8][8] &#x3D; 5,  且S1[8] &#x3D; S2[8], 所以倒推回去，c[8][8]的值来源于 c[7][7]。</p>
-<p>   以此类推，如果遇到S1[i] !&#x3D; S2[j] ，且c[i-1][j] &#x3D; c[i][j-1] 这种存在分支的情况，这里请都选择一个方向（之后遇到这样的情况，也选择相同的方向）。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * longest common subsequence</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s1 string字符串 the string</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s2 string字符串 the string</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string字符串</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">LCS</span> <span class="params">(String s1, String s2)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">l1</span> <span class="operator">=</span> s1.length(), l2 = s2.length();</span><br><span class="line">        <span class="keyword">if</span>(s1 == <span class="literal">null</span>||s2 == <span class="literal">null</span>|| s1 == <span class="string">&quot;&quot;</span> || s2 == <span class="string">&quot;&quot;</span>) <span class="keyword">return</span> <span class="string">&quot;-1&quot;</span>;</span><br><span class="line">        <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[l1 + <span class="number">1</span>][l2 + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= l1; i++) &#123;dp[i][<span class="number">0</span>] = <span class="number">0</span>;&#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt;= l2; j++) &#123;dp[<span class="number">0</span>][j] = <span class="number">0</span>;&#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= l1; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= l2; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i == <span class="number">0</span> || j == <span class="number">0</span>)&#123;</span><br><span class="line">                        dp[i][j] = <span class="number">0</span>;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(s1.charAt(i-<span class="number">1</span>) == s2.charAt(j-<span class="number">1</span>))&#123;</span><br><span class="line">                        dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    dp[i][j] = Math.max(dp[i-<span class="number">1</span>][j], dp[i][j-<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">while</span>(l1 != <span class="number">0</span> &amp;&amp; l2 != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s1.charAt(l1-<span class="number">1</span>) == s2.charAt(l2 - <span class="number">1</span>))&#123;</span><br><span class="line">                sb.append(s1.charAt(l1-<span class="number">1</span>));</span><br><span class="line">                l1 --;</span><br><span class="line">                l2 --;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(dp[l1 - <span class="number">1</span>][l2] &gt; dp[l1][l2-<span class="number">1</span>])&#123;</span><br><span class="line">                    l1--;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    l2--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sb.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;-1&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -1839,6 +1839,156 @@
       </tags>
   </entry>
   <entry>
+    <title>Spring(三)JDBC与事务控制</title>
+    <url>/posts/91b8dde3.html</url>
+    <content><![CDATA[<h1 id="Spring-JdbcTemplate基本使用"><a href="#Spring-JdbcTemplate基本使用" class="headerlink" title="Spring JdbcTemplate基本使用"></a>Spring JdbcTemplate基本使用</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    它是spring框架中提供的一个对象，是对原始繁琐的JdbcAPI对象的简单封装。spring框架为我们提供了很多的操作模板类。例如:操作关系型数据的JdbcTemplate和bernateTemplate，操作nosql数据库的RedisTemplate，操作消息队列的JmsTemplate等等。</p>
+<h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><p>（1）导入Spring-jdbc和spring-tx（transaction事务）坐标</p>
+<p>（2）创建数据库表和实体</p>
+<p>（3）创建JdbcTemplate对象</p>
+<p>（4）执行数据库操作</p>
+<h2 id="Spring产生JdbcTemplate对象"><a href="#Spring产生JdbcTemplate对象" class="headerlink" title="Spring产生JdbcTemplate对象"></a>Spring产生JdbcTemplate对象</h2><p>​    可以将JdbcTemplate的创建权交给Spring，将DataSource的创建权也交给Spring，在Spring</p>
+<p>容器内部将数据源DataSource注入到JdbcTemplate模版对象中，配置如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111426.png"></p>
+<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111454.png"></p>
+<h1 id="Spring的事务控制"><a href="#Spring的事务控制" class="headerlink" title="Spring的事务控制"></a>Spring的事务控制</h1><h2 id="编程式事务控制相关对象（了解）"><a href="#编程式事务控制相关对象（了解）" class="headerlink" title="编程式事务控制相关对象（了解）"></a>编程式事务控制相关对象（了解）</h2><ol>
+<li>PlateformTransactionManager（接口，封装事务行为）</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111530.png"></p>
+<ol start="2">
+<li><p>TransactionDefinition（封装事务参数）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111552.png"></p>
+</li>
+<li><p>TransactionStatus（封装事务状态信息）</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111614.png"></p>
+<h2 id="基于XML的声明式事务控制"><a href="#基于XML的声明式事务控制" class="headerlink" title="基于XML的声明式事务控制"></a>基于XML的声明式事务控制</h2><ol>
+<li><p>什么是声明式事务控制</p>
+<p>Spring的声明式事务顾名思义就是<strong>采用声明的方式来处理事务</strong>。这里所说的声明，就是指在配置文件中声明，</p>
+<p>用在Spring配置文件中声明式的处理事务来代替代码式的处理事务。</p>
+<p>Spring声明式事务控制底层就是AOP</p>
+</li>
+<li><p>声明式事务控制明确事项：</p>
+<p>（1）谁是切点</p>
+<p>（2）谁是通知</p>
+<p>（3）配置切面</p>
+</li>
+<li><p>配置要点</p>
+<p>（1）平台事务管理器配置</p>
+<p>（2）事务通知配置</p>
+<p>（3）事务aop织入配置</p>
+</li>
+</ol>
+<h2 id="基于注解的声明式事务控制"><a href="#基于注解的声明式事务控制" class="headerlink" title="基于注解的声明式事务控制"></a>基于注解的声明式事务控制</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111724.png"></p>
+<h1 id="Spring集成web环境"><a href="#Spring集成web环境" class="headerlink" title="Spring集成web环境"></a>Spring集成web环境</h1><h2 id="ApplicationContext应用上下文获取方式"><a href="#ApplicationContext应用上下文获取方式" class="headerlink" title="ApplicationContext应用上下文获取方式"></a>ApplicationContext应用上下文获取方式</h2><p>​    应用上下文对象是通过new ClasspathXmIApplicationContext(spring配置文件)方式获取的，但是每次从容器中获得Bean时都要编写new ClasspathXmIApplicationContext(spring配置文件)，这样的弊端是配置文件加载多次，应用上下文对象创建多次。</p>
+<p>​    在Web项目中，可以使用ServletContextListener监听Web应用的启动，我们可以在Web应用启动时，就加载Spring的配置文件，创建应用上下文对象ApplicationContext，在将其存储到最大的域servletContext域中，这样就可以在任意位置从域中获得应用上下文ApplicationContext对象了。</p>
+<h2 id="Spring提供获取应用上下文的工具"><a href="#Spring提供获取应用上下文的工具" class="headerlink" title="Spring提供获取应用上下文的工具"></a>Spring提供获取应用上下文的工具</h2><p>​    上面的分析不用手动实现，Spring提供了一个监听器ContextLoaderListener就是对上述功能的封装，该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext域中，提供了一个客户端工具WebApplicationContextUtils供使用者获得应用上下文对象。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>（1）在web.xml中配置ContextLoaderListener监听器(导入spring-web坐标)</p>
+<p>（2）使用WebApplicationContextUtils获得应用上下文对象ApplicationContext</p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring(二)AOP简介与实现</title>
+    <url>/posts/d2e352f8.html</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>​    动态代理通过反射实现，是OOP（面向对象编程）的延伸。</p>
+<p>​    可以对业务逻辑的各个部分进行隔离，从而实现解耦合。</p>
+<h2 id="作用及优势"><a href="#作用及优势" class="headerlink" title="作用及优势"></a>作用及优势</h2><p>​    作用：在程序运行期间，在不修改源码的情况下对方法进行功能增强</p>
+<p>​    优势：减少重复代码，提高开发效率，并且便于维护</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110109.png"></p>
+<p>​    对单一功能进行增强，附加其它功能的思维。例如对于user的操作，不需要在每一个功能中</p>
+<p>​    写上日志控制功能，只需要在运行时将额外的日志控制功能附加到当前所运行功能上就可以了。从而实现了解耦。</p>
+<h2 id="AOP的底层实现"><a href="#AOP的底层实现" class="headerlink" title="AOP的底层实现"></a>AOP的底层实现</h2><p>​    实际上，AOP的底层是通过Spring提供的的<strong>动态代理技术</strong>实现的。在运行期间，Spring通过动态代理技术动态的生成代理对象，代理对象方法执行时进行增强功能的介入，在去调用目标对象的方法，从而完成<strong>功能的增强</strong>。</p>
+<p>​    AOP动态代理技术：</p>
+<ul>
+<li><p>JDK代理：基于接口的动态代理技术</p>
+</li>
+<li><p>cglib代理：基于父类的动态代理技术<img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110200.png"></p>
+<p>（1）JDK动态代理示例</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110228.png"></p>
+<p>（2）cglib的动态代理</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110246.png"></p>
+</li>
+</ul>
+<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li>Target(目标对象)∶代理的目标对象</li>
+<li>Proxy(代理):一个类被AOP织入增强后，就产生一个结果代理类</li>
+<li>Joinpoint(连接点)｛简单记：可以被增强的方法称为连接点｝︰所谓连接点是指那些被拦截到的点。在spring中,这些点指的是方法，因为spring只支持方法类型的连接点</li>
+<li>Pointcut(切入点)｛简单记：确定被增强的连接点｝︰所谓切入点是指我们要对哪些Joinpoint进行拦截的定义</li>
+</ul>
+<p>简单理解：我们都是学生，都有机会拿国奖，所以我们都可以看成是连接点，而最终实际拿到国奖的学生才是切入点。</p>
+<ul>
+<li>Advice (通知&#x2F;增强)︰所谓通知是指拦截到Joinpoint之后所要做的事情就是通知</li>
+<li>Aspect(切面):是切入点和通知(引介)的结合</li>
+<li>Weaving (织入)∶是指把增强应用到目标对象来创建新的代理对象的过程。spring采用动态代理织入，而Aspect采用编译期织入和类装载期织入</li>
+</ul>
+<h2 id="AOP开发过程中需要明确的事项"><a href="#AOP开发过程中需要明确的事项" class="headerlink" title="AOP开发过程中需要明确的事项"></a>AOP开发过程中需要明确的事项</h2><p>（1）需要编写的内容</p>
+<p>​    编写核心业务代码(目标类的目标方法)</p>
+<p>​    编写切面类，切面类中有通知(增强功能方法)</p>
+<p>​    在配置文件中，配置织入关系，即将哪些通知与哪些连接点进行结答</p>
+<p>（2）AOP技术实现的内容</p>
+<p>​    Spring框架监控切入点方法的执行。一旦监控到切入点方法被运行，使用代理机制，动态创建目标对象的代理对象，根据通知类别，在代理对象的对应位置，将通知对应的功能织入，完成完整的代码逻辑运行。</p>
+<p>（3）AOP底层使用哪种代理方式</p>
+<p>​    在spring中，框架会根据目标类是否实现了接口来决定采用哪种动态代理的方式。</p>
+<h2 id="知识要点与总结"><a href="#知识要点与总结" class="headerlink" title="知识要点与总结"></a>知识要点与总结</h2><ul>
+<li><p>aop:面向切面编程</p>
+</li>
+<li><p>aop底层实现:基于JDK的动态代理和基于Cglib的动态代理</p>
+</li>
+<li><p>aop的重点概念:</p>
+<p>Pointcut(切入点)∶被增强的方法</p>
+<p>Advice (通知&#x2F;增强)∶封装增强业务逻辑的方法Aspect (切面)︰切点+通知</p>
+<p>Weaving (织入)︰将切点与通知结合的过程</p>
+</li>
+<li><p>开发明确事项:</p>
+<p>谁是切点(切点表达式配置)</p>
+<p>谁是通知(切面类中的增强方法)</p>
+<p>将切点和通知进行织入配置</p>
+</li>
+</ul>
+<h1 id="三、基于XML的AOP开发"><a href="#三、基于XML的AOP开发" class="headerlink" title="三、基于XML的AOP开发"></a>三、基于XML的AOP开发</h1><ol>
+<li>快速入门（开发步骤）</li>
+</ol>
+<p>（1）导入AOP相关坐标</p>
+<p>（2）创建目标接口和目标类(内部有切点)</p>
+<p>（3）创建切面类(内部有增强方法)</p>
+<p>（4）将目标类和切面类的对象创建权交给spring</p>
+<p>（5）在applicationContext.xml中配置织入关系</p>
+<p>（6）测试代码</p>
+<ol>
+<li>XML配置AOP详解</li>
+</ol>
+<p>（1）切点表达式的写法</p>
+<p>​    语法：</p>
+<p>​    execution（[修饰符] 返回值类型 包名.类名.方法名(参数)）</p>
+<p>​    特殊标志：* . ..</p>
+<p>（2）通知种类：</p>
+<p>​    <a href="aop:before">aop:before</a>切入点方法之前执行</p>
+<p>​    <a href="aop:after-returning">aop:after-returning</a>之后执行</p>
+<p>​    <a href="aop:around">aop:around</a>之前和之后都执行</p>
+<p>&lt;    aop:throwing&gt;出现异常时执行</p>
+<p>​    <a href="aop:after">aop:after</a>无论是否有异常都执行</p>
+<h1 id="基于注解的AOP开发"><a href="#基于注解的AOP开发" class="headerlink" title="基于注解的AOP开发"></a>基于注解的AOP开发</h1><h2 id="快速入门（开发步骤）"><a href="#快速入门（开发步骤）" class="headerlink" title="快速入门（开发步骤）"></a>快速入门（开发步骤）</h2><p>（1）创建目标接口和目标类(内部有切点)</p>
+<p>（2）创建切面类(内部有增强方法)</p>
+<p>（3）将目标类和切面类的对象创建权交给spring</p>
+<p>（4）在切面类中使用注解配置织入关系</p>
+<p>（5）在配置文件中开启组件扫描和AOP的自动代理测试</p>
+<p>（6）测试</p>
+<h2 id="注解通知类型"><a href="#注解通知类型" class="headerlink" title="注解通知类型"></a>注解通知类型</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111225.png"></p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Spring(一)简介与IOC</title>
     <url>/posts/d2becbdd.html</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>分布的Java SE&#x2F;EE应用full-stack<strong>轻量级</strong>开源框架，以<strong>IOC<strong><strong>（</strong></strong>Inverse of control****反转控制）</strong>和<strong>AOP<strong><strong>（</strong></strong>Aspect oriented programming****面向切片编程）</strong>为内核。</p>
@@ -1975,156 +2125,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Spring(二)AOP简介与实现</title>
-    <url>/posts/d2e352f8.html</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>​    动态代理通过反射实现，是OOP（面向对象编程）的延伸。</p>
-<p>​    可以对业务逻辑的各个部分进行隔离，从而实现解耦合。</p>
-<h2 id="作用及优势"><a href="#作用及优势" class="headerlink" title="作用及优势"></a>作用及优势</h2><p>​    作用：在程序运行期间，在不修改源码的情况下对方法进行功能增强</p>
-<p>​    优势：减少重复代码，提高开发效率，并且便于维护</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110109.png"></p>
-<p>​    对单一功能进行增强，附加其它功能的思维。例如对于user的操作，不需要在每一个功能中</p>
-<p>​    写上日志控制功能，只需要在运行时将额外的日志控制功能附加到当前所运行功能上就可以了。从而实现了解耦。</p>
-<h2 id="AOP的底层实现"><a href="#AOP的底层实现" class="headerlink" title="AOP的底层实现"></a>AOP的底层实现</h2><p>​    实际上，AOP的底层是通过Spring提供的的<strong>动态代理技术</strong>实现的。在运行期间，Spring通过动态代理技术动态的生成代理对象，代理对象方法执行时进行增强功能的介入，在去调用目标对象的方法，从而完成<strong>功能的增强</strong>。</p>
-<p>​    AOP动态代理技术：</p>
-<ul>
-<li><p>JDK代理：基于接口的动态代理技术</p>
-</li>
-<li><p>cglib代理：基于父类的动态代理技术<img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110200.png"></p>
-<p>（1）JDK动态代理示例</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110228.png"></p>
-<p>（2）cglib的动态代理</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110246.png"></p>
-</li>
-</ul>
-<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
-<li>Target(目标对象)∶代理的目标对象</li>
-<li>Proxy(代理):一个类被AOP织入增强后，就产生一个结果代理类</li>
-<li>Joinpoint(连接点)｛简单记：可以被增强的方法称为连接点｝︰所谓连接点是指那些被拦截到的点。在spring中,这些点指的是方法，因为spring只支持方法类型的连接点</li>
-<li>Pointcut(切入点)｛简单记：确定被增强的连接点｝︰所谓切入点是指我们要对哪些Joinpoint进行拦截的定义</li>
-</ul>
-<p>简单理解：我们都是学生，都有机会拿国奖，所以我们都可以看成是连接点，而最终实际拿到国奖的学生才是切入点。</p>
-<ul>
-<li>Advice (通知&#x2F;增强)︰所谓通知是指拦截到Joinpoint之后所要做的事情就是通知</li>
-<li>Aspect(切面):是切入点和通知(引介)的结合</li>
-<li>Weaving (织入)∶是指把增强应用到目标对象来创建新的代理对象的过程。spring采用动态代理织入，而Aspect采用编译期织入和类装载期织入</li>
-</ul>
-<h2 id="AOP开发过程中需要明确的事项"><a href="#AOP开发过程中需要明确的事项" class="headerlink" title="AOP开发过程中需要明确的事项"></a>AOP开发过程中需要明确的事项</h2><p>（1）需要编写的内容</p>
-<p>​    编写核心业务代码(目标类的目标方法)</p>
-<p>​    编写切面类，切面类中有通知(增强功能方法)</p>
-<p>​    在配置文件中，配置织入关系，即将哪些通知与哪些连接点进行结答</p>
-<p>（2）AOP技术实现的内容</p>
-<p>​    Spring框架监控切入点方法的执行。一旦监控到切入点方法被运行，使用代理机制，动态创建目标对象的代理对象，根据通知类别，在代理对象的对应位置，将通知对应的功能织入，完成完整的代码逻辑运行。</p>
-<p>（3）AOP底层使用哪种代理方式</p>
-<p>​    在spring中，框架会根据目标类是否实现了接口来决定采用哪种动态代理的方式。</p>
-<h2 id="知识要点与总结"><a href="#知识要点与总结" class="headerlink" title="知识要点与总结"></a>知识要点与总结</h2><ul>
-<li><p>aop:面向切面编程</p>
-</li>
-<li><p>aop底层实现:基于JDK的动态代理和基于Cglib的动态代理</p>
-</li>
-<li><p>aop的重点概念:</p>
-<p>Pointcut(切入点)∶被增强的方法</p>
-<p>Advice (通知&#x2F;增强)∶封装增强业务逻辑的方法Aspect (切面)︰切点+通知</p>
-<p>Weaving (织入)︰将切点与通知结合的过程</p>
-</li>
-<li><p>开发明确事项:</p>
-<p>谁是切点(切点表达式配置)</p>
-<p>谁是通知(切面类中的增强方法)</p>
-<p>将切点和通知进行织入配置</p>
-</li>
-</ul>
-<h1 id="三、基于XML的AOP开发"><a href="#三、基于XML的AOP开发" class="headerlink" title="三、基于XML的AOP开发"></a>三、基于XML的AOP开发</h1><ol>
-<li>快速入门（开发步骤）</li>
-</ol>
-<p>（1）导入AOP相关坐标</p>
-<p>（2）创建目标接口和目标类(内部有切点)</p>
-<p>（3）创建切面类(内部有增强方法)</p>
-<p>（4）将目标类和切面类的对象创建权交给spring</p>
-<p>（5）在applicationContext.xml中配置织入关系</p>
-<p>（6）测试代码</p>
-<ol>
-<li>XML配置AOP详解</li>
-</ol>
-<p>（1）切点表达式的写法</p>
-<p>​    语法：</p>
-<p>​    execution（[修饰符] 返回值类型 包名.类名.方法名(参数)）</p>
-<p>​    特殊标志：* . ..</p>
-<p>（2）通知种类：</p>
-<p>​    <a href="aop:before">aop:before</a>切入点方法之前执行</p>
-<p>​    <a href="aop:after-returning">aop:after-returning</a>之后执行</p>
-<p>​    <a href="aop:around">aop:around</a>之前和之后都执行</p>
-<p>&lt;    aop:throwing&gt;出现异常时执行</p>
-<p>​    <a href="aop:after">aop:after</a>无论是否有异常都执行</p>
-<h1 id="基于注解的AOP开发"><a href="#基于注解的AOP开发" class="headerlink" title="基于注解的AOP开发"></a>基于注解的AOP开发</h1><h2 id="快速入门（开发步骤）"><a href="#快速入门（开发步骤）" class="headerlink" title="快速入门（开发步骤）"></a>快速入门（开发步骤）</h2><p>（1）创建目标接口和目标类(内部有切点)</p>
-<p>（2）创建切面类(内部有增强方法)</p>
-<p>（3）将目标类和切面类的对象创建权交给spring</p>
-<p>（4）在切面类中使用注解配置织入关系</p>
-<p>（5）在配置文件中开启组件扫描和AOP的自动代理测试</p>
-<p>（6）测试</p>
-<h2 id="注解通知类型"><a href="#注解通知类型" class="headerlink" title="注解通知类型"></a>注解通知类型</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111225.png"></p>
-]]></content>
-      <categories>
-        <category>Spring</category>
-      </categories>
-      <tags>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring(三)JDBC与事务控制</title>
-    <url>/posts/91b8dde3.html</url>
-    <content><![CDATA[<h1 id="Spring-JdbcTemplate基本使用"><a href="#Spring-JdbcTemplate基本使用" class="headerlink" title="Spring JdbcTemplate基本使用"></a>Spring JdbcTemplate基本使用</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    它是spring框架中提供的一个对象，是对原始繁琐的JdbcAPI对象的简单封装。spring框架为我们提供了很多的操作模板类。例如:操作关系型数据的JdbcTemplate和bernateTemplate，操作nosql数据库的RedisTemplate，操作消息队列的JmsTemplate等等。</p>
-<h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><p>（1）导入Spring-jdbc和spring-tx（transaction事务）坐标</p>
-<p>（2）创建数据库表和实体</p>
-<p>（3）创建JdbcTemplate对象</p>
-<p>（4）执行数据库操作</p>
-<h2 id="Spring产生JdbcTemplate对象"><a href="#Spring产生JdbcTemplate对象" class="headerlink" title="Spring产生JdbcTemplate对象"></a>Spring产生JdbcTemplate对象</h2><p>​    可以将JdbcTemplate的创建权交给Spring，将DataSource的创建权也交给Spring，在Spring</p>
-<p>容器内部将数据源DataSource注入到JdbcTemplate模版对象中，配置如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111426.png"></p>
-<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111454.png"></p>
-<h1 id="Spring的事务控制"><a href="#Spring的事务控制" class="headerlink" title="Spring的事务控制"></a>Spring的事务控制</h1><h2 id="编程式事务控制相关对象（了解）"><a href="#编程式事务控制相关对象（了解）" class="headerlink" title="编程式事务控制相关对象（了解）"></a>编程式事务控制相关对象（了解）</h2><ol>
-<li>PlateformTransactionManager（接口，封装事务行为）</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111530.png"></p>
-<ol start="2">
-<li><p>TransactionDefinition（封装事务参数）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111552.png"></p>
-</li>
-<li><p>TransactionStatus（封装事务状态信息）</p>
-</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111614.png"></p>
-<h2 id="基于XML的声明式事务控制"><a href="#基于XML的声明式事务控制" class="headerlink" title="基于XML的声明式事务控制"></a>基于XML的声明式事务控制</h2><ol>
-<li><p>什么是声明式事务控制</p>
-<p>Spring的声明式事务顾名思义就是<strong>采用声明的方式来处理事务</strong>。这里所说的声明，就是指在配置文件中声明，</p>
-<p>用在Spring配置文件中声明式的处理事务来代替代码式的处理事务。</p>
-<p>Spring声明式事务控制底层就是AOP</p>
-</li>
-<li><p>声明式事务控制明确事项：</p>
-<p>（1）谁是切点</p>
-<p>（2）谁是通知</p>
-<p>（3）配置切面</p>
-</li>
-<li><p>配置要点</p>
-<p>（1）平台事务管理器配置</p>
-<p>（2）事务通知配置</p>
-<p>（3）事务aop织入配置</p>
-</li>
-</ol>
-<h2 id="基于注解的声明式事务控制"><a href="#基于注解的声明式事务控制" class="headerlink" title="基于注解的声明式事务控制"></a>基于注解的声明式事务控制</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111724.png"></p>
-<h1 id="Spring集成web环境"><a href="#Spring集成web环境" class="headerlink" title="Spring集成web环境"></a>Spring集成web环境</h1><h2 id="ApplicationContext应用上下文获取方式"><a href="#ApplicationContext应用上下文获取方式" class="headerlink" title="ApplicationContext应用上下文获取方式"></a>ApplicationContext应用上下文获取方式</h2><p>​    应用上下文对象是通过new ClasspathXmIApplicationContext(spring配置文件)方式获取的，但是每次从容器中获得Bean时都要编写new ClasspathXmIApplicationContext(spring配置文件)，这样的弊端是配置文件加载多次，应用上下文对象创建多次。</p>
-<p>​    在Web项目中，可以使用ServletContextListener监听Web应用的启动，我们可以在Web应用启动时，就加载Spring的配置文件，创建应用上下文对象ApplicationContext，在将其存储到最大的域servletContext域中，这样就可以在任意位置从域中获得应用上下文ApplicationContext对象了。</p>
-<h2 id="Spring提供获取应用上下文的工具"><a href="#Spring提供获取应用上下文的工具" class="headerlink" title="Spring提供获取应用上下文的工具"></a>Spring提供获取应用上下文的工具</h2><p>​    上面的分析不用手动实现，Spring提供了一个监听器ContextLoaderListener就是对上述功能的封装，该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext域中，提供了一个客户端工具WebApplicationContextUtils供使用者获得应用上下文对象。</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>（1）在web.xml中配置ContextLoaderListener监听器(导入spring-web坐标)</p>
-<p>（2）使用WebApplicationContextUtils获得应用上下文对象ApplicationContext</p>
-]]></content>
-      <categories>
-        <category>Spring</category>
-      </categories>
-      <tags>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Golang(一)特性与使用场景</title>
     <url>/posts/47f6b3ff.html</url>
     <content><![CDATA[<h1 id="Golang的学习方向"><a href="#Golang的学习方向" class="headerlink" title="Golang的学习方向"></a>Golang的学习方向</h1><p>当前使用的领域主要是在：</p>
@@ -2146,6 +2146,72 @@
       </categories>
       <tags>
         <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Little eagle - git学习笔记</title>
+    <url>/posts/aeb37ff2.html</url>
+    <content><![CDATA[<p>​     </p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><a href="https://blog.csdn.net/qq_41328247/article/details/81868247">git、svn和cvs的主要区别</a>在于git是<strong>分布式</strong>版本控制系统，而svn和cvs则是<strong>集中式</strong>版本控制系统。集中式版本控制系统所有文件系统存放在中央服务器上，工作模式更像是一个C&#x2F;S模式，本地用户通过安装客户端来与服务器进行版本的获取与更新操作。问题是当服务器处于脱机状态时，所有用户都要停止工作。</p>
+<p>为了解决该问题，git则抛弃了这种机制，用户将所有文件包括版本信息下载到本地，提交和修改可以在本地执行，在修改确定后再与远程服务器保持同步。</p>
+<p>简单理解git是什么？</p>
+<p>git是一种<strong>开源</strong>的 <strong>分布式</strong> <strong>版本控制</strong> 工具</p>
+<h1 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h1><h2 id="Linux下安装git"><a href="#Linux下安装git" class="headerlink" title="Linux下安装git"></a>Linux下安装git</h2><p>Ubuntu10.10及以上版本、Debain squeeze及以上版本使用以下命令：</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">$ sudo aptitude install git</span><br><span class="line">$ sudo aptitude install git-doc git-svn git-email gitk //安装单独的软件依赖包</span><br></pre></td></tr></table></figure>
+
+<p>RHEL、Fedora、Centos等系统下的安装：</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">$ yum install git</span><br><span class="line">$ yum install git-svn git-email gitk //安装单独的软件依赖包</span><br></pre></td></tr></table></figure>
+
+<h2 id="Windows下安装git"><a href="#Windows下安装git" class="headerlink" title="Windows下安装git"></a>Windows下安装git</h2><p><a href="https://git-scm.com/">git官网</a>下载对应位数安装包按指引安装即可</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321143735.png"></p>
+<p>此外推荐一款Windows下git图形化操作界面软件<a href="https://tortoisegit.org/download/">TortoiseGit</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321143619.png"></p>
+<h2 id="git基本配置"><a href="#git基本配置" class="headerlink" title="git基本配置"></a>git基本配置</h2><h3 id="配置个人身份"><a href="#配置个人身份" class="headerlink" title="配置个人身份"></a>配置个人身份</h3><p>用于表示git提交记录中的个人信息,表明该提交操作人是谁</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;youname&quot;</span><br><span class="line">git config --global user.email youremail</span><br></pre></td></tr></table></figure>
+
+<h3 id="服务器的认证配置"><a href="#服务器的认证配置" class="headerlink" title="服务器的认证配置"></a>服务器的认证配置</h3><p>以下两种方式任选其一（推荐ssh协议认证方式）：</p>
+<p>（1）ssh协议认证方式</p>
+<p>以下配置以部署到github为例</p>
+<p>首先生成公钥（yue），一路回车即可</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在默认路径下找到C:\Users\UserName\.ssh\id_rsa.pub，以记事本方式打开，复制全部文本。</p>
+<p>打开github，如下</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321145626.png"></p>
+<p>title命名随意（能够让你想起来是哪台电脑的备注即可），将之前复制的全部文本粘贴到Key文本框中，点击绿色按钮Add SSH key！搞定！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321145858.png"></p>
+<p>（2）http&#x2F; https协议认证方式</p>
+<p>设置口令缓存</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
+
+<p>添加https证书信任</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config http.sslverify false</span><br></pre></td></tr></table></figure>
+
+<h1 id="git基本命令"><a href="#git基本命令" class="headerlink" title="git基本命令"></a>git基本命令</h1><h2 id="工作区与文件状态"><a href="#工作区与文件状态" class="headerlink" title="工作区与文件状态"></a>工作区与文件状态</h2><p>要理解git命令的作用，前提是搞懂<a href="https://www.cnblogs.com/qdhxhz/p/9757390.html">git工作区域的概念</a>，git一共有四个工作区域，工作区域之间的关系及指令如下:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321153000.png"></p>
+<p>此外，还要对git文件的四种状态有初步理解，分别是：</p>
+<p>Untracked：文件为加入git库，不参与版本控制，通过git add转为Staged</p>
+<p>Unmodify：已入库未修改。有两种转变方式，git rm移除版本库转为Untrackded 或者被修改转为Modified</p>
+<p>Modified：已修改。该状态下也有两种转变方式，git add进入暂存Staged状态，git check丢弃修改进入Unmodify状态</p>
+<p>Staged：暂存状态。git commit同步到库中，此时远程和本地文件一直，文件变为Unmodify状态。而如果是git reset filename取消暂存，则变为Modified状态。</p>
+<p>直观的四种状态的转变如下图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321212738.png"></p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h4 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 在当前目录新建一个Git代码库</span><br><span class="line"> git init</span><br><span class="line"># 新建一个目录，将其初始化为Git代码库</span><br><span class="line">git init [project-name]</span><br><span class="line"># 下载一个项目和它的整个代码历史</span><br><span class="line">git clone [url]</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看文件状态"><a href="#查看文件状态" class="headerlink" title="查看文件状态"></a>查看文件状态</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">#查看指定文件状态</span><br><span class="line">git status [filename]</span><br><span class="line">#查看所有文件状态</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h4 id="工作区-lt-–-gt-暂存区"><a href="#工作区-lt-–-gt-暂存区" class="headerlink" title="工作区&lt;–&gt;暂存区"></a>工作区&lt;–&gt;暂存区</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 添加指定文件到暂存区</span><br><span class="line">git add [file1] [file2] ...</span><br><span class="line"># 添加指定目录到暂存区，包括子目录</span><br><span class="line">git add [<span class="built_in">dir</span>]</span><br><span class="line"># 添加当前目录的所有文件到暂存区</span><br><span class="line">git add .</span><br><span class="line">#当我们需要删除暂存区或分支上的文件, 同时工作区也不需要这个文件了, 可以使用</span><br><span class="line">git rm file_path</span><br><span class="line">#当我们需要删除暂存区或分支上的文件, 但本地又需要使用, 这个时候直接push那边这个文件就没有，如果push之前重新add那么还是会有。</span><br><span class="line">git rm --cached file_path</span><br><span class="line">#直接加文件名   从暂存区将文件恢复到工作区，如果工作区已经有该文件，则会选择覆盖</span><br><span class="line">#加了【分支名】 +文件名  则表示从分支名为所写的分支名中拉取文件 并覆盖工作区里的文件</span><br><span class="line">git checkout</span><br></pre></td></tr></table></figure>
+
+<h4 id="工作区-lt-–-gt-资源库（版本库）"><a href="#工作区-lt-–-gt-资源库（版本库）" class="headerlink" title="工作区&lt;–&gt;资源库（版本库）"></a>工作区&lt;–&gt;资源库（版本库）</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">#将暂存区--&gt;资源库（版本库）</span><br><span class="line">git commit -m &#x27;该次提交说明&#x27;</span><br><span class="line">#如果出现:将不必要的文件commit 或者 上次提交觉得是错的  或者 不想改变暂存区内容，只是想调整提交的信息</span><br><span class="line">#移除不必要的添加到暂存区的文件</span><br><span class="line">git reset HEAD 文件名</span><br><span class="line">#去掉上一次的提交（会直接变成add之前状态）   </span><br><span class="line">git reset HEAD^ </span><br><span class="line">#去掉上一次的提交（变成add之后，commit之前状态） </span><br><span class="line">git reset --soft  HEAD^ </span><br></pre></td></tr></table></figure>
+
+<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 取回远程仓库的变化，并与本地分支合并</span><br><span class="line">git pull</span><br><span class="line"># 上传本地指定分支到远程仓库</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<h4 id="其它常用命令"><a href="#其它常用命令" class="headerlink" title="其它常用命令"></a>其它常用命令</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 显示当前的Git配置</span><br><span class="line">git config --list</span><br><span class="line"># 编辑Git配置文件</span><br><span class="line">git config -e [--global]</span><br><span class="line">#初次commit之前，需要配置用户邮箱及用户名，使用以下命令：</span><br><span class="line">git config --global user.email &quot;you@example.com&quot;</span><br><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">#调出Git的帮助文档</span><br><span class="line">git --<span class="built_in">help</span></span><br><span class="line">#查看某个具体命令的帮助文档</span><br><span class="line">git +命令 --<span class="built_in">help</span></span><br><span class="line">#查看git的版本</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Little eagle</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -2304,69 +2370,122 @@
       </tags>
   </entry>
   <entry>
-    <title>Little eagle - git学习笔记</title>
-    <url>/posts/aeb37ff2.html</url>
-    <content><![CDATA[<p>​     </p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><a href="https://blog.csdn.net/qq_41328247/article/details/81868247">git、svn和cvs的主要区别</a>在于git是<strong>分布式</strong>版本控制系统，而svn和cvs则是<strong>集中式</strong>版本控制系统。集中式版本控制系统所有文件系统存放在中央服务器上，工作模式更像是一个C&#x2F;S模式，本地用户通过安装客户端来与服务器进行版本的获取与更新操作。问题是当服务器处于脱机状态时，所有用户都要停止工作。</p>
-<p>为了解决该问题，git则抛弃了这种机制，用户将所有文件包括版本信息下载到本地，提交和修改可以在本地执行，在修改确定后再与远程服务器保持同步。</p>
-<p>简单理解git是什么？</p>
-<p>git是一种<strong>开源</strong>的 <strong>分布式</strong> <strong>版本控制</strong> 工具</p>
-<h1 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h1><h2 id="Linux下安装git"><a href="#Linux下安装git" class="headerlink" title="Linux下安装git"></a>Linux下安装git</h2><p>Ubuntu10.10及以上版本、Debain squeeze及以上版本使用以下命令：</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">$ sudo aptitude install git</span><br><span class="line">$ sudo aptitude install git-doc git-svn git-email gitk //安装单独的软件依赖包</span><br></pre></td></tr></table></figure>
+    <title>牛客题解-NC68跳台阶</title>
+    <url>/posts/5dbe7165.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>与斐波那契数列一样，只是初始状态改为</p>
+<p>f（0）&#x3D; f（1）&#x3D; 1；</p>
+<p>状态转移方程仍然为：</p>
+<p>f（n） &#x3D; f（n - 1） + f (n - 2);</p>
+<p>题目分析，假设f[i]表示在第i个台阶上可能的方法数。逆向思维。如果我从第n个台阶进行下台阶，下一步有2中可能，一种走到第n-1个台阶，一种是走到第n-2个台阶。所以f[n] &#x3D; f[n-1] + f[n-2].<br>那么初始条件了，f[0] &#x3D; f[1] &#x3D; 1。<br>所以就变成了：f[n] &#x3D; f[n-1] + f[n-2], 初始值f[0]&#x3D;1, f[1]&#x3D;1，目标求f[n]</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">JumpFloor</span><span class="params">(<span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(target &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">1</span>; </span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; target; ++i)&#123;</span><br><span class="line">            sum = a + b;</span><br><span class="line">            a = b;</span><br><span class="line">            b = sum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>RHEL、Fedora、Centos等系统下的安装：</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">$ yum install git</span><br><span class="line">$ yum install git-svn git-email gitk //安装单独的软件依赖包</span><br></pre></td></tr></table></figure>
-
-<h2 id="Windows下安装git"><a href="#Windows下安装git" class="headerlink" title="Windows下安装git"></a>Windows下安装git</h2><p><a href="https://git-scm.com/">git官网</a>下载对应位数安装包按指引安装即可</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321143735.png"></p>
-<p>此外推荐一款Windows下git图形化操作界面软件<a href="https://tortoisegit.org/download/">TortoiseGit</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321143619.png"></p>
-<h2 id="git基本配置"><a href="#git基本配置" class="headerlink" title="git基本配置"></a>git基本配置</h2><h3 id="配置个人身份"><a href="#配置个人身份" class="headerlink" title="配置个人身份"></a>配置个人身份</h3><p>用于表示git提交记录中的个人信息,表明该提交操作人是谁</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;youname&quot;</span><br><span class="line">git config --global user.email youremail</span><br></pre></td></tr></table></figure>
-
-<h3 id="服务器的认证配置"><a href="#服务器的认证配置" class="headerlink" title="服务器的认证配置"></a>服务器的认证配置</h3><p>以下两种方式任选其一（推荐ssh协议认证方式）：</p>
-<p>（1）ssh协议认证方式</p>
-<p>以下配置以部署到github为例</p>
-<p>首先生成公钥（yue），一路回车即可</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
-
-<p>在默认路径下找到C:\Users\UserName\.ssh\id_rsa.pub，以记事本方式打开，复制全部文本。</p>
-<p>打开github，如下</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321145626.png"></p>
-<p>title命名随意（能够让你想起来是哪台电脑的备注即可），将之前复制的全部文本粘贴到Key文本框中，点击绿色按钮Add SSH key！搞定！</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321145858.png"></p>
-<p>（2）http&#x2F; https协议认证方式</p>
-<p>设置口令缓存</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
-
-<p>添加https证书信任</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config http.sslverify false</span><br></pre></td></tr></table></figure>
-
-<h1 id="git基本命令"><a href="#git基本命令" class="headerlink" title="git基本命令"></a>git基本命令</h1><h2 id="工作区与文件状态"><a href="#工作区与文件状态" class="headerlink" title="工作区与文件状态"></a>工作区与文件状态</h2><p>要理解git命令的作用，前提是搞懂<a href="https://www.cnblogs.com/qdhxhz/p/9757390.html">git工作区域的概念</a>，git一共有四个工作区域，工作区域之间的关系及指令如下:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321153000.png"></p>
-<p>此外，还要对git文件的四种状态有初步理解，分别是：</p>
-<p>Untracked：文件为加入git库，不参与版本控制，通过git add转为Staged</p>
-<p>Unmodify：已入库未修改。有两种转变方式，git rm移除版本库转为Untrackded 或者被修改转为Modified</p>
-<p>Modified：已修改。该状态下也有两种转变方式，git add进入暂存Staged状态，git check丢弃修改进入Unmodify状态</p>
-<p>Staged：暂存状态。git commit同步到库中，此时远程和本地文件一直，文件变为Unmodify状态。而如果是git reset filename取消暂存，则变为Modified状态。</p>
-<p>直观的四种状态的转变如下图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321212738.png"></p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h4 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 在当前目录新建一个Git代码库</span><br><span class="line"> git init</span><br><span class="line"># 新建一个目录，将其初始化为Git代码库</span><br><span class="line">git init [project-name]</span><br><span class="line"># 下载一个项目和它的整个代码历史</span><br><span class="line">git clone [url]</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看文件状态"><a href="#查看文件状态" class="headerlink" title="查看文件状态"></a>查看文件状态</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">#查看指定文件状态</span><br><span class="line">git status [filename]</span><br><span class="line">#查看所有文件状态</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
-
-<h4 id="工作区-lt-–-gt-暂存区"><a href="#工作区-lt-–-gt-暂存区" class="headerlink" title="工作区&lt;–&gt;暂存区"></a>工作区&lt;–&gt;暂存区</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 添加指定文件到暂存区</span><br><span class="line">git add [file1] [file2] ...</span><br><span class="line"># 添加指定目录到暂存区，包括子目录</span><br><span class="line">git add [<span class="built_in">dir</span>]</span><br><span class="line"># 添加当前目录的所有文件到暂存区</span><br><span class="line">git add .</span><br><span class="line">#当我们需要删除暂存区或分支上的文件, 同时工作区也不需要这个文件了, 可以使用</span><br><span class="line">git rm file_path</span><br><span class="line">#当我们需要删除暂存区或分支上的文件, 但本地又需要使用, 这个时候直接push那边这个文件就没有，如果push之前重新add那么还是会有。</span><br><span class="line">git rm --cached file_path</span><br><span class="line">#直接加文件名   从暂存区将文件恢复到工作区，如果工作区已经有该文件，则会选择覆盖</span><br><span class="line">#加了【分支名】 +文件名  则表示从分支名为所写的分支名中拉取文件 并覆盖工作区里的文件</span><br><span class="line">git checkout</span><br></pre></td></tr></table></figure>
-
-<h4 id="工作区-lt-–-gt-资源库（版本库）"><a href="#工作区-lt-–-gt-资源库（版本库）" class="headerlink" title="工作区&lt;–&gt;资源库（版本库）"></a>工作区&lt;–&gt;资源库（版本库）</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">#将暂存区--&gt;资源库（版本库）</span><br><span class="line">git commit -m &#x27;该次提交说明&#x27;</span><br><span class="line">#如果出现:将不必要的文件commit 或者 上次提交觉得是错的  或者 不想改变暂存区内容，只是想调整提交的信息</span><br><span class="line">#移除不必要的添加到暂存区的文件</span><br><span class="line">git reset HEAD 文件名</span><br><span class="line">#去掉上一次的提交（会直接变成add之前状态）   </span><br><span class="line">git reset HEAD^ </span><br><span class="line">#去掉上一次的提交（变成add之后，commit之前状态） </span><br><span class="line">git reset --soft  HEAD^ </span><br></pre></td></tr></table></figure>
-
-<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 取回远程仓库的变化，并与本地分支合并</span><br><span class="line">git pull</span><br><span class="line"># 上传本地指定分支到远程仓库</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<h4 id="其它常用命令"><a href="#其它常用命令" class="headerlink" title="其它常用命令"></a>其它常用命令</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 显示当前的Git配置</span><br><span class="line">git config --list</span><br><span class="line"># 编辑Git配置文件</span><br><span class="line">git config -e [--global]</span><br><span class="line">#初次commit之前，需要配置用户邮箱及用户名，使用以下命令：</span><br><span class="line">git config --global user.email &quot;you@example.com&quot;</span><br><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">#调出Git的帮助文档</span><br><span class="line">git --<span class="built_in">help</span></span><br><span class="line">#查看某个具体命令的帮助文档</span><br><span class="line">git +命令 --<span class="built_in">help</span></span><br><span class="line">#查看git的版本</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>]]></content>
+]]></content>
       <categories>
-        <category>Little eagle</category>
+        <category>牛客题解</category>
       </categories>
       <tags>
-        <tag>git</tag>
+        <tag>Java</tag>
+        <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网易云歌单导入AppleMusic</title>
+    <url>/posts/3bb2dd71.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Apple Music作为ios内的一款音乐APP，学生认证后五元一月的价格实属良心，当然比起国内大量的音乐软件，收录的华人音乐内容偏少，优质的段子手评论也很少。但是优势却也很明显，普通音质的音乐比起其他软件的无损音乐要更加高（简直是无损中的无损啊）。所以如果你追求极致的音质体验，又偏爱欧美音乐时，Apple Music确实是性价比最高的选择了。</p>
+<p>但是，在小编从网易云音乐转用Apple Music时却发现这是一件极其痛苦的事情，一方面沉醉于Apple Music使用的简洁风格的流畅用户体验以及夸张的音质。一方面又难以割舍网易云音乐中一颗一颗小红星攒出来只属于我自己的歌单（泪奔）。难道我要从网易云的歌单中一首接一首的去Apple Music中搜索id然后添加到音乐库中去吗，看着我那500+音乐的歌单陷入了沉思….</p>
+<p>事实上，我们可以利用ios上默认安装的一款app，快捷指令（原捷径）一键导入歌单。具体步骤如下：</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="1-下载“网易云→Apple-Music”快捷指令"><a href="#1-下载“网易云→Apple-Music”快捷指令" class="headerlink" title="1. 下载“网易云→Apple Music”快捷指令"></a>1. 下载“网易云→Apple Music”快捷指令</h2><p>关注公众号：“程序员评测室”后台回复“导入歌单”可以获取下载链接（由于要调用到快捷指令，请在safari中打开该链接）</p>
+
+
+
+
+<p>点击上图下方获取捷径。</p>
+
+
+
+
+<p>出现上图所示内容，下拉到底部。</p>
+
+
+
+
+<p>点击添加不受信任的快捷指令（注意：该快捷指令并无恶意内容，由于是非苹果官方捷径库的第三方捷径，所以会有该提示，请放心使用），到这里我们就成功将该捷径添加进了捷径中心。</p>
+<h2 id="2-复制网易云歌单中的歌单链接"><a href="#2-复制网易云歌单中的歌单链接" class="headerlink" title="2. 复制网易云歌单中的歌单链接"></a>2. 复制网易云歌单中的歌单链接</h2><p> 具体操作：首先点开你想复制的歌单，然后点击分享，最后点击复制链接。</p>
+
+
+
+
+<h2 id="3-利用捷径开始复制这个歌单吧！"><a href="#3-利用捷径开始复制这个歌单吧！" class="headerlink" title="3. 利用捷径开始复制这个歌单吧！"></a>3. 利用捷径开始复制这个歌单吧！</h2><p>退出网易云，进入捷径中心，点击我们在步骤一中成功添加的捷径并授予系统提示的相关权限。接下来在一段时间的等待过后就可以在Apple Music中看到我们成功复制的歌单啦！（注意，等待时间的长短取决于你歌单中音乐数量的多少，我亲测复制300+音乐用时半小时），在等待过程中不要把捷径中心挂在后台，会出现提前结束捷径的情况。</p>
+
+
+
+
+<p>下面就是我自己成功复制的歌单啦！</p>
+
+
+
+
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>好啦，到这里就结束啦，快去将你心爱的网易云歌单导入Apple Music吧！</p>
+]]></content>
+      <categories>
+        <category>小技巧</category>
+      </categories>
+      <tags>
+        <tag>手机</tag>
+        <tag>ios</tag>
+        <tag>音乐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用猫抓下载网页上的视频</title>
+    <url>/posts/b9d22aba.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​        直奔主题上教程啦。首先我们需要准备以下工具:Chrome浏览器+猫抓拓展包（关注程序员评测室公众号回复猫抓拓展包）。接下来就可以开始你的视频抓取之路啦！</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="1-打开chrome的开发者模式"><a href="#1-打开chrome的开发者模式" class="headerlink" title="1 打开chrome的开发者模式"></a>1 打开chrome的开发者模式</h2><p>打开Chrome 浏览器，按图示顺序依次点击更多→更多工具→拓展程序</p>
+
+
+
+
+
+
+
+
+<p>​        打开后就是如下页面，查看右上角开发者模式是否处于打开状态（关闭模式下点击一下开启）。</p>
+
+
+
+
+<h2 id="2-安装拓展包"><a href="#2-安装拓展包" class="headerlink" title="2 安装拓展包"></a>2 安装拓展包</h2><p>​        将后缀名为crx的拓展包拖入图示区域。</p>
+
+
+
+
+<p>​        拖动到指定区域后出现以下内容，点击添加拓展程序。</p>
+
+
+
+
+<p>好啦！恭喜你已经完成了拓展程序的安装，我们可以看到浏览器右上方已经出现了猫抓的图标。</p>
+
+
+
+
+<h2 id="3-开始下载视频"><a href="#3-开始下载视频" class="headerlink" title="3 开始下载视频"></a>3 开始下载视频</h2><p>​        打开某个包含视频内容的网站，我们可以看到猫抓小图标上出现了一些数字，这个数字表示当前页面存在可下载的视频数量。点击猫抓图标就可以下载对应的内容啦！</p>
+
+
+
+
+<p>​        下载完成后记得将下载的文件后缀名修改为.mp4</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>​        使用该方法有点复杂，不过你学会了拓展程序的安装就如同打开了一扇新世界的大门啊！通过安装实用的浏览器拓展程序将会让你的日常使用更加得心应手。</p>
+<p>推荐下某乎大神给的<a href="https://www.zhihu.com/question/19594682/answer/693396771?hb_wx_block=1">拓展程序</a>。</p>
+]]></content>
+      <categories>
+        <category>小技巧</category>
+      </categories>
+      <tags>
+        <tag>电脑</tag>
+        <tag>网页</tag>
+        <tag>视频</tag>
       </tags>
   </entry>
   <entry>
@@ -2445,125 +2564,6 @@
       <tags>
         <tag>Java</tag>
         <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>利用猫抓下载网页上的视频</title>
-    <url>/posts/b9d22aba.html</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​        直奔主题上教程啦。首先我们需要准备以下工具:Chrome浏览器+猫抓拓展包（关注程序员评测室公众号回复猫抓拓展包）。接下来就可以开始你的视频抓取之路啦！</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="1-打开chrome的开发者模式"><a href="#1-打开chrome的开发者模式" class="headerlink" title="1 打开chrome的开发者模式"></a>1 打开chrome的开发者模式</h2><p>打开Chrome 浏览器，按图示顺序依次点击更多→更多工具→拓展程序</p>
-
-
-
-
-
-
-
-
-<p>​        打开后就是如下页面，查看右上角开发者模式是否处于打开状态（关闭模式下点击一下开启）。</p>
-
-
-
-
-<h2 id="2-安装拓展包"><a href="#2-安装拓展包" class="headerlink" title="2 安装拓展包"></a>2 安装拓展包</h2><p>​        将后缀名为crx的拓展包拖入图示区域。</p>
-
-
-
-
-<p>​        拖动到指定区域后出现以下内容，点击添加拓展程序。</p>
-
-
-
-
-<p>好啦！恭喜你已经完成了拓展程序的安装，我们可以看到浏览器右上方已经出现了猫抓的图标。</p>
-
-
-
-
-<h2 id="3-开始下载视频"><a href="#3-开始下载视频" class="headerlink" title="3 开始下载视频"></a>3 开始下载视频</h2><p>​        打开某个包含视频内容的网站，我们可以看到猫抓小图标上出现了一些数字，这个数字表示当前页面存在可下载的视频数量。点击猫抓图标就可以下载对应的内容啦！</p>
-
-
-
-
-<p>​        下载完成后记得将下载的文件后缀名修改为.mp4</p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>​        使用该方法有点复杂，不过你学会了拓展程序的安装就如同打开了一扇新世界的大门啊！通过安装实用的浏览器拓展程序将会让你的日常使用更加得心应手。</p>
-<p>推荐下某乎大神给的<a href="https://www.zhihu.com/question/19594682/answer/693396771?hb_wx_block=1">拓展程序</a>。</p>
-]]></content>
-      <categories>
-        <category>小技巧</category>
-      </categories>
-      <tags>
-        <tag>电脑</tag>
-        <tag>网页</tag>
-        <tag>视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC68跳台阶</title>
-    <url>/posts/5dbe7165.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>与斐波那契数列一样，只是初始状态改为</p>
-<p>f（0）&#x3D; f（1）&#x3D; 1；</p>
-<p>状态转移方程仍然为：</p>
-<p>f（n） &#x3D; f（n - 1） + f (n - 2);</p>
-<p>题目分析，假设f[i]表示在第i个台阶上可能的方法数。逆向思维。如果我从第n个台阶进行下台阶，下一步有2中可能，一种走到第n-1个台阶，一种是走到第n-2个台阶。所以f[n] &#x3D; f[n-1] + f[n-2].<br>那么初始条件了，f[0] &#x3D; f[1] &#x3D; 1。<br>所以就变成了：f[n] &#x3D; f[n-1] + f[n-2], 初始值f[0]&#x3D;1, f[1]&#x3D;1，目标求f[n]</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">JumpFloor</span><span class="params">(<span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(target &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">1</span>; </span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; target; ++i)&#123;</span><br><span class="line">            sum = a + b;</span><br><span class="line">            a = b;</span><br><span class="line">            b = sum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网易云歌单导入AppleMusic</title>
-    <url>/posts/3bb2dd71.html</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Apple Music作为ios内的一款音乐APP，学生认证后五元一月的价格实属良心，当然比起国内大量的音乐软件，收录的华人音乐内容偏少，优质的段子手评论也很少。但是优势却也很明显，普通音质的音乐比起其他软件的无损音乐要更加高（简直是无损中的无损啊）。所以如果你追求极致的音质体验，又偏爱欧美音乐时，Apple Music确实是性价比最高的选择了。</p>
-<p>但是，在小编从网易云音乐转用Apple Music时却发现这是一件极其痛苦的事情，一方面沉醉于Apple Music使用的简洁风格的流畅用户体验以及夸张的音质。一方面又难以割舍网易云音乐中一颗一颗小红星攒出来只属于我自己的歌单（泪奔）。难道我要从网易云的歌单中一首接一首的去Apple Music中搜索id然后添加到音乐库中去吗，看着我那500+音乐的歌单陷入了沉思….</p>
-<p>事实上，我们可以利用ios上默认安装的一款app，快捷指令（原捷径）一键导入歌单。具体步骤如下：</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="1-下载“网易云→Apple-Music”快捷指令"><a href="#1-下载“网易云→Apple-Music”快捷指令" class="headerlink" title="1. 下载“网易云→Apple Music”快捷指令"></a>1. 下载“网易云→Apple Music”快捷指令</h2><p>关注公众号：“程序员评测室”后台回复“导入歌单”可以获取下载链接（由于要调用到快捷指令，请在safari中打开该链接）</p>
-
-
-
-
-<p>点击上图下方获取捷径。</p>
-
-
-
-
-<p>出现上图所示内容，下拉到底部。</p>
-
-
-
-
-<p>点击添加不受信任的快捷指令（注意：该快捷指令并无恶意内容，由于是非苹果官方捷径库的第三方捷径，所以会有该提示，请放心使用），到这里我们就成功将该捷径添加进了捷径中心。</p>
-<h2 id="2-复制网易云歌单中的歌单链接"><a href="#2-复制网易云歌单中的歌单链接" class="headerlink" title="2. 复制网易云歌单中的歌单链接"></a>2. 复制网易云歌单中的歌单链接</h2><p> 具体操作：首先点开你想复制的歌单，然后点击分享，最后点击复制链接。</p>
-
-
-
-
-<h2 id="3-利用捷径开始复制这个歌单吧！"><a href="#3-利用捷径开始复制这个歌单吧！" class="headerlink" title="3. 利用捷径开始复制这个歌单吧！"></a>3. 利用捷径开始复制这个歌单吧！</h2><p>退出网易云，进入捷径中心，点击我们在步骤一中成功添加的捷径并授予系统提示的相关权限。接下来在一段时间的等待过后就可以在Apple Music中看到我们成功复制的歌单啦！（注意，等待时间的长短取决于你歌单中音乐数量的多少，我亲测复制300+音乐用时半小时），在等待过程中不要把捷径中心挂在后台，会出现提前结束捷径的情况。</p>
-
-
-
-
-<p>下面就是我自己成功复制的歌单啦！</p>
-
-
-
-
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>好啦，到这里就结束啦，快去将你心爱的网易云歌单导入Apple Music吧！</p>
-]]></content>
-      <categories>
-        <category>小技巧</category>
-      </categories>
-      <tags>
-        <tag>手机</tag>
-        <tag>ios</tag>
-        <tag>音乐</tag>
       </tags>
   </entry>
 </search>
