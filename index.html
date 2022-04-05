@@ -1169,7 +1169,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/d5d6861e.html">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/7f61fc79.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -1187,7 +1187,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/d5d6861e.html" class="post-title-link" itemprop="url">请教我学操作系统（一）进线程与内存管理</a>
+          <a href="/posts/7f61fc79.html" class="post-title-link" itemprop="url">请教我学MySQL（一）索引</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1213,7 +1213,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
         </span>
     </span>
 
@@ -1227,27 +1227,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="什么是操作系统"><a href="#什么是操作系统" class="headerlink" title="什么是操作系统"></a>什么是操作系统</h2><ol>
-<li><p>操作系统是管理计算机软硬件资源的程序，是计算机的基石。</p>
-</li>
-<li><p>本质上是一个应用程序。</p>
-</li>
-<li><p>操作系统的存在屏蔽了硬件设备的复杂性，由操作系统统一管理和分配。</p>
-</li>
-<li><p>内核是操作系统的核心部分。负责系统的内存管理，硬件设备管理，文件系统管理和应用程序管理。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327105916.png"></p>
-</li>
+          <h1 id><a href="#" class="headerlink" title></a></h1><p>数据库索引的原理：数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 BTree 及其变种 B+Tree。</p>
+<p>一般情况下,在没有建立索引的时候, mysql 需要扫描全表及扫描 10W 条数据找这条数据,如果我在 nickname 上建立索引,那么mysql只需要扫描一行数据及为我们找到这条 nickname&#x3D;’css’ 的数据,是不是感觉性能提升了好多咧….</p>
+<p>mysql 的索引分为 单例索引（主键索引、唯一索引、普通索引）和 组合索引。</p>
+<ul>
+<li>单例索引：一个索引只包含一个列，一个表可以有多个单例索引。</li>
+<li>组合索引：一个组合索引包含两个或两个以上的列。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `award` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &#x27;用户id&#x27;,</span><br><span class="line">  `aty_id` varchar(100) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;活动场景id&#x27;,</span><br><span class="line">  `nickname` varchar(12) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;用户昵称&#x27;,</span><br><span class="line">  `is_awarded` tinyint(1) NOT NULL DEFAULT 0 COMMENT &#x27;用户是否领奖&#x27;,</span><br><span class="line">  `award_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;领奖时间&#x27;,</span><br><span class="line">  `account` varchar(12) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;帐号&#x27;,</span><br><span class="line">  `password` char(32) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;密码&#x27;,</span><br><span class="line">  `message` varchar(255) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;获奖信息&#x27;,</span><br><span class="line">  `created_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;创建时间&#x27;,</span><br><span class="line">  `updated_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;更新时间&#x27;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line"> ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=&#x27;获奖信息表&#x27;;</span><br><span class="line"> </span><br><span class="line"> INSERT INTO `award` (`nickname`, `account`, `message`, `created_time`)</span><br><span class="line"> VALUES (&#x27;rSUQFzpkDz3R&#x27;, &#x27;DYxJoqZq2rd7&#x27;, &#x27;aaabbbccccxuxuxuxuuxux&#x27;, 1449567822);</span><br></pre></td></tr></table></figure>
+
+<h1 id="索引的创建"><a href="#索引的创建" class="headerlink" title="索引的创建"></a>索引的创建</h1><h2 id="单例索引"><a href="#单例索引" class="headerlink" title="单例索引"></a>单例索引</h2><ol>
+<li>普通索引</li>
 </ol>
-<h1 id="什么是系统调用"><a href="#什么是系统调用" class="headerlink" title="什么是系统调用"></a>什么是系统调用</h1><p>用户态：该状态运行的进程可以直接读取用户程序的数据。</p>
-<p>系统态：该状态运行的进程或程序可以访问计算机任意资源。</p>
-<p>程序运行在用户态时想要调用操作系统提供的系统态子功能时需要进行系统调用。</p>
-<p>系统调用按功能大致分为：</p>
-<p><strong>设备管理</strong>。完成设备的请求或释放，以及设备启动等功能。</p>
-<p><strong>⽂件管理</strong>。完成⽂件的读、写、创建及删除等功能。</p>
-<p><strong>进程控制</strong>。完成进程的创建、撤销、阻塞及唤醒等功能。</p>
+<p>是最基本的索引。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/d5d6861e.html#more" rel="contents">
+              <a class="btn" href="/posts/7f61fc79.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
