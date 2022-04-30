@@ -171,23 +171,6 @@
       </tags>
   </entry>
   <entry>
-    <title>牛客题解-NC66两个链表的第一个公共节点</title>
-    <url>/posts/bd369e07.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入两个链表，找出它们的第一个公共结点。（注意因为传入数据是链表，所以错误测试数据的提示是用其他方式显示的，保证传入数据是正确的）</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>从两个链表的头节点出发，同时向后移动，当某一个链表的指针为空后，此时到了链表尾，指向另一个链表的头节点，这样，最终两个指针会在两个链表的同一相对位置。此时继续遍历就能找到第一个公共节点。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325194213.png"></p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">public class ListNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    ListNode next = null;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment">        this.val = val;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">FindFirstCommonNode</span><span class="params">(ListNode pHead1, ListNode pHead2)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(pHead1==<span class="literal">null</span> || pHead2==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l1</span> <span class="operator">=</span> pHead1;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l2</span> <span class="operator">=</span> pHead2;</span><br><span class="line">        <span class="keyword">while</span>(l1 != l2)&#123;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">            <span class="keyword">if</span>(l1 != l2)&#123;</span><br><span class="line">                <span class="keyword">if</span>(l1 == <span class="literal">null</span>) l1 = pHead2;</span><br><span class="line">                <span class="keyword">if</span>(l2 == <span class="literal">null</span>) l2 = pHead1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>牛客题解-NC90设计getMin功能的栈</title>
     <url>/posts/e03df8f0.html</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>实现一个特殊功能的栈，在实现栈的基本功能的基础上，再实现返回栈中最小元素的操作。</p>
@@ -213,6 +196,23 @@
       <tags>
         <tag>Java</tag>
         <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>牛客题解-NC66两个链表的第一个公共节点</title>
+    <url>/posts/bd369e07.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入两个链表，找出它们的第一个公共结点。（注意因为传入数据是链表，所以错误测试数据的提示是用其他方式显示的，保证传入数据是正确的）</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>从两个链表的头节点出发，同时向后移动，当某一个链表的指针为空后，此时到了链表尾，指向另一个链表的头节点，这样，最终两个指针会在两个链表的同一相对位置。此时继续遍历就能找到第一个公共节点。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325194213.png"></p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">public class ListNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    ListNode next = null;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment">        this.val = val;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">FindFirstCommonNode</span><span class="params">(ListNode pHead1, ListNode pHead2)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(pHead1==<span class="literal">null</span> || pHead2==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l1</span> <span class="operator">=</span> pHead1;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l2</span> <span class="operator">=</span> pHead2;</span><br><span class="line">        <span class="keyword">while</span>(l1 != l2)&#123;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">            <span class="keyword">if</span>(l1 != l2)&#123;</span><br><span class="line">                <span class="keyword">if</span>(l1 == <span class="literal">null</span>) l1 = pHead2;</span><br><span class="line">                <span class="keyword">if</span>(l2 == <span class="literal">null</span>) l2 = pHead1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -422,6 +422,66 @@
       </tags>
   </entry>
   <entry>
+    <title>牛客题解-NC69链表中倒数第k个节点</title>
+    <url>/posts/46c69418.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入一个链表，输出该链表中倒数第k个结点。</p>
+<p>如果该链表长度小于k，请返回空。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;,<span class="number">1</span> </span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>首先让一个指针first先走k步。</p>
+<p>此时再引出一个res指针从head节点开始。</p>
+<p>first 和res 指针同时前进。</p>
+<p>当first走到尾部时，此时res为倒数第k个节点。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *   int val;</span></span><br><span class="line"><span class="comment"> *   ListNode next = null;</span></span><br><span class="line"><span class="comment"> *   public ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *   &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pHead ListNode类 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> k int整型 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> ListNode类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">FindKthToTail</span> <span class="params">(ListNode pHead, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">first</span> <span class="operator">=</span> pHead;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i&lt;k; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(first==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            first = first.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">res</span> <span class="operator">=</span> pHead;</span><br><span class="line">        <span class="keyword">while</span>(first != <span class="literal">null</span>)&#123;</span><br><span class="line">            res = res.next;</span><br><span class="line">            first = first.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>牛客题解-NC38螺旋矩阵</title>
+    <url>/posts/36804329.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个m x n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212049.png"></p>
+<p>分别需要实现四个遍历：</p>
+<p>左→右</p>
+<p>上→下</p>
+<p>右→左</p>
+<p>下→上</p>
+<p>需要特别注意的是不要遍历重复数据。left、right、top、bottom的指针变化方式尤为重要。</p>
+<p>另外还要注意限制条件top！&#x3D; bottom 和 left！&#x3D; right</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212338.png"></p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = matrix[<span class="number">0</span>].length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">top</span> <span class="operator">=</span> <span class="number">0</span>, bottom = matrix.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(top &lt; (matrix.length + <span class="number">1</span>) / <span class="number">2</span> &amp;&amp; left &lt; (matrix[<span class="number">0</span>].length + <span class="number">1</span>) / <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> left; i &lt;= right; i++)&#123;</span><br><span class="line">                res.add(matrix[top][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> top + <span class="number">1</span>; i &lt;= bottom; i++)&#123;</span><br><span class="line">                res.add(matrix[i][right]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> right - <span class="number">1</span>; i &gt;= left &amp;&amp; top != bottom; i--)&#123;</span><br><span class="line">                res.add(matrix[bottom][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> bottom - <span class="number">1</span>; i &gt;= top + <span class="number">1</span> &amp;&amp; left != right; i--)&#123;</span><br><span class="line">                res.add(matrix[i][left]);</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            top++;</span><br><span class="line">            right--;</span><br><span class="line">            bottom--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git学习日记（一）安装与时光机</title>
     <url>/posts/b861857a.html</url>
     <content><![CDATA[<font size = 3>
@@ -509,66 +569,6 @@
       <tags>
         <tag>Git</tag>
         <tag>仓库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC69链表中倒数第k个节点</title>
-    <url>/posts/46c69418.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入一个链表，输出该链表中倒数第k个结点。</p>
-<p>如果该链表长度小于k，请返回空。</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;,<span class="number">1</span> </span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>首先让一个指针first先走k步。</p>
-<p>此时再引出一个res指针从head节点开始。</p>
-<p>first 和res 指针同时前进。</p>
-<p>当first走到尾部时，此时res为倒数第k个节点。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *   int val;</span></span><br><span class="line"><span class="comment"> *   ListNode next = null;</span></span><br><span class="line"><span class="comment"> *   public ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *   &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pHead ListNode类 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> k int整型 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> ListNode类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">FindKthToTail</span> <span class="params">(ListNode pHead, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">first</span> <span class="operator">=</span> pHead;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i&lt;k; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(first==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            first = first.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">res</span> <span class="operator">=</span> pHead;</span><br><span class="line">        <span class="keyword">while</span>(first != <span class="literal">null</span>)&#123;</span><br><span class="line">            res = res.next;</span><br><span class="line">            first = first.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC38螺旋矩阵</title>
-    <url>/posts/36804329.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个m x n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212049.png"></p>
-<p>分别需要实现四个遍历：</p>
-<p>左→右</p>
-<p>上→下</p>
-<p>右→左</p>
-<p>下→上</p>
-<p>需要特别注意的是不要遍历重复数据。left、right、top、bottom的指针变化方式尤为重要。</p>
-<p>另外还要注意限制条件top！&#x3D; bottom 和 left！&#x3D; right</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212338.png"></p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = matrix[<span class="number">0</span>].length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">top</span> <span class="operator">=</span> <span class="number">0</span>, bottom = matrix.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(top &lt; (matrix.length + <span class="number">1</span>) / <span class="number">2</span> &amp;&amp; left &lt; (matrix[<span class="number">0</span>].length + <span class="number">1</span>) / <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> left; i &lt;= right; i++)&#123;</span><br><span class="line">                res.add(matrix[top][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> top + <span class="number">1</span>; i &lt;= bottom; i++)&#123;</span><br><span class="line">                res.add(matrix[i][right]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> right - <span class="number">1</span>; i &gt;= left &amp;&amp; top != bottom; i--)&#123;</span><br><span class="line">                res.add(matrix[bottom][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> bottom - <span class="number">1</span>; i &gt;= top + <span class="number">1</span> &amp;&amp; left != right; i--)&#123;</span><br><span class="line">                res.add(matrix[i][left]);</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            top++;</span><br><span class="line">            right--;</span><br><span class="line">            bottom--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -849,6 +849,96 @@
       </tags>
   </entry>
   <entry>
+    <title>牛客题解-NC134股票（无限次交易）</title>
+    <url>/posts/c81d78e6.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>假定你知道某只股票每一天价格的变动。</p>
+<p>你最多可以同时持有一只股票。但你可以无限次的交易（买进和卖出均无手续费）。</p>
+<p>请设计一个函数，计算你所能获得的最大收益。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>tips：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">由于每天股票都在跌，因此不进行任何交易最优。最大收益为<span class="number">0</span>。</span><br></pre></td></tr></table></figure>
+
+<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>tips：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">第一天买进，最后一天卖出最优。中间的当天买进当天卖出不影响最终结果。最大收益为<span class="number">4</span>。  </span><br><span class="line">总天数不大于<span class="number">200000</span>。保证股票每一天的价格在[<span class="number">1</span>,<span class="number">100</span>]范围内。</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">定义dp[i][0]表示第i+1天交易完之后手里没有股票的最大利润，dp[i][1]表示第i+1天交易完之后手里持有股票的最大利润。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>当天交易完之后手里没有股票可能有两种情况，一种是当天没有进行任何交易</strong>，又因为当天手里没有股票，所以当天没有股票的利润只能取前一天手里没有股票的利润。<strong>一种是把当天手里的股票给卖了</strong>，既然能卖，说明手里是有股票的，所以这个时候当天没有股票的利润要取前一天手里有股票的利润加上当天股票能卖的价格。这两种情况我们取利润最大的即可，所以可以得到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dp[i][0]=max(dp[i-1][0],dp[i-1][1]+prices[i]);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>当天交易完之后手里持有股票也有两种情况，一种是当天没有任何交易</strong>，又因为当天手里持有股票，所以当天手里持有的股票其实前一天就已经持有了。<strong>还一种是当天买入了股票</strong>，当天能卖股票，说明前一天手里肯定是没有股票的，我们取这两者的最大值，所以可以得到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dp[i][1]=max(dp[i-1][1],dp[i-1][0]-prices[i]);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>动态规划的递推公式有了，那么边界条件是什么，就是第一天</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">如果买入：dp[0][1]=-prices[0];</span><br><span class="line">如果没买：dp[0][0]=0;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>有了递推公式和边界条件，代码很容易就写出来了</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * 计算最大收益</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> prices int整型一维数组 股票每一天的价格</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int整型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span> <span class="params">(<span class="type">int</span>[] prices)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">if</span>(prices == <span class="literal">null</span> || prices.length &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[prices.length][<span class="number">2</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; prices.length; i++)&#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">0</span>], dp[i-<span class="number">1</span>][<span class="number">1</span>] + prices[i]);</span><br><span class="line">            dp[i][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>], dp[i-<span class="number">1</span>][<span class="number">0</span>] - prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[prices.length - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>牛客题解-NC8二叉树路径之和</title>
+    <url>/posts/36f0890c.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个二叉树和一个值\ sum <em>s<strong>u</strong>m</em>，请找出所有的根节点到叶子节点的节点值之和等于\ sum <em>s<strong>u</strong>m</em> 的路径，<br>例如：<br>给出如下的二叉树，\ sum&#x3D;22 <em>s<strong>u</strong>m</em>&#x3D;22，</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326221631.png"></p>
+<p>返回<br>[<br>[5,4,11,2],<br>[5,8,9]<br>]</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[]</span><br></pre></td></tr></table></figure>
+
+<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">2</span>]]</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326221753.png"></p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *   int val = 0;</span></span><br><span class="line"><span class="comment"> *   TreeNode left = null;</span></span><br><span class="line"><span class="comment"> *   TreeNode right = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> root TreeNode类 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> sum int整型 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int整型ArrayList&lt;ArrayList&lt;&gt;&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    ArrayList&lt;ArrayList&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;ArrayList&lt;Integer&gt;&gt;();</span><br><span class="line">    ArrayList&lt;Integer&gt; tmp = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;ArrayList&lt;Integer&gt;&gt; <span class="title function_">pathSum</span> <span class="params">(TreeNode root, <span class="type">int</span> sum)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        dfs(root, sum, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(TreeNode root, <span class="type">int</span> sum, <span class="type">int</span> cur)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        tmp.add(root.val);</span><br><span class="line">        cur += root.val;</span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="literal">null</span> &amp;&amp; root.right == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cur == sum)&#123;</span><br><span class="line">                res.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(tmp));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                dfs(root.left, sum, cur);</span><br><span class="line">                dfs(root.right, sum, cur);</span><br><span class="line">            &#125;</span><br><span class="line">            tmp.remove(tmp.size() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>树</tag>
+        <tag>dfs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>请教我学计网（一）网络结构与协议</title>
     <url>/posts/8380215d.html</url>
     <content><![CDATA[<h1 id="OSI与TCP-x2F-IP各层结构"><a href="#OSI与TCP-x2F-IP各层结构" class="headerlink" title="OSI与TCP&#x2F;IP各层结构"></a>OSI与TCP&#x2F;IP各层结构</h1><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2@latest/image/20210325104841.png" alt="avatar"></p>
@@ -943,96 +1033,6 @@
       </tags>
   </entry>
   <entry>
-    <title>牛客题解-NC134股票（无限次交易）</title>
-    <url>/posts/c81d78e6.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>假定你知道某只股票每一天价格的变动。</p>
-<p>你最多可以同时持有一只股票。但你可以无限次的交易（买进和卖出均无手续费）。</p>
-<p>请设计一个函数，计算你所能获得的最大收益。</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<p>tips：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">由于每天股票都在跌，因此不进行任何交易最优。最大收益为<span class="number">0</span>。</span><br></pre></td></tr></table></figure>
-
-<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-<p>tips：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">第一天买进，最后一天卖出最优。中间的当天买进当天卖出不影响最终结果。最大收益为<span class="number">4</span>。  </span><br><span class="line">总天数不大于<span class="number">200000</span>。保证股票每一天的价格在[<span class="number">1</span>,<span class="number">100</span>]范围内。</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">定义dp[i][0]表示第i+1天交易完之后手里没有股票的最大利润，dp[i][1]表示第i+1天交易完之后手里持有股票的最大利润。</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>当天交易完之后手里没有股票可能有两种情况，一种是当天没有进行任何交易</strong>，又因为当天手里没有股票，所以当天没有股票的利润只能取前一天手里没有股票的利润。<strong>一种是把当天手里的股票给卖了</strong>，既然能卖，说明手里是有股票的，所以这个时候当天没有股票的利润要取前一天手里有股票的利润加上当天股票能卖的价格。这两种情况我们取利润最大的即可，所以可以得到</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dp[i][0]=max(dp[i-1][0],dp[i-1][1]+prices[i]);</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>当天交易完之后手里持有股票也有两种情况，一种是当天没有任何交易</strong>，又因为当天手里持有股票，所以当天手里持有的股票其实前一天就已经持有了。<strong>还一种是当天买入了股票</strong>，当天能卖股票，说明前一天手里肯定是没有股票的，我们取这两者的最大值，所以可以得到</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dp[i][1]=max(dp[i-1][1],dp[i-1][0]-prices[i]);</span><br></pre></td></tr></table></figure>
-
-
-
-<p>动态规划的递推公式有了，那么边界条件是什么，就是第一天</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">如果买入：dp[0][1]=-prices[0];</span><br><span class="line">如果没买：dp[0][0]=0;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>有了递推公式和边界条件，代码很容易就写出来了</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * 计算最大收益</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> prices int整型一维数组 股票每一天的价格</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int整型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span> <span class="params">(<span class="type">int</span>[] prices)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">if</span>(prices == <span class="literal">null</span> || prices.length &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[prices.length][<span class="number">2</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; prices.length; i++)&#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">0</span>], dp[i-<span class="number">1</span>][<span class="number">1</span>] + prices[i]);</span><br><span class="line">            dp[i][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>], dp[i-<span class="number">1</span>][<span class="number">0</span>] - prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[prices.length - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>贪心</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC8二叉树路径之和</title>
-    <url>/posts/36f0890c.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个二叉树和一个值\ sum <em>s<strong>u</strong>m</em>，请找出所有的根节点到叶子节点的节点值之和等于\ sum <em>s<strong>u</strong>m</em> 的路径，<br>例如：<br>给出如下的二叉树，\ sum&#x3D;22 <em>s<strong>u</strong>m</em>&#x3D;22，</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326221631.png"></p>
-<p>返回<br>[<br>[5,4,11,2],<br>[5,8,9]<br>]</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[]</span><br></pre></td></tr></table></figure>
-
-<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,<span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">2</span>]]</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326221753.png"></p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *   int val = 0;</span></span><br><span class="line"><span class="comment"> *   TreeNode left = null;</span></span><br><span class="line"><span class="comment"> *   TreeNode right = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> root TreeNode类 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> sum int整型 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int整型ArrayList&lt;ArrayList&lt;&gt;&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    ArrayList&lt;ArrayList&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;ArrayList&lt;Integer&gt;&gt;();</span><br><span class="line">    ArrayList&lt;Integer&gt; tmp = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;ArrayList&lt;Integer&gt;&gt; <span class="title function_">pathSum</span> <span class="params">(TreeNode root, <span class="type">int</span> sum)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        dfs(root, sum, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(TreeNode root, <span class="type">int</span> sum, <span class="type">int</span> cur)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        tmp.add(root.val);</span><br><span class="line">        cur += root.val;</span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="literal">null</span> &amp;&amp; root.right == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cur == sum)&#123;</span><br><span class="line">                res.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(tmp));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                dfs(root.left, sum, cur);</span><br><span class="line">                dfs(root.right, sum, cur);</span><br><span class="line">            &#125;</span><br><span class="line">            tmp.remove(tmp.size() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>树</tag>
-        <tag>dfs</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>请教我学Java（一）浅析重写equals方法后必须重写hashCode方法</title>
     <url>/posts/674e848.html</url>
     <content><![CDATA[<p>根据“<strong>类是否覆盖equals()方法</strong>”，将它分为2类。</p>
@@ -1074,61 +1074,25 @@
       </tags>
   </entry>
   <entry>
-    <title>请教我学数据结构（二）红黑树</title>
-    <url>/posts/5d1e0225.html</url>
-    <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><font size = 3>
+    <title>请教我学Java（二）ConcurrentHashMap为什么是线程安全的</title>
+    <url>/posts/13e1009d.html</url>
+    <content><![CDATA[<h1 id="HashMap线程不安全"><a href="#HashMap线程不安全" class="headerlink" title="HashMap线程不安全"></a>HashMap线程不安全</h1><font size = 3>
 
-<p>红黑树是一种<strong>特殊的二叉查找树</strong>，能够通过操作实现<strong>自平衡</strong>。</p>
-<h1 id="定义和性质"><a href="#定义和性质" class="headerlink" title="定义和性质"></a>定义和性质</h1><p>（1）根节点和叶子节点都为黑色</p>
-<p>（2）红色节点的子节点都为黑色</p>
-<p>（3）任意一个节点到每一个叶子节点的路径所包含的黑色节点树相同。</p>
-<p>红黑树的自平衡通过三种操作实现：<strong>左旋</strong>、<strong>右旋</strong>和<strong>变色</strong></p>
-<p><strong>左旋</strong>：以某个结点作为支点(旋转结点)，其右子结点变为旋转结点的父结点，右子结点的左子结点变为旋转结点的右子结点，左子结点保持不变。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103419.png"></p>
-<p><strong>右旋</strong>：以某个结点作为支点(旋转结点)，其左子结点变为旋转结点的父结点，左子结点的右子结点变为旋转结点的左子结点，右子结点保持不变。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103440.png"></p>
-<p><strong>变色</strong>：结点的颜色由红变黑或由黑变红。</p>
-<h1 id="红黑树查找"><a href="#红黑树查找" class="headerlink" title="红黑树查找"></a>红黑树查找</h1><ol>
-<li><p>从根结点开始查找，把根结点设置为当前结点；</p>
-</li>
-<li><p>若当前结点为空，返回null；</p>
-</li>
-<li><p>若当前结点不为空，用当前结点的key跟查找key作比较；</p>
-</li>
-<li><p>若当前结点key等于查找key，那么该key就是查找目标，返回当前结点；</p>
-</li>
-<li><p>若当前结点key大于查找key，把当前结点的左子结点设置为当前结点，重复步骤2；</p>
-</li>
-<li><p>若当前结点key小于查找key，把当前结点的右子结点设置为当前结点，重复步骤2；</p>
-</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103534.png"></p>
-<h1 id="红黑树插入"><a href="#红黑树插入" class="headerlink" title="红黑树插入"></a>红黑树插入</h1><p>插入操作包括两部分工作：一查找插入的位置；二插入后自平衡。查找插入的父结点很简单，跟查找操作区别不大：</p>
-<ol>
-<li>从根结点开始查找；</li>
-<li>若根结点为空，那么插入结点作为根结点，结束。</li>
-<li>若根结点不为空，那么把根结点作为当前结点；</li>
-<li>若当前结点为null，返回当前结点的父结点，结束。</li>
-<li>若当前结点key等于查找key，那么该key所在结点就是插入结点，更新结点的值，结束。</li>
-<li>若当前结点key大于查找key，把当前结点的左子结点设置为当前结点，重复步骤4；</li>
-<li>若当前结点key小于查找key，把当前结点的右子结点设置为当前结点，重复步骤4；</li>
-</ol>
-<p>插入时包含以下情景</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103708.png"></p>
-<h1 id="红黑树删除"><a href="#红黑树删除" class="headerlink" title="红黑树删除"></a>红黑树删除</h1><p>红黑树的删除操作也包括两部分工作：一查找目标结点；而删除后自平衡。查找目标结点显然可以复用查找操作，当不存在目标结点时，忽略本次操作；当存在目标结点时，删除后就得做自平衡处理了。删除了结点后我们还需要找结点来替代删除结点的位置，不然子树跟父辈结点断开了，除非删除结点刚好没子结点，那么就不需要替代。</p>
-<p>二叉树删除结点找替代结点有3种情情景：</p>
-<ul>
-<li>情景1：若删除结点无子结点，直接删除</li>
-<li>情景2：若删除结点只有一个子结点，用子结点替换删除结点</li>
-<li>情景3：若删除结点有两个子结点，用后继结点（大于删除结点的最小结点）替换删除结点</li>
-</ul>
+<p>HashMap在扩容的时候会调用resize（）方法，这样的并发操作容易在一个桶上形成环形链表。当获取一个不存在的key时，计算出的index正好时环形链表的下标时就会出现如下的死循环。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191153.png"></p>
+<h1 id="ConcurrentHashMap线程安全"><a href="#ConcurrentHashMap线程安全" class="headerlink" title="ConcurrentHashMap线程安全"></a>ConcurrentHashMap线程安全</h1><p>引入了如下的Segment数组</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191307.png"></p>
+<p>其中的核心数据，例如value和链表都是由volatile修饰的，保证了数据的可见性。</p>
+<p>原理上来说：ConcurrentHashMap 采用了分段锁技术，其中 Segment 继承于 ReentrantLock。不会像 HashTable 那样不管是 put 还是 get 操作都需要做同步处理，理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量)的线程并发。每当一个线程占用锁访问一个 Segment 时，不会影响到其他的 Segment。</p>
+<p>jdk1.8抛弃了原有的segment锁，而使用CAS(Compare ans Swap) + synchronized的方式实现。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191607.png"></p>
 ]]></content>
       <categories>
-        <category>数据结构</category>
+        <category>Java</category>
       </categories>
       <tags>
-        <tag>红黑树</tag>
-        <tag>二叉查找树</tag>
+        <tag>Java</tag>
+        <tag>HashMap</tag>
       </tags>
   </entry>
   <entry>
@@ -1228,6 +1192,64 @@
       </tags>
   </entry>
   <entry>
+    <title>请教我学数据结构（二）红黑树</title>
+    <url>/posts/5d1e0225.html</url>
+    <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><font size = 3>
+
+<p>红黑树是一种<strong>特殊的二叉查找树</strong>，能够通过操作实现<strong>自平衡</strong>。</p>
+<h1 id="定义和性质"><a href="#定义和性质" class="headerlink" title="定义和性质"></a>定义和性质</h1><p>（1）根节点和叶子节点都为黑色</p>
+<p>（2）红色节点的子节点都为黑色</p>
+<p>（3）任意一个节点到每一个叶子节点的路径所包含的黑色节点树相同。</p>
+<p>红黑树的自平衡通过三种操作实现：<strong>左旋</strong>、<strong>右旋</strong>和<strong>变色</strong></p>
+<p><strong>左旋</strong>：以某个结点作为支点(旋转结点)，其右子结点变为旋转结点的父结点，右子结点的左子结点变为旋转结点的右子结点，左子结点保持不变。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103419.png"></p>
+<p><strong>右旋</strong>：以某个结点作为支点(旋转结点)，其左子结点变为旋转结点的父结点，左子结点的右子结点变为旋转结点的左子结点，右子结点保持不变。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103440.png"></p>
+<p><strong>变色</strong>：结点的颜色由红变黑或由黑变红。</p>
+<h1 id="红黑树查找"><a href="#红黑树查找" class="headerlink" title="红黑树查找"></a>红黑树查找</h1><ol>
+<li><p>从根结点开始查找，把根结点设置为当前结点；</p>
+</li>
+<li><p>若当前结点为空，返回null；</p>
+</li>
+<li><p>若当前结点不为空，用当前结点的key跟查找key作比较；</p>
+</li>
+<li><p>若当前结点key等于查找key，那么该key就是查找目标，返回当前结点；</p>
+</li>
+<li><p>若当前结点key大于查找key，把当前结点的左子结点设置为当前结点，重复步骤2；</p>
+</li>
+<li><p>若当前结点key小于查找key，把当前结点的右子结点设置为当前结点，重复步骤2；</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103534.png"></p>
+<h1 id="红黑树插入"><a href="#红黑树插入" class="headerlink" title="红黑树插入"></a>红黑树插入</h1><p>插入操作包括两部分工作：一查找插入的位置；二插入后自平衡。查找插入的父结点很简单，跟查找操作区别不大：</p>
+<ol>
+<li>从根结点开始查找；</li>
+<li>若根结点为空，那么插入结点作为根结点，结束。</li>
+<li>若根结点不为空，那么把根结点作为当前结点；</li>
+<li>若当前结点为null，返回当前结点的父结点，结束。</li>
+<li>若当前结点key等于查找key，那么该key所在结点就是插入结点，更新结点的值，结束。</li>
+<li>若当前结点key大于查找key，把当前结点的左子结点设置为当前结点，重复步骤4；</li>
+<li>若当前结点key小于查找key，把当前结点的右子结点设置为当前结点，重复步骤4；</li>
+</ol>
+<p>插入时包含以下情景</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103708.png"></p>
+<h1 id="红黑树删除"><a href="#红黑树删除" class="headerlink" title="红黑树删除"></a>红黑树删除</h1><p>红黑树的删除操作也包括两部分工作：一查找目标结点；而删除后自平衡。查找目标结点显然可以复用查找操作，当不存在目标结点时，忽略本次操作；当存在目标结点时，删除后就得做自平衡处理了。删除了结点后我们还需要找结点来替代删除结点的位置，不然子树跟父辈结点断开了，除非删除结点刚好没子结点，那么就不需要替代。</p>
+<p>二叉树删除结点找替代结点有3种情情景：</p>
+<ul>
+<li>情景1：若删除结点无子结点，直接删除</li>
+<li>情景2：若删除结点只有一个子结点，用子结点替换删除结点</li>
+<li>情景3：若删除结点有两个子结点，用后继结点（大于删除结点的最小结点）替换删除结点</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>红黑树</tag>
+        <tag>二叉查找树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>请教我学计网（二）HTTP协议相关</title>
     <url>/posts/33157a3.html</url>
     <content><![CDATA[<h1 id="浏览器输入url-gt-gt-显示主页的过程"><a href="#浏览器输入url-gt-gt-显示主页的过程" class="headerlink" title="浏览器输入url-&gt;&gt;显示主页的过程"></a>浏览器输入url-&gt;&gt;显示主页的过程</h1><h1 id="浏览器输入url-gt-gt-显示主页的过程-1"><a href="#浏览器输入url-gt-gt-显示主页的过程-1" class="headerlink" title="浏览器输入url-&gt;&gt;显示主页的过程"></a>浏览器输入url-&gt;&gt;显示主页的过程</h1><h2 id="大致过程："><a href="#大致过程：" class="headerlink" title="大致过程："></a>大致过程：</h2><ol>
@@ -1280,25 +1302,222 @@
       </tags>
   </entry>
   <entry>
-    <title>请教我学Java（二）ConcurrentHashMap为什么是线程安全的</title>
-    <url>/posts/13e1009d.html</url>
-    <content><![CDATA[<h1 id="HashMap线程不安全"><a href="#HashMap线程不安全" class="headerlink" title="HashMap线程不安全"></a>HashMap线程不安全</h1><font size = 3>
+    <title>请教我学MySQL（一）索引</title>
+    <url>/posts/7f61fc79.html</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>数据库索引的原理：数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 BTree 及其变种 B+Tree。</p>
+<p>一般情况下,在没有建立索引的时候, mysql 需要扫描全表及扫描 10W 条数据找这条数据,如果我在 nickname 上建立索引,那么mysql只需要扫描一行数据及为我们找到这条 nickname&#x3D;’css’ 的数据,是不是感觉性能提升了好多咧….</p>
+<p>mysql 的索引分为 单例索引（主键索引、唯一索引、普通索引）和 组合索引。</p>
+<ul>
+<li>单例索引：一个索引只包含一个列，一个表可以有多个单例索引。</li>
+<li>组合索引：一个组合索引包含两个或两个以上的列。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE TABLE `award` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &#x27;用户id&#x27;,</span><br><span class="line">  `aty_id` varchar(100) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;活动场景id&#x27;,</span><br><span class="line">  `nickname` varchar(12) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;用户昵称&#x27;,</span><br><span class="line">  `is_awarded` tinyint(1) NOT NULL DEFAULT 0 COMMENT &#x27;用户是否领奖&#x27;,</span><br><span class="line">  `award_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;领奖时间&#x27;,</span><br><span class="line">  `account` varchar(12) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;帐号&#x27;,</span><br><span class="line">  `password` char(32) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;密码&#x27;,</span><br><span class="line">  `message` varchar(255) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;获奖信息&#x27;,</span><br><span class="line">  `created_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;创建时间&#x27;,</span><br><span class="line">  `updated_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;更新时间&#x27;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line"> ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=&#x27;获奖信息表&#x27;;</span><br><span class="line"> </span><br><span class="line"> INSERT INTO `award` (`nickname`, `account`, `message`, `created_time`)</span><br><span class="line"> VALUES (&#x27;rSUQFzpkDz3R&#x27;, &#x27;DYxJoqZq2rd7&#x27;, &#x27;aaabbbccccxuxuxuxuuxux&#x27;, 1449567822);</span><br></pre></td></tr></table></figure>
 
-<p>HashMap在扩容的时候会调用resize（）方法，这样的并发操作容易在一个桶上形成环形链表。当获取一个不存在的key时，计算出的index正好时环形链表的下标时就会出现如下的死循环。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191153.png"></p>
-<h1 id="ConcurrentHashMap线程安全"><a href="#ConcurrentHashMap线程安全" class="headerlink" title="ConcurrentHashMap线程安全"></a>ConcurrentHashMap线程安全</h1><p>引入了如下的Segment数组</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191307.png"></p>
-<p>其中的核心数据，例如value和链表都是由volatile修饰的，保证了数据的可见性。</p>
-<p>原理上来说：ConcurrentHashMap 采用了分段锁技术，其中 Segment 继承于 ReentrantLock。不会像 HashTable 那样不管是 put 还是 get 操作都需要做同步处理，理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量)的线程并发。每当一个线程占用锁访问一个 Segment 时，不会影响到其他的 Segment。</p>
-<p>jdk1.8抛弃了原有的segment锁，而使用CAS(Compare ans Swap) + synchronized的方式实现。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191607.png"></p>
+<h1 id="索引的创建"><a href="#索引的创建" class="headerlink" title="索引的创建"></a>索引的创建</h1><h2 id="单例索引"><a href="#单例索引" class="headerlink" title="单例索引"></a>单例索引</h2><ol>
+<li>普通索引</li>
+</ol>
+<p>是最基本的索引。</p>
+<p>其 sql 格式是 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE INDEX IndexName ON `TableName`(`字段名`(length));</span><br></pre></td></tr></table></figure>
+
+<p> # 或者</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALTER TABLE TableName ADD INDEX IndexName(`字段名`(length));</span><br></pre></td></tr></table></figure>
+
+<p>第一种方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE INDEX account_Index ON `award`(`account`);</span><br></pre></td></tr></table></figure>
+
+<p>第二种方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALTER TABLE award ADD INDEX account_Index(`account`);</span><br></pre></td></tr></table></figure>
+
+<p>如果是 CHAR , VARCHAR 类型, length 可以小于字段的实际长度,如果是BLOB和TEXT类型就必须指定长度。</p>
+<ol>
+<li>唯一索引，与普通索引类似，但是不同的是唯一索引要求所有的列的值是唯一的，这一点和主键索引一样，但是它允许有空值。</li>
+</ol>
+<p>其 sql 格式是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE UNIQUE INDEX IndexName ON `TableName`(`字段名`(length));</span><br></pre></td></tr></table></figure>
+
+<p> # 或者</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALTER TABLE TableName ADD UNIQUE (column_list); </span><br></pre></td></tr></table></figure>
+
+<p>第一种方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE UNIQUE INDEX account_UNIQUE_Index ON `award`(`account`);</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li>主键索引，不允许有空值,（在     B+Tree 中的 InnoDB 引擎中，主键索引起到了至关重要的位置）</li>
+</ol>
+<p>主键索引建立的规则是 int 优于 varchar，一般在建表的时候创建，最好是与表的其他字段不相关的列或者是业务不相关的列。一般会设为 int 而且是 AUTO_INCREMENT 自增类型的。</p>
+<h2 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h2><p>一个表中含有多个单例索引不代表是组合索引，通俗一点讲，组合索引是：包含多个字段但是只有索引名称。</p>
+<p>其 sql 格式是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE INDEX nickname_account_createdTime_Index ON `award`(`nickname`, `account`, `created_time`);</span><br></pre></td></tr></table></figure>
+
+<p>如果你建立了组合索引 (nickname_account_createdTime_Index)，那么它实际包含的是 3 个索引 (nickname) (nickname,account)(nickname,account,created_time)</p>
+<p>在使用查询的时候遵循 mysql 组合索引的 “最左前缀”，即索引 where 时的条件要按照建立索引的时候字段的排列方式。</p>
+<ol>
+<li>不按索引最左列开始查询（多列索引）     例如</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index(‘c1’, ‘c2’, ‘c3’) where c2 = &#x27;aaa&#x27; # 不使用索引</span><br><span class="line">where c2 = &#x27;aaa&#x27; and c3=&#x27;sss&#x27; # 不能使用索引</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li>查询某个列有范围查询，则其右边的所有列都无法使用查询（多列查询）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Where c1= &#x27;xxx&#x27; and c2 like &#x27;aa%&#x27; and c3=&#x27;sss&#x27;</span><br></pre></td></tr></table></figure>
+
+
+<p> # 该查询只会使用索引中的前两列,因为like是范围查询</p>
+<ol>
+<li>不能跳过某个字段来进行查询，这样利用不到索引，比如：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXPLAIN SELECT * FROM `award` WHERE nickname &gt; &#x27;rSUQFzpkDz3R&#x27; AND account = &#x27;DYxJoqZq2rd7&#x27; AND created_time = 1449567822; </span><br></pre></td></tr></table></figure>
+
+<p>因为我的索引是 (nickname, account, created_time)，如果第一个字段出现 范围符号 的查找，那么将不会用到索引，如果我是第二个或者第三个字段使用范围符号的查找，那么它会利用索引，利用的索引是 (nickname)，因为上面说了建立组合索引 (nickname, account, created_time)，会出现三个索引。</p>
+<h2 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h2><p>文本字段上（text）如果建立的是普通索引，那么只有对文本的字段内容前面的字符进行索引，其字符大小根据索引建立索引时声明的大小来规定。</p>
+<p>如果文本中出现多个一样的字符，而且需要查找的话，那么其条件只能是 where column like ‘%xxxx%’， 这样做会让索引失效</p>
+<p>这个时候全文索引就有作用了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALTER TABLE TableName ADD FULLTEXT(column1, column2);</span><br><span class="line"></span><br><span class="line">ALTER TABLE `award` ADD FULLTEXT(`message`);</span><br></pre></td></tr></table></figure>
+
+<p>有了全文索引，就可以用 SELECT 查询命令去检索那些包含着一个或多个给定单词的数据记录了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TableName WHERE MATCH(column1, column2) AGAINST(&#x27;xxx&#x27;, &#x27;sss&#x27;, &#x27;ddd&#x27;);</span><br><span class="line"></span><br><span class="line"> EXPLAIN SELECT * FROM `award` WHERE MATCH(message) AGAINST(&#x27;aaa&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>上述命令将把 column1 和 column2 字段里有 xxx、sss、和 ddd 的数据记录全部查询出来。</p>
+<h1 id="索引的删除"><a href="#索引的删除" class="headerlink" title="索引的删除"></a>索引的删除</h1><ul>
+<li>查询索引</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SHOW INDEX FROM TableName;</span><br><span class="line"></span><br><span class="line">SHOW INDEX FROM award;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>删除索引</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DROP INDEX IndexName ON `TableName`;</span><br></pre></td></tr></table></figure>
+
+<h1 id="使用索引的优点"><a href="#使用索引的优点" class="headerlink" title="使用索引的优点"></a>使用索引的优点</h1><p>1）可以通过建立唯一索引或者主键索引，保证数据库表中每一行数据的唯一性</p>
+<p>2）建立索引可以大大提高检索的数据，以及减少表的检索行数</p>
+<p>3）在表连接的连接条件，可以加速表与表直接的相连</p>
+<p>4）在分组和排序字句进行数据检索，可以减少查询时间中 分组 和 排序 所消耗的时间（数据库的记录会重新排序）</p>
+<p>5）建立索引，在查询中使用索引，可以提高性能</p>
+<h1 id="使用索引的缺点"><a href="#使用索引的缺点" class="headerlink" title="使用索引的缺点"></a>使用索引的缺点</h1><p>1）创建索引和维护索引会消耗时间，随着数据量的增加而增加</p>
+<p>2）索引文件会占用物理空间，除了数据表需要占用物理空间之外，每一个索引还会占用一定的物理空间</p>
+<p>3）当对表的数据进行 INSERT,UPDATE,DELETE 的时候,索引也要动态的维护,这样就会降低数据的维护速度,(建立索引会占用磁盘空间的索引文件。一般情况这个问题不太严重，但如果你在一个大表上创建了多种组合索引，索引文件的会膨胀很快)。</p>
+<h1 id="使用索引需要注意的地方"><a href="#使用索引需要注意的地方" class="headerlink" title="使用索引需要注意的地方"></a>使用索引需要注意的地方</h1><p>在建立索引的时候应该考虑索引该建立在数据库表中的某些列上，哪一些索引需要建立，哪一些索引是多余的，一般来说：</p>
+<p>1）在经常需要搜索的列上,可以加快索引的速度</p>
+<p>2）主键列上可以确保列的唯一性</p>
+<p>3）在表与表的连接条件上加上索引,可以加快连接查询的速度</p>
+<p>4）在经常需要排序 (order by) ,分组 (group by) 和的 distinct 列上加索引 可以加快排序查询的时间, (单独order by 用不了索引，索引考虑加where 或加limit)</p>
+<p>5）在一些 where 之后的 &lt; &lt;&#x3D; &gt; &gt;&#x3D; BETWEEN IN 以及某个情况下的like 建立字段的索引(B-TREE)</p>
+<p>6）like语句，前导模糊查询 like “%XXX” 不能使用索引，而非前导模糊查询 like “XXX%” 则可以</p>
+<p>7）索引不会包含 NULL 列,如果列中包含 NULL 值都将不会被包含在索引中,复合索引中如果有一列含有NULL值那么这个组合索引都将失效,一般需要给默认值0或者 ‘ ‘ 字符串</p>
+<p>8）使用短索引,如果你的一个字段是 Char(32) 或者 int(32) ,在创建索引的时候指定前缀长度 比如前10个字符 (前提是多数值是唯一的..)那么短索引可以提高查询速度,并且可以减少磁盘的空间,也可以减少I&#x2F;0操作.</p>
+<p>9）不要在列上进行运算,这样会使得mysql索引失效,也会进行全表扫描</p>
+<p>10）选择越小的数据类型越好,因为通常越小的数据类型通常在磁盘,内存,cpu,缓存中 占用的空间很少,处理起来更快</p>
+<h1 id="不创建索引的情况"><a href="#不创建索引的情况" class="headerlink" title="不创建索引的情况"></a>不创建索引的情况</h1><p>1）查询中很少使用到的列不应该创建索引,如果建立了索引然而还会降低mysql的性能和增大了空间需求.</p>
+<p>2）很少数据的列也不应该建立索引,比如 一个性别字段 0或者1,在查询中,结果集的数据占了表中数据行的比例比较大,mysql需要扫描的行数很多,增加索引,并不能提高效率</p>
+<p>3）定义为 text 和 image 和 bit 数据类型的列不应该增加索引</p>
+<p>4）当表的修改(UPDATE,INSERT,DELETE)操作远远大于检索(SELECT)操作时不应该创建索引,这两个操作是互斥的关系</p>
+<h1 id="MySQL的索引优化"><a href="#MySQL的索引优化" class="headerlink" title="MySQL的索引优化"></a>MySQL的索引优化</h1><ul>
+<li>负向条件不能使用索引</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order where status!=0 and status!=1</span><br><span class="line"></span><br><span class="line">not in/not exists # 都不是好习惯</span><br></pre></td></tr></table></figure>
+
+<p>可以优化为 in 查询：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order where status in(2,3)</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>前导模糊查询不能使用索引</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order where desc like &#x27;%XX&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>而非前导模糊查询则可以：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order where desc like &#x27;XX%&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>数据区分度不大的字段不宜使用索引</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where sex=1</span><br></pre></td></tr></table></figure>
+
+<p>原因：性别只有男，女，每次过滤掉的数据很少，不宜使用索引。</p>
+<p>经验上，能过滤80%数据时就可以使用索引。对于订单状态，如果状态值很少，不宜使用索引，如果状态值很多，能够过滤大量数据，则应该建立索引。</p>
+<ul>
+<li>在属性上进行计算不能命中索引</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order_ where YEAR(date) &lt;= &#x27;2017&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>即使 date 上建立了索引，也会全表扫描，可优化为值计算：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order_ where date &lt;= CURDATE()</span><br></pre></td></tr></table></figure>
+
+<p>或者：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order_ where date &lt; = &#x27;2017-01-01&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>并非周知的 SQL 实践</strong></p>
+<ul>
+<li>如果业务大部分是单条查询，使用     Hash 索引性能更好，例如用户中心</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from `user` where uid = ?</span><br><span class="line"> select from user where login_name=?</span><br></pre></td></tr></table></figure>
+
+<p>原因：B-Tree索引的时间复杂度是 O(log(n))；Hash 索引的时间复杂度是 O(1)</p>
+<ul>
+<li>允许 null的列，查询有潜在大坑</li>
+</ul>
+<p>单列索引不存 null 值，复合索引不存全为 null 的值，如果列允许为 null，可能会得到“不符合预期”的结果集</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where name != &#x27;shenjian&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>如果 name 允许为 null，索引不存储null值，结果集中不会包含这些记录。所以，请使用 not null 约束以及默认值。</p>
+<ul>
+<li>复合索引最左前缀，并不是指 SQL     语句的 where顺序要和符合索引一致。</li>
+</ul>
+<p>用户中心建立了 (login_name, password) 的符合索引</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where login_name=? and passwd=?</span><br><span class="line"> select from user where passwd=? and login_name=?</span><br></pre></td></tr></table></figure>
+
+<p>都能够命中索引</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where login_name=?</span><br></pre></td></tr></table></figure>
+
+<p>也能命中索引，满足符合索引最左前缀</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where passwd=?</span><br></pre></td></tr></table></figure>
+
+<p>不能命中索引，不满足符合索引最左前缀。</p>
+<ul>
+<li>使用 ENUM 而不是字符串</li>
+</ul>
+<p>ENUM 保存的是 TINYINT，别在枚举中搞一些“中国”“北京”“技术部”这样的字符串，字符串空间又大，效率又低。</p>
+<p><strong>小众但有用的 SQL 实践</strong></p>
+<ul>
+<li>如果明确知道只有一条结果返回，limit     1 能够提高效率</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where login_name=?</span><br></pre></td></tr></table></figure>
+
+<p>可以优化为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where login_name=? limit 1</span><br></pre></td></tr></table></figure>
+
+<p>原因：你知道只有一条结果，但数据库并不知道，明确告诉它，让它主动停止游标移动</p>
+<ul>
+<li>把计算放到业务层而不是数据库层，除了节省数据的     CPU，还有意想不到的查询缓存优化效果</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order where date &lt; = CURDATE()</span><br></pre></td></tr></table></figure>
+
+<p>这不是一个号的 SQL 实践，应该优化为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$curDate = date(&#x27;Y-m-d&#x27;);</span><br><span class="line"> $res = mysqlquery(&#x27;select from order where date &lt; = $curDate&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>原因：释放了数据库的 CPU，多次调用，传入的SQL相同，才可以利用查询缓存</p>
+<ul>
+<li>强制类型转换会全表扫描</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where phone=13800001234</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>数据库</category>
       </categories>
       <tags>
-        <tag>Java</tag>
-        <tag>HashMap</tag>
+        <tag>MySQL</tag>
+        <tag>索引</tag>
       </tags>
   </entry>
   <entry>
@@ -1530,257 +1749,6 @@
       </tags>
   </entry>
   <entry>
-    <title>请教我学MySQL（一）索引</title>
-    <url>/posts/7f61fc79.html</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>数据库索引的原理：数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 BTree 及其变种 B+Tree。</p>
-<p>一般情况下,在没有建立索引的时候, mysql 需要扫描全表及扫描 10W 条数据找这条数据,如果我在 nickname 上建立索引,那么mysql只需要扫描一行数据及为我们找到这条 nickname&#x3D;’css’ 的数据,是不是感觉性能提升了好多咧….</p>
-<p>mysql 的索引分为 单例索引（主键索引、唯一索引、普通索引）和 组合索引。</p>
-<ul>
-<li>单例索引：一个索引只包含一个列，一个表可以有多个单例索引。</li>
-<li>组合索引：一个组合索引包含两个或两个以上的列。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE TABLE `award` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &#x27;用户id&#x27;,</span><br><span class="line">  `aty_id` varchar(100) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;活动场景id&#x27;,</span><br><span class="line">  `nickname` varchar(12) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;用户昵称&#x27;,</span><br><span class="line">  `is_awarded` tinyint(1) NOT NULL DEFAULT 0 COMMENT &#x27;用户是否领奖&#x27;,</span><br><span class="line">  `award_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;领奖时间&#x27;,</span><br><span class="line">  `account` varchar(12) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;帐号&#x27;,</span><br><span class="line">  `password` char(32) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;密码&#x27;,</span><br><span class="line">  `message` varchar(255) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;获奖信息&#x27;,</span><br><span class="line">  `created_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;创建时间&#x27;,</span><br><span class="line">  `updated_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;更新时间&#x27;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line"> ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=&#x27;获奖信息表&#x27;;</span><br><span class="line"> </span><br><span class="line"> INSERT INTO `award` (`nickname`, `account`, `message`, `created_time`)</span><br><span class="line"> VALUES (&#x27;rSUQFzpkDz3R&#x27;, &#x27;DYxJoqZq2rd7&#x27;, &#x27;aaabbbccccxuxuxuxuuxux&#x27;, 1449567822);</span><br></pre></td></tr></table></figure>
-
-<h1 id="索引的创建"><a href="#索引的创建" class="headerlink" title="索引的创建"></a>索引的创建</h1><h2 id="单例索引"><a href="#单例索引" class="headerlink" title="单例索引"></a>单例索引</h2><ol>
-<li>普通索引</li>
-</ol>
-<p>是最基本的索引。</p>
-<p>其 sql 格式是 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE INDEX IndexName ON `TableName`(`字段名`(length));</span><br></pre></td></tr></table></figure>
-
-<p> # 或者</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALTER TABLE TableName ADD INDEX IndexName(`字段名`(length));</span><br></pre></td></tr></table></figure>
-
-<p>第一种方式：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE INDEX account_Index ON `award`(`account`);</span><br></pre></td></tr></table></figure>
-
-<p>第二种方式：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALTER TABLE award ADD INDEX account_Index(`account`);</span><br></pre></td></tr></table></figure>
-
-<p>如果是 CHAR , VARCHAR 类型, length 可以小于字段的实际长度,如果是BLOB和TEXT类型就必须指定长度。</p>
-<ol>
-<li>唯一索引，与普通索引类似，但是不同的是唯一索引要求所有的列的值是唯一的，这一点和主键索引一样，但是它允许有空值。</li>
-</ol>
-<p>其 sql 格式是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE UNIQUE INDEX IndexName ON `TableName`(`字段名`(length));</span><br></pre></td></tr></table></figure>
-
-<p> # 或者</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALTER TABLE TableName ADD UNIQUE (column_list); </span><br></pre></td></tr></table></figure>
-
-<p>第一种方式：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE UNIQUE INDEX account_UNIQUE_Index ON `award`(`account`);</span><br></pre></td></tr></table></figure>
-
-
-
-<ol>
-<li>主键索引，不允许有空值,（在     B+Tree 中的 InnoDB 引擎中，主键索引起到了至关重要的位置）</li>
-</ol>
-<p>主键索引建立的规则是 int 优于 varchar，一般在建表的时候创建，最好是与表的其他字段不相关的列或者是业务不相关的列。一般会设为 int 而且是 AUTO_INCREMENT 自增类型的。</p>
-<h2 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h2><p>一个表中含有多个单例索引不代表是组合索引，通俗一点讲，组合索引是：包含多个字段但是只有索引名称。</p>
-<p>其 sql 格式是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE INDEX nickname_account_createdTime_Index ON `award`(`nickname`, `account`, `created_time`);</span><br></pre></td></tr></table></figure>
-
-<p>如果你建立了组合索引 (nickname_account_createdTime_Index)，那么它实际包含的是 3 个索引 (nickname) (nickname,account)(nickname,account,created_time)</p>
-<p>在使用查询的时候遵循 mysql 组合索引的 “最左前缀”，即索引 where 时的条件要按照建立索引的时候字段的排列方式。</p>
-<ol>
-<li>不按索引最左列开始查询（多列索引）     例如</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index(‘c1’, ‘c2’, ‘c3’) where c2 = &#x27;aaa&#x27; # 不使用索引</span><br><span class="line">where c2 = &#x27;aaa&#x27; and c3=&#x27;sss&#x27; # 不能使用索引</span><br></pre></td></tr></table></figure>
-
-
-
-<ol>
-<li>查询某个列有范围查询，则其右边的所有列都无法使用查询（多列查询）</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Where c1= &#x27;xxx&#x27; and c2 like &#x27;aa%&#x27; and c3=&#x27;sss&#x27;</span><br></pre></td></tr></table></figure>
-
-
-<p> # 该查询只会使用索引中的前两列,因为like是范围查询</p>
-<ol>
-<li>不能跳过某个字段来进行查询，这样利用不到索引，比如：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXPLAIN SELECT * FROM `award` WHERE nickname &gt; &#x27;rSUQFzpkDz3R&#x27; AND account = &#x27;DYxJoqZq2rd7&#x27; AND created_time = 1449567822; </span><br></pre></td></tr></table></figure>
-
-<p>因为我的索引是 (nickname, account, created_time)，如果第一个字段出现 范围符号 的查找，那么将不会用到索引，如果我是第二个或者第三个字段使用范围符号的查找，那么它会利用索引，利用的索引是 (nickname)，因为上面说了建立组合索引 (nickname, account, created_time)，会出现三个索引。</p>
-<h2 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h2><p>文本字段上（text）如果建立的是普通索引，那么只有对文本的字段内容前面的字符进行索引，其字符大小根据索引建立索引时声明的大小来规定。</p>
-<p>如果文本中出现多个一样的字符，而且需要查找的话，那么其条件只能是 where column like ‘%xxxx%’， 这样做会让索引失效</p>
-<p>这个时候全文索引就有作用了</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALTER TABLE TableName ADD FULLTEXT(column1, column2);</span><br><span class="line"></span><br><span class="line">ALTER TABLE `award` ADD FULLTEXT(`message`);</span><br></pre></td></tr></table></figure>
-
-<p>有了全文索引，就可以用 SELECT 查询命令去检索那些包含着一个或多个给定单词的数据记录了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TableName WHERE MATCH(column1, column2) AGAINST(&#x27;xxx&#x27;, &#x27;sss&#x27;, &#x27;ddd&#x27;);</span><br><span class="line"></span><br><span class="line"> EXPLAIN SELECT * FROM `award` WHERE MATCH(message) AGAINST(&#x27;aaa&#x27;);</span><br></pre></td></tr></table></figure>
-
-<p>上述命令将把 column1 和 column2 字段里有 xxx、sss、和 ddd 的数据记录全部查询出来。</p>
-<h1 id="索引的删除"><a href="#索引的删除" class="headerlink" title="索引的删除"></a>索引的删除</h1><ul>
-<li>查询索引</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SHOW INDEX FROM TableName;</span><br><span class="line"></span><br><span class="line">SHOW INDEX FROM award;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>删除索引</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DROP INDEX IndexName ON `TableName`;</span><br></pre></td></tr></table></figure>
-
-<h1 id="使用索引的优点"><a href="#使用索引的优点" class="headerlink" title="使用索引的优点"></a>使用索引的优点</h1><p>1）可以通过建立唯一索引或者主键索引，保证数据库表中每一行数据的唯一性</p>
-<p>2）建立索引可以大大提高检索的数据，以及减少表的检索行数</p>
-<p>3）在表连接的连接条件，可以加速表与表直接的相连</p>
-<p>4）在分组和排序字句进行数据检索，可以减少查询时间中 分组 和 排序 所消耗的时间（数据库的记录会重新排序）</p>
-<p>5）建立索引，在查询中使用索引，可以提高性能</p>
-<h1 id="使用索引的缺点"><a href="#使用索引的缺点" class="headerlink" title="使用索引的缺点"></a>使用索引的缺点</h1><p>1）创建索引和维护索引会消耗时间，随着数据量的增加而增加</p>
-<p>2）索引文件会占用物理空间，除了数据表需要占用物理空间之外，每一个索引还会占用一定的物理空间</p>
-<p>3）当对表的数据进行 INSERT,UPDATE,DELETE 的时候,索引也要动态的维护,这样就会降低数据的维护速度,(建立索引会占用磁盘空间的索引文件。一般情况这个问题不太严重，但如果你在一个大表上创建了多种组合索引，索引文件的会膨胀很快)。</p>
-<h1 id="使用索引需要注意的地方"><a href="#使用索引需要注意的地方" class="headerlink" title="使用索引需要注意的地方"></a>使用索引需要注意的地方</h1><p>在建立索引的时候应该考虑索引该建立在数据库表中的某些列上，哪一些索引需要建立，哪一些索引是多余的，一般来说：</p>
-<p>1）在经常需要搜索的列上,可以加快索引的速度</p>
-<p>2）主键列上可以确保列的唯一性</p>
-<p>3）在表与表的连接条件上加上索引,可以加快连接查询的速度</p>
-<p>4）在经常需要排序 (order by) ,分组 (group by) 和的 distinct 列上加索引 可以加快排序查询的时间, (单独order by 用不了索引，索引考虑加where 或加limit)</p>
-<p>5）在一些 where 之后的 &lt; &lt;&#x3D; &gt; &gt;&#x3D; BETWEEN IN 以及某个情况下的like 建立字段的索引(B-TREE)</p>
-<p>6）like语句，前导模糊查询 like “%XXX” 不能使用索引，而非前导模糊查询 like “XXX%” 则可以</p>
-<p>7）索引不会包含 NULL 列,如果列中包含 NULL 值都将不会被包含在索引中,复合索引中如果有一列含有NULL值那么这个组合索引都将失效,一般需要给默认值0或者 ‘ ‘ 字符串</p>
-<p>8）使用短索引,如果你的一个字段是 Char(32) 或者 int(32) ,在创建索引的时候指定前缀长度 比如前10个字符 (前提是多数值是唯一的..)那么短索引可以提高查询速度,并且可以减少磁盘的空间,也可以减少I&#x2F;0操作.</p>
-<p>9）不要在列上进行运算,这样会使得mysql索引失效,也会进行全表扫描</p>
-<p>10）选择越小的数据类型越好,因为通常越小的数据类型通常在磁盘,内存,cpu,缓存中 占用的空间很少,处理起来更快</p>
-<h1 id="不创建索引的情况"><a href="#不创建索引的情况" class="headerlink" title="不创建索引的情况"></a>不创建索引的情况</h1><p>1）查询中很少使用到的列不应该创建索引,如果建立了索引然而还会降低mysql的性能和增大了空间需求.</p>
-<p>2）很少数据的列也不应该建立索引,比如 一个性别字段 0或者1,在查询中,结果集的数据占了表中数据行的比例比较大,mysql需要扫描的行数很多,增加索引,并不能提高效率</p>
-<p>3）定义为 text 和 image 和 bit 数据类型的列不应该增加索引</p>
-<p>4）当表的修改(UPDATE,INSERT,DELETE)操作远远大于检索(SELECT)操作时不应该创建索引,这两个操作是互斥的关系</p>
-<h1 id="MySQL的索引优化"><a href="#MySQL的索引优化" class="headerlink" title="MySQL的索引优化"></a>MySQL的索引优化</h1><ul>
-<li>负向条件不能使用索引</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order where status!=0 and status!=1</span><br><span class="line"></span><br><span class="line">not in/not exists # 都不是好习惯</span><br></pre></td></tr></table></figure>
-
-<p>可以优化为 in 查询：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order where status in(2,3)</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>前导模糊查询不能使用索引</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order where desc like &#x27;%XX&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>而非前导模糊查询则可以：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order where desc like &#x27;XX%&#x27;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>数据区分度不大的字段不宜使用索引</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where sex=1</span><br></pre></td></tr></table></figure>
-
-<p>原因：性别只有男，女，每次过滤掉的数据很少，不宜使用索引。</p>
-<p>经验上，能过滤80%数据时就可以使用索引。对于订单状态，如果状态值很少，不宜使用索引，如果状态值很多，能够过滤大量数据，则应该建立索引。</p>
-<ul>
-<li>在属性上进行计算不能命中索引</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order_ where YEAR(date) &lt;= &#x27;2017&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>即使 date 上建立了索引，也会全表扫描，可优化为值计算：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order_ where date &lt;= CURDATE()</span><br></pre></td></tr></table></figure>
-
-<p>或者：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order_ where date &lt; = &#x27;2017-01-01&#x27;</span><br></pre></td></tr></table></figure>
-
-<p><strong>并非周知的 SQL 实践</strong></p>
-<ul>
-<li>如果业务大部分是单条查询，使用     Hash 索引性能更好，例如用户中心</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from `user` where uid = ?</span><br><span class="line"> select from user where login_name=?</span><br></pre></td></tr></table></figure>
-
-<p>原因：B-Tree索引的时间复杂度是 O(log(n))；Hash 索引的时间复杂度是 O(1)</p>
-<ul>
-<li>允许 null的列，查询有潜在大坑</li>
-</ul>
-<p>单列索引不存 null 值，复合索引不存全为 null 的值，如果列允许为 null，可能会得到“不符合预期”的结果集</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where name != &#x27;shenjian&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>如果 name 允许为 null，索引不存储null值，结果集中不会包含这些记录。所以，请使用 not null 约束以及默认值。</p>
-<ul>
-<li>复合索引最左前缀，并不是指 SQL     语句的 where顺序要和符合索引一致。</li>
-</ul>
-<p>用户中心建立了 (login_name, password) 的符合索引</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where login_name=? and passwd=?</span><br><span class="line"> select from user where passwd=? and login_name=?</span><br></pre></td></tr></table></figure>
-
-<p>都能够命中索引</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where login_name=?</span><br></pre></td></tr></table></figure>
-
-<p>也能命中索引，满足符合索引最左前缀</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where passwd=?</span><br></pre></td></tr></table></figure>
-
-<p>不能命中索引，不满足符合索引最左前缀。</p>
-<ul>
-<li>使用 ENUM 而不是字符串</li>
-</ul>
-<p>ENUM 保存的是 TINYINT，别在枚举中搞一些“中国”“北京”“技术部”这样的字符串，字符串空间又大，效率又低。</p>
-<p><strong>小众但有用的 SQL 实践</strong></p>
-<ul>
-<li>如果明确知道只有一条结果返回，limit     1 能够提高效率</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where login_name=?</span><br></pre></td></tr></table></figure>
-
-<p>可以优化为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where login_name=? limit 1</span><br></pre></td></tr></table></figure>
-
-<p>原因：你知道只有一条结果，但数据库并不知道，明确告诉它，让它主动停止游标移动</p>
-<ul>
-<li>把计算放到业务层而不是数据库层，除了节省数据的     CPU，还有意想不到的查询缓存优化效果</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from order where date &lt; = CURDATE()</span><br></pre></td></tr></table></figure>
-
-<p>这不是一个号的 SQL 实践，应该优化为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$curDate = date(&#x27;Y-m-d&#x27;);</span><br><span class="line"> $res = mysqlquery(&#x27;select from order where date &lt; = $curDate&#x27;);</span><br></pre></td></tr></table></figure>
-
-<p>原因：释放了数据库的 CPU，多次调用，传入的SQL相同，才可以利用查询缓存</p>
-<ul>
-<li>强制类型转换会全表扫描</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select from user where phone=13800001234</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>索引</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>请教我学MySQL（一）乐观锁vs悲观锁</title>
-    <url>/posts/688743a7.html</url>
-    <content><![CDATA[<h1 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h1><font size = 3>
-
-<p>当要对数据库中的一条数据进行修改的时候，为了避免同时被其他人修改，最好的办法就是直接对该数据进行加锁以防止并发。这种借助数据库锁机制，在修改数据之前先锁定，再修改的方式被称之为悲观并发控制【Pessimistic Concurrency Control，缩写“PCC”，又名“悲观锁”】。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210330102059.png"></p>
-<p>之所以叫做悲观锁，是因为这是一种对数据的修改持有悲观态度的并发控制方式。总是<strong>假设最坏的情况</strong>，每次读取数据的时候都默认其他线程会更改数据，因此需要进行加锁操作，当其他线程想要访问数据时，都需要阻塞挂起。悲观锁的实现：</p>
-<ol>
-<li>传统的关系型数据库使用这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。</li>
-<li>Java 里面的同步 synchronized]关键字的实现。</li>
-</ol>
-<p><strong>悲观锁分为共享（读）锁和排他（写）锁</strong></p>
-<p><strong>共享锁</strong>【shared locks】又称为读锁，简称S锁。顾名思义，共享锁就是多个事务对于同一数据可以共享一把锁，都能访问到数据，但是只能读不能修改。</p>
-<p><strong>排他锁</strong>【exclusive locks】又称为写锁，简称X锁。顾名思义，排他锁就是不能与其他锁并存，如果一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁，包括共享锁和排他锁，但是获取排他锁的事务是可以对数据行读取和修改。</p>
-<h1 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h1><p>乐观锁是相对悲观锁而言的，乐观锁假设数据一般情况下不会造成冲突，所以在<strong>数据进行提交更新的时候，才会正式对数据的冲突与否进行检测</strong>，如果发现冲突了，则返回给用户错误的信息，让用户决定如何去做。乐观锁适用于读操作多的场景，这样可以提高程序的吞吐量。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210330102206.png"></p>
-<p>乐观锁机制采取了更加宽松的加锁机制。乐观锁是相对悲观锁而言，也是为了避免数据库幻读、业务处理时间过长等原因引起数据处理错误的一种机制，但乐观锁不会刻意使用数据库本身的锁机制，而是依据数据本身来保证数据的正确性。乐观锁的实现：</p>
-<ol>
-<li>CAS 实现：Java 中java.util.concurrent.atomic包下面的原子变量使用了乐观锁的一种 CAS 实现方式。</li>
-<li>版本号控制：一般是在数据表中加上一个数据版本号 version 字段，表示数据被修改的次数。当数据被修改时，version 值会+1。当线程A要更新数据值时，在读取数据的同时也会读取 version 值，在提交更新时，若刚才读取到的 version 值与当前数据库中的 version 值相等时才更新，否则重试更新操作，直到更新成功。</li>
-</ol>
-<p> 乐观并发控制相信事务之间的数据竞争(data race)的概率是比较小的，因此尽可能直接做下去，直到提交的时候才去锁定，所以不会产生任何锁和死锁。</p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>锁</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SpringMVC（一）简介</title>
     <url>/posts/678e6659.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ssm: mybatis + spring + springMVC</p>
@@ -1836,6 +1804,38 @@
       <tags>
         <tag>Spring</tag>
         <tag>MVC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>请教我学MySQL（一）乐观锁vs悲观锁</title>
+    <url>/posts/688743a7.html</url>
+    <content><![CDATA[<h1 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h1><font size = 3>
+
+<p>当要对数据库中的一条数据进行修改的时候，为了避免同时被其他人修改，最好的办法就是直接对该数据进行加锁以防止并发。这种借助数据库锁机制，在修改数据之前先锁定，再修改的方式被称之为悲观并发控制【Pessimistic Concurrency Control，缩写“PCC”，又名“悲观锁”】。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210330102059.png"></p>
+<p>之所以叫做悲观锁，是因为这是一种对数据的修改持有悲观态度的并发控制方式。总是<strong>假设最坏的情况</strong>，每次读取数据的时候都默认其他线程会更改数据，因此需要进行加锁操作，当其他线程想要访问数据时，都需要阻塞挂起。悲观锁的实现：</p>
+<ol>
+<li>传统的关系型数据库使用这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。</li>
+<li>Java 里面的同步 synchronized]关键字的实现。</li>
+</ol>
+<p><strong>悲观锁分为共享（读）锁和排他（写）锁</strong></p>
+<p><strong>共享锁</strong>【shared locks】又称为读锁，简称S锁。顾名思义，共享锁就是多个事务对于同一数据可以共享一把锁，都能访问到数据，但是只能读不能修改。</p>
+<p><strong>排他锁</strong>【exclusive locks】又称为写锁，简称X锁。顾名思义，排他锁就是不能与其他锁并存，如果一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁，包括共享锁和排他锁，但是获取排他锁的事务是可以对数据行读取和修改。</p>
+<h1 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h1><p>乐观锁是相对悲观锁而言的，乐观锁假设数据一般情况下不会造成冲突，所以在<strong>数据进行提交更新的时候，才会正式对数据的冲突与否进行检测</strong>，如果发现冲突了，则返回给用户错误的信息，让用户决定如何去做。乐观锁适用于读操作多的场景，这样可以提高程序的吞吐量。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210330102206.png"></p>
+<p>乐观锁机制采取了更加宽松的加锁机制。乐观锁是相对悲观锁而言，也是为了避免数据库幻读、业务处理时间过长等原因引起数据处理错误的一种机制，但乐观锁不会刻意使用数据库本身的锁机制，而是依据数据本身来保证数据的正确性。乐观锁的实现：</p>
+<ol>
+<li>CAS 实现：Java 中java.util.concurrent.atomic包下面的原子变量使用了乐观锁的一种 CAS 实现方式。</li>
+<li>版本号控制：一般是在数据表中加上一个数据版本号 version 字段，表示数据被修改的次数。当数据被修改时，version 值会+1。当线程A要更新数据值时，在读取数据的同时也会读取 version 值，在提交更新时，若刚才读取到的 version 值与当前数据库中的 version 值相等时才更新，否则重试更新操作，直到更新成功。</li>
+</ol>
+<p> 乐观并发控制相信事务之间的数据竞争(data race)的概率是比较小的，因此尽可能直接做下去，直到提交的时候才去锁定，所以不会产生任何锁和死锁。</p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>锁</tag>
       </tags>
   </entry>
   <entry>
@@ -1975,6 +1975,101 @@
       </tags>
   </entry>
   <entry>
+    <title>Spring(二)AOP简介与实现</title>
+    <url>/posts/d2e352f8.html</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>​    动态代理通过反射实现，是OOP（面向对象编程）的延伸。</p>
+<p>​    可以对业务逻辑的各个部分进行隔离，从而实现解耦合。</p>
+<h2 id="作用及优势"><a href="#作用及优势" class="headerlink" title="作用及优势"></a>作用及优势</h2><p>​    作用：在程序运行期间，在不修改源码的情况下对方法进行功能增强</p>
+<p>​    优势：减少重复代码，提高开发效率，并且便于维护</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110109.png"></p>
+<p>​    对单一功能进行增强，附加其它功能的思维。例如对于user的操作，不需要在每一个功能中</p>
+<p>​    写上日志控制功能，只需要在运行时将额外的日志控制功能附加到当前所运行功能上就可以了。从而实现了解耦。</p>
+<h2 id="AOP的底层实现"><a href="#AOP的底层实现" class="headerlink" title="AOP的底层实现"></a>AOP的底层实现</h2><p>​    实际上，AOP的底层是通过Spring提供的的<strong>动态代理技术</strong>实现的。在运行期间，Spring通过动态代理技术动态的生成代理对象，代理对象方法执行时进行增强功能的介入，在去调用目标对象的方法，从而完成<strong>功能的增强</strong>。</p>
+<p>​    AOP动态代理技术：</p>
+<ul>
+<li><p>JDK代理：基于接口的动态代理技术</p>
+</li>
+<li><p>cglib代理：基于父类的动态代理技术<img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110200.png"></p>
+<p>（1）JDK动态代理示例</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110228.png"></p>
+<p>（2）cglib的动态代理</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110246.png"></p>
+</li>
+</ul>
+<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li>Target(目标对象)∶代理的目标对象</li>
+<li>Proxy(代理):一个类被AOP织入增强后，就产生一个结果代理类</li>
+<li>Joinpoint(连接点)｛简单记：可以被增强的方法称为连接点｝︰所谓连接点是指那些被拦截到的点。在spring中,这些点指的是方法，因为spring只支持方法类型的连接点</li>
+<li>Pointcut(切入点)｛简单记：确定被增强的连接点｝︰所谓切入点是指我们要对哪些Joinpoint进行拦截的定义</li>
+</ul>
+<p>简单理解：我们都是学生，都有机会拿国奖，所以我们都可以看成是连接点，而最终实际拿到国奖的学生才是切入点。</p>
+<ul>
+<li>Advice (通知&#x2F;增强)︰所谓通知是指拦截到Joinpoint之后所要做的事情就是通知</li>
+<li>Aspect(切面):是切入点和通知(引介)的结合</li>
+<li>Weaving (织入)∶是指把增强应用到目标对象来创建新的代理对象的过程。spring采用动态代理织入，而Aspect采用编译期织入和类装载期织入</li>
+</ul>
+<h2 id="AOP开发过程中需要明确的事项"><a href="#AOP开发过程中需要明确的事项" class="headerlink" title="AOP开发过程中需要明确的事项"></a>AOP开发过程中需要明确的事项</h2><p>（1）需要编写的内容</p>
+<p>​    编写核心业务代码(目标类的目标方法)</p>
+<p>​    编写切面类，切面类中有通知(增强功能方法)</p>
+<p>​    在配置文件中，配置织入关系，即将哪些通知与哪些连接点进行结答</p>
+<p>（2）AOP技术实现的内容</p>
+<p>​    Spring框架监控切入点方法的执行。一旦监控到切入点方法被运行，使用代理机制，动态创建目标对象的代理对象，根据通知类别，在代理对象的对应位置，将通知对应的功能织入，完成完整的代码逻辑运行。</p>
+<p>（3）AOP底层使用哪种代理方式</p>
+<p>​    在spring中，框架会根据目标类是否实现了接口来决定采用哪种动态代理的方式。</p>
+<h2 id="知识要点与总结"><a href="#知识要点与总结" class="headerlink" title="知识要点与总结"></a>知识要点与总结</h2><ul>
+<li><p>aop:面向切面编程</p>
+</li>
+<li><p>aop底层实现:基于JDK的动态代理和基于Cglib的动态代理</p>
+</li>
+<li><p>aop的重点概念:</p>
+<p>Pointcut(切入点)∶被增强的方法</p>
+<p>Advice (通知&#x2F;增强)∶封装增强业务逻辑的方法Aspect (切面)︰切点+通知</p>
+<p>Weaving (织入)︰将切点与通知结合的过程</p>
+</li>
+<li><p>开发明确事项:</p>
+<p>谁是切点(切点表达式配置)</p>
+<p>谁是通知(切面类中的增强方法)</p>
+<p>将切点和通知进行织入配置</p>
+</li>
+</ul>
+<h1 id="三、基于XML的AOP开发"><a href="#三、基于XML的AOP开发" class="headerlink" title="三、基于XML的AOP开发"></a>三、基于XML的AOP开发</h1><ol>
+<li>快速入门（开发步骤）</li>
+</ol>
+<p>（1）导入AOP相关坐标</p>
+<p>（2）创建目标接口和目标类(内部有切点)</p>
+<p>（3）创建切面类(内部有增强方法)</p>
+<p>（4）将目标类和切面类的对象创建权交给spring</p>
+<p>（5）在applicationContext.xml中配置织入关系</p>
+<p>（6）测试代码</p>
+<ol>
+<li>XML配置AOP详解</li>
+</ol>
+<p>（1）切点表达式的写法</p>
+<p>​    语法：</p>
+<p>​    execution（[修饰符] 返回值类型 包名.类名.方法名(参数)）</p>
+<p>​    特殊标志：* . ..</p>
+<p>（2）通知种类：</p>
+<p>​    <a href="aop:before">aop:before</a>切入点方法之前执行</p>
+<p>​    <a href="aop:after-returning">aop:after-returning</a>之后执行</p>
+<p>​    <a href="aop:around">aop:around</a>之前和之后都执行</p>
+<p>&lt;    aop:throwing&gt;出现异常时执行</p>
+<p>​    <a href="aop:after">aop:after</a>无论是否有异常都执行</p>
+<h1 id="基于注解的AOP开发"><a href="#基于注解的AOP开发" class="headerlink" title="基于注解的AOP开发"></a>基于注解的AOP开发</h1><h2 id="快速入门（开发步骤）"><a href="#快速入门（开发步骤）" class="headerlink" title="快速入门（开发步骤）"></a>快速入门（开发步骤）</h2><p>（1）创建目标接口和目标类(内部有切点)</p>
+<p>（2）创建切面类(内部有增强方法)</p>
+<p>（3）将目标类和切面类的对象创建权交给spring</p>
+<p>（4）在切面类中使用注解配置织入关系</p>
+<p>（5）在配置文件中开启组件扫描和AOP的自动代理测试</p>
+<p>（6）测试</p>
+<h2 id="注解通知类型"><a href="#注解通知类型" class="headerlink" title="注解通知类型"></a>注解通知类型</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111225.png"></p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Spring(三)JDBC与事务控制</title>
     <url>/posts/91b8dde3.html</url>
     <content><![CDATA[<h1 id="Spring-JdbcTemplate基本使用"><a href="#Spring-JdbcTemplate基本使用" class="headerlink" title="Spring JdbcTemplate基本使用"></a>Spring JdbcTemplate基本使用</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    它是spring框架中提供的一个对象，是对原始繁琐的JdbcAPI对象的简单封装。spring框架为我们提供了很多的操作模板类。例如:操作关系型数据的JdbcTemplate和bernateTemplate，操作nosql数据库的RedisTemplate，操作消息队列的JmsTemplate等等。</p>
@@ -2027,6 +2122,96 @@
       </categories>
       <tags>
         <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Golang(一)特性与使用场景</title>
+    <url>/posts/47f6b3ff.html</url>
+    <content><![CDATA[<h1 id="Golang的学习方向"><a href="#Golang的学习方向" class="headerlink" title="Golang的学习方向"></a>Golang的学习方向</h1><p>当前使用的领域主要是在：</p>
+<ol>
+<li>区块链研发工程师</li>
+<li>Go服务器端 &#x2F; 游戏软件工程师</li>
+<li>Go分布式 &#x2F; 云计算软件工程师</li>
+</ol>
+<p>特性就是 既能够达到动态编译语言所具有的速度和性能，又能够达到动态编译语言在开发过程中的高效率</p>
+<p>在学习一门语言时，需要思考的细节包括：</p>
+<ol>
+<li>怎么使用更规范</li>
+<li>使用陷阱</li>
+<li>需要使用时，应该注意些什么</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Little eagle - git学习笔记</title>
+    <url>/posts/aeb37ff2.html</url>
+    <content><![CDATA[<p>​     </p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><a href="https://blog.csdn.net/qq_41328247/article/details/81868247">git、svn和cvs的主要区别</a>在于git是<strong>分布式</strong>版本控制系统，而svn和cvs则是<strong>集中式</strong>版本控制系统。集中式版本控制系统所有文件系统存放在中央服务器上，工作模式更像是一个C&#x2F;S模式，本地用户通过安装客户端来与服务器进行版本的获取与更新操作。问题是当服务器处于脱机状态时，所有用户都要停止工作。</p>
+<p>为了解决该问题，git则抛弃了这种机制，用户将所有文件包括版本信息下载到本地，提交和修改可以在本地执行，在修改确定后再与远程服务器保持同步。</p>
+<p>简单理解git是什么？</p>
+<p>git是一种<strong>开源</strong>的 <strong>分布式</strong> <strong>版本控制</strong> 工具</p>
+<h1 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h1><h2 id="Linux下安装git"><a href="#Linux下安装git" class="headerlink" title="Linux下安装git"></a>Linux下安装git</h2><p>Ubuntu10.10及以上版本、Debain squeeze及以上版本使用以下命令：</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">$ sudo aptitude install git</span><br><span class="line">$ sudo aptitude install git-doc git-svn git-email gitk //安装单独的软件依赖包</span><br></pre></td></tr></table></figure>
+
+<p>RHEL、Fedora、Centos等系统下的安装：</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">$ yum install git</span><br><span class="line">$ yum install git-svn git-email gitk //安装单独的软件依赖包</span><br></pre></td></tr></table></figure>
+
+<h2 id="Windows下安装git"><a href="#Windows下安装git" class="headerlink" title="Windows下安装git"></a>Windows下安装git</h2><p><a href="https://git-scm.com/">git官网</a>下载对应位数安装包按指引安装即可</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321143735.png"></p>
+<p>此外推荐一款Windows下git图形化操作界面软件<a href="https://tortoisegit.org/download/">TortoiseGit</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321143619.png"></p>
+<h2 id="git基本配置"><a href="#git基本配置" class="headerlink" title="git基本配置"></a>git基本配置</h2><h3 id="配置个人身份"><a href="#配置个人身份" class="headerlink" title="配置个人身份"></a>配置个人身份</h3><p>用于表示git提交记录中的个人信息,表明该提交操作人是谁</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;youname&quot;</span><br><span class="line">git config --global user.email youremail</span><br></pre></td></tr></table></figure>
+
+<h3 id="服务器的认证配置"><a href="#服务器的认证配置" class="headerlink" title="服务器的认证配置"></a>服务器的认证配置</h3><p>以下两种方式任选其一（推荐ssh协议认证方式）：</p>
+<p>（1）ssh协议认证方式</p>
+<p>以下配置以部署到github为例</p>
+<p>首先生成公钥（yue），一路回车即可</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在默认路径下找到C:\Users\UserName\.ssh\id_rsa.pub，以记事本方式打开，复制全部文本。</p>
+<p>打开github，如下</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321145626.png"></p>
+<p>title命名随意（能够让你想起来是哪台电脑的备注即可），将之前复制的全部文本粘贴到Key文本框中，点击绿色按钮Add SSH key！搞定！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321145858.png"></p>
+<p>（2）http&#x2F; https协议认证方式</p>
+<p>设置口令缓存</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
+
+<p>添加https证书信任</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config http.sslverify false</span><br></pre></td></tr></table></figure>
+
+<h1 id="git基本命令"><a href="#git基本命令" class="headerlink" title="git基本命令"></a>git基本命令</h1><h2 id="工作区与文件状态"><a href="#工作区与文件状态" class="headerlink" title="工作区与文件状态"></a>工作区与文件状态</h2><p>要理解git命令的作用，前提是搞懂<a href="https://www.cnblogs.com/qdhxhz/p/9757390.html">git工作区域的概念</a>，git一共有四个工作区域，工作区域之间的关系及指令如下:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321153000.png"></p>
+<p>此外，还要对git文件的四种状态有初步理解，分别是：</p>
+<p>Untracked：文件为加入git库，不参与版本控制，通过git add转为Staged</p>
+<p>Unmodify：已入库未修改。有两种转变方式，git rm移除版本库转为Untrackded 或者被修改转为Modified</p>
+<p>Modified：已修改。该状态下也有两种转变方式，git add进入暂存Staged状态，git check丢弃修改进入Unmodify状态</p>
+<p>Staged：暂存状态。git commit同步到库中，此时远程和本地文件一直，文件变为Unmodify状态。而如果是git reset filename取消暂存，则变为Modified状态。</p>
+<p>直观的四种状态的转变如下图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321212738.png"></p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h4 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 在当前目录新建一个Git代码库</span><br><span class="line"> git init</span><br><span class="line"># 新建一个目录，将其初始化为Git代码库</span><br><span class="line">git init [project-name]</span><br><span class="line"># 下载一个项目和它的整个代码历史</span><br><span class="line">git clone [url]</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看文件状态"><a href="#查看文件状态" class="headerlink" title="查看文件状态"></a>查看文件状态</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">#查看指定文件状态</span><br><span class="line">git status [filename]</span><br><span class="line">#查看所有文件状态</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h4 id="工作区-lt-–-gt-暂存区"><a href="#工作区-lt-–-gt-暂存区" class="headerlink" title="工作区&lt;–&gt;暂存区"></a>工作区&lt;–&gt;暂存区</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 添加指定文件到暂存区</span><br><span class="line">git add [file1] [file2] ...</span><br><span class="line"># 添加指定目录到暂存区，包括子目录</span><br><span class="line">git add [<span class="built_in">dir</span>]</span><br><span class="line"># 添加当前目录的所有文件到暂存区</span><br><span class="line">git add .</span><br><span class="line">#当我们需要删除暂存区或分支上的文件, 同时工作区也不需要这个文件了, 可以使用</span><br><span class="line">git rm file_path</span><br><span class="line">#当我们需要删除暂存区或分支上的文件, 但本地又需要使用, 这个时候直接push那边这个文件就没有，如果push之前重新add那么还是会有。</span><br><span class="line">git rm --cached file_path</span><br><span class="line">#直接加文件名   从暂存区将文件恢复到工作区，如果工作区已经有该文件，则会选择覆盖</span><br><span class="line">#加了【分支名】 +文件名  则表示从分支名为所写的分支名中拉取文件 并覆盖工作区里的文件</span><br><span class="line">git checkout</span><br></pre></td></tr></table></figure>
+
+<h4 id="工作区-lt-–-gt-资源库（版本库）"><a href="#工作区-lt-–-gt-资源库（版本库）" class="headerlink" title="工作区&lt;–&gt;资源库（版本库）"></a>工作区&lt;–&gt;资源库（版本库）</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">#将暂存区--&gt;资源库（版本库）</span><br><span class="line">git commit -m &#x27;该次提交说明&#x27;</span><br><span class="line">#如果出现:将不必要的文件commit 或者 上次提交觉得是错的  或者 不想改变暂存区内容，只是想调整提交的信息</span><br><span class="line">#移除不必要的添加到暂存区的文件</span><br><span class="line">git reset HEAD 文件名</span><br><span class="line">#去掉上一次的提交（会直接变成add之前状态）   </span><br><span class="line">git reset HEAD^ </span><br><span class="line">#去掉上一次的提交（变成add之后，commit之前状态） </span><br><span class="line">git reset --soft  HEAD^ </span><br></pre></td></tr></table></figure>
+
+<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 取回远程仓库的变化，并与本地分支合并</span><br><span class="line">git pull</span><br><span class="line"># 上传本地指定分支到远程仓库</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<h4 id="其它常用命令"><a href="#其它常用命令" class="headerlink" title="其它常用命令"></a>其它常用命令</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 显示当前的Git配置</span><br><span class="line">git config --list</span><br><span class="line"># 编辑Git配置文件</span><br><span class="line">git config -e [--global]</span><br><span class="line">#初次commit之前，需要配置用户邮箱及用户名，使用以下命令：</span><br><span class="line">git config --global user.email &quot;you@example.com&quot;</span><br><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">#调出Git的帮助文档</span><br><span class="line">git --<span class="built_in">help</span></span><br><span class="line">#查看某个具体命令的帮助文档</span><br><span class="line">git +命令 --<span class="built_in">help</span></span><br><span class="line">#查看git的版本</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Little eagle</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -2182,191 +2367,6 @@
       <tags>
         <tag>Java</tag>
         <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring(二)AOP简介与实现</title>
-    <url>/posts/d2e352f8.html</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>​    动态代理通过反射实现，是OOP（面向对象编程）的延伸。</p>
-<p>​    可以对业务逻辑的各个部分进行隔离，从而实现解耦合。</p>
-<h2 id="作用及优势"><a href="#作用及优势" class="headerlink" title="作用及优势"></a>作用及优势</h2><p>​    作用：在程序运行期间，在不修改源码的情况下对方法进行功能增强</p>
-<p>​    优势：减少重复代码，提高开发效率，并且便于维护</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110109.png"></p>
-<p>​    对单一功能进行增强，附加其它功能的思维。例如对于user的操作，不需要在每一个功能中</p>
-<p>​    写上日志控制功能，只需要在运行时将额外的日志控制功能附加到当前所运行功能上就可以了。从而实现了解耦。</p>
-<h2 id="AOP的底层实现"><a href="#AOP的底层实现" class="headerlink" title="AOP的底层实现"></a>AOP的底层实现</h2><p>​    实际上，AOP的底层是通过Spring提供的的<strong>动态代理技术</strong>实现的。在运行期间，Spring通过动态代理技术动态的生成代理对象，代理对象方法执行时进行增强功能的介入，在去调用目标对象的方法，从而完成<strong>功能的增强</strong>。</p>
-<p>​    AOP动态代理技术：</p>
-<ul>
-<li><p>JDK代理：基于接口的动态代理技术</p>
-</li>
-<li><p>cglib代理：基于父类的动态代理技术<img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110200.png"></p>
-<p>（1）JDK动态代理示例</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110228.png"></p>
-<p>（2）cglib的动态代理</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110246.png"></p>
-</li>
-</ul>
-<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
-<li>Target(目标对象)∶代理的目标对象</li>
-<li>Proxy(代理):一个类被AOP织入增强后，就产生一个结果代理类</li>
-<li>Joinpoint(连接点)｛简单记：可以被增强的方法称为连接点｝︰所谓连接点是指那些被拦截到的点。在spring中,这些点指的是方法，因为spring只支持方法类型的连接点</li>
-<li>Pointcut(切入点)｛简单记：确定被增强的连接点｝︰所谓切入点是指我们要对哪些Joinpoint进行拦截的定义</li>
-</ul>
-<p>简单理解：我们都是学生，都有机会拿国奖，所以我们都可以看成是连接点，而最终实际拿到国奖的学生才是切入点。</p>
-<ul>
-<li>Advice (通知&#x2F;增强)︰所谓通知是指拦截到Joinpoint之后所要做的事情就是通知</li>
-<li>Aspect(切面):是切入点和通知(引介)的结合</li>
-<li>Weaving (织入)∶是指把增强应用到目标对象来创建新的代理对象的过程。spring采用动态代理织入，而Aspect采用编译期织入和类装载期织入</li>
-</ul>
-<h2 id="AOP开发过程中需要明确的事项"><a href="#AOP开发过程中需要明确的事项" class="headerlink" title="AOP开发过程中需要明确的事项"></a>AOP开发过程中需要明确的事项</h2><p>（1）需要编写的内容</p>
-<p>​    编写核心业务代码(目标类的目标方法)</p>
-<p>​    编写切面类，切面类中有通知(增强功能方法)</p>
-<p>​    在配置文件中，配置织入关系，即将哪些通知与哪些连接点进行结答</p>
-<p>（2）AOP技术实现的内容</p>
-<p>​    Spring框架监控切入点方法的执行。一旦监控到切入点方法被运行，使用代理机制，动态创建目标对象的代理对象，根据通知类别，在代理对象的对应位置，将通知对应的功能织入，完成完整的代码逻辑运行。</p>
-<p>（3）AOP底层使用哪种代理方式</p>
-<p>​    在spring中，框架会根据目标类是否实现了接口来决定采用哪种动态代理的方式。</p>
-<h2 id="知识要点与总结"><a href="#知识要点与总结" class="headerlink" title="知识要点与总结"></a>知识要点与总结</h2><ul>
-<li><p>aop:面向切面编程</p>
-</li>
-<li><p>aop底层实现:基于JDK的动态代理和基于Cglib的动态代理</p>
-</li>
-<li><p>aop的重点概念:</p>
-<p>Pointcut(切入点)∶被增强的方法</p>
-<p>Advice (通知&#x2F;增强)∶封装增强业务逻辑的方法Aspect (切面)︰切点+通知</p>
-<p>Weaving (织入)︰将切点与通知结合的过程</p>
-</li>
-<li><p>开发明确事项:</p>
-<p>谁是切点(切点表达式配置)</p>
-<p>谁是通知(切面类中的增强方法)</p>
-<p>将切点和通知进行织入配置</p>
-</li>
-</ul>
-<h1 id="三、基于XML的AOP开发"><a href="#三、基于XML的AOP开发" class="headerlink" title="三、基于XML的AOP开发"></a>三、基于XML的AOP开发</h1><ol>
-<li>快速入门（开发步骤）</li>
-</ol>
-<p>（1）导入AOP相关坐标</p>
-<p>（2）创建目标接口和目标类(内部有切点)</p>
-<p>（3）创建切面类(内部有增强方法)</p>
-<p>（4）将目标类和切面类的对象创建权交给spring</p>
-<p>（5）在applicationContext.xml中配置织入关系</p>
-<p>（6）测试代码</p>
-<ol>
-<li>XML配置AOP详解</li>
-</ol>
-<p>（1）切点表达式的写法</p>
-<p>​    语法：</p>
-<p>​    execution（[修饰符] 返回值类型 包名.类名.方法名(参数)）</p>
-<p>​    特殊标志：* . ..</p>
-<p>（2）通知种类：</p>
-<p>​    <a href="aop:before">aop:before</a>切入点方法之前执行</p>
-<p>​    <a href="aop:after-returning">aop:after-returning</a>之后执行</p>
-<p>​    <a href="aop:around">aop:around</a>之前和之后都执行</p>
-<p>&lt;    aop:throwing&gt;出现异常时执行</p>
-<p>​    <a href="aop:after">aop:after</a>无论是否有异常都执行</p>
-<h1 id="基于注解的AOP开发"><a href="#基于注解的AOP开发" class="headerlink" title="基于注解的AOP开发"></a>基于注解的AOP开发</h1><h2 id="快速入门（开发步骤）"><a href="#快速入门（开发步骤）" class="headerlink" title="快速入门（开发步骤）"></a>快速入门（开发步骤）</h2><p>（1）创建目标接口和目标类(内部有切点)</p>
-<p>（2）创建切面类(内部有增强方法)</p>
-<p>（3）将目标类和切面类的对象创建权交给spring</p>
-<p>（4）在切面类中使用注解配置织入关系</p>
-<p>（5）在配置文件中开启组件扫描和AOP的自动代理测试</p>
-<p>（6）测试</p>
-<h2 id="注解通知类型"><a href="#注解通知类型" class="headerlink" title="注解通知类型"></a>注解通知类型</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111225.png"></p>
-]]></content>
-      <categories>
-        <category>Spring</category>
-      </categories>
-      <tags>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Golang(一)特性与使用场景</title>
-    <url>/posts/47f6b3ff.html</url>
-    <content><![CDATA[<h1 id="Golang的学习方向"><a href="#Golang的学习方向" class="headerlink" title="Golang的学习方向"></a>Golang的学习方向</h1><p>当前使用的领域主要是在：</p>
-<ol>
-<li>区块链研发工程师</li>
-<li>Go服务器端 &#x2F; 游戏软件工程师</li>
-<li>Go分布式 &#x2F; 云计算软件工程师</li>
-</ol>
-<p>特性就是 既能够达到动态编译语言所具有的速度和性能，又能够达到动态编译语言在开发过程中的高效率</p>
-<p>在学习一门语言时，需要思考的细节包括：</p>
-<ol>
-<li>怎么使用更规范</li>
-<li>使用陷阱</li>
-<li>需要使用时，应该注意些什么</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-      <tags>
-        <tag>Golang</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Little eagle - git学习笔记</title>
-    <url>/posts/aeb37ff2.html</url>
-    <content><![CDATA[<p>​     </p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><a href="https://blog.csdn.net/qq_41328247/article/details/81868247">git、svn和cvs的主要区别</a>在于git是<strong>分布式</strong>版本控制系统，而svn和cvs则是<strong>集中式</strong>版本控制系统。集中式版本控制系统所有文件系统存放在中央服务器上，工作模式更像是一个C&#x2F;S模式，本地用户通过安装客户端来与服务器进行版本的获取与更新操作。问题是当服务器处于脱机状态时，所有用户都要停止工作。</p>
-<p>为了解决该问题，git则抛弃了这种机制，用户将所有文件包括版本信息下载到本地，提交和修改可以在本地执行，在修改确定后再与远程服务器保持同步。</p>
-<p>简单理解git是什么？</p>
-<p>git是一种<strong>开源</strong>的 <strong>分布式</strong> <strong>版本控制</strong> 工具</p>
-<h1 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h1><h2 id="Linux下安装git"><a href="#Linux下安装git" class="headerlink" title="Linux下安装git"></a>Linux下安装git</h2><p>Ubuntu10.10及以上版本、Debain squeeze及以上版本使用以下命令：</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">$ sudo aptitude install git</span><br><span class="line">$ sudo aptitude install git-doc git-svn git-email gitk //安装单独的软件依赖包</span><br></pre></td></tr></table></figure>
-
-<p>RHEL、Fedora、Centos等系统下的安装：</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">$ yum install git</span><br><span class="line">$ yum install git-svn git-email gitk //安装单独的软件依赖包</span><br></pre></td></tr></table></figure>
-
-<h2 id="Windows下安装git"><a href="#Windows下安装git" class="headerlink" title="Windows下安装git"></a>Windows下安装git</h2><p><a href="https://git-scm.com/">git官网</a>下载对应位数安装包按指引安装即可</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321143735.png"></p>
-<p>此外推荐一款Windows下git图形化操作界面软件<a href="https://tortoisegit.org/download/">TortoiseGit</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321143619.png"></p>
-<h2 id="git基本配置"><a href="#git基本配置" class="headerlink" title="git基本配置"></a>git基本配置</h2><h3 id="配置个人身份"><a href="#配置个人身份" class="headerlink" title="配置个人身份"></a>配置个人身份</h3><p>用于表示git提交记录中的个人信息,表明该提交操作人是谁</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;youname&quot;</span><br><span class="line">git config --global user.email youremail</span><br></pre></td></tr></table></figure>
-
-<h3 id="服务器的认证配置"><a href="#服务器的认证配置" class="headerlink" title="服务器的认证配置"></a>服务器的认证配置</h3><p>以下两种方式任选其一（推荐ssh协议认证方式）：</p>
-<p>（1）ssh协议认证方式</p>
-<p>以下配置以部署到github为例</p>
-<p>首先生成公钥（yue），一路回车即可</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
-
-<p>在默认路径下找到C:\Users\UserName\.ssh\id_rsa.pub，以记事本方式打开，复制全部文本。</p>
-<p>打开github，如下</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321145626.png"></p>
-<p>title命名随意（能够让你想起来是哪台电脑的备注即可），将之前复制的全部文本粘贴到Key文本框中，点击绿色按钮Add SSH key！搞定！</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321145858.png"></p>
-<p>（2）http&#x2F; https协议认证方式</p>
-<p>设置口令缓存</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
-
-<p>添加https证书信任</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config http.sslverify false</span><br></pre></td></tr></table></figure>
-
-<h1 id="git基本命令"><a href="#git基本命令" class="headerlink" title="git基本命令"></a>git基本命令</h1><h2 id="工作区与文件状态"><a href="#工作区与文件状态" class="headerlink" title="工作区与文件状态"></a>工作区与文件状态</h2><p>要理解git命令的作用，前提是搞懂<a href="https://www.cnblogs.com/qdhxhz/p/9757390.html">git工作区域的概念</a>，git一共有四个工作区域，工作区域之间的关系及指令如下:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321153000.png"></p>
-<p>此外，还要对git文件的四种状态有初步理解，分别是：</p>
-<p>Untracked：文件为加入git库，不参与版本控制，通过git add转为Staged</p>
-<p>Unmodify：已入库未修改。有两种转变方式，git rm移除版本库转为Untrackded 或者被修改转为Modified</p>
-<p>Modified：已修改。该状态下也有两种转变方式，git add进入暂存Staged状态，git check丢弃修改进入Unmodify状态</p>
-<p>Staged：暂存状态。git commit同步到库中，此时远程和本地文件一直，文件变为Unmodify状态。而如果是git reset filename取消暂存，则变为Modified状态。</p>
-<p>直观的四种状态的转变如下图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220321212738.png"></p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h4 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 在当前目录新建一个Git代码库</span><br><span class="line"> git init</span><br><span class="line"># 新建一个目录，将其初始化为Git代码库</span><br><span class="line">git init [project-name]</span><br><span class="line"># 下载一个项目和它的整个代码历史</span><br><span class="line">git clone [url]</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看文件状态"><a href="#查看文件状态" class="headerlink" title="查看文件状态"></a>查看文件状态</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">#查看指定文件状态</span><br><span class="line">git status [filename]</span><br><span class="line">#查看所有文件状态</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
-
-<h4 id="工作区-lt-–-gt-暂存区"><a href="#工作区-lt-–-gt-暂存区" class="headerlink" title="工作区&lt;–&gt;暂存区"></a>工作区&lt;–&gt;暂存区</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 添加指定文件到暂存区</span><br><span class="line">git add [file1] [file2] ...</span><br><span class="line"># 添加指定目录到暂存区，包括子目录</span><br><span class="line">git add [<span class="built_in">dir</span>]</span><br><span class="line"># 添加当前目录的所有文件到暂存区</span><br><span class="line">git add .</span><br><span class="line">#当我们需要删除暂存区或分支上的文件, 同时工作区也不需要这个文件了, 可以使用</span><br><span class="line">git rm file_path</span><br><span class="line">#当我们需要删除暂存区或分支上的文件, 但本地又需要使用, 这个时候直接push那边这个文件就没有，如果push之前重新add那么还是会有。</span><br><span class="line">git rm --cached file_path</span><br><span class="line">#直接加文件名   从暂存区将文件恢复到工作区，如果工作区已经有该文件，则会选择覆盖</span><br><span class="line">#加了【分支名】 +文件名  则表示从分支名为所写的分支名中拉取文件 并覆盖工作区里的文件</span><br><span class="line">git checkout</span><br></pre></td></tr></table></figure>
-
-<h4 id="工作区-lt-–-gt-资源库（版本库）"><a href="#工作区-lt-–-gt-资源库（版本库）" class="headerlink" title="工作区&lt;–&gt;资源库（版本库）"></a>工作区&lt;–&gt;资源库（版本库）</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">#将暂存区--&gt;资源库（版本库）</span><br><span class="line">git commit -m &#x27;该次提交说明&#x27;</span><br><span class="line">#如果出现:将不必要的文件commit 或者 上次提交觉得是错的  或者 不想改变暂存区内容，只是想调整提交的信息</span><br><span class="line">#移除不必要的添加到暂存区的文件</span><br><span class="line">git reset HEAD 文件名</span><br><span class="line">#去掉上一次的提交（会直接变成add之前状态）   </span><br><span class="line">git reset HEAD^ </span><br><span class="line">#去掉上一次的提交（变成add之后，commit之前状态） </span><br><span class="line">git reset --soft  HEAD^ </span><br></pre></td></tr></table></figure>
-
-<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 取回远程仓库的变化，并与本地分支合并</span><br><span class="line">git pull</span><br><span class="line"># 上传本地指定分支到远程仓库</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<h4 id="其它常用命令"><a href="#其它常用命令" class="headerlink" title="其它常用命令"></a>其它常用命令</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 显示当前的Git配置</span><br><span class="line">git config --list</span><br><span class="line"># 编辑Git配置文件</span><br><span class="line">git config -e [--global]</span><br><span class="line">#初次commit之前，需要配置用户邮箱及用户名，使用以下命令：</span><br><span class="line">git config --global user.email &quot;you@example.com&quot;</span><br><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">#调出Git的帮助文档</span><br><span class="line">git --<span class="built_in">help</span></span><br><span class="line">#查看某个具体命令的帮助文档</span><br><span class="line">git +命令 --<span class="built_in">help</span></span><br><span class="line">#查看git的版本</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Little eagle</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
