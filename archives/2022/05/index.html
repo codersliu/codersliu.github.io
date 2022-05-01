@@ -22,32 +22,25 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="题目给定一个m x n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。 示例1输入： 1[[1,2,3],[4,5,6],[7,8,9]]  输出： 1[1,2,3,6,9,8,7,4,5]    思路分析">
-<meta property="og:type" content="article">
-<meta property="og:title" content="牛客题解-NC38螺旋矩阵">
-<meta property="og:url" content="http://example.com/posts/36804329.html">
+    <meta name="description" content="We meansure the future">
+<meta property="og:type" content="website">
+<meta property="og:title" content="请教我kao代码">
+<meta property="og:url" content="http://example.com/archives/2022/05/index.html">
 <meta property="og:site_name" content="请教我kao代码">
-<meta property="og:description" content="题目给定一个m x n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。 示例1输入： 1[[1,2,3],[4,5,6],[7,8,9]]  输出： 1[1,2,3,6,9,8,7,4,5]    思路分析">
+<meta property="og:description" content="We meansure the future">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212049.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212338.png">
-<meta property="article:published_time" content="2020-06-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-18T01:43:10.193Z">
 <meta property="article:author" content="Shun Liu">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212049.png">
 
 
-<link rel="canonical" href="http://example.com/posts/36804329.html">
+<link rel="canonical" href="http://example.com/archives/2022/05/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/36804329.html","path":"posts/36804329.html","title":"牛客题解-NC38螺旋矩阵"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2022/05/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>牛客题解-NC38螺旋矩阵 | 请教我kao代码</title>
+<title>归档 | 请教我kao代码</title>
   
 
 
@@ -80,7 +73,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">请教我kao代码</p>
+      <h1 class="site-title">请教我kao代码</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Knowledge gives us ways to survive the destruction until the rebirth arrives</p>
@@ -140,7 +133,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -153,7 +146,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B1"><span class="nav-number">1.1.</span> <span class="nav-text">示例1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">2.1.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -263,157 +255,51 @@
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner archive posts-collapse">
 
 
   
-
-
-<div class="post-block">
   
   
+  <div class="post-block">
+    <div class="post-content">
+      <div class="collection-title">
+        
+        <span class="collection-header">还行! 目前共计 48 篇日志。 继续努力。</span>
+      </div>
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/36804329.html">
+      
+    <div class="collection-year">
+      <span class="collection-header">2022</span>
+    </div>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Shun Liu">
-    </span>
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2022-05-01T00:00:00+08:00"
+              content="2022-05-01">
+          05-01
+        </time>
+      </div>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="请教我kao代码">
-      <meta itemprop="description" content="We meansure the future">
-    </span>
+      <div class="post-title">
+          <a class="post-title-link" href="/posts/35413.html" itemprop="url">
+            <span itemprop="name">Little eagle - SpringBoot实战管理系统(五)redis</span>
+          </a>
+      </div>
 
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="牛客题解-NC38螺旋矩阵 | 请教我kao代码">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          牛客题解-NC38螺旋矩阵
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-07-01 00:00:00" itemprop="dateCreated datePublished" datetime="2020-07-01T00:00:00+08:00">2020-07-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-18 09:43:10" itemprop="dateModified" datetime="2022-03-18T09:43:10+08:00">2022-03-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%89%9B%E5%AE%A2%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">牛客题解</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个m x n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212049.png"></p>
-<p>分别需要实现四个遍历：</p>
-<p>左→右</p>
-<p>上→下</p>
-<p>右→左</p>
-<p>下→上</p>
-<p>需要特别注意的是不要遍历重复数据。left、right、top、bottom的指针变化方式尤为重要。</p>
-<p>另外还要注意限制条件top！&#x3D; bottom 和 left！&#x3D; right</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212338.png"></p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = matrix[<span class="number">0</span>].length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">top</span> <span class="operator">=</span> <span class="number">0</span>, bottom = matrix.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(top &lt; (matrix.length + <span class="number">1</span>) / <span class="number">2</span> &amp;&amp; left &lt; (matrix[<span class="number">0</span>].length + <span class="number">1</span>) / <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> left; i &lt;= right; i++)&#123;</span><br><span class="line">                res.add(matrix[top][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> top + <span class="number">1</span>; i &lt;= bottom; i++)&#123;</span><br><span class="line">                res.add(matrix[i][right]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> right - <span class="number">1</span>; i &gt;= left &amp;&amp; top != bottom; i--)&#123;</span><br><span class="line">                res.add(matrix[bottom][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> bottom - <span class="number">1</span>; i &gt;= top + <span class="number">1</span> &amp;&amp; left != right; i--)&#123;</span><br><span class="line">                res.add(matrix[i][left]);</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            top++;</span><br><span class="line">            right--;</span><br><span class="line">            bottom--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </header>
+  </article>
 
 
     </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-          <div class="reward-container">
-  <div>恰饭~thank uuuuu</div>
-  <button>
-    赞赏
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/wechat.png" alt="Shun Liu 微信">
-        <span>微信</span>
-      </div>
-      <div>
-        <img src="/images/alipay.png" alt="Shun Liu 支付宝">
-        <span>支付宝</span>
-      </div>
-
   </div>
-</div>
+  
+  
+  
 
-          <div class="post-tags">
-              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"><i class="fa fa-tag"></i> 数组</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/posts/46c69418.html" rel="prev" title="牛客题解-NC69链表中倒数第k个节点">
-                  <i class="fa fa-chevron-left"></i> 牛客题解-NC69链表中倒数第k个节点
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/posts/46772ae5.html" rel="next" title="牛客题解-NC25删除有序链表中重复的元素">
-                  牛客题解-NC25删除有序链表中重复的元素 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-
-    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81MDYxMy8yNzA5Ng=="></div>
 </div>
   </main>
 

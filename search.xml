@@ -27,6 +27,39 @@
       </tags>
   </entry>
   <entry>
+    <title>牛客题解-NC54数组中相加和为0三元组</title>
+    <url>/posts/a042c421.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给出一个有n个元素的数组S，S中是否有元素a,b,c满足a+b+c&#x3D;0？找出数组S中所有满足条件的三元组。</p>
+<p>注意：</p>
+<ol>
+<li><p>三元组（a、b、c）中的元素必须按非降序排列。（即a≤b≤c）</p>
+</li>
+<li><p>解集中不能包含重复的三元组。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">例如，给定的数组 S = &#123;-<span class="number">10</span> <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> -<span class="number">10</span> -<span class="number">40</span>&#125;,解集为(-<span class="number">10</span>, <span class="number">0</span>, <span class="number">10</span>) (-<span class="number">10</span>, -<span class="number">10</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[-<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+<p>返回值：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[-<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>],[-<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>]]</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>通过Arrays.sort()方法对原数组进行排序，对于排序后的数据，从第一个元素开始，运用双指针（首尾双指针），求解该双指针指向数字之和为当前索引所在数字的相反数即可。实际上就转换成了多次的双指针求和问题。</p>
+<p>需要特别注意的是在每一次指针移动过程中要判断是否有重复元素，重复元素需要跳过。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;ArrayList&lt;Integer&gt;&gt; <span class="title function_">threeSum</span><span class="params">(<span class="type">int</span>[] num)</span> &#123;</span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(num == <span class="literal">null</span> ||num.length &lt; <span class="number">3</span>) <span class="keyword">return</span> res;</span><br><span class="line">        Arrays.sort(num);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i&lt;num.length-<span class="number">2</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(num[i]&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i&gt;<span class="number">0</span> &amp;&amp; num[i]==num[i-<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> i + <span class="number">1</span>, r = num.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> num[i] + num[l] + num[r];</span><br><span class="line">                <span class="keyword">if</span>(sum == <span class="number">0</span>)&#123;</span><br><span class="line">                    ArrayList&lt;Integer&gt; tmp = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">                    tmp.add(num[i]);</span><br><span class="line">                    tmp.add(num[l]);</span><br><span class="line">                    tmp.add(num[r]);</span><br><span class="line">                    res.add(tmp);</span><br><span class="line">                    <span class="keyword">while</span>(l&lt;r &amp;&amp; num[l] == num[l+<span class="number">1</span>])&#123;</span><br><span class="line">                        l++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">while</span>(l&lt;r &amp;&amp; num[r] == num[r-<span class="number">1</span>])&#123;</span><br><span class="line">                        r--;</span><br><span class="line">                    &#125;</span><br><span class="line">                    l++;</span><br><span class="line">                    r--;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    r--;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                    l++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>数组</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>牛客题解-NC61两数之和</title>
     <url>/posts/e16d3e6e.html</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给出一个整数数组，请在数组中找出两个加起来等于目标值的数，</p>
@@ -58,9 +91,9 @@
       </tags>
   </entry>
   <entry>
-    <title>牛客题解-NC54数组中相加和为0三元组</title>
-    <url>/posts/a042c421.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给出一个有n个元素的数组S，S中是否有元素a,b,c满足a+b+c&#x3D;0？找出数组S中所有满足条件的三元组。</p>
+    <title>牛客题解-NC144不相邻最大子序列和</title>
+    <url>/posts/2ad2d7e9.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给你一个n（1≤<em>n</em>≤1e5)，和一个长度为n的数组，在不同时选位置相邻的两个数的基础上，求该序列的最大子序列和（挑选出的子序列可以为空）。</p>
 <p>注意：</p>
 <ol>
 <li><p>三元组（a、b、c）中的元素必须按非降序排列。（即a≤b≤c）</p>
@@ -68,17 +101,35 @@
 <li><p>解集中不能包含重复的三元组。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">例如，给定的数组 S = &#123;-<span class="number">10</span> <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> -<span class="number">10</span> -<span class="number">40</span>&#125;,解集为(-<span class="number">10</span>, <span class="number">0</span>, <span class="number">10</span>) (-<span class="number">10</span>, -<span class="number">10</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[-<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 
 <p>返回值：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[-<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>],[-<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">有[],[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">3</span>],[<span class="number">1</span>,<span class="number">3</span>] <span class="number">4</span>种选取方式其中[<span class="number">1</span>,<span class="number">3</span>]选取最优，答案为<span class="number">4</span> </span><br></pre></td></tr></table></figure>
 
 
 
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>通过Arrays.sort()方法对原数组进行排序，对于排序后的数据，从第一个元素开始，运用双指针（首尾双指针），求解该双指针指向数字之和为当前索引所在数字的相反数即可。实际上就转换成了多次的双指针求和问题。</p>
-<p>需要特别注意的是在每一次指针移动过程中要判断是否有重复元素，重复元素需要跳过。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;ArrayList&lt;Integer&gt;&gt; <span class="title function_">threeSum</span><span class="params">(<span class="type">int</span>[] num)</span> &#123;</span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(num == <span class="literal">null</span> ||num.length &lt; <span class="number">3</span>) <span class="keyword">return</span> res;</span><br><span class="line">        Arrays.sort(num);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i&lt;num.length-<span class="number">2</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(num[i]&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i&gt;<span class="number">0</span> &amp;&amp; num[i]==num[i-<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> i + <span class="number">1</span>, r = num.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> num[i] + num[l] + num[r];</span><br><span class="line">                <span class="keyword">if</span>(sum == <span class="number">0</span>)&#123;</span><br><span class="line">                    ArrayList&lt;Integer&gt; tmp = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">                    tmp.add(num[i]);</span><br><span class="line">                    tmp.add(num[l]);</span><br><span class="line">                    tmp.add(num[r]);</span><br><span class="line">                    res.add(tmp);</span><br><span class="line">                    <span class="keyword">while</span>(l&lt;r &amp;&amp; num[l] == num[l+<span class="number">1</span>])&#123;</span><br><span class="line">                        l++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">while</span>(l&lt;r &amp;&amp; num[r] == num[r-<span class="number">1</span>])&#123;</span><br><span class="line">                        r--;</span><br><span class="line">                    &#125;</span><br><span class="line">                    l++;</span><br><span class="line">                    r--;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    r--;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                    l++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span>,[<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">9</span></span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">其中[<span class="number">4</span>,<span class="number">5</span>]的选取方案是在满足不同时选取相邻位置的数的情况下是最优的答案 </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>该问题为动态规划问题。</p>
+<p>用一个长度为n+1的数组dp[n+1]来保存各个位置的最佳解。</p>
+<p>首先初始化dp[0] &#x3D; 0; dp[1] &#x3D;  array[0];</p>
+<p>后续具体的状态转移过程可以描述为：</p>
+<p>dp[i] &#x3D; Math.max(dp[i-1], dp[i-2] + array[i-1])</p>
+<p>最终得到的dp[n]则为所求解。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * 计算</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n int整型 数组的长度</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> array int整型一维数组 长度为n的数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> long长整型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">long</span> <span class="title function_">subsequence</span> <span class="params">(<span class="type">int</span> n, <span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">long</span>[] dp = <span class="keyword">new</span> <span class="title class_">long</span>[n+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">1</span>] = array[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            dp[i] = Math.max(dp[i-<span class="number">1</span>],dp[i-<span class="number">2</span>]+array[i-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -86,8 +137,7 @@
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>数组</tag>
-        <tag>双指针</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -193,56 +243,6 @@
         <tag>Java</tag>
         <tag>字符串</tag>
         <tag>模拟</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC144不相邻最大子序列和</title>
-    <url>/posts/2ad2d7e9.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给你一个n（1≤<em>n</em>≤1e5)，和一个长度为n的数组，在不同时选位置相邻的两个数的基础上，求该序列的最大子序列和（挑选出的子序列可以为空）。</p>
-<p>注意：</p>
-<ol>
-<li><p>三元组（a、b、c）中的元素必须按非降序排列。（即a≤b≤c）</p>
-</li>
-<li><p>解集中不能包含重复的三元组。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">例如，给定的数组 S = &#123;-<span class="number">10</span> <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> -<span class="number">10</span> -<span class="number">40</span>&#125;,解集为(-<span class="number">10</span>, <span class="number">0</span>, <span class="number">10</span>) (-<span class="number">10</span>, -<span class="number">10</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-<p>返回值：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-<p>说明：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">有[],[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">3</span>],[<span class="number">1</span>,<span class="number">3</span>] <span class="number">4</span>种选取方式其中[<span class="number">1</span>,<span class="number">3</span>]选取最优，答案为<span class="number">4</span> </span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span>,[<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">9</span></span><br></pre></td></tr></table></figure>
-
-<p>说明：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">其中[<span class="number">4</span>,<span class="number">5</span>]的选取方案是在满足不同时选取相邻位置的数的情况下是最优的答案 </span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>该问题为动态规划问题。</p>
-<p>用一个长度为n+1的数组dp[n+1]来保存各个位置的最佳解。</p>
-<p>首先初始化dp[0] &#x3D; 0; dp[1] &#x3D;  array[0];</p>
-<p>后续具体的状态转移过程可以描述为：</p>
-<p>dp[i] &#x3D; Math.max(dp[i-1], dp[i-2] + array[i-1])</p>
-<p>最终得到的dp[n]则为所求解。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * 计算</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n int整型 数组的长度</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> array int整型一维数组 长度为n的数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> long长整型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">long</span> <span class="title function_">subsequence</span> <span class="params">(<span class="type">int</span> n, <span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">long</span>[] dp = <span class="keyword">new</span> <span class="title class_">long</span>[n+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">1</span>] = array[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            dp[i] = Math.max(dp[i-<span class="number">1</span>],dp[i-<span class="number">2</span>]+array[i-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -352,38 +352,6 @@
       </tags>
   </entry>
   <entry>
-    <title>牛客题解-NC38螺旋矩阵</title>
-    <url>/posts/36804329.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个m x n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212049.png"></p>
-<p>分别需要实现四个遍历：</p>
-<p>左→右</p>
-<p>上→下</p>
-<p>右→左</p>
-<p>下→上</p>
-<p>需要特别注意的是不要遍历重复数据。left、right、top、bottom的指针变化方式尤为重要。</p>
-<p>另外还要注意限制条件top！&#x3D; bottom 和 left！&#x3D; right</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212338.png"></p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = matrix[<span class="number">0</span>].length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">top</span> <span class="operator">=</span> <span class="number">0</span>, bottom = matrix.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(top &lt; (matrix.length + <span class="number">1</span>) / <span class="number">2</span> &amp;&amp; left &lt; (matrix[<span class="number">0</span>].length + <span class="number">1</span>) / <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> left; i &lt;= right; i++)&#123;</span><br><span class="line">                res.add(matrix[top][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> top + <span class="number">1</span>; i &lt;= bottom; i++)&#123;</span><br><span class="line">                res.add(matrix[i][right]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> right - <span class="number">1</span>; i &gt;= left &amp;&amp; top != bottom; i--)&#123;</span><br><span class="line">                res.add(matrix[bottom][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> bottom - <span class="number">1</span>; i &gt;= top + <span class="number">1</span> &amp;&amp; left != right; i--)&#123;</span><br><span class="line">                res.add(matrix[i][left]);</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            top++;</span><br><span class="line">            right--;</span><br><span class="line">            bottom--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>牛客题解-NC141判断回文</title>
     <url>/posts/77a66fad.html</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个字符串，请编写一个函数判断该字符串是否回文。如果回文请返回true，否则返回false。</p>
@@ -427,6 +395,65 @@
       </tags>
   </entry>
   <entry>
+    <title>牛客题解-NC25删除有序链表中重复的元素</title>
+    <url>/posts/46772ae5.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>删除给出链表中的重复元素（链表中元素从小到大有序），使链表中的所有元素都只出现一次<br>例如：<br>给出的链表为1\to1\to21→1→2,返回1 \to 21→2.<br>给出的链表为1\to1\to 2 \to 3 \to 31→1→2→3→3,返回1\to 2 \to 31→2→3.</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>用一个指针就可以实现，对指针当前位置和下一位置的值进行比较。</p>
+<p>相同：删除下一位置的节点</p>
+<p>不同：指针移动到下一位置</p>
+<p>直到链表尾。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *   int val;</span></span><br><span class="line"><span class="comment"> *   ListNode next = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> head ListNode类 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> ListNode类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">deleteDuplicates</span> <span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">tmp</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span>(tmp.next!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(tmp.next.val == tmp.val)&#123;</span><br><span class="line">                tmp.next = tmp.next.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                tmp = tmp.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>牛客题解-NC38螺旋矩阵</title>
+    <url>/posts/36804329.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个m x n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212049.png"></p>
+<p>分别需要实现四个遍历：</p>
+<p>左→右</p>
+<p>上→下</p>
+<p>右→左</p>
+<p>下→上</p>
+<p>需要特别注意的是不要遍历重复数据。left、right、top、bottom的指针变化方式尤为重要。</p>
+<p>另外还要注意限制条件top！&#x3D; bottom 和 left！&#x3D; right</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212338.png"></p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = matrix[<span class="number">0</span>].length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">top</span> <span class="operator">=</span> <span class="number">0</span>, bottom = matrix.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(top &lt; (matrix.length + <span class="number">1</span>) / <span class="number">2</span> &amp;&amp; left &lt; (matrix[<span class="number">0</span>].length + <span class="number">1</span>) / <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> left; i &lt;= right; i++)&#123;</span><br><span class="line">                res.add(matrix[top][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> top + <span class="number">1</span>; i &lt;= bottom; i++)&#123;</span><br><span class="line">                res.add(matrix[i][right]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> right - <span class="number">1</span>; i &gt;= left &amp;&amp; top != bottom; i--)&#123;</span><br><span class="line">                res.add(matrix[bottom][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> bottom - <span class="number">1</span>; i &gt;= top + <span class="number">1</span> &amp;&amp; left != right; i--)&#123;</span><br><span class="line">                res.add(matrix[i][left]);</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            top++;</span><br><span class="line">            right--;</span><br><span class="line">            bottom--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>牛客题解-NC69链表中倒数第k个节点</title>
     <url>/posts/46c69418.html</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入一个链表，输出该链表中倒数第k个结点。</p>
@@ -444,33 +471,6 @@
 <p>first 和res 指针同时前进。</p>
 <p>当first走到尾部时，此时res为倒数第k个节点。</p>
 <h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *   int val;</span></span><br><span class="line"><span class="comment"> *   ListNode next = null;</span></span><br><span class="line"><span class="comment"> *   public ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *   &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pHead ListNode类 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> k int整型 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> ListNode类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">FindKthToTail</span> <span class="params">(ListNode pHead, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">first</span> <span class="operator">=</span> pHead;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i&lt;k; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(first==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            first = first.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">res</span> <span class="operator">=</span> pHead;</span><br><span class="line">        <span class="keyword">while</span>(first != <span class="literal">null</span>)&#123;</span><br><span class="line">            res = res.next;</span><br><span class="line">            first = first.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC25删除有序链表中重复的元素</title>
-    <url>/posts/46772ae5.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>删除给出链表中的重复元素（链表中元素从小到大有序），使链表中的所有元素都只出现一次<br>例如：<br>给出的链表为1\to1\to21→1→2,返回1 \to 21→2.<br>给出的链表为1\to1\to 2 \to 3 \to 31→1→2→3→3,返回1\to 2 \to 31→2→3.</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>,<span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>用一个指针就可以实现，对指针当前位置和下一位置的值进行比较。</p>
-<p>相同：删除下一位置的节点</p>
-<p>不同：指针移动到下一位置</p>
-<p>直到链表尾。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *   int val;</span></span><br><span class="line"><span class="comment"> *   ListNode next = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> head ListNode类 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> ListNode类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">deleteDuplicates</span> <span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">tmp</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span>(tmp.next!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(tmp.next.val == tmp.val)&#123;</span><br><span class="line">                tmp.next = tmp.next.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                tmp = tmp.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1074,6 +1074,28 @@
       </tags>
   </entry>
   <entry>
+    <title>请教我学Java（二）ConcurrentHashMap为什么是线程安全的</title>
+    <url>/posts/13e1009d.html</url>
+    <content><![CDATA[<h1 id="HashMap线程不安全"><a href="#HashMap线程不安全" class="headerlink" title="HashMap线程不安全"></a>HashMap线程不安全</h1><font size = 3>
+
+<p>HashMap在扩容的时候会调用resize（）方法，这样的并发操作容易在一个桶上形成环形链表。当获取一个不存在的key时，计算出的index正好时环形链表的下标时就会出现如下的死循环。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191153.png"></p>
+<h1 id="ConcurrentHashMap线程安全"><a href="#ConcurrentHashMap线程安全" class="headerlink" title="ConcurrentHashMap线程安全"></a>ConcurrentHashMap线程安全</h1><p>引入了如下的Segment数组</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191307.png"></p>
+<p>其中的核心数据，例如value和链表都是由volatile修饰的，保证了数据的可见性。</p>
+<p>原理上来说：ConcurrentHashMap 采用了分段锁技术，其中 Segment 继承于 ReentrantLock。不会像 HashTable 那样不管是 put 还是 get 操作都需要做同步处理，理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量)的线程并发。每当一个线程占用锁访问一个 Segment 时，不会影响到其他的 Segment。</p>
+<p>jdk1.8抛弃了原有的segment锁，而使用CAS(Compare ans Swap) + synchronized的方式实现。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191607.png"></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>HashMap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>请教我学数据结构（一）排序</title>
     <url>/posts/47991e6b.html</url>
     <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><font size=3>
@@ -1167,28 +1189,6 @@
       </categories>
       <tags>
         <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>请教我学Java（二）ConcurrentHashMap为什么是线程安全的</title>
-    <url>/posts/13e1009d.html</url>
-    <content><![CDATA[<h1 id="HashMap线程不安全"><a href="#HashMap线程不安全" class="headerlink" title="HashMap线程不安全"></a>HashMap线程不安全</h1><font size = 3>
-
-<p>HashMap在扩容的时候会调用resize（）方法，这样的并发操作容易在一个桶上形成环形链表。当获取一个不存在的key时，计算出的index正好时环形链表的下标时就会出现如下的死循环。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191153.png"></p>
-<h1 id="ConcurrentHashMap线程安全"><a href="#ConcurrentHashMap线程安全" class="headerlink" title="ConcurrentHashMap线程安全"></a>ConcurrentHashMap线程安全</h1><p>引入了如下的Segment数组</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191307.png"></p>
-<p>其中的核心数据，例如value和链表都是由volatile修饰的，保证了数据的可见性。</p>
-<p>原理上来说：ConcurrentHashMap 采用了分段锁技术，其中 Segment 继承于 ReentrantLock。不会像 HashTable 那样不管是 put 还是 get 操作都需要做同步处理，理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量)的线程并发。每当一个线程占用锁访问一个 Segment 时，不会影响到其他的 Segment。</p>
-<p>jdk1.8抛弃了原有的segment锁，而使用CAS(Compare ans Swap) + synchronized的方式实现。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191607.png"></p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>HashMap</tag>
       </tags>
   </entry>
   <entry>
@@ -1839,61 +1839,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Spring(三)JDBC与事务控制</title>
-    <url>/posts/91b8dde3.html</url>
-    <content><![CDATA[<h1 id="Spring-JdbcTemplate基本使用"><a href="#Spring-JdbcTemplate基本使用" class="headerlink" title="Spring JdbcTemplate基本使用"></a>Spring JdbcTemplate基本使用</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    它是spring框架中提供的一个对象，是对原始繁琐的JdbcAPI对象的简单封装。spring框架为我们提供了很多的操作模板类。例如:操作关系型数据的JdbcTemplate和bernateTemplate，操作nosql数据库的RedisTemplate，操作消息队列的JmsTemplate等等。</p>
-<h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><p>（1）导入Spring-jdbc和spring-tx（transaction事务）坐标</p>
-<p>（2）创建数据库表和实体</p>
-<p>（3）创建JdbcTemplate对象</p>
-<p>（4）执行数据库操作</p>
-<h2 id="Spring产生JdbcTemplate对象"><a href="#Spring产生JdbcTemplate对象" class="headerlink" title="Spring产生JdbcTemplate对象"></a>Spring产生JdbcTemplate对象</h2><p>​    可以将JdbcTemplate的创建权交给Spring，将DataSource的创建权也交给Spring，在Spring</p>
-<p>容器内部将数据源DataSource注入到JdbcTemplate模版对象中，配置如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111426.png"></p>
-<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111454.png"></p>
-<h1 id="Spring的事务控制"><a href="#Spring的事务控制" class="headerlink" title="Spring的事务控制"></a>Spring的事务控制</h1><h2 id="编程式事务控制相关对象（了解）"><a href="#编程式事务控制相关对象（了解）" class="headerlink" title="编程式事务控制相关对象（了解）"></a>编程式事务控制相关对象（了解）</h2><ol>
-<li>PlateformTransactionManager（接口，封装事务行为）</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111530.png"></p>
-<ol start="2">
-<li><p>TransactionDefinition（封装事务参数）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111552.png"></p>
-</li>
-<li><p>TransactionStatus（封装事务状态信息）</p>
-</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111614.png"></p>
-<h2 id="基于XML的声明式事务控制"><a href="#基于XML的声明式事务控制" class="headerlink" title="基于XML的声明式事务控制"></a>基于XML的声明式事务控制</h2><ol>
-<li><p>什么是声明式事务控制</p>
-<p>Spring的声明式事务顾名思义就是<strong>采用声明的方式来处理事务</strong>。这里所说的声明，就是指在配置文件中声明，</p>
-<p>用在Spring配置文件中声明式的处理事务来代替代码式的处理事务。</p>
-<p>Spring声明式事务控制底层就是AOP</p>
-</li>
-<li><p>声明式事务控制明确事项：</p>
-<p>（1）谁是切点</p>
-<p>（2）谁是通知</p>
-<p>（3）配置切面</p>
-</li>
-<li><p>配置要点</p>
-<p>（1）平台事务管理器配置</p>
-<p>（2）事务通知配置</p>
-<p>（3）事务aop织入配置</p>
-</li>
-</ol>
-<h2 id="基于注解的声明式事务控制"><a href="#基于注解的声明式事务控制" class="headerlink" title="基于注解的声明式事务控制"></a>基于注解的声明式事务控制</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111724.png"></p>
-<h1 id="Spring集成web环境"><a href="#Spring集成web环境" class="headerlink" title="Spring集成web环境"></a>Spring集成web环境</h1><h2 id="ApplicationContext应用上下文获取方式"><a href="#ApplicationContext应用上下文获取方式" class="headerlink" title="ApplicationContext应用上下文获取方式"></a>ApplicationContext应用上下文获取方式</h2><p>​    应用上下文对象是通过new ClasspathXmIApplicationContext(spring配置文件)方式获取的，但是每次从容器中获得Bean时都要编写new ClasspathXmIApplicationContext(spring配置文件)，这样的弊端是配置文件加载多次，应用上下文对象创建多次。</p>
-<p>​    在Web项目中，可以使用ServletContextListener监听Web应用的启动，我们可以在Web应用启动时，就加载Spring的配置文件，创建应用上下文对象ApplicationContext，在将其存储到最大的域servletContext域中，这样就可以在任意位置从域中获得应用上下文ApplicationContext对象了。</p>
-<h2 id="Spring提供获取应用上下文的工具"><a href="#Spring提供获取应用上下文的工具" class="headerlink" title="Spring提供获取应用上下文的工具"></a>Spring提供获取应用上下文的工具</h2><p>​    上面的分析不用手动实现，Spring提供了一个监听器ContextLoaderListener就是对上述功能的封装，该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext域中，提供了一个客户端工具WebApplicationContextUtils供使用者获得应用上下文对象。</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>（1）在web.xml中配置ContextLoaderListener监听器(导入spring-web坐标)</p>
-<p>（2）使用WebApplicationContextUtils获得应用上下文对象ApplicationContext</p>
-]]></content>
-      <categories>
-        <category>Spring</category>
-      </categories>
-      <tags>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Spring(一)简介与IOC</title>
     <url>/posts/d2becbdd.html</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>分布的Java SE&#x2F;EE应用full-stack<strong>轻量级</strong>开源框架，以<strong>IOC<strong><strong>（</strong></strong>Inverse of control****反转控制）</strong>和<strong>AOP<strong><strong>（</strong></strong>Aspect oriented programming****面向切片编程）</strong>为内核。</p>
@@ -2030,6 +1975,61 @@
       </tags>
   </entry>
   <entry>
+    <title>Spring(三)JDBC与事务控制</title>
+    <url>/posts/91b8dde3.html</url>
+    <content><![CDATA[<h1 id="Spring-JdbcTemplate基本使用"><a href="#Spring-JdbcTemplate基本使用" class="headerlink" title="Spring JdbcTemplate基本使用"></a>Spring JdbcTemplate基本使用</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    它是spring框架中提供的一个对象，是对原始繁琐的JdbcAPI对象的简单封装。spring框架为我们提供了很多的操作模板类。例如:操作关系型数据的JdbcTemplate和bernateTemplate，操作nosql数据库的RedisTemplate，操作消息队列的JmsTemplate等等。</p>
+<h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><p>（1）导入Spring-jdbc和spring-tx（transaction事务）坐标</p>
+<p>（2）创建数据库表和实体</p>
+<p>（3）创建JdbcTemplate对象</p>
+<p>（4）执行数据库操作</p>
+<h2 id="Spring产生JdbcTemplate对象"><a href="#Spring产生JdbcTemplate对象" class="headerlink" title="Spring产生JdbcTemplate对象"></a>Spring产生JdbcTemplate对象</h2><p>​    可以将JdbcTemplate的创建权交给Spring，将DataSource的创建权也交给Spring，在Spring</p>
+<p>容器内部将数据源DataSource注入到JdbcTemplate模版对象中，配置如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111426.png"></p>
+<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111454.png"></p>
+<h1 id="Spring的事务控制"><a href="#Spring的事务控制" class="headerlink" title="Spring的事务控制"></a>Spring的事务控制</h1><h2 id="编程式事务控制相关对象（了解）"><a href="#编程式事务控制相关对象（了解）" class="headerlink" title="编程式事务控制相关对象（了解）"></a>编程式事务控制相关对象（了解）</h2><ol>
+<li>PlateformTransactionManager（接口，封装事务行为）</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111530.png"></p>
+<ol start="2">
+<li><p>TransactionDefinition（封装事务参数）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111552.png"></p>
+</li>
+<li><p>TransactionStatus（封装事务状态信息）</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111614.png"></p>
+<h2 id="基于XML的声明式事务控制"><a href="#基于XML的声明式事务控制" class="headerlink" title="基于XML的声明式事务控制"></a>基于XML的声明式事务控制</h2><ol>
+<li><p>什么是声明式事务控制</p>
+<p>Spring的声明式事务顾名思义就是<strong>采用声明的方式来处理事务</strong>。这里所说的声明，就是指在配置文件中声明，</p>
+<p>用在Spring配置文件中声明式的处理事务来代替代码式的处理事务。</p>
+<p>Spring声明式事务控制底层就是AOP</p>
+</li>
+<li><p>声明式事务控制明确事项：</p>
+<p>（1）谁是切点</p>
+<p>（2）谁是通知</p>
+<p>（3）配置切面</p>
+</li>
+<li><p>配置要点</p>
+<p>（1）平台事务管理器配置</p>
+<p>（2）事务通知配置</p>
+<p>（3）事务aop织入配置</p>
+</li>
+</ol>
+<h2 id="基于注解的声明式事务控制"><a href="#基于注解的声明式事务控制" class="headerlink" title="基于注解的声明式事务控制"></a>基于注解的声明式事务控制</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111724.png"></p>
+<h1 id="Spring集成web环境"><a href="#Spring集成web环境" class="headerlink" title="Spring集成web环境"></a>Spring集成web环境</h1><h2 id="ApplicationContext应用上下文获取方式"><a href="#ApplicationContext应用上下文获取方式" class="headerlink" title="ApplicationContext应用上下文获取方式"></a>ApplicationContext应用上下文获取方式</h2><p>​    应用上下文对象是通过new ClasspathXmIApplicationContext(spring配置文件)方式获取的，但是每次从容器中获得Bean时都要编写new ClasspathXmIApplicationContext(spring配置文件)，这样的弊端是配置文件加载多次，应用上下文对象创建多次。</p>
+<p>​    在Web项目中，可以使用ServletContextListener监听Web应用的启动，我们可以在Web应用启动时，就加载Spring的配置文件，创建应用上下文对象ApplicationContext，在将其存储到最大的域servletContext域中，这样就可以在任意位置从域中获得应用上下文ApplicationContext对象了。</p>
+<h2 id="Spring提供获取应用上下文的工具"><a href="#Spring提供获取应用上下文的工具" class="headerlink" title="Spring提供获取应用上下文的工具"></a>Spring提供获取应用上下文的工具</h2><p>​    上面的分析不用手动实现，Spring提供了一个监听器ContextLoaderListener就是对上述功能的封装，该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext域中，提供了一个客户端工具WebApplicationContextUtils供使用者获得应用上下文对象。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>（1）在web.xml中配置ContextLoaderListener监听器(导入spring-web坐标)</p>
+<p>（2）使用WebApplicationContextUtils获得应用上下文对象ApplicationContext</p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Spring(二)AOP简介与实现</title>
     <url>/posts/d2e352f8.html</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>​    动态代理通过反射实现，是OOP（面向对象编程）的延伸。</p>
@@ -2122,6 +2122,30 @@
       </categories>
       <tags>
         <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Golang(一)特性与使用场景</title>
+    <url>/posts/47f6b3ff.html</url>
+    <content><![CDATA[<h1 id="Golang的学习方向"><a href="#Golang的学习方向" class="headerlink" title="Golang的学习方向"></a>Golang的学习方向</h1><p>当前使用的领域主要是在：</p>
+<ol>
+<li>区块链研发工程师</li>
+<li>Go服务器端 &#x2F; 游戏软件工程师</li>
+<li>Go分布式 &#x2F; 云计算软件工程师</li>
+</ol>
+<p>特性就是 既能够达到动态编译语言所具有的速度和性能，又能够达到动态编译语言在开发过程中的高效率</p>
+<p>在学习一门语言时，需要思考的细节包括：</p>
+<ol>
+<li>怎么使用更规范</li>
+<li>使用陷阱</li>
+<li>需要使用时，应该注意些什么</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
@@ -2346,108 +2370,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Little eagle - SpringBoot实战管理系统(二)</title>
-    <url>/posts/50402.html</url>
-    <content><![CDATA[<h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>part1中利用HashMap模拟数据库实现了对数据的增删改查操作，对SpringBoot的特性和使用有了一定了解。</p>
-<p>part2整合各类主流的DataSource和数据库组件。</p>
-<p>涉及到的数据库源和相关技术点移步左侧一级标题。</p>
-<p>环境：jdk v.1.8.0</p>
-<p>项目地址：</p>
-<p>整合jdbc&amp;druid</p>
-<p><a href="https://github.com/codersliu/springboot04-jdbcLearning">https://github.com/codersliu/springboot04-jdbcLearning</a></p>
-<p>整合mybatis</p>
-<p><a href="https://github.com/codersliu/springboot05-mybatis/tree/master">https://github.com/codersliu/springboot05-mybatis/tree/master</a></p>
-<p>资源自取↑</p>
-<h1 id="整合JDBC"><a href="#整合JDBC" class="headerlink" title="整合JDBC"></a>整合JDBC</h1><p>创建项目时勾选web和JDBC相关依赖↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405100520648.png"></p>
-<p>新建resources&#x2F;application.yml代替原application.properties配置数据源</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/company?useUnicode=true&amp;characterEnconding=utf-8</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
-
-<p>新建controller&#x2F;jdbcController逐步实现对数据库的增删改查，这里mysql下新建了一个数据源company，新建了一个user表，数据库操作在该表中实现，表结构↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405100958950.png"></p>
-<p>tips：controller文件夹文件结构一定要正确（project&#x2F;src&#x2F;main&#x2F;java&#x2F;com.xxxxxxx&#x2F;controller），刚开始编写时错放在project&#x2F;src&#x2F;main&#x2F;java&#x2F;controller下，导致无法访问到资源，找bug找了1h，麻中麻。</p>
-<p>crud开始！</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot04jdbclearning.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.sun.org.glassfish.gmbal.ParameterNames;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">jdbcController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询所有user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/jdbcSelect&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Map&lt;String, Object&gt;&gt; <span class="title function_">jdbcSelect</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;select * from user&quot;</span>;</span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; maps = jdbcTemplate.queryForList(sql);</span><br><span class="line">        <span class="keyword">return</span> maps;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//插入新user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/jdbcInsert&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jdbcInsert</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;insert into company.user(id, username, password) values (6, &#x27;junjw&#x27;, &#x27;4545456&#x27;)&quot;</span>;</span><br><span class="line">        jdbcTemplate.update(sql);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;insert ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据传入id修改user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/jdbcUpdate/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jdbcUpdate</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;update company.user set username=?, password=? where id=&quot;</span>+id;</span><br><span class="line">        Object[] newUser = <span class="keyword">new</span> <span class="title class_">Object</span>[<span class="number">2</span>];</span><br><span class="line">        newUser[<span class="number">0</span>] = <span class="string">&quot;yaoww&quot;</span>;</span><br><span class="line">        newUser[<span class="number">1</span>] = <span class="string">&quot;112233&quot;</span>;</span><br><span class="line">        jdbcTemplate.update(sql, newUser);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;update ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据传入id删除user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;jdbcDelete/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jdbcDelete</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;delete from company.user where id=?&quot;</span>;</span><br><span class="line">        jdbcTemplate.update(sql, id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;delete ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405102549408.png"></p>
-<h1 id="整合Druid"><a href="#整合Druid" class="headerlink" title="整合Druid"></a>整合Druid</h1><p><a href="https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">Druid-alibaba官方文档</a></p>
-<p>pom.xml中导入druid和log4j依赖</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>application.yaml中对druid连接池等参数进行配置</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/company?useUnicode=true&amp;characterEnconding=utf-8</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line">      <span class="comment"># 下面为连接池的补充设置，应用到上面所有数据源中</span></span><br><span class="line">      <span class="comment"># 初始化大小，最小，最大</span></span><br><span class="line">      <span class="attr">initial-size:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">min-idle:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">max-active:</span> <span class="number">20</span></span><br><span class="line">      <span class="comment"># 配置获取连接等待超时的时间</span></span><br><span class="line">      <span class="attr">max-wait:</span> <span class="number">60000</span></span><br><span class="line">      <span class="comment"># 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒</span></span><br><span class="line">      <span class="attr">time-between-eviction-runs-millis:</span> <span class="number">60000</span></span><br><span class="line">      <span class="comment"># 配置一个连接在池中最小生存的时间，单位是毫秒</span></span><br><span class="line">      <span class="attr">min-evictable-idle-time-millis:</span> <span class="number">300000</span></span><br><span class="line">      <span class="attr">validation-query:</span> <span class="string">SELECT</span> <span class="number">1</span> <span class="string">FROM</span> <span class="string">DUAL</span></span><br><span class="line">      <span class="attr">test-while-idle:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">test-on-borrow:</span> <span class="literal">false</span></span><br><span class="line">      <span class="attr">test-on-return:</span> <span class="literal">false</span></span><br><span class="line">      <span class="comment"># 打开PSCache，并且指定每个连接上PSCache的大小</span></span><br><span class="line">      <span class="attr">pool-prepared-statements:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">max-pool-prepared-statement-per-connection-size:</span> <span class="number">20</span></span><br><span class="line">        <span class="comment"># 配置监控统计拦截的 Filter，去掉后监控界面 SQL 无法统计，wall 用于防火墙  日志 log4j</span></span><br><span class="line">      <span class="attr">filters:</span> <span class="string">stat,wall,log4j</span>  <span class="comment">#导入了log4j</span></span><br><span class="line">      <span class="attr">use-global-data-source-stat:</span> <span class="literal">true</span></span><br><span class="line">      <span class="comment"># 通过connectProperties属性来打开mergeSql功能；慢SQL记录</span></span><br><span class="line">      <span class="attr">connect-properties:</span> <span class="string">druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</span></span><br></pre></td></tr></table></figure>
-
-<p>整合Druid关键在于开启管理页面</p>
-<p>新建config&#x2F;DruidConfig，配置ServletRegistrationBean和FilterRegistrationBean</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot04jdbclearning.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.pool.DruidDataSource;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.support.http.StatViewServlet;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.support.http.WebStatFilter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.FilterRegistrationBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.ServletRegistrationBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DruidConfig</span> &#123;</span><br><span class="line">    <span class="meta">@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> DataSource <span class="title function_">dataSource</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DruidDataSource</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    后台监控：web.xml， ServletRegistrationBean</span></span><br><span class="line">    <span class="comment">//SpringBoot内置servlet容器，没有web.xml，使用替代类ServletRegistrationBean</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> ServletRegistrationBean <span class="title function_">statViewServlet</span><span class="params">()</span>&#123;</span><br><span class="line">        ServletRegistrationBean&lt;StatViewServlet&gt; bean = <span class="keyword">new</span> <span class="title class_">ServletRegistrationBean</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">StatViewServlet</span>(), <span class="string">&quot;/druid/*&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置后台登陆账号密码</span></span><br><span class="line">        HashMap&lt;String, String&gt; initParameters = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        initParameters.put(<span class="string">&quot;loginUsername&quot;</span>, <span class="string">&quot;admin&quot;</span>);</span><br><span class="line">        initParameters.put(<span class="string">&quot;loginPassword&quot;</span>, <span class="string">&quot;123456&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置白名单，允许访问的对象</span></span><br><span class="line">        initParameters.put(<span class="string">&quot;allow&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置黑名单</span></span><br><span class="line"><span class="comment">//        initParameters.put(&quot;sliu&quot;, &quot;192.168.11.12&quot;);</span></span><br><span class="line"></span><br><span class="line">        bean.setInitParameters(initParameters);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//filter 配置过滤器</span></span><br><span class="line">    <span class="comment">//和拦截器过滤可访问资源不同</span></span><br><span class="line">    <span class="comment">//该过滤器用于过滤哪些资源可以被druid监测到</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> FilterRegistrationBean <span class="title function_">webStatFilter</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">FilterRegistrationBean</span> <span class="variable">bean</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FilterRegistrationBean</span>();</span><br><span class="line">        bean.setFilter(<span class="keyword">new</span> <span class="title class_">WebStatFilter</span>());</span><br><span class="line"></span><br><span class="line">        Map&lt;String, String&gt; initParameters = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不进行监控的资源</span></span><br><span class="line">        initParameters.put(<span class="string">&quot;exclusions&quot;</span>, <span class="string">&quot;*.js,*.css,/druid/*&quot;</span>);</span><br><span class="line"></span><br><span class="line">        bean.setInitParameters(initParameters);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405152216615.png"></p>
-<h1 id="整合mybatis"><a href="#整合mybatis" class="headerlink" title="整合mybatis"></a>整合mybatis</h1><p>新建项目，导入以下依赖</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405155015878.png"></p>
-<p>pom.xml下手动导入mybatis依赖和lombok依赖</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.22<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>新建resources&#x2F;application.yml配置数据源</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/company?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
-
-<p>新建实体类&#x2F;pojo&#x2F;User.java封装数据库company下的user表</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot05mybatis.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>新建接口mapper&#x2F;UserMapper.java作为dao层封装对数据库的操作</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot05mybatis.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.springboot05mybatis.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> &#123;</span><br><span class="line">    List&lt;User&gt; <span class="title function_">getAllUser</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    User <span class="title function_">getUserById</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">addUser</span><span class="params">(User user)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">updateUser</span><span class="params">(User user)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">deleteUser</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>新建resources&#x2F;mybatis&#x2F;mapper&#x2F;UserMapper.xml完成mapper绑定</p>
-<p><a href="https://mybatis.org/mybatis-3/zh/getting-started.html">mybatis官方中文文档</a></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.example.springboot05mybatis.mapper.UserMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getAllUser&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        select * from user</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        select * from user where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        insert into user (id, username, password) values (#&#123;id&#125;,#&#123;username&#125;,#&#123;password&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updateUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        update user set uesrname=#&#123;username&#125;,password=#&#123;password&#125;, where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;deleteUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">        delete from user where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>application.yml下整合mybatis</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#整合mybatis</span></span><br><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="attr">type-aliases-package:</span> <span class="string">com.example.springboot05mybatis.pojo</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath:mybatis/mapper/*.xml</span></span><br></pre></td></tr></table></figure>
-
-<p>新建controller&#x2F;UserController封装业务</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot05mybatis.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.springboot05mybatis.mapper.UserMapper;</span><br><span class="line"><span class="keyword">import</span> com.example.springboot05mybatis.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/getAllUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getAllUser</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;User&gt; allUser = userMapper.getAllUser();</span><br><span class="line">        <span class="keyword">for</span> (User user : allUser) &#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> allUser;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/getUserById/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">getUserById</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> userMapper.getUserById(id);</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/addUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">addUser</span><span class="params">()</span>&#123;</span><br><span class="line">        userMapper.addUser(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">5</span>, <span class="string">&quot;jojo&quot;</span>, <span class="string">&quot;123456&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;addUser ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/updateUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">updateUser</span><span class="params">()</span>&#123;</span><br><span class="line">        userMapper.updateUser(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">5</span>, <span class="string">&quot;marry&quot;</span>, <span class="string">&quot;29934&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;updateUser ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;deleteUser/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">deleteUser</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        userMapper.deleteUser(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;deleteUser ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里get到一个疑问，为什么在写业务层时都使用@RestController而不是@Controller？</p>
-<p><a href="https://www.cnblogs.com/east7/p/10462279.html">@RestController和@Controller区别在于</a>前者无法返回指定页面，需要配合视图解析器InternalResourceViewResolver;而后者无法返回json等内容，需要配合@ResponseBody实现。</p>
-<p>整合mybatis最终效果如↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405193523893.png"></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本节内容整合了常用数据源JDBC、Druid和Mybatis，完成了真实数据库下的编码。</p>
-<p>第3part中整合安全环境SpringSecurity和Shiro实现用户认证和授权等模块。</p>
-<p>数据库搞定！</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/QQ20220331104633.gif"></p>
-]]></content>
-      <categories>
-        <category>Little eagle</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Golang(一)特性与使用场景</title>
-    <url>/posts/47f6b3ff.html</url>
-    <content><![CDATA[<h1 id="Golang的学习方向"><a href="#Golang的学习方向" class="headerlink" title="Golang的学习方向"></a>Golang的学习方向</h1><p>当前使用的领域主要是在：</p>
-<ol>
-<li>区块链研发工程师</li>
-<li>Go服务器端 &#x2F; 游戏软件工程师</li>
-<li>Go分布式 &#x2F; 云计算软件工程师</li>
-</ol>
-<p>特性就是 既能够达到动态编译语言所具有的速度和性能，又能够达到动态编译语言在开发过程中的高效率</p>
-<p>在学习一门语言时，需要思考的细节包括：</p>
-<ol>
-<li>怎么使用更规范</li>
-<li>使用陷阱</li>
-<li>需要使用时，应该注意些什么</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-      <tags>
-        <tag>Golang</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Little eagle - SpringBoot实战管理系统(三)</title>
     <url>/posts/21568.html</url>
     <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>上一part中掌握了如何使用常用数据源，jdbc、druid和mybatis</p>
@@ -2617,11 +2539,173 @@
       </tags>
   </entry>
   <entry>
+    <title>Little eagle - SpringBoot实战管理系统(五)redis</title>
+    <url>/posts/35413.html</url>
+    <content><![CDATA[<p>项目<strong>源码</strong>自取↓：</p>
+<p>异步、邮件与定时任务：</p>
+<p><a href="https://github.com/codersliu/springtest">https://github.com/codersliu/springtest</a></p>
+<p>springboot整合redis:</p>
+<p><a href="https://github.com/codersliu/springboot10-redisTest">https://github.com/codersliu/springboot10-redisTest</a></p>
+<h1 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h1><p>在开发环境中，对于不能实时返回用户数据的处理过程，应当在处理前通知用户，并在计算完成后返回计算结果。即通过异步任务，在数据开始处理时通知用户当前信息正在处理，处理完毕后返回结果。</p>
+<p>通过一个example理解什么是异步任务</p>
+<p>新建AsynService用于暂停程序执行，模拟在异步任务中，数据处理过程中的计算</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sliu.springtest.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AsynService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hello</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;processing&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>新建AsynController用于模拟开始计算及返回计算结果</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sliu.springtest.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.sliu.springtest.service.AsynService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AsynController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    AsynService asynService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span>&#123;</span><br><span class="line">        asynService.hello();</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;OK!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>访问localhost:&#x2F;&#x2F;8080&#x2F;hello后，暂停三秒返回“OK！”信息，控制台打印“processing”</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220501212939.png"></p>
+<p>为了实现异步任务而手动编写多线程，阻碍了开发的便利</p>
+<p>而spring框架提供操作简便的异步任务注解  解决了该问题</p>
+<p>在AsynService上添加@Async注解，指示该服务为一个异步任务</p>
+<p>同时在Application上添加@EnableAsync开启异步任务</p>
+<p>此时，访问&#x2F;hello能够得到的结果是，浏览器立即返回“OK！”，而控制台在3s后打印“processing”。不同于手动编写线程实现暂停的过程，该方案下，返回信息不需要等待AsynService中hello()方法执行完毕再开始下一步，而是异步地完成自身任务。</p>
+<h1 id="邮箱任务"><a href="#邮箱任务" class="headerlink" title="邮箱任务"></a>邮箱任务</h1><p>pom.xml下导入spring-boot-starter-mail依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-mail<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>application.properties下配置邮件信息</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring.mail.username</span>=<span class="string">1653698757@qq.com</span></span><br><span class="line"><span class="attr">spring.mail.password</span>=<span class="string">jkyhvjgypfppghae</span></span><br><span class="line"><span class="attr">spring.mail.host</span>=<span class="string">smtp.qq.com</span></span><br><span class="line"><span class="comment">#开启加密验证</span></span><br><span class="line"><span class="attr">spring.mail.properties.mail.smtp.ssl.enable</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+
+<p>其中邮箱为了避免密码外泄，qq邮箱使用了令牌代替，在设置中开启pop3&#x2F;smtp服务并生成授权码即可</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220501212911.png"></p>
+<p>配置完成，准备测试发送邮件</p>
+<p>1.发送简单邮件</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">JavaMailSenderImpl mailSender;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">simEmail</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">SimpleMailMessage</span> <span class="variable">mailMessage</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleMailMessage</span>();</span><br><span class="line">    <span class="comment">//邮件主题</span></span><br><span class="line">    mailMessage.setSubject(<span class="string">&quot;简单邮件测试-codersliu&quot;</span>);</span><br><span class="line">    <span class="comment">//邮件正文</span></span><br><span class="line">    mailMessage.setText(<span class="string">&quot;你好啊，csusliu，万事胜意！&quot;</span>);</span><br><span class="line">    <span class="comment">//邮件接收方</span></span><br><span class="line">    mailMessage.setTo(<span class="string">&quot;shunliu@csu.edu.cn&quot;</span>);</span><br><span class="line">    <span class="comment">//邮件发送方</span></span><br><span class="line">    mailMessage.setFrom(<span class="string">&quot;1653698757@qq.com&quot;</span>);</span><br><span class="line"></span><br><span class="line">    mailSender.send(mailMessage);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>收发成功↓</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220501212854.png"></p>
+<p>2.发送复杂邮件</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">compEmail</span><span class="params">()</span> <span class="keyword">throws</span> MessagingException &#123;</span><br><span class="line">    <span class="comment">//复杂邮件</span></span><br><span class="line">    <span class="type">MimeMessage</span> <span class="variable">mimeMessage</span> <span class="operator">=</span> mailSender.createMimeMessage();</span><br><span class="line">    <span class="comment">//组装,开启多附件上传</span></span><br><span class="line">    <span class="type">MimeMessageHelper</span> <span class="variable">helper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MimeMessageHelper</span>(mimeMessage, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//正文</span></span><br><span class="line">    helper.setSubject(<span class="string">&quot;复杂邮件测试-codersliu&quot;</span>);</span><br><span class="line">    <span class="comment">//开启html格式</span></span><br><span class="line">    helper.setText(<span class="string">&quot;&lt;p style=&#x27;color:red&#x27;&gt;你好啊，csusliu，万事胜意~&lt;/p&gt;&quot;</span>,<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//附件，开启了多附件上传</span></span><br><span class="line">    helper.addAttachment(<span class="string">&quot;1109233.jpg&quot;</span>, <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;C:\\Users\\Administrator\\Pictures\\1109233.jpg&quot;</span>));</span><br><span class="line">    helper.addAttachment(<span class="string">&quot;CHNN.vsdx&quot;</span>, <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;C:\\Users\\Administrator\\Desktop\\CHNN.vsdx&quot;</span>));</span><br><span class="line"></span><br><span class="line">    helper.setTo(<span class="string">&quot;shunliu@csu.edu.cn&quot;</span>);</span><br><span class="line">    helper.setFrom(<span class="string">&quot;1653698757@qq.com&quot;</span>);</span><br><span class="line"></span><br><span class="line">    mailSender.send(mimeMessage);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试收发成功↓</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220501212840.png"></p>
+<h1 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h1><p>如何指定一个任务按照提前规划的时间执行？</p>
+<p>Application下开启Scheduled</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@EnableScheduling</span>   <span class="comment">//开启定时任务的注解</span></span><br></pre></td></tr></table></figure>
+
+<p>新建service&#x2F;ScheduleService</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sliu.springtest.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.annotation.Scheduled;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ScheduleService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        30 10 11 * * ?      每天11:30:11执行一次</span></span><br><span class="line"><span class="comment">        30 0/5 10,18 * * ?  每天10和18点，每隔五分钟执行一次</span></span><br><span class="line"><span class="comment">        0 15 10 ? * 1-6     每个月周1-6，10:15:00执行一次</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Scheduled(cron = &quot;50 16 11 * * ?&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hello</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行了====&gt;Schedule指定的hello！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试通过↓</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220501212822.png"></p>
+<h1 id="SpringBoot集成Redis"><a href="#SpringBoot集成Redis" class="headerlink" title="SpringBoot集成Redis"></a>SpringBoot集成Redis</h1><h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><p>新建项目，导入以下依赖</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220501212804.png"></p>
+<p>application.properties下配置Redis服务</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#配置Redis</span></span><br><span class="line"><span class="attr">spring.redis.host</span>=<span class="string">127.0.0.1</span></span><br><span class="line"><span class="attr">spring.redis.port</span>=<span class="string">6379</span></span><br></pre></td></tr></table></figure>
+
+<p>添加测试方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    RedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">redisTest</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">//  redisTemplate   操作不同数据类型，api和指令一致</span></span><br><span class="line">        <span class="comment">//  opsForValue     操作字符串   类似String</span></span><br><span class="line">        <span class="comment">//  opsForList      操纵List    类似List</span></span><br><span class="line">        <span class="comment">//  opsForSet</span></span><br><span class="line">        <span class="comment">//  opsForHash</span></span><br><span class="line">        <span class="comment">//  opsForZSet</span></span><br><span class="line">        <span class="comment">//  opsForGeo</span></span><br><span class="line">        <span class="comment">//  opsForHyperLogLog</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//  除了基本操作，常用方法直接通过redisTemplate操作，比如事务和基本CRUD</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//  获取redis连接对象</span></span><br><span class="line"><span class="comment">//        RedisConnection connection = redisTemplate.getConnectionFactory().getConnection();</span></span><br><span class="line"><span class="comment">//        connection.flushDb();</span></span><br><span class="line"><span class="comment">//        connection.flushAll();</span></span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">&quot;mykey&quot;</span>,<span class="string">&quot;sliu&#x27;s redis test&quot;</span>);</span><br><span class="line">        System.out.println(redisTemplate.opsForValue().get(<span class="string">&quot;mykey&quot;</span>));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行测试类，运行前需要开启redis服务。在redis安装目录下，执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">redis-server.exe redis.windows.conf</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220501212751.png"></p>
+<h2 id="自定义redisTemplate"><a href="#自定义redisTemplate" class="headerlink" title="自定义redisTemplate"></a>自定义redisTemplate</h2><p>以上测试过程中，对于set的redis键值对，查询结果为乱码，这是由于在插入键值对时未对其进行序列化，需要通过自定义redisTemplate解决该问题</p>
+<p>新建config&#x2F;RedisConfig自定义RedisTemplate并指定序列化方式</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sliu.springboot10redistest.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.annotation.JsonAutoDetect;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.annotation.PropertyAccessor;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.ObjectMapper;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.connection.RedisConnectionFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.core.RedisTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.serializer.StringRedisSerializer;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//自定义RedisTemplate</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@SuppressWarnings(&quot;all&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> RedisTemplate&lt;String, Object&gt; <span class="title function_">redisTemplate</span><span class="params">(RedisConnectionFactory factory)</span>&#123;</span><br><span class="line">        <span class="comment">//为了便于开发，一般直接使用&lt;String, Object&gt;</span></span><br><span class="line">        RedisTemplate&lt;String, Object&gt; template = <span class="keyword">new</span> <span class="title class_">RedisTemplate</span>&lt;&gt;();</span><br><span class="line">        template.setConnectionFactory(factory);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//json序列化配置</span></span><br><span class="line">        <span class="type">Jackson2JsonRedisSerializer</span> <span class="variable">jackson2JsonRedisSerializer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jackson2JsonRedisSerializer</span>(Object.class);</span><br><span class="line">        <span class="type">ObjectMapper</span> <span class="variable">om</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line">        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);</span><br><span class="line">        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);</span><br><span class="line">        jackson2JsonRedisSerializer.setObjectMapper(om);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//String的序列化</span></span><br><span class="line">        <span class="type">StringRedisSerializer</span> <span class="variable">stringRedisSerializer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringRedisSerializer</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//key采用String的序列化方式</span></span><br><span class="line">        template.setKeySerializer(stringRedisSerializer);</span><br><span class="line">        <span class="comment">//hash的key也采用String的序列号方式</span></span><br><span class="line">        template.setHashKeySerializer(stringRedisSerializer);</span><br><span class="line">        <span class="comment">//value采用jackson序列化</span></span><br><span class="line">        template.setValueSerializer(jackson2JsonRedisSerializer);</span><br><span class="line">        <span class="comment">//hash的value采用jackson序列化</span></span><br><span class="line">        template.setHashValueSerializer(jackson2JsonRedisSerializer);</span><br><span class="line">        template.afterPropertiesSet();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> template;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试方法中替换自动注入的template为上面自定义模版</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier(&quot;redisTemplate&quot;)</span></span><br><span class="line">    RedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">redisTest</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">//  redisTemplate   操作不同数据类型，api和指令一致</span></span><br><span class="line">        <span class="comment">//  opsForValue     操作字符串   类似String</span></span><br><span class="line">        <span class="comment">//  opsForList      操纵List    类似List</span></span><br><span class="line">        <span class="comment">//  opsForSet</span></span><br><span class="line">        <span class="comment">//  opsForHash</span></span><br><span class="line">        <span class="comment">//  opsForZSet</span></span><br><span class="line">        <span class="comment">//  opsForGeo</span></span><br><span class="line">        <span class="comment">//  opsForHyperLogLog</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//  除了基本操作，常用方法直接通过redisTemplate操作，比如事务和基本CRUD</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//  获取redis连接对象</span></span><br><span class="line"><span class="comment">//        RedisConnection connection = redisTemplate.getConnectionFactory().getConnection();</span></span><br><span class="line"><span class="comment">//        connection.flushDb();</span></span><br><span class="line"><span class="comment">//        connection.flushAll();</span></span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">&quot;mykey&quot;</span>,<span class="string">&quot;sliu&#x27;s redis test&quot;</span>);</span><br><span class="line">        System.out.println(redisTemplate.opsForValue().get(<span class="string">&quot;mykey&quot;</span>));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行后再次在redis-cli中进行查询，不再有乱码</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220501212729.png"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本part后理解了如何开发带有定时任务、异步任务的需求，同时掌握了如何发送邮件。并对如何集成redis、键值对的序列化有了初步了解。</p>
+<p>bye~</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/QQ20220331104633.gif"></p>
+]]></content>
+      <categories>
+        <category>Little eagle</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Little eagle - SpringBoot实战管理系统(二)</title>
+    <url>/posts/50402.html</url>
+    <content><![CDATA[<h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>part1中利用HashMap模拟数据库实现了对数据的增删改查操作，对SpringBoot的特性和使用有了一定了解。</p>
+<p>part2整合各类主流的DataSource和数据库组件。</p>
+<p>涉及到的数据库源和相关技术点移步左侧一级标题。</p>
+<p>环境：jdk v.1.8.0</p>
+<p>项目地址：</p>
+<p>整合jdbc&amp;druid</p>
+<p><a href="https://github.com/codersliu/springboot04-jdbcLearning">https://github.com/codersliu/springboot04-jdbcLearning</a></p>
+<p>整合mybatis</p>
+<p><a href="https://github.com/codersliu/springboot05-mybatis/tree/master">https://github.com/codersliu/springboot05-mybatis/tree/master</a></p>
+<p>资源自取↑</p>
+<h1 id="整合JDBC"><a href="#整合JDBC" class="headerlink" title="整合JDBC"></a>整合JDBC</h1><p>创建项目时勾选web和JDBC相关依赖↓</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405100520648.png"></p>
+<p>新建resources&#x2F;application.yml代替原application.properties配置数据源</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/company?useUnicode=true&amp;characterEnconding=utf-8</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+
+<p>新建controller&#x2F;jdbcController逐步实现对数据库的增删改查，这里mysql下新建了一个数据源company，新建了一个user表，数据库操作在该表中实现，表结构↓</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405100958950.png"></p>
+<p>tips：controller文件夹文件结构一定要正确（project&#x2F;src&#x2F;main&#x2F;java&#x2F;com.xxxxxxx&#x2F;controller），刚开始编写时错放在project&#x2F;src&#x2F;main&#x2F;java&#x2F;controller下，导致无法访问到资源，找bug找了1h，麻中麻。</p>
+<p>crud开始！</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot04jdbclearning.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.sun.org.glassfish.gmbal.ParameterNames;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">jdbcController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询所有user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/jdbcSelect&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Map&lt;String, Object&gt;&gt; <span class="title function_">jdbcSelect</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;select * from user&quot;</span>;</span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; maps = jdbcTemplate.queryForList(sql);</span><br><span class="line">        <span class="keyword">return</span> maps;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//插入新user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/jdbcInsert&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jdbcInsert</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;insert into company.user(id, username, password) values (6, &#x27;junjw&#x27;, &#x27;4545456&#x27;)&quot;</span>;</span><br><span class="line">        jdbcTemplate.update(sql);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;insert ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据传入id修改user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/jdbcUpdate/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jdbcUpdate</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;update company.user set username=?, password=? where id=&quot;</span>+id;</span><br><span class="line">        Object[] newUser = <span class="keyword">new</span> <span class="title class_">Object</span>[<span class="number">2</span>];</span><br><span class="line">        newUser[<span class="number">0</span>] = <span class="string">&quot;yaoww&quot;</span>;</span><br><span class="line">        newUser[<span class="number">1</span>] = <span class="string">&quot;112233&quot;</span>;</span><br><span class="line">        jdbcTemplate.update(sql, newUser);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;update ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据传入id删除user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;jdbcDelete/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jdbcDelete</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;delete from company.user where id=?&quot;</span>;</span><br><span class="line">        jdbcTemplate.update(sql, id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;delete ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405102549408.png"></p>
+<h1 id="整合Druid"><a href="#整合Druid" class="headerlink" title="整合Druid"></a>整合Druid</h1><p><a href="https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">Druid-alibaba官方文档</a></p>
+<p>pom.xml中导入druid和log4j依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>application.yaml中对druid连接池等参数进行配置</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/company?useUnicode=true&amp;characterEnconding=utf-8</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line">      <span class="comment"># 下面为连接池的补充设置，应用到上面所有数据源中</span></span><br><span class="line">      <span class="comment"># 初始化大小，最小，最大</span></span><br><span class="line">      <span class="attr">initial-size:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">min-idle:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">max-active:</span> <span class="number">20</span></span><br><span class="line">      <span class="comment"># 配置获取连接等待超时的时间</span></span><br><span class="line">      <span class="attr">max-wait:</span> <span class="number">60000</span></span><br><span class="line">      <span class="comment"># 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒</span></span><br><span class="line">      <span class="attr">time-between-eviction-runs-millis:</span> <span class="number">60000</span></span><br><span class="line">      <span class="comment"># 配置一个连接在池中最小生存的时间，单位是毫秒</span></span><br><span class="line">      <span class="attr">min-evictable-idle-time-millis:</span> <span class="number">300000</span></span><br><span class="line">      <span class="attr">validation-query:</span> <span class="string">SELECT</span> <span class="number">1</span> <span class="string">FROM</span> <span class="string">DUAL</span></span><br><span class="line">      <span class="attr">test-while-idle:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">test-on-borrow:</span> <span class="literal">false</span></span><br><span class="line">      <span class="attr">test-on-return:</span> <span class="literal">false</span></span><br><span class="line">      <span class="comment"># 打开PSCache，并且指定每个连接上PSCache的大小</span></span><br><span class="line">      <span class="attr">pool-prepared-statements:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">max-pool-prepared-statement-per-connection-size:</span> <span class="number">20</span></span><br><span class="line">        <span class="comment"># 配置监控统计拦截的 Filter，去掉后监控界面 SQL 无法统计，wall 用于防火墙  日志 log4j</span></span><br><span class="line">      <span class="attr">filters:</span> <span class="string">stat,wall,log4j</span>  <span class="comment">#导入了log4j</span></span><br><span class="line">      <span class="attr">use-global-data-source-stat:</span> <span class="literal">true</span></span><br><span class="line">      <span class="comment"># 通过connectProperties属性来打开mergeSql功能；慢SQL记录</span></span><br><span class="line">      <span class="attr">connect-properties:</span> <span class="string">druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</span></span><br></pre></td></tr></table></figure>
+
+<p>整合Druid关键在于开启管理页面</p>
+<p>新建config&#x2F;DruidConfig，配置ServletRegistrationBean和FilterRegistrationBean</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot04jdbclearning.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.pool.DruidDataSource;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.support.http.StatViewServlet;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.support.http.WebStatFilter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.FilterRegistrationBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.ServletRegistrationBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DruidConfig</span> &#123;</span><br><span class="line">    <span class="meta">@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> DataSource <span class="title function_">dataSource</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DruidDataSource</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    后台监控：web.xml， ServletRegistrationBean</span></span><br><span class="line">    <span class="comment">//SpringBoot内置servlet容器，没有web.xml，使用替代类ServletRegistrationBean</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> ServletRegistrationBean <span class="title function_">statViewServlet</span><span class="params">()</span>&#123;</span><br><span class="line">        ServletRegistrationBean&lt;StatViewServlet&gt; bean = <span class="keyword">new</span> <span class="title class_">ServletRegistrationBean</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">StatViewServlet</span>(), <span class="string">&quot;/druid/*&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置后台登陆账号密码</span></span><br><span class="line">        HashMap&lt;String, String&gt; initParameters = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        initParameters.put(<span class="string">&quot;loginUsername&quot;</span>, <span class="string">&quot;admin&quot;</span>);</span><br><span class="line">        initParameters.put(<span class="string">&quot;loginPassword&quot;</span>, <span class="string">&quot;123456&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置白名单，允许访问的对象</span></span><br><span class="line">        initParameters.put(<span class="string">&quot;allow&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置黑名单</span></span><br><span class="line"><span class="comment">//        initParameters.put(&quot;sliu&quot;, &quot;192.168.11.12&quot;);</span></span><br><span class="line"></span><br><span class="line">        bean.setInitParameters(initParameters);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//filter 配置过滤器</span></span><br><span class="line">    <span class="comment">//和拦截器过滤可访问资源不同</span></span><br><span class="line">    <span class="comment">//该过滤器用于过滤哪些资源可以被druid监测到</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> FilterRegistrationBean <span class="title function_">webStatFilter</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">FilterRegistrationBean</span> <span class="variable">bean</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FilterRegistrationBean</span>();</span><br><span class="line">        bean.setFilter(<span class="keyword">new</span> <span class="title class_">WebStatFilter</span>());</span><br><span class="line"></span><br><span class="line">        Map&lt;String, String&gt; initParameters = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不进行监控的资源</span></span><br><span class="line">        initParameters.put(<span class="string">&quot;exclusions&quot;</span>, <span class="string">&quot;*.js,*.css,/druid/*&quot;</span>);</span><br><span class="line"></span><br><span class="line">        bean.setInitParameters(initParameters);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405152216615.png"></p>
+<h1 id="整合mybatis"><a href="#整合mybatis" class="headerlink" title="整合mybatis"></a>整合mybatis</h1><p>新建项目，导入以下依赖</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405155015878.png"></p>
+<p>pom.xml下手动导入mybatis依赖和lombok依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.22<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>新建resources&#x2F;application.yml配置数据源</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/company?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+
+<p>新建实体类&#x2F;pojo&#x2F;User.java封装数据库company下的user表</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot05mybatis.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>新建接口mapper&#x2F;UserMapper.java作为dao层封装对数据库的操作</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot05mybatis.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.springboot05mybatis.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> &#123;</span><br><span class="line">    List&lt;User&gt; <span class="title function_">getAllUser</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    User <span class="title function_">getUserById</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">addUser</span><span class="params">(User user)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">updateUser</span><span class="params">(User user)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">deleteUser</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>新建resources&#x2F;mybatis&#x2F;mapper&#x2F;UserMapper.xml完成mapper绑定</p>
+<p><a href="https://mybatis.org/mybatis-3/zh/getting-started.html">mybatis官方中文文档</a></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.example.springboot05mybatis.mapper.UserMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getAllUser&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        select * from user</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        select * from user where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        insert into user (id, username, password) values (#&#123;id&#125;,#&#123;username&#125;,#&#123;password&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updateUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        update user set uesrname=#&#123;username&#125;,password=#&#123;password&#125;, where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;deleteUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">        delete from user where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>application.yml下整合mybatis</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#整合mybatis</span></span><br><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="attr">type-aliases-package:</span> <span class="string">com.example.springboot05mybatis.pojo</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath:mybatis/mapper/*.xml</span></span><br></pre></td></tr></table></figure>
+
+<p>新建controller&#x2F;UserController封装业务</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot05mybatis.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.springboot05mybatis.mapper.UserMapper;</span><br><span class="line"><span class="keyword">import</span> com.example.springboot05mybatis.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/getAllUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getAllUser</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;User&gt; allUser = userMapper.getAllUser();</span><br><span class="line">        <span class="keyword">for</span> (User user : allUser) &#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> allUser;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/getUserById/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">getUserById</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> userMapper.getUserById(id);</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/addUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">addUser</span><span class="params">()</span>&#123;</span><br><span class="line">        userMapper.addUser(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">5</span>, <span class="string">&quot;jojo&quot;</span>, <span class="string">&quot;123456&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;addUser ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/updateUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">updateUser</span><span class="params">()</span>&#123;</span><br><span class="line">        userMapper.updateUser(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">5</span>, <span class="string">&quot;marry&quot;</span>, <span class="string">&quot;29934&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;updateUser ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;deleteUser/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">deleteUser</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        userMapper.deleteUser(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;deleteUser ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里get到一个疑问，为什么在写业务层时都使用@RestController而不是@Controller？</p>
+<p><a href="https://www.cnblogs.com/east7/p/10462279.html">@RestController和@Controller区别在于</a>前者无法返回指定页面，需要配合视图解析器InternalResourceViewResolver;而后者无法返回json等内容，需要配合@ResponseBody实现。</p>
+<p>整合mybatis最终效果如↓</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405193523893.png"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本节内容整合了常用数据源JDBC、Druid和Mybatis，完成了真实数据库下的编码。</p>
+<p>第3part中整合安全环境SpringSecurity和Shiro实现用户认证和授权等模块。</p>
+<p>数据库搞定！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/QQ20220331104633.gif"></p>
+]]></content>
+      <categories>
+        <category>Little eagle</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Little eagle - SpringBoot实战管理系统(四)Swagger</title>
     <url>/posts/48572.html</url>
     <content><![CDATA[<h1 id="Swagger简介"><a href="#Swagger简介" class="headerlink" title="Swagger简介"></a>Swagger简介</h1><p>当前开发中<strong>前后端分离</strong>通过API实现，前端页面封装数据在json文件中模拟pojo中的实体类信息，后端与前端交互时通过接口获取的信息替换json中的模拟数据，实现前后端的分离。该开发模式中前后端分离程度高，甚至可以将前后端部署在不同服务器上。</p>
 <p>存在的问题是<strong>前后端集成联调</strong>的过程中<strong>信息不同步</strong>会导致开发受阻（例如对于前端需求，后端开发了对应的接口，而此时需求变更，前端需要添加一个信息字段。后端就需要对数据库、接口等进行编码）。因而如何让需求变更在前后端开发人员之前保持实时同步，对于避免此类开发危机至关重要。</p>
-<p>早期的解决方案中，前端使用postman进行后端返回的接口测试。而后端负责提供接口，而关键就在于<strong>后端需要保证接口信息变动的实时同步</strong>，提前指定Schema。</p>
+<p>早期的解决方案中，前端使用postman进行后端返回的接口测试。而后端负责提供接口，而关键就在于<strong>后端需要保证接口信息变动的实时同步</strong>，提前制定Schema。</p>
 <p>为了解决后端实时同步接口变动信息，Swagger应运而生。</p>
 <p>Swagger特性：</p>
 <ul>
