@@ -27,6 +27,37 @@
       </tags>
   </entry>
   <entry>
+    <title>牛客题解-NC61两数之和</title>
+    <url>/posts/e16d3e6e.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给出一个整数数组，请在数组中找出两个加起来等于目标值的数，</p>
+<p>你给出的函数twoSum 需要返回这两个数字的下标（index1，index2），需要满足 index1 小于index2.。注意：下标是从1开始的</p>
+<p>假设给出的数组中只存在唯一解</p>
+<p>例如：</p>
+<p>给出的数组为 {20, 70, 110, 150},目标值为90<br>输出 index1&#x3D;1, index2&#x3D;2</p>
+<p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>],<span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<p>返回值：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>题目提到只存在唯一解，故而考虑使用HashMap求解该问题。</p>
+<p>对于每一个数，在存入HashMap之前先判断HashMap中当前是否存在可以和该数字相加为target的数字，有则返回。没有才将该数字和下标存入HashMap中。先判断后存入的方式能够避免使用到同一个数字。</p>
+<p>要注意返回时下标需要+1.</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> numbers int整型一维数组 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> target int整型 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int整型一维数组</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum (<span class="type">int</span>[] numbers, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">2</span>];</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> numbers.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(target-numbers[i]))&#123;</span><br><span class="line">                res[<span class="number">0</span>] = map.get(target-numbers[i])+<span class="number">1</span>;</span><br><span class="line">                res[<span class="number">1</span>] = i+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">return</span> res;</span><br><span class="line">            &#125;</span><br><span class="line">             map.put(numbers[i],i);</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>数组</tag>
+        <tag>哈希</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>牛客题解-NC54数组中相加和为0三元组</title>
     <url>/posts/a042c421.html</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给出一个有n个元素的数组S，S中是否有元素a,b,c满足a+b+c&#x3D;0？找出数组S中所有满足条件的三元组。</p>
@@ -60,25 +91,24 @@
       </tags>
   </entry>
   <entry>
-    <title>牛客题解-NC61两数之和</title>
-    <url>/posts/e16d3e6e.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给出一个整数数组，请在数组中找出两个加起来等于目标值的数，</p>
-<p>你给出的函数twoSum 需要返回这两个数字的下标（index1，index2），需要满足 index1 小于index2.。注意：下标是从1开始的</p>
-<p>假设给出的数组中只存在唯一解</p>
-<p>例如：</p>
-<p>给出的数组为 {20, 70, 110, 150},目标值为90<br>输出 index1&#x3D;1, index2&#x3D;2</p>
-<p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>],<span class="number">6</span></span><br></pre></td></tr></table></figure>
+    <title>牛客题解-NC65斐波那契数列</title>
+    <url>/posts/d50e8c3.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0，第1项是1）。</p>
+<p><em>n</em>≤39</p>
+<h2 id="示例1："><a href="#示例1：" class="headerlink" title="示例1："></a>示例1：</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
 
-<p>返回值：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
 
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>题目提到只存在唯一解，故而考虑使用HashMap求解该问题。</p>
-<p>对于每一个数，在存入HashMap之前先判断HashMap中当前是否存在可以和该数字相加为target的数字，有则返回。没有才将该数字和下标存入HashMap中。先判断后存入的方式能够避免使用到同一个数字。</p>
-<p>要注意返回时下标需要+1.</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> numbers int整型一维数组 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> target int整型 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int整型一维数组</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum (<span class="type">int</span>[] numbers, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">2</span>];</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> numbers.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(target-numbers[i]))&#123;</span><br><span class="line">                res[<span class="number">0</span>] = map.get(target-numbers[i])+<span class="number">1</span>;</span><br><span class="line">                res[<span class="number">1</span>] = i+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">return</span> res;</span><br><span class="line">            &#125;</span><br><span class="line">             map.put(numbers[i],i);</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>该问题为经典的动态规划问题。</p>
+<p>对于动态规划问题，关键就是找到初始状态和状态转换方程。</p>
+<p>本体的初始状态为</p>
+<p>f（0）&#x3D; 0</p>
+<p>f（1）&#x3D; 1</p>
+<p>状态转换方程为</p>
+<p>f（n） &#x3D; f（n-1）+ f（n-2）</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">Fibonacci</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">2</span>) <span class="keyword">return</span> n;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">0</span>, b = <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            sum = a + b;</span><br><span class="line">            a = b;</span><br><span class="line">            b = sum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -87,7 +117,24 @@
       <tags>
         <tag>Java</tag>
         <tag>数组</tag>
-        <tag>哈希</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>牛客题解-NC66两个链表的第一个公共节点</title>
+    <url>/posts/bd369e07.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入两个链表，找出它们的第一个公共结点。（注意因为传入数据是链表，所以错误测试数据的提示是用其他方式显示的，保证传入数据是正确的）</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>从两个链表的头节点出发，同时向后移动，当某一个链表的指针为空后，此时到了链表尾，指向另一个链表的头节点，这样，最终两个指针会在两个链表的同一相对位置。此时继续遍历就能找到第一个公共节点。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325194213.png"></p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">public class ListNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    ListNode next = null;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment">        this.val = val;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">FindFirstCommonNode</span><span class="params">(ListNode pHead1, ListNode pHead2)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(pHead1==<span class="literal">null</span> || pHead2==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l1</span> <span class="operator">=</span> pHead1;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l2</span> <span class="operator">=</span> pHead2;</span><br><span class="line">        <span class="keyword">while</span>(l1 != l2)&#123;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">            <span class="keyword">if</span>(l1 != l2)&#123;</span><br><span class="line">                <span class="keyword">if</span>(l1 == <span class="literal">null</span>) l1 = pHead2;</span><br><span class="line">                <span class="keyword">if</span>(l2 == <span class="literal">null</span>) l2 = pHead1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -138,53 +185,6 @@
       <tags>
         <tag>Java</tag>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC65斐波那契数列</title>
-    <url>/posts/d50e8c3.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0，第1项是1）。</p>
-<p><em>n</em>≤39</p>
-<h2 id="示例1："><a href="#示例1：" class="headerlink" title="示例1："></a>示例1：</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>该问题为经典的动态规划问题。</p>
-<p>对于动态规划问题，关键就是找到初始状态和状态转换方程。</p>
-<p>本体的初始状态为</p>
-<p>f（0）&#x3D; 0</p>
-<p>f（1）&#x3D; 1</p>
-<p>状态转换方程为</p>
-<p>f（n） &#x3D; f（n-1）+ f（n-2）</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">Fibonacci</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">2</span>) <span class="keyword">return</span> n;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">0</span>, b = <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            sum = a + b;</span><br><span class="line">            a = b;</span><br><span class="line">            b = sum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>数组</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC66两个链表的第一个公共节点</title>
-    <url>/posts/bd369e07.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入两个链表，找出它们的第一个公共结点。（注意因为传入数据是链表，所以错误测试数据的提示是用其他方式显示的，保证传入数据是正确的）</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>从两个链表的头节点出发，同时向后移动，当某一个链表的指针为空后，此时到了链表尾，指向另一个链表的头节点，这样，最终两个指针会在两个链表的同一相对位置。此时继续遍历就能找到第一个公共节点。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325194213.png"></p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">public class ListNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    ListNode next = null;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment">        this.val = val;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">FindFirstCommonNode</span><span class="params">(ListNode pHead1, ListNode pHead2)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(pHead1==<span class="literal">null</span> || pHead2==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l1</span> <span class="operator">=</span> pHead1;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">l2</span> <span class="operator">=</span> pHead2;</span><br><span class="line">        <span class="keyword">while</span>(l1 != l2)&#123;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">            <span class="keyword">if</span>(l1 != l2)&#123;</span><br><span class="line">                <span class="keyword">if</span>(l1 == <span class="literal">null</span>) l1 = pHead2;</span><br><span class="line">                <span class="keyword">if</span>(l2 == <span class="literal">null</span>) l2 = pHead1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -284,6 +284,29 @@
       </tags>
   </entry>
   <entry>
+    <title>牛客题解-NC73数组中超过一半的数字（众数）</title>
+    <url>/posts/e23557d2.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。<br><strong>思路</strong>：用一般的排序也可以完成这道题目，但是如果那样完成的话就可能太简单了。<br>用preValue记录上一次访问的值，count表明当前值出现的次数，如果下一个值和当前值相同那么count++；如果不同count–，减到0的时候就要更换新的preValue值了，因为如果存在超过数组长度一半的值，那么最后preValue一定会是该值。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">MoreThanHalfNum_Solution</span><span class="params">(<span class="type">int</span> [] array)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(array == <span class="literal">null</span>||array.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> array[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i&lt;array.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[i] == tmp)&#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                count--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(count == <span class="number">0</span>)&#123;</span><br><span class="line">                tmp = array[i];</span><br><span class="line">                count = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; array.length; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[i] == tmp)&#123;</span><br><span class="line">                sum++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(sum &gt; array.length/<span class="number">2</span>) res = tmp;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>牛客题解</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>数组</tag>
+        <tag>哈希</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>牛客题解-NC17最长回文子串</title>
     <url>/posts/87a4468d.html</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>对于一个字符串，请设计一个高效算法，计算其中最长回文子串的长度。</p>
@@ -326,29 +349,6 @@
         <tag>Java</tag>
         <tag>双指针</tag>
         <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>牛客题解-NC73数组中超过一半的数字（众数）</title>
-    <url>/posts/e23557d2.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。<br><strong>思路</strong>：用一般的排序也可以完成这道题目，但是如果那样完成的话就可能太简单了。<br>用preValue记录上一次访问的值，count表明当前值出现的次数，如果下一个值和当前值相同那么count++；如果不同count–，减到0的时候就要更换新的preValue值了，因为如果存在超过数组长度一半的值，那么最后preValue一定会是该值。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">MoreThanHalfNum_Solution</span><span class="params">(<span class="type">int</span> [] array)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(array == <span class="literal">null</span>||array.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> array[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i&lt;array.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[i] == tmp)&#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                count--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(count == <span class="number">0</span>)&#123;</span><br><span class="line">                tmp = array[i];</span><br><span class="line">                count = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; array.length; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[i] == tmp)&#123;</span><br><span class="line">                sum++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(sum &gt; array.length/<span class="number">2</span>) res = tmp;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>牛客题解</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>数组</tag>
-        <tag>哈希</tag>
       </tags>
   </entry>
   <entry>
@@ -1033,28 +1033,6 @@
       </tags>
   </entry>
   <entry>
-    <title>请教我学Java（二）ConcurrentHashMap为什么是线程安全的</title>
-    <url>/posts/13e1009d.html</url>
-    <content><![CDATA[<h1 id="HashMap线程不安全"><a href="#HashMap线程不安全" class="headerlink" title="HashMap线程不安全"></a>HashMap线程不安全</h1><font size = 3>
-
-<p>HashMap在扩容的时候会调用resize（）方法，这样的并发操作容易在一个桶上形成环形链表。当获取一个不存在的key时，计算出的index正好时环形链表的下标时就会出现如下的死循环。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191153.png"></p>
-<h1 id="ConcurrentHashMap线程安全"><a href="#ConcurrentHashMap线程安全" class="headerlink" title="ConcurrentHashMap线程安全"></a>ConcurrentHashMap线程安全</h1><p>引入了如下的Segment数组</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191307.png"></p>
-<p>其中的核心数据，例如value和链表都是由volatile修饰的，保证了数据的可见性。</p>
-<p>原理上来说：ConcurrentHashMap 采用了分段锁技术，其中 Segment 继承于 ReentrantLock。不会像 HashTable 那样不管是 put 还是 get 操作都需要做同步处理，理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量)的线程并发。每当一个线程占用锁访问一个 Segment 时，不会影响到其他的 Segment。</p>
-<p>jdk1.8抛弃了原有的segment锁，而使用CAS(Compare ans Swap) + synchronized的方式实现。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191607.png"></p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>HashMap</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>请教我学Java（一）浅析重写equals方法后必须重写hashCode方法</title>
     <url>/posts/674e848.html</url>
     <content><![CDATA[<p>根据“<strong>类是否覆盖equals()方法</strong>”，将它分为2类。</p>
@@ -1093,6 +1071,28 @@
       <tags>
         <tag>Java</tag>
         <tag>hashCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>请教我学Java（二）ConcurrentHashMap为什么是线程安全的</title>
+    <url>/posts/13e1009d.html</url>
+    <content><![CDATA[<h1 id="HashMap线程不安全"><a href="#HashMap线程不安全" class="headerlink" title="HashMap线程不安全"></a>HashMap线程不安全</h1><font size = 3>
+
+<p>HashMap在扩容的时候会调用resize（）方法，这样的并发操作容易在一个桶上形成环形链表。当获取一个不存在的key时，计算出的index正好时环形链表的下标时就会出现如下的死循环。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191153.png"></p>
+<h1 id="ConcurrentHashMap线程安全"><a href="#ConcurrentHashMap线程安全" class="headerlink" title="ConcurrentHashMap线程安全"></a>ConcurrentHashMap线程安全</h1><p>引入了如下的Segment数组</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191307.png"></p>
+<p>其中的核心数据，例如value和链表都是由volatile修饰的，保证了数据的可见性。</p>
+<p>原理上来说：ConcurrentHashMap 采用了分段锁技术，其中 Segment 继承于 ReentrantLock。不会像 HashTable 那样不管是 put 还是 get 操作都需要做同步处理，理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量)的线程并发。每当一个线程占用锁访问一个 Segment 时，不会影响到其他的 Segment。</p>
+<p>jdk1.8抛弃了原有的segment锁，而使用CAS(Compare ans Swap) + synchronized的方式实现。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416191607.png"></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>HashMap</tag>
       </tags>
   </entry>
   <entry>
@@ -1192,6 +1192,58 @@
       </tags>
   </entry>
   <entry>
+    <title>请教我学计网（二）HTTP协议相关</title>
+    <url>/posts/33157a3.html</url>
+    <content><![CDATA[<h1 id="浏览器输入url-gt-gt-显示主页的过程"><a href="#浏览器输入url-gt-gt-显示主页的过程" class="headerlink" title="浏览器输入url-&gt;&gt;显示主页的过程"></a>浏览器输入url-&gt;&gt;显示主页的过程</h1><h1 id="浏览器输入url-gt-gt-显示主页的过程-1"><a href="#浏览器输入url-gt-gt-显示主页的过程-1" class="headerlink" title="浏览器输入url-&gt;&gt;显示主页的过程"></a>浏览器输入url-&gt;&gt;显示主页的过程</h1><h2 id="大致过程："><a href="#大致过程：" class="headerlink" title="大致过程："></a>大致过程：</h2><ol>
+<li>浏览器通过DNS解析查找域名对应的IP地址（DNS解析）</li>
+<li>浏览器向web服务器发送一个HTTP请求（TCP连接 → 发送HTTP请求）</li>
+<li>服务器处理请求</li>
+<li>服务器发回HTML响应（服务器处理请求并返回HTTP报文）</li>
+<li>浏览器显示HTML（浏览器解析渲染界面 → 连接结束）状态码</li>
+</ol>
+<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326151225.png"></p>
+<h2 id="一图流解释各协议的作用（HTTP、TCP、IP）"><a href="#一图流解释各协议的作用（HTTP、TCP、IP）" class="headerlink" title="一图流解释各协议的作用（HTTP、TCP、IP）"></a>一图流解释各协议的作用（HTTP、TCP、IP）</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326151429.png"></p>
+<h1 id="Cookie和Session的区别"><a href="#Cookie和Session的区别" class="headerlink" title="Cookie和Session的区别"></a>Cookie和Session的区别</h1><ol>
+<li>Cookie 主要用于保存用户信息，session     的主要作⽤就是通过服务端记录⽤户的状态 。</li>
+<li>Cookie     数据保存在客户端(浏览器端)， Session 数据保存在服务器端 </li>
+<li>相对来说 Session 安全性更⾼</li>
+</ol>
+<h1 id="HTTP1-0和1-1的区别"><a href="#HTTP1-0和1-1的区别" class="headerlink" title="HTTP1.0和1.1的区别"></a>HTTP1.0和1.1的区别</h1><ol>
+<li><p>长连接：1.0默认短连接，HTTP协议是基于TCP协议的，每一次建立断开连接都需要三次握手，四次挥手。1.1默认长连接（Connection：keep alive）。持续方式包括非流水线式和流水线式。</p>
+</li>
+<li><p>错误状态响应码：1.1中新增了24个错误状态响应码，如409（Conflict）表示请求的</p>
+<p>资源与资源的当前状态发⽣冲突； 410（Gone）表示服务器上的某个资源被永久性的删除。</p>
+</li>
+<li><p>缓存处理：1.0中主要使⽤header⾥的If-Modified-Since,Expires来做为缓存判断的标</p>
+<p>准 。1.1则引⼊了更多的缓存控制策略例如Entity tag， If-Unmodified-Since, If-Match,</p>
+<p>If-None-Match等更多可供选择的缓存头来控制缓存策略 </p>
+</li>
+<li><p>带宽优化及网络连接的使用：1.0中，存在⼀些浪费带宽的现象，例如客户端只是需要某个对象的⼀部分，⽽服务器却将整个对象送过来了，并且不⽀持断点续传功能， HTTP1.1则在请求头引⼊了range头域，它允许只请求资源的某个部分，即返回码是206（PartialContent），这样就⽅便了开发者⾃由的选择以便于充分利⽤带宽和连接</p>
+</li>
+</ol>
+<h1 id="URI和URL的区别"><a href="#URI和URL的区别" class="headerlink" title="URI和URL的区别"></a>URI和URL的区别</h1><p>URI是统一资源标志符，可以唯一标识一个资源</p>
+<p>URL是统一资源定位符，除了可以唯一标识一个资源，还指明了如何local到这个资源。</p>
+<h1 id="HTTP和HTTPS的区别"><a href="#HTTP和HTTPS的区别" class="headerlink" title="HTTP和HTTPS的区别"></a>HTTP和HTTPS的区别</h1><ol>
+<li><p>端口：HTTP端口默认为80；HTTPS为443</p>
+</li>
+<li><p>安全性和资源消耗：HTTP运行在TCP上，传输内容均为明文，客户端与服务器无法验证对方身份。HTTPS运行在SSL&#x2F;TLS上，而SSL&#x2F;TLS运行在TCP上，所有传输内容都采用对称加密，且对称加密的密钥采用了服务器的非对称加密。所以：HTTP 安全性没有 HTTPS⾼，但是 HTTPS ⽐HTTP耗费更多服务器资源 。</p>
+</li>
+<li><p>补充（对称加密与非对称加密）：</p>
+<p>对称加密：密钥只有⼀个，加密解密为同⼀个密码，且加解密速度快，典型的对称加密算法有DES、 AES等；</p>
+<p>⾮对称加密：密钥成对出现（且根据公钥⽆法推知私钥，根据私钥也⽆法推知公钥），加密解密使⽤不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称加密速度较慢，典型的⾮对称加密算法有RSA、 DSA等。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>HTTP</tag>
+        <tag>DNS</tag>
+        <tag>会话</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>请教我学数据结构（二）红黑树</title>
     <url>/posts/5d1e0225.html</url>
     <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><font size = 3>
@@ -1250,55 +1302,231 @@
       </tags>
   </entry>
   <entry>
-    <title>请教我学计网（二）HTTP协议相关</title>
-    <url>/posts/33157a3.html</url>
-    <content><![CDATA[<h1 id="浏览器输入url-gt-gt-显示主页的过程"><a href="#浏览器输入url-gt-gt-显示主页的过程" class="headerlink" title="浏览器输入url-&gt;&gt;显示主页的过程"></a>浏览器输入url-&gt;&gt;显示主页的过程</h1><h1 id="浏览器输入url-gt-gt-显示主页的过程-1"><a href="#浏览器输入url-gt-gt-显示主页的过程-1" class="headerlink" title="浏览器输入url-&gt;&gt;显示主页的过程"></a>浏览器输入url-&gt;&gt;显示主页的过程</h1><h2 id="大致过程："><a href="#大致过程：" class="headerlink" title="大致过程："></a>大致过程：</h2><ol>
-<li>浏览器通过DNS解析查找域名对应的IP地址（DNS解析）</li>
-<li>浏览器向web服务器发送一个HTTP请求（TCP连接 → 发送HTTP请求）</li>
-<li>服务器处理请求</li>
-<li>服务器发回HTML响应（服务器处理请求并返回HTTP报文）</li>
-<li>浏览器显示HTML（浏览器解析渲染界面 → 连接结束）状态码</li>
-</ol>
-<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326151225.png"></p>
-<h2 id="一图流解释各协议的作用（HTTP、TCP、IP）"><a href="#一图流解释各协议的作用（HTTP、TCP、IP）" class="headerlink" title="一图流解释各协议的作用（HTTP、TCP、IP）"></a>一图流解释各协议的作用（HTTP、TCP、IP）</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326151429.png"></p>
-<h1 id="Cookie和Session的区别"><a href="#Cookie和Session的区别" class="headerlink" title="Cookie和Session的区别"></a>Cookie和Session的区别</h1><ol>
-<li>Cookie 主要用于保存用户信息，session     的主要作⽤就是通过服务端记录⽤户的状态 。</li>
-<li>Cookie     数据保存在客户端(浏览器端)， Session 数据保存在服务器端 </li>
-<li>相对来说 Session 安全性更⾼</li>
-</ol>
-<h1 id="HTTP1-0和1-1的区别"><a href="#HTTP1-0和1-1的区别" class="headerlink" title="HTTP1.0和1.1的区别"></a>HTTP1.0和1.1的区别</h1><ol>
-<li><p>长连接：1.0默认短连接，HTTP协议是基于TCP协议的，每一次建立断开连接都需要三次握手，四次挥手。1.1默认长连接（Connection：keep alive）。持续方式包括非流水线式和流水线式。</p>
-</li>
-<li><p>错误状态响应码：1.1中新增了24个错误状态响应码，如409（Conflict）表示请求的</p>
-<p>资源与资源的当前状态发⽣冲突； 410（Gone）表示服务器上的某个资源被永久性的删除。</p>
-</li>
-<li><p>缓存处理：1.0中主要使⽤header⾥的If-Modified-Since,Expires来做为缓存判断的标</p>
-<p>准 。1.1则引⼊了更多的缓存控制策略例如Entity tag， If-Unmodified-Since, If-Match,</p>
-<p>If-None-Match等更多可供选择的缓存头来控制缓存策略 </p>
-</li>
-<li><p>带宽优化及网络连接的使用：1.0中，存在⼀些浪费带宽的现象，例如客户端只是需要某个对象的⼀部分，⽽服务器却将整个对象送过来了，并且不⽀持断点续传功能， HTTP1.1则在请求头引⼊了range头域，它允许只请求资源的某个部分，即返回码是206（PartialContent），这样就⽅便了开发者⾃由的选择以便于充分利⽤带宽和连接</p>
+    <title>请教我学操作系统（二）IO多路复用技术</title>
+    <url>/posts/3e93542c.html</url>
+    <content><![CDATA[<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><font size=3>
+
+<ol>
+<li><p>服务器端编程经常需要构造高性能的IO模型，常见的IO模型有四种：</p>
+<p>（1）同步阻塞IO（Blocking IO）：即传统的IO模型。</p>
+<p>（2）同步非阻塞IO（Non-blocking IO）：默认创建的socket都是阻塞的，非阻塞IO要求socket被设置为NONBLOCK。注意这里所说的NIO并非Java的NIO（New IO）库。</p>
+<p>（3）IO多路复用（IO Multiplexing）：即经典的Reactor设计模式，有时也称为异步阻塞IO，Java中的Selector和Linux中的epoll都是这种模型。</p>
+<p>（4）异步IO（Asynchronous IO）：即经典的Proactor设计模式，也称为异步非阻塞IO。</p>
+<p><strong>同步和异步</strong>的概念描述的是用户线程与内核的交互方式：同步是指<strong>用户线程发起IO请求后需要等待或者轮询内核IO操作完成后才能继续执行</strong>；而异步是指用户线程发起IO请求后仍继续执行，当内核IO操作完成后会通知用户线程，或者调用用户线程注册的回调函数。</p>
+<p><strong>阻塞和非阻塞</strong>的概念描述的是用户线程调用内核IO操作的方式：<strong>阻塞是指IO操作需要彻底完成后才返回到用户空间</strong>；而非阻塞是指IO操作被调用后立即返回给用户一个状态值，无需等到IO操作彻底完成。</p>
 </li>
 </ol>
-<h1 id="URI和URL的区别"><a href="#URI和URL的区别" class="headerlink" title="URI和URL的区别"></a>URI和URL的区别</h1><p>URI是统一资源标志符，可以唯一标识一个资源</p>
-<p>URL是统一资源定位符，除了可以唯一标识一个资源，还指明了如何local到这个资源。</p>
-<h1 id="HTTP和HTTPS的区别"><a href="#HTTP和HTTPS的区别" class="headerlink" title="HTTP和HTTPS的区别"></a>HTTP和HTTPS的区别</h1><ol>
-<li><p>端口：HTTP端口默认为80；HTTPS为443</p>
+<h1 id="同步阻塞"><a href="#同步阻塞" class="headerlink" title="同步阻塞"></a>同步阻塞</h1><p>同步阻塞IO模型是最简单的IO模型，用户线程在内核进行IO操作时被阻塞。</p>
+<p> <img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095213.png"></p>
+<h1 id="同步非阻塞IO"><a href="#同步非阻塞IO" class="headerlink" title="同步非阻塞IO"></a>同步非阻塞IO</h1><p>同步非阻塞IO是在同步阻塞IO的基础上，将socket设置为NONBLOCK。这样做用户线程可以在发起IO请求后可以立即返回。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095300.png"></p>
+<p>整个IO请求的过程中，虽然用户线程每次发起IO请求后可以立即返回，但是为了等到数据，仍需要<strong>不断地轮询、重复请求</strong>，消耗了大量的CPU的资源。一般很少直接使用这种模型，而是在其他IO模型中使用非阻塞IO这一特性。</p>
+<h1 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h1><p>流程上来看，使用select函数进行IO请求和同步阻塞模型没有太大的区别，甚至还多了添加监视socket，以及调用select函数的额外操作，效率更差。但是，使用select以后最大的优势是用户可以在一个线程内同时处理多个socket的IO请求。用户可以注册多个socket，然后不断地调用select读取被激活的socket，即可达到在同<strong>一个线程内同时处理多个IO请求的目的</strong>。而在同步阻塞模型中，必须通过多线程的方式才能达到这个目的。</p>
+<p> <img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095402.png"></p>
+<p>通过Reactor的方式，可以将用户线程轮询IO操作状态的工作统一交给handle_events事件循环进行处理。用户线程注册事件处理器之后可以继续执行做其他的工作（异步），而<strong>Reactor线程负责调用内核的select函数检查socket状态</strong>。当有socket被激活时，则通知相应的用户线程（或执行用户线程的回调函数），执行handle_event进行数据读取、处理的工作。由于select函数是阻塞的，因此多路IO复用模型也被称为异步阻塞IO模型。注意，这里的所说的阻塞是指select函数执行时线程被阻塞，而不是指socket。一般在使用IO多路复用模型时，socket都是设置为NONBLOCK的，不过这并不会产生影响，因为用户发起IO请求时，数据已经到达了，用户线程一定不会被阻塞。</p>
+<h1 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h1><p>“真正”的异步IO需要操作系统更强的支持。在IO多路复用模型中，事件循环将文件句柄的状态事件通知给用户线程，由用户线程自行读取数据、处理数据。而在异步IO模型中，当用户线程收到通知时，数据已经被内核读取完毕，并放在了用户线程指定的缓冲区内，内核在IO完成后通知用户线程直接使用即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095443.png"></p>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>IO</tag>
+        <tag>线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>请教我学操作系统（一）进线程与内存管理</title>
+    <url>/posts/d5d6861e.html</url>
+    <content><![CDATA[<h2 id="什么是操作系统"><a href="#什么是操作系统" class="headerlink" title="什么是操作系统"></a>什么是操作系统</h2><ol>
+<li><p>操作系统是管理计算机软硬件资源的程序，是计算机的基石。</p>
 </li>
-<li><p>安全性和资源消耗：HTTP运行在TCP上，传输内容均为明文，客户端与服务器无法验证对方身份。HTTPS运行在SSL&#x2F;TLS上，而SSL&#x2F;TLS运行在TCP上，所有传输内容都采用对称加密，且对称加密的密钥采用了服务器的非对称加密。所以：HTTP 安全性没有 HTTPS⾼，但是 HTTPS ⽐HTTP耗费更多服务器资源 。</p>
+<li><p>本质上是一个应用程序。</p>
 </li>
-<li><p>补充（对称加密与非对称加密）：</p>
-<p>对称加密：密钥只有⼀个，加密解密为同⼀个密码，且加解密速度快，典型的对称加密算法有DES、 AES等；</p>
-<p>⾮对称加密：密钥成对出现（且根据公钥⽆法推知私钥，根据私钥也⽆法推知公钥），加密解密使⽤不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称加密速度较慢，典型的⾮对称加密算法有RSA、 DSA等。</p>
+<li><p>操作系统的存在屏蔽了硬件设备的复杂性，由操作系统统一管理和分配。</p>
 </li>
+<li><p>内核是操作系统的核心部分。负责系统的内存管理，硬件设备管理，文件系统管理和应用程序管理。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327105916.png"></p>
+</li>
+</ol>
+<h1 id="什么是系统调用"><a href="#什么是系统调用" class="headerlink" title="什么是系统调用"></a>什么是系统调用</h1><p>用户态：该状态运行的进程可以直接读取用户程序的数据。</p>
+<p>系统态：该状态运行的进程或程序可以访问计算机任意资源。</p>
+<p>程序运行在用户态时想要调用操作系统提供的系统态子功能时需要进行系统调用。</p>
+<p>系统调用按功能大致分为：</p>
+<p><strong>设备管理</strong>。完成设备的请求或释放，以及设备启动等功能。</p>
+<p><strong>⽂件管理</strong>。完成⽂件的读、写、创建及删除等功能。</p>
+<p><strong>进程控制</strong>。完成进程的创建、撤销、阻塞及唤醒等功能。</p>
+<p><strong>进程通信</strong>。完成进程之间的消息传递或信号传递等功能。</p>
+<p><strong>内存管理</strong>。完成内存的分配、回收以及获取作业占⽤内存区⼤⼩及地址等功能。</p>
+<h1 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h1><ol>
+<li><p>区别：线程时进程划分成的更小的运行单位。进程之间基本相互独立，而线程之间可能相互影响。线程执行开销小，但不利于资源的管理和保护，而进程则相反。</p>
+</li>
+<li><p>进程的状态：</p>
+<p>创建状态**(new)** ：进程正在被创建，尚未到就绪状态。</p>
+<p>就绪状态**(ready)** ：进程已处于准备运⾏状态，即进程获得了除了处理器之外的⼀切所需资</p>
+<p>源，⼀旦得到处理器资源(处理器分配的时间⽚)即可运⾏。</p>
+<p>运⾏状态**(running)** ：进程正在处理器上上运⾏(单核 CPU 下任意时刻只有⼀个进程处于运</p>
+<p>⾏状态)。</p>
+<p>阻塞状态**(waiting)** ：⼜称为等待状态，进程正在等待某⼀事件⽽暂停运⾏如等待某资源为</p>
+<p>可⽤或等待 IO 操作完成。即使处理器空闲，该进程也不能运⾏。</p>
+<p>结束状态**(terminated)** ：进程正在从系统中消失。可能是进程正常结束或其他原因中断退出运⾏。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327110050.png"></p>
+</li>
+<li><p>进程间的通信方式：</p>
+<p>（1）管道（匿名管道）：用于有情缘关系的进程。</p>
+<p>（2）有名管道： 任意进程，先进先出。</p>
+<p>（3） 信号： 通知接收进程某个事件已经发生。</p>
+<p>（4） 消息队列： 存放在内核中。克服了信号承载信息量少，管道只能承载无格式字节流以及缓冲区大小受限的缺陷。</p>
+<p>（5） 信号量：计数器，多进程对共享数据的访问。进程间同步。</p>
+<p>（6） 共享内存： 多个进程访问同一快内存空间</p>
+<p>（7）套接字：用于客户端和服务器之间通过网络进行通信。</p>
+</li>
+<li><p>线程间的同步方式：</p>
+<p>（1） 互斥量</p>
+<p>（2） 信号量：允许同⼀时刻多个线程访问同⼀资源，但是需要控制同⼀时刻访问此资源的最⼤线程数量</p>
+<p>（3） 事件：通过通知操作的⽅式来保持多线程同步，还可以⽅便的实现多线程优先级的⽐较操做</p>
+</li>
+<li><p>进程的调度算法：</p>
+<p>（1） 先到先服务（FCFS）</p>
+<p>（2） 短作业优先（SJF）</p>
+<p>（3） 时间片轮转</p>
+<p>（4） 多级反馈队列调度算法：多级反馈队列调度算法既能使⾼优先级的作业得到响应⼜能使短作业（进程）迅速完成。，因⽽它是⽬前被公认的⼀种较好的进程调度算法</p>
+<p>（5）优先级调度：同一优先级采用FCFS调度</p>
+</li>
+</ol>
+<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><h2 id="常见的内存管理机制"><a href="#常见的内存管理机制" class="headerlink" title="常见的内存管理机制"></a>常见的内存管理机制</h2><ol>
+<li><p>连续分配管理方式：为⼀个⽤户程序分配⼀个连续的内存空间 </p>
+<p>（1）块式管理：在每个块中未被利⽤的空间，我们称之为碎⽚ </p>
+</li>
+<li><p>非连续分配管理方式：允许⼀个程序使⽤的内存分布在离散或者说不相邻的内存中 </p>
+<p>（1）页式管理：主存分为⼤⼩相等且固定的⼀⻚⼀⻚的形式 ，通过⻚表对应逻辑地址和物理地址</p>
+<p>（2）段式管理：段式管理把主存分为⼀段段的，每⼀段的空间⼜要⽐⼀⻚的空间⼩很多 。段式管理通过段表对应逻辑地址和物理地址 。</p>
+<p>（3）段页式管理：结合了段式管理和⻚式管理的优点。简单来说段⻚式管理机制就是把主存先分成若⼲段，每个段⼜分成若⼲⻚，也就是说 段⻚式管理机制 中段与段之间以及段的内部的都是离散的</p>
+</li>
+</ol>
+<h2 id="快表和多级页表"><a href="#快表和多级页表" class="headerlink" title="快表和多级页表"></a>快表和多级页表</h2><p>在分⻚内存管理中，很重要的两点是：</p>
+<ol>
+<li><p>虚拟地址到物理地址的转换要快。</p>
+</li>
+<li><p>解决虚拟地址空间⼤，⻚表也会很⼤的问题。</p>
+</li>
+</ol>
+<p>快表：把快表理解为⼀种特殊的⾼速缓冲存储器（Cache），其中的内容是⻚表的⼀部分或者全部内容。 采⽤⻚表做地址转换，读写内存数据时 CPU 要访问两次主存。有了快表，有时只要访问⼀次⾼速缓冲存储器，⼀次主存，这样可加速查找并提⾼指令执⾏速度 。</p>
+<p>快表的地址转换流程：</p>
+<ol>
+<li><p>根据虚拟地址中的⻚号查快表；</p>
+</li>
+<li><p>如果该⻚在快表中，直接从快表中读取相应的物理地址；</p>
+</li>
+<li><p>如果该⻚不在快表中，就访问内存中的⻚表，再从⻚表中得到物理地址，同时将⻚表中的该</p>
+</li>
+</ol>
+<p>映射表项添加到快表中；</p>
+<ol start="4">
+<li>当快表填满后，⼜要登记新⻚时，就按照⼀定的淘汰策略淘汰掉快表中的⼀个⻚。</li>
+</ol>
+<p>多级页表：引⼊多级⻚表的主要⽬的是为了避免把全部⻚表⼀直放在内存中占⽤过多空间，特别是那些根本就不需要的⻚表就不需要保留在内存中。多级⻚表属于时间换空间的典型场景。 </p>
+<h2 id="分页机制和分段机制的异同"><a href="#分页机制和分段机制的异同" class="headerlink" title="分页机制和分段机制的异同"></a>分页机制和分段机制的异同</h2><ol>
+<li><p>共同点：</p>
+<p>（1）分⻚机制和分段机制都是为了提⾼内存利⽤率，减少内存碎⽚。</p>
+<p>（2）⻚和段都是离散存储的，所以两者都是离散分配内存的⽅式。但是，每个⻚和段中的内存是连续的 </p>
+</li>
+<li><p>不同点：</p>
+<p>（1）⻚的⼤⼩是固定的，由操作系统决定；⽽段的⼤⼩不固定，取决于我们当前运⾏程序。</p>
+<p>（2）分⻚仅仅是为了满⾜操作系统内存管理的需求，⽽段是逻辑信息的单位，在程序中可以体现为代码段，数据段，能够更好满⾜⽤户的需要。</p>
+</li>
+</ol>
+<h2 id="逻辑（虚拟地址）和物理地址"><a href="#逻辑（虚拟地址）和物理地址" class="headerlink" title="逻辑（虚拟地址）和物理地址"></a>逻辑（虚拟地址）和物理地址</h2><p>   指针⾥⾯存储的数值就可以理解成为内存⾥的⼀个地址，这个地址也就是我们说的逻辑地址，逻辑地址由操作系统决定。物理地址指的是真实物理内存中地址，更具体⼀点来说就是内存地址寄存器中的地址。物理地址是内存单元真正的地址。</p>
+<h2 id="CPU寻址，为什么需要虚拟地址空间"><a href="#CPU寻址，为什么需要虚拟地址空间" class="headerlink" title="CPU寻址，为什么需要虚拟地址空间"></a>CPU寻址，为什么需要虚拟地址空间</h2><p>使⽤虚拟寻址， <strong>CPU</strong>需要将<strong>虚拟地址翻译成物理地址<strong><strong>（由</strong></strong>CPU****中内存管理单元硬件完成）</strong>，这样才能访问到真实的物理内存。 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327110407.png"></p>
+<p>为什么要有虚拟地址空间：没有时，程序直接访问操作物理内存。可能造成操作系统崩溃，运行多个程序特别困难。</p>
+<p><strong>通过虚拟地址访问内存有以下优势：</strong></p>
+<p>程序可以使⽤⼀系列<strong>相邻的虚拟地址</strong>来访问<strong>物理内存中不相邻</strong>的⼤内存缓冲区。</p>
+<p>程序可以使⽤⼀系列虚拟地址来访问<strong>⼤于可⽤物理内存的内存缓冲区</strong>。当物理内存的供应量变⼩时，内存管理器会将物理内存⻚（通常⼤⼩为 4 KB）保存到磁盘⽂件。数据或代码⻚会根据需要在物理内存与磁盘之间移动。</p>
+<p>不同进程使⽤的<strong>虚拟地址彼此隔离</strong>。⼀个进程中的代码⽆法更改正在由另⼀进程或操作系统使⽤的物理内存。</p>
+<h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><h3 id="什么是虚拟内存"><a href="#什么是虚拟内存" class="headerlink" title="什么是虚拟内存"></a>什么是虚拟内存</h3><p>虚拟内存 可以让程序可以拥有超过系统物理内存⼤⼩的可⽤内存空间。另外， 虚拟内存为每个进程提供了⼀个⼀致的、私有的地址空间，它让每个进程产⽣了⼀种⾃⼰在独享主存的错觉（每个进程拥有⼀⽚连续完整的内存空间） 。 </p>
+<p>虚拟内存的重要意义是它定义了⼀个连续的虚拟地址空间，并且 把内存扩展到硬盘空间。 </p>
+<h3 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h3><p>虚拟内存技术的基础，正是因为程序运⾏具有局部性原理，才可以只装⼊部分程序到内存就开始运⾏。 </p>
+<ol>
+<li>时间局部性 ：如果程序中的某条指令⼀旦执⾏，不久以后该指令可能再次执⾏；如果某数据被访问过，不久以后该数据可能再次被访问。产⽣时间局部性的典型原因，是由于在程序中存在着⼤量的循环操作。</li>
+<li>空间局部性 ：⼀旦程序访问了某个存储单元，在不久之后，其附近的存储单元也将被访问，即程序在⼀段时间内所访问的地址，可能集中在⼀定的范围之内，这是因为指令通常是顺序存放、顺序执⾏的，数据也⼀般是以向量、数组、表等形式簇聚存储的。</li>
+</ol>
+<p>时间局部性是通过将近来使⽤的指令和数据保存到⾼速缓存存储器中，并使⽤⾼速缓存的层次结构实现。空间局部性通常是使⽤较⼤的⾼速缓存，并将预取机制集成到⾼速缓存控制逻辑中实现。虚拟内存技术实际上就是建⽴了 “内存⼀外存”的两级存储器的结构，利⽤局部性原理实现髙速缓存。 </p>
+<h3 id="虚拟内存的技术实现"><a href="#虚拟内存的技术实现" class="headerlink" title="虚拟内存的技术实现"></a>虚拟内存的技术实现</h3><p>建⽴在离散分配的内存管理⽅式的基础上 </p>
+<ol>
+<li><p>请求分⻚存储管理 ：建⽴在分⻚管理之上，为了⽀持虚拟存储器功能⽽增加了请求调⻚功能和⻚⾯置换功能。 </p>
+</li>
+<li><p>请求分段存储管理 ：建⽴在分段存储管理之上，增加了请求调段功能、分段置换功能。 </p>
+</li>
+<li><p>请求段⻚式存储管理</p>
+</li>
+</ol>
+<p>补充：</p>
+<p>缺⻚中断：如果需执⾏的指令或访问的数据尚未在内存 称为缺⻚或缺段），则由处理器通</p>
+<p>知操作系统将相应的⻚⾯或段调⼊到内存，然后继续执⾏程序 。</p>
+<h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3><p>⻚⾯置换算法的作⽤**?**常⻅的⻚⾯置换算法有哪些 ？</p>
+<p>当发⽣缺⻚中断时，如果当前内存中并没有空闲的⻚⾯，操作系统就必须在内存选择⼀个⻚⾯将其移出内存，以便为即将调⼊的⻚⾯让出空间。 </p>
+<ol>
+<li>OPT（最佳页面置换算法）：换出后续永不会再用到的页面，只在理论上存在。</li>
+<li>FIFO</li>
+<li>LRU（最近最久未使用页面置换算法）</li>
+<li>LFU（最少使用页面置换算法）</li>
 </ol>
 ]]></content>
       <categories>
-        <category>计算机网络</category>
+        <category>操作系统</category>
       </categories>
       <tags>
-        <tag>HTTP</tag>
-        <tag>DNS</tag>
-        <tag>会话</tag>
+        <tag>线程</tag>
+        <tag>进程</tag>
+        <tag>虚拟内存</tag>
+        <tag>内存管理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>请教我学设计模式（一）单例模式的常用实现方法</title>
+    <url>/posts/b2ef857.html</url>
+    <content><![CDATA[<h1 id="单例模式是什么？"><a href="#单例模式是什么？" class="headerlink" title="单例模式是什么？"></a>单例模式是什么？</h1><font size = 3>
+
+<p>单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。</p>
+<p>这种模式涉及到一个单一的类，该类负责创建自己的对象，同时<strong>确保只有单个对象被创建</strong>。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。</p>
+<h1 id="单例模式实现方式"><a href="#单例模式实现方式" class="headerlink" title="单例模式实现方式"></a>单例模式实现方式</h1><h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><p>类加载的时候就创建了实例<br>优点：类加载的时候创建一次实例，避免了多线程同步问题</p>
+<p>缺点：即使单例没被用到也会创建，浪费内存</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><h3 id="非线程安全"><a href="#非线程安全" class="headerlink" title="非线程安全"></a>非线程安全</h3><p>优点：需要时才去创建<br>缺点：没有考虑线程安全问题，多个线程并发调用getInstance，可能会创建多个实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h3><p>缺点：性能问题，添加了synchronized的函数比一般方法慢得多，若多次调用getInstance，则累积的性能损耗特别大。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Synchronized Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="双重校验锁"><a href="#双重校验锁" class="headerlink" title="双重校验锁"></a>双重校验锁</h2><p>大部分情况下，同步代码块都不会执行到，提高了程序的性能。</p>
+<p>有一种情况，两个线程ThreadA，ThreadB，如果threadA执行到了第一个if条件判断，instance &#x3D; null；ThreadB也执行到了if条件判断instance &#x3D; null，所以A和B会依次执行同步代码块里的代码。为了避免创建两个实例，因此又在同步代码块里添加了if条件进行二重检验。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>隐患：</p>
+<p>1、此处涉及Java的指令重排优化。指令重排优化是指在不改变原语义的情况下，通过调整指令的执行顺序让程序运行地更快。</p>
+<p>2、JVM中没有规定编译器优化的相关内容，也即JVM可以自由地进行指令重排序的优化。</p>
+<p>3、此问题的关键在于由于指令重排序优化的存在，导致初始化Singleton和将对象地址赋给instance字段的顺序是不确定的。</p>
+<p>4、在某个线程创建单例对象时，在构造函数被调用前，就为该对象分配了内存空间并将对象的字段设置为默认值。此时就可以将分配的内存地址赋值给instance字段了，然而该对象可能还没初始化。若紧接着另一个线程来调用getInstance，获取到的就是状态不正确的对象，程序出错。</p>
+<p>JDK5的修正：以上是双重校验锁失效的原因，不过在JDK1.5之后的版本添加了volatile关键字。</p>
+<p>1、volatile的一个语义是禁止指令重排序优化，也就保证了instance变量被赋值的时候对象已经是初始化过的，从而避免了上述问题。</p>
+<p>2、Java中的volatile变量是什么？</p>
+<p>（1）关键字的作用有两个：</p>
+<p>​      ①多线程主要围绕可见性和原子性两个特性展开，使用volatile关键字修饰的变量，保证了其在多线程之间的可见性，即每次读取到的volatile变量，一定是最新的数据。</p>
+<p>​     ②代码底层执行的顺序是Java代码–&gt;字节码–&gt;根据字节码执行对应的C&#x2F;C++代码–&gt;C&#x2F;C++代码被编译成汇编语言–&gt;和硬件电路交互。实际中，为了获取更好的性能，JVM可能会对指令进行重排序，多线程下可能会出现一些意想不到的问题。使用volatile则会禁止语义重排序，也一定程度上降低了代码执行效率。实践角度而言，volatile的一个重要作用就是和CAS结合，保证了原子性。</p>
+<p>   （2）volatile是一个特殊的修饰符，只有成员变量才能使用它。在Java并发程序缺少同步类的情况下，多线程对成员变量的操作对其他线程是透明的。volatile变量可以保证下一个读取操作会在前一个写操作之后发生。<br>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="literal">null</span>)&#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>单例</tag>
       </tags>
   </entry>
   <entry>
@@ -1521,234 +1749,6 @@
       </tags>
   </entry>
   <entry>
-    <title>请教我学操作系统（一）进线程与内存管理</title>
-    <url>/posts/d5d6861e.html</url>
-    <content><![CDATA[<h2 id="什么是操作系统"><a href="#什么是操作系统" class="headerlink" title="什么是操作系统"></a>什么是操作系统</h2><ol>
-<li><p>操作系统是管理计算机软硬件资源的程序，是计算机的基石。</p>
-</li>
-<li><p>本质上是一个应用程序。</p>
-</li>
-<li><p>操作系统的存在屏蔽了硬件设备的复杂性，由操作系统统一管理和分配。</p>
-</li>
-<li><p>内核是操作系统的核心部分。负责系统的内存管理，硬件设备管理，文件系统管理和应用程序管理。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327105916.png"></p>
-</li>
-</ol>
-<h1 id="什么是系统调用"><a href="#什么是系统调用" class="headerlink" title="什么是系统调用"></a>什么是系统调用</h1><p>用户态：该状态运行的进程可以直接读取用户程序的数据。</p>
-<p>系统态：该状态运行的进程或程序可以访问计算机任意资源。</p>
-<p>程序运行在用户态时想要调用操作系统提供的系统态子功能时需要进行系统调用。</p>
-<p>系统调用按功能大致分为：</p>
-<p><strong>设备管理</strong>。完成设备的请求或释放，以及设备启动等功能。</p>
-<p><strong>⽂件管理</strong>。完成⽂件的读、写、创建及删除等功能。</p>
-<p><strong>进程控制</strong>。完成进程的创建、撤销、阻塞及唤醒等功能。</p>
-<p><strong>进程通信</strong>。完成进程之间的消息传递或信号传递等功能。</p>
-<p><strong>内存管理</strong>。完成内存的分配、回收以及获取作业占⽤内存区⼤⼩及地址等功能。</p>
-<h1 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h1><ol>
-<li><p>区别：线程时进程划分成的更小的运行单位。进程之间基本相互独立，而线程之间可能相互影响。线程执行开销小，但不利于资源的管理和保护，而进程则相反。</p>
-</li>
-<li><p>进程的状态：</p>
-<p>创建状态**(new)** ：进程正在被创建，尚未到就绪状态。</p>
-<p>就绪状态**(ready)** ：进程已处于准备运⾏状态，即进程获得了除了处理器之外的⼀切所需资</p>
-<p>源，⼀旦得到处理器资源(处理器分配的时间⽚)即可运⾏。</p>
-<p>运⾏状态**(running)** ：进程正在处理器上上运⾏(单核 CPU 下任意时刻只有⼀个进程处于运</p>
-<p>⾏状态)。</p>
-<p>阻塞状态**(waiting)** ：⼜称为等待状态，进程正在等待某⼀事件⽽暂停运⾏如等待某资源为</p>
-<p>可⽤或等待 IO 操作完成。即使处理器空闲，该进程也不能运⾏。</p>
-<p>结束状态**(terminated)** ：进程正在从系统中消失。可能是进程正常结束或其他原因中断退出运⾏。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327110050.png"></p>
-</li>
-<li><p>进程间的通信方式：</p>
-<p>（1）管道（匿名管道）：用于有情缘关系的进程。</p>
-<p>（2）有名管道： 任意进程，先进先出。</p>
-<p>（3） 信号： 通知接收进程某个事件已经发生。</p>
-<p>（4） 消息队列： 存放在内核中。克服了信号承载信息量少，管道只能承载无格式字节流以及缓冲区大小受限的缺陷。</p>
-<p>（5） 信号量：计数器，多进程对共享数据的访问。进程间同步。</p>
-<p>（6） 共享内存： 多个进程访问同一快内存空间</p>
-<p>（7）套接字：用于客户端和服务器之间通过网络进行通信。</p>
-</li>
-<li><p>线程间的同步方式：</p>
-<p>（1） 互斥量</p>
-<p>（2） 信号量：允许同⼀时刻多个线程访问同⼀资源，但是需要控制同⼀时刻访问此资源的最⼤线程数量</p>
-<p>（3） 事件：通过通知操作的⽅式来保持多线程同步，还可以⽅便的实现多线程优先级的⽐较操做</p>
-</li>
-<li><p>进程的调度算法：</p>
-<p>（1） 先到先服务（FCFS）</p>
-<p>（2） 短作业优先（SJF）</p>
-<p>（3） 时间片轮转</p>
-<p>（4） 多级反馈队列调度算法：多级反馈队列调度算法既能使⾼优先级的作业得到响应⼜能使短作业（进程）迅速完成。，因⽽它是⽬前被公认的⼀种较好的进程调度算法</p>
-<p>（5）优先级调度：同一优先级采用FCFS调度</p>
-</li>
-</ol>
-<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><h2 id="常见的内存管理机制"><a href="#常见的内存管理机制" class="headerlink" title="常见的内存管理机制"></a>常见的内存管理机制</h2><ol>
-<li><p>连续分配管理方式：为⼀个⽤户程序分配⼀个连续的内存空间 </p>
-<p>（1）块式管理：在每个块中未被利⽤的空间，我们称之为碎⽚ </p>
-</li>
-<li><p>非连续分配管理方式：允许⼀个程序使⽤的内存分布在离散或者说不相邻的内存中 </p>
-<p>（1）页式管理：主存分为⼤⼩相等且固定的⼀⻚⼀⻚的形式 ，通过⻚表对应逻辑地址和物理地址</p>
-<p>（2）段式管理：段式管理把主存分为⼀段段的，每⼀段的空间⼜要⽐⼀⻚的空间⼩很多 。段式管理通过段表对应逻辑地址和物理地址 。</p>
-<p>（3）段页式管理：结合了段式管理和⻚式管理的优点。简单来说段⻚式管理机制就是把主存先分成若⼲段，每个段⼜分成若⼲⻚，也就是说 段⻚式管理机制 中段与段之间以及段的内部的都是离散的</p>
-</li>
-</ol>
-<h2 id="快表和多级页表"><a href="#快表和多级页表" class="headerlink" title="快表和多级页表"></a>快表和多级页表</h2><p>在分⻚内存管理中，很重要的两点是：</p>
-<ol>
-<li><p>虚拟地址到物理地址的转换要快。</p>
-</li>
-<li><p>解决虚拟地址空间⼤，⻚表也会很⼤的问题。</p>
-</li>
-</ol>
-<p>快表：把快表理解为⼀种特殊的⾼速缓冲存储器（Cache），其中的内容是⻚表的⼀部分或者全部内容。 采⽤⻚表做地址转换，读写内存数据时 CPU 要访问两次主存。有了快表，有时只要访问⼀次⾼速缓冲存储器，⼀次主存，这样可加速查找并提⾼指令执⾏速度 。</p>
-<p>快表的地址转换流程：</p>
-<ol>
-<li><p>根据虚拟地址中的⻚号查快表；</p>
-</li>
-<li><p>如果该⻚在快表中，直接从快表中读取相应的物理地址；</p>
-</li>
-<li><p>如果该⻚不在快表中，就访问内存中的⻚表，再从⻚表中得到物理地址，同时将⻚表中的该</p>
-</li>
-</ol>
-<p>映射表项添加到快表中；</p>
-<ol start="4">
-<li>当快表填满后，⼜要登记新⻚时，就按照⼀定的淘汰策略淘汰掉快表中的⼀个⻚。</li>
-</ol>
-<p>多级页表：引⼊多级⻚表的主要⽬的是为了避免把全部⻚表⼀直放在内存中占⽤过多空间，特别是那些根本就不需要的⻚表就不需要保留在内存中。多级⻚表属于时间换空间的典型场景。 </p>
-<h2 id="分页机制和分段机制的异同"><a href="#分页机制和分段机制的异同" class="headerlink" title="分页机制和分段机制的异同"></a>分页机制和分段机制的异同</h2><ol>
-<li><p>共同点：</p>
-<p>（1）分⻚机制和分段机制都是为了提⾼内存利⽤率，减少内存碎⽚。</p>
-<p>（2）⻚和段都是离散存储的，所以两者都是离散分配内存的⽅式。但是，每个⻚和段中的内存是连续的 </p>
-</li>
-<li><p>不同点：</p>
-<p>（1）⻚的⼤⼩是固定的，由操作系统决定；⽽段的⼤⼩不固定，取决于我们当前运⾏程序。</p>
-<p>（2）分⻚仅仅是为了满⾜操作系统内存管理的需求，⽽段是逻辑信息的单位，在程序中可以体现为代码段，数据段，能够更好满⾜⽤户的需要。</p>
-</li>
-</ol>
-<h2 id="逻辑（虚拟地址）和物理地址"><a href="#逻辑（虚拟地址）和物理地址" class="headerlink" title="逻辑（虚拟地址）和物理地址"></a>逻辑（虚拟地址）和物理地址</h2><p>   指针⾥⾯存储的数值就可以理解成为内存⾥的⼀个地址，这个地址也就是我们说的逻辑地址，逻辑地址由操作系统决定。物理地址指的是真实物理内存中地址，更具体⼀点来说就是内存地址寄存器中的地址。物理地址是内存单元真正的地址。</p>
-<h2 id="CPU寻址，为什么需要虚拟地址空间"><a href="#CPU寻址，为什么需要虚拟地址空间" class="headerlink" title="CPU寻址，为什么需要虚拟地址空间"></a>CPU寻址，为什么需要虚拟地址空间</h2><p>使⽤虚拟寻址， <strong>CPU</strong>需要将<strong>虚拟地址翻译成物理地址<strong><strong>（由</strong></strong>CPU****中内存管理单元硬件完成）</strong>，这样才能访问到真实的物理内存。 </p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327110407.png"></p>
-<p>为什么要有虚拟地址空间：没有时，程序直接访问操作物理内存。可能造成操作系统崩溃，运行多个程序特别困难。</p>
-<p><strong>通过虚拟地址访问内存有以下优势：</strong></p>
-<p>程序可以使⽤⼀系列<strong>相邻的虚拟地址</strong>来访问<strong>物理内存中不相邻</strong>的⼤内存缓冲区。</p>
-<p>程序可以使⽤⼀系列虚拟地址来访问<strong>⼤于可⽤物理内存的内存缓冲区</strong>。当物理内存的供应量变⼩时，内存管理器会将物理内存⻚（通常⼤⼩为 4 KB）保存到磁盘⽂件。数据或代码⻚会根据需要在物理内存与磁盘之间移动。</p>
-<p>不同进程使⽤的<strong>虚拟地址彼此隔离</strong>。⼀个进程中的代码⽆法更改正在由另⼀进程或操作系统使⽤的物理内存。</p>
-<h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><h3 id="什么是虚拟内存"><a href="#什么是虚拟内存" class="headerlink" title="什么是虚拟内存"></a>什么是虚拟内存</h3><p>虚拟内存 可以让程序可以拥有超过系统物理内存⼤⼩的可⽤内存空间。另外， 虚拟内存为每个进程提供了⼀个⼀致的、私有的地址空间，它让每个进程产⽣了⼀种⾃⼰在独享主存的错觉（每个进程拥有⼀⽚连续完整的内存空间） 。 </p>
-<p>虚拟内存的重要意义是它定义了⼀个连续的虚拟地址空间，并且 把内存扩展到硬盘空间。 </p>
-<h3 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h3><p>虚拟内存技术的基础，正是因为程序运⾏具有局部性原理，才可以只装⼊部分程序到内存就开始运⾏。 </p>
-<ol>
-<li>时间局部性 ：如果程序中的某条指令⼀旦执⾏，不久以后该指令可能再次执⾏；如果某数据被访问过，不久以后该数据可能再次被访问。产⽣时间局部性的典型原因，是由于在程序中存在着⼤量的循环操作。</li>
-<li>空间局部性 ：⼀旦程序访问了某个存储单元，在不久之后，其附近的存储单元也将被访问，即程序在⼀段时间内所访问的地址，可能集中在⼀定的范围之内，这是因为指令通常是顺序存放、顺序执⾏的，数据也⼀般是以向量、数组、表等形式簇聚存储的。</li>
-</ol>
-<p>时间局部性是通过将近来使⽤的指令和数据保存到⾼速缓存存储器中，并使⽤⾼速缓存的层次结构实现。空间局部性通常是使⽤较⼤的⾼速缓存，并将预取机制集成到⾼速缓存控制逻辑中实现。虚拟内存技术实际上就是建⽴了 “内存⼀外存”的两级存储器的结构，利⽤局部性原理实现髙速缓存。 </p>
-<h3 id="虚拟内存的技术实现"><a href="#虚拟内存的技术实现" class="headerlink" title="虚拟内存的技术实现"></a>虚拟内存的技术实现</h3><p>建⽴在离散分配的内存管理⽅式的基础上 </p>
-<ol>
-<li><p>请求分⻚存储管理 ：建⽴在分⻚管理之上，为了⽀持虚拟存储器功能⽽增加了请求调⻚功能和⻚⾯置换功能。 </p>
-</li>
-<li><p>请求分段存储管理 ：建⽴在分段存储管理之上，增加了请求调段功能、分段置换功能。 </p>
-</li>
-<li><p>请求段⻚式存储管理</p>
-</li>
-</ol>
-<p>补充：</p>
-<p>缺⻚中断：如果需执⾏的指令或访问的数据尚未在内存 称为缺⻚或缺段），则由处理器通</p>
-<p>知操作系统将相应的⻚⾯或段调⼊到内存，然后继续执⾏程序 。</p>
-<h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3><p>⻚⾯置换算法的作⽤**?**常⻅的⻚⾯置换算法有哪些 ？</p>
-<p>当发⽣缺⻚中断时，如果当前内存中并没有空闲的⻚⾯，操作系统就必须在内存选择⼀个⻚⾯将其移出内存，以便为即将调⼊的⻚⾯让出空间。 </p>
-<ol>
-<li>OPT（最佳页面置换算法）：换出后续永不会再用到的页面，只在理论上存在。</li>
-<li>FIFO</li>
-<li>LRU（最近最久未使用页面置换算法）</li>
-<li>LFU（最少使用页面置换算法）</li>
-</ol>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>进程</tag>
-        <tag>线程</tag>
-        <tag>虚拟内存</tag>
-        <tag>内存管理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>请教我学操作系统（二）IO多路复用技术</title>
-    <url>/posts/3e93542c.html</url>
-    <content><![CDATA[<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><font size=3>
-
-<ol>
-<li><p>服务器端编程经常需要构造高性能的IO模型，常见的IO模型有四种：</p>
-<p>（1）同步阻塞IO（Blocking IO）：即传统的IO模型。</p>
-<p>（2）同步非阻塞IO（Non-blocking IO）：默认创建的socket都是阻塞的，非阻塞IO要求socket被设置为NONBLOCK。注意这里所说的NIO并非Java的NIO（New IO）库。</p>
-<p>（3）IO多路复用（IO Multiplexing）：即经典的Reactor设计模式，有时也称为异步阻塞IO，Java中的Selector和Linux中的epoll都是这种模型。</p>
-<p>（4）异步IO（Asynchronous IO）：即经典的Proactor设计模式，也称为异步非阻塞IO。</p>
-<p><strong>同步和异步</strong>的概念描述的是用户线程与内核的交互方式：同步是指<strong>用户线程发起IO请求后需要等待或者轮询内核IO操作完成后才能继续执行</strong>；而异步是指用户线程发起IO请求后仍继续执行，当内核IO操作完成后会通知用户线程，或者调用用户线程注册的回调函数。</p>
-<p><strong>阻塞和非阻塞</strong>的概念描述的是用户线程调用内核IO操作的方式：<strong>阻塞是指IO操作需要彻底完成后才返回到用户空间</strong>；而非阻塞是指IO操作被调用后立即返回给用户一个状态值，无需等到IO操作彻底完成。</p>
-</li>
-</ol>
-<h1 id="同步阻塞"><a href="#同步阻塞" class="headerlink" title="同步阻塞"></a>同步阻塞</h1><p>同步阻塞IO模型是最简单的IO模型，用户线程在内核进行IO操作时被阻塞。</p>
-<p> <img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095213.png"></p>
-<h1 id="同步非阻塞IO"><a href="#同步非阻塞IO" class="headerlink" title="同步非阻塞IO"></a>同步非阻塞IO</h1><p>同步非阻塞IO是在同步阻塞IO的基础上，将socket设置为NONBLOCK。这样做用户线程可以在发起IO请求后可以立即返回。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095300.png"></p>
-<p>整个IO请求的过程中，虽然用户线程每次发起IO请求后可以立即返回，但是为了等到数据，仍需要<strong>不断地轮询、重复请求</strong>，消耗了大量的CPU的资源。一般很少直接使用这种模型，而是在其他IO模型中使用非阻塞IO这一特性。</p>
-<h1 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h1><p>流程上来看，使用select函数进行IO请求和同步阻塞模型没有太大的区别，甚至还多了添加监视socket，以及调用select函数的额外操作，效率更差。但是，使用select以后最大的优势是用户可以在一个线程内同时处理多个socket的IO请求。用户可以注册多个socket，然后不断地调用select读取被激活的socket，即可达到在同<strong>一个线程内同时处理多个IO请求的目的</strong>。而在同步阻塞模型中，必须通过多线程的方式才能达到这个目的。</p>
-<p> <img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095402.png"></p>
-<p>通过Reactor的方式，可以将用户线程轮询IO操作状态的工作统一交给handle_events事件循环进行处理。用户线程注册事件处理器之后可以继续执行做其他的工作（异步），而<strong>Reactor线程负责调用内核的select函数检查socket状态</strong>。当有socket被激活时，则通知相应的用户线程（或执行用户线程的回调函数），执行handle_event进行数据读取、处理的工作。由于select函数是阻塞的，因此多路IO复用模型也被称为异步阻塞IO模型。注意，这里的所说的阻塞是指select函数执行时线程被阻塞，而不是指socket。一般在使用IO多路复用模型时，socket都是设置为NONBLOCK的，不过这并不会产生影响，因为用户发起IO请求时，数据已经到达了，用户线程一定不会被阻塞。</p>
-<h1 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h1><p>“真正”的异步IO需要操作系统更强的支持。在IO多路复用模型中，事件循环将文件句柄的状态事件通知给用户线程，由用户线程自行读取数据、处理数据。而在异步IO模型中，当用户线程收到通知时，数据已经被内核读取完毕，并放在了用户线程指定的缓冲区内，内核在IO完成后通知用户线程直接使用即可。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095443.png"></p>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>线程</tag>
-        <tag>IO</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>请教我学设计模式（一）单例模式的常用实现方法</title>
-    <url>/posts/b2ef857.html</url>
-    <content><![CDATA[<h1 id="单例模式是什么？"><a href="#单例模式是什么？" class="headerlink" title="单例模式是什么？"></a>单例模式是什么？</h1><font size = 3>
-
-<p>单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。</p>
-<p>这种模式涉及到一个单一的类，该类负责创建自己的对象，同时<strong>确保只有单个对象被创建</strong>。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。</p>
-<h1 id="单例模式实现方式"><a href="#单例模式实现方式" class="headerlink" title="单例模式实现方式"></a>单例模式实现方式</h1><h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><p>类加载的时候就创建了实例<br>优点：类加载的时候创建一次实例，避免了多线程同步问题</p>
-<p>缺点：即使单例没被用到也会创建，浪费内存</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><h3 id="非线程安全"><a href="#非线程安全" class="headerlink" title="非线程安全"></a>非线程安全</h3><p>优点：需要时才去创建<br>缺点：没有考虑线程安全问题，多个线程并发调用getInstance，可能会创建多个实例</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h3><p>缺点：性能问题，添加了synchronized的函数比一般方法慢得多，若多次调用getInstance，则累积的性能损耗特别大。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Synchronized Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="双重校验锁"><a href="#双重校验锁" class="headerlink" title="双重校验锁"></a>双重校验锁</h2><p>大部分情况下，同步代码块都不会执行到，提高了程序的性能。</p>
-<p>有一种情况，两个线程ThreadA，ThreadB，如果threadA执行到了第一个if条件判断，instance &#x3D; null；ThreadB也执行到了if条件判断instance &#x3D; null，所以A和B会依次执行同步代码块里的代码。为了避免创建两个实例，因此又在同步代码块里添加了if条件进行二重检验。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>隐患：</p>
-<p>1、此处涉及Java的指令重排优化。指令重排优化是指在不改变原语义的情况下，通过调整指令的执行顺序让程序运行地更快。</p>
-<p>2、JVM中没有规定编译器优化的相关内容，也即JVM可以自由地进行指令重排序的优化。</p>
-<p>3、此问题的关键在于由于指令重排序优化的存在，导致初始化Singleton和将对象地址赋给instance字段的顺序是不确定的。</p>
-<p>4、在某个线程创建单例对象时，在构造函数被调用前，就为该对象分配了内存空间并将对象的字段设置为默认值。此时就可以将分配的内存地址赋值给instance字段了，然而该对象可能还没初始化。若紧接着另一个线程来调用getInstance，获取到的就是状态不正确的对象，程序出错。</p>
-<p>JDK5的修正：以上是双重校验锁失效的原因，不过在JDK1.5之后的版本添加了volatile关键字。</p>
-<p>1、volatile的一个语义是禁止指令重排序优化，也就保证了instance变量被赋值的时候对象已经是初始化过的，从而避免了上述问题。</p>
-<p>2、Java中的volatile变量是什么？</p>
-<p>（1）关键字的作用有两个：</p>
-<p>​      ①多线程主要围绕可见性和原子性两个特性展开，使用volatile关键字修饰的变量，保证了其在多线程之间的可见性，即每次读取到的volatile变量，一定是最新的数据。</p>
-<p>​     ②代码底层执行的顺序是Java代码–&gt;字节码–&gt;根据字节码执行对应的C&#x2F;C++代码–&gt;C&#x2F;C++代码被编译成汇编语言–&gt;和硬件电路交互。实际中，为了获取更好的性能，JVM可能会对指令进行重排序，多线程下可能会出现一些意想不到的问题。使用volatile则会禁止语义重排序，也一定程度上降低了代码执行效率。实践角度而言，volatile的一个重要作用就是和CAS结合，保证了原子性。</p>
-<p>   （2）volatile是一个特殊的修饰符，只有成员变量才能使用它。在Java并发程序缺少同步类的情况下，多线程对成员变量的操作对其他线程是透明的。volatile变量可以保证下一个读取操作会在前一个写操作之后发生。<br>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="literal">null</span>)&#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-        <tag>单例</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>请教我学MySQL（一）乐观锁vs悲观锁</title>
     <url>/posts/688743a7.html</url>
     <content><![CDATA[<h1 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h1><font size = 3>
@@ -1778,6 +1778,64 @@
       <tags>
         <tag>MySQL</tag>
         <tag>锁</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringMVC（一）简介</title>
+    <url>/posts/678e6659.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ssm: mybatis + spring + springMVC</p>
+<p>ssm &#x3D; JavaWeb做项目</p>
+<p><strong>Spring：IOC和AOP【重要】</strong></p>
+<p><strong>SpringMVC的执行流程【重要】</strong></p>
+<h1 id="回顾MVC模式"><a href="#回顾MVC模式" class="headerlink" title="回顾MVC模式"></a>回顾MVC模式</h1><p>模型（dao，service） 视图（jsp） 控制器（servlet）</p>
+<p><strong>jsp：本质就是一个servlet</strong></p>
+<h1 id="什么是SpringMVC"><a href="#什么是SpringMVC" class="headerlink" title="什么是SpringMVC"></a>什么是SpringMVC</h1><p>Spring MVC是Spring Framework的一部分，是基于java实现MVC的轻量级Web框架。</p>
+<p>特点：</p>
+<p>1.轻量级，简单易学</p>
+<p>2.高效，基于请求响应的MVC框架</p>
+<p>3.与Spring兼容性好，无缝结合</p>
+<p><strong>4.约定大于配置</strong></p>
+<p>5.功能强大：RESTful、数据验证、格式化、本地化、主题等</p>
+<p>6.简洁灵活</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​    <strong>SpringMVC</strong>是一种基于Java实现的<strong>MVC****设计模式</strong>的请求驱动类型的轻量级<strong>Web****框架</strong>，</p>
+<p>属于S<strong>pringFrameWork</strong>的后续产品，已经融合在SpringWebFlow中。</p>
+<p>概述：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111931.png"></p>
+<p>流程图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111950.png"></p>
+<h1 id="组件解析"><a href="#组件解析" class="headerlink" title="组件解析"></a>组件解析</h1><p>1）SpringMVC执行流程</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519112016.png"></p>
+<p>2）SpringMVC注解解析</p>
+<p>@RequestMapping</p>
+<p>作用：用于建立请求URL和处理请求方法之间的对应关系</p>
+<p>位置：</p>
+<ul>
+<li>类上：请求URL的第一级访问目录，不写相当于应用的根目录</li>
+<li>方法上：请求URL的第二级访问目录，与类上的使用@RequeMapping标注的一级目录一起组成访问虚拟路径</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>value：用于指定请求的URL，和path属性的作用一样</li>
+<li>method：指定请求的方式</li>
+<li>params：指定新案子请求参数的条件。支持简单的表达式，要求请求参数的key和value必须和配置一模一样。例如</li>
+<li>params&#x3D;｛“accountName”｝</li>
+<li>params&#x3D;｛“money！100”｝</li>
+</ul>
+<h1 id="SpringMVC数据响应"><a href="#SpringMVC数据响应" class="headerlink" title="SpringMVC数据响应"></a>SpringMVC数据响应</h1><p>（1）数据响应方式</p>
+<p>​        ①页面跳转：</p>
+<p>​            直接返回字符串</p>
+<p>​            通过ModelAndView对象返回</p>
+<p>​        ②回写数据：</p>
+<p>​            直接返回字符串</p>
+<p>​            返回对象或集合</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519112220.png"></p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+        <tag>MVC</tag>
       </tags>
   </entry>
   <entry>
@@ -1908,119 +1966,6 @@
 </ol>
 <h1 id="Spring整合Junit"><a href="#Spring整合Junit" class="headerlink" title="Spring整合Junit"></a>Spring整合Junit</h1><p>​    Spring集成Junit步骤</p>
 <p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105545.png"></p>
-]]></content>
-      <categories>
-        <category>Spring</category>
-      </categories>
-      <tags>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringMVC（一）简介</title>
-    <url>/posts/678e6659.html</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ssm: mybatis + spring + springMVC</p>
-<p>ssm &#x3D; JavaWeb做项目</p>
-<p><strong>Spring：IOC和AOP【重要】</strong></p>
-<p><strong>SpringMVC的执行流程【重要】</strong></p>
-<h1 id="回顾MVC模式"><a href="#回顾MVC模式" class="headerlink" title="回顾MVC模式"></a>回顾MVC模式</h1><p>模型（dao，service） 视图（jsp） 控制器（servlet）</p>
-<p><strong>jsp：本质就是一个servlet</strong></p>
-<h1 id="什么是SpringMVC"><a href="#什么是SpringMVC" class="headerlink" title="什么是SpringMVC"></a>什么是SpringMVC</h1><p>Spring MVC是Spring Framework的一部分，是基于java实现MVC的轻量级Web框架。</p>
-<p>特点：</p>
-<p>1.轻量级，简单易学</p>
-<p>2.高效，基于请求响应的MVC框架</p>
-<p>3.与Spring兼容性好，无缝结合</p>
-<p><strong>4.约定大于配置</strong></p>
-<p>5.功能强大：RESTful、数据验证、格式化、本地化、主题等</p>
-<p>6.简洁灵活</p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​    <strong>SpringMVC</strong>是一种基于Java实现的<strong>MVC****设计模式</strong>的请求驱动类型的轻量级<strong>Web****框架</strong>，</p>
-<p>属于S<strong>pringFrameWork</strong>的后续产品，已经融合在SpringWebFlow中。</p>
-<p>概述：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111931.png"></p>
-<p>流程图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111950.png"></p>
-<h1 id="组件解析"><a href="#组件解析" class="headerlink" title="组件解析"></a>组件解析</h1><p>1）SpringMVC执行流程</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519112016.png"></p>
-<p>2）SpringMVC注解解析</p>
-<p>@RequestMapping</p>
-<p>作用：用于建立请求URL和处理请求方法之间的对应关系</p>
-<p>位置：</p>
-<ul>
-<li>类上：请求URL的第一级访问目录，不写相当于应用的根目录</li>
-<li>方法上：请求URL的第二级访问目录，与类上的使用@RequeMapping标注的一级目录一起组成访问虚拟路径</li>
-</ul>
-<p>属性：</p>
-<ul>
-<li>value：用于指定请求的URL，和path属性的作用一样</li>
-<li>method：指定请求的方式</li>
-<li>params：指定新案子请求参数的条件。支持简单的表达式，要求请求参数的key和value必须和配置一模一样。例如</li>
-<li>params&#x3D;｛“accountName”｝</li>
-<li>params&#x3D;｛“money！100”｝</li>
-</ul>
-<h1 id="SpringMVC数据响应"><a href="#SpringMVC数据响应" class="headerlink" title="SpringMVC数据响应"></a>SpringMVC数据响应</h1><p>（1）数据响应方式</p>
-<p>​        ①页面跳转：</p>
-<p>​            直接返回字符串</p>
-<p>​            通过ModelAndView对象返回</p>
-<p>​        ②回写数据：</p>
-<p>​            直接返回字符串</p>
-<p>​            返回对象或集合</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519112220.png"></p>
-]]></content>
-      <categories>
-        <category>Spring</category>
-      </categories>
-      <tags>
-        <tag>Spring</tag>
-        <tag>MVC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring(三)JDBC与事务控制</title>
-    <url>/posts/91b8dde3.html</url>
-    <content><![CDATA[<h1 id="Spring-JdbcTemplate基本使用"><a href="#Spring-JdbcTemplate基本使用" class="headerlink" title="Spring JdbcTemplate基本使用"></a>Spring JdbcTemplate基本使用</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    它是spring框架中提供的一个对象，是对原始繁琐的JdbcAPI对象的简单封装。spring框架为我们提供了很多的操作模板类。例如:操作关系型数据的JdbcTemplate和bernateTemplate，操作nosql数据库的RedisTemplate，操作消息队列的JmsTemplate等等。</p>
-<h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><p>（1）导入Spring-jdbc和spring-tx（transaction事务）坐标</p>
-<p>（2）创建数据库表和实体</p>
-<p>（3）创建JdbcTemplate对象</p>
-<p>（4）执行数据库操作</p>
-<h2 id="Spring产生JdbcTemplate对象"><a href="#Spring产生JdbcTemplate对象" class="headerlink" title="Spring产生JdbcTemplate对象"></a>Spring产生JdbcTemplate对象</h2><p>​    可以将JdbcTemplate的创建权交给Spring，将DataSource的创建权也交给Spring，在Spring</p>
-<p>容器内部将数据源DataSource注入到JdbcTemplate模版对象中，配置如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111426.png"></p>
-<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111454.png"></p>
-<h1 id="Spring的事务控制"><a href="#Spring的事务控制" class="headerlink" title="Spring的事务控制"></a>Spring的事务控制</h1><h2 id="编程式事务控制相关对象（了解）"><a href="#编程式事务控制相关对象（了解）" class="headerlink" title="编程式事务控制相关对象（了解）"></a>编程式事务控制相关对象（了解）</h2><ol>
-<li>PlateformTransactionManager（接口，封装事务行为）</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111530.png"></p>
-<ol start="2">
-<li><p>TransactionDefinition（封装事务参数）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111552.png"></p>
-</li>
-<li><p>TransactionStatus（封装事务状态信息）</p>
-</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111614.png"></p>
-<h2 id="基于XML的声明式事务控制"><a href="#基于XML的声明式事务控制" class="headerlink" title="基于XML的声明式事务控制"></a>基于XML的声明式事务控制</h2><ol>
-<li><p>什么是声明式事务控制</p>
-<p>Spring的声明式事务顾名思义就是<strong>采用声明的方式来处理事务</strong>。这里所说的声明，就是指在配置文件中声明，</p>
-<p>用在Spring配置文件中声明式的处理事务来代替代码式的处理事务。</p>
-<p>Spring声明式事务控制底层就是AOP</p>
-</li>
-<li><p>声明式事务控制明确事项：</p>
-<p>（1）谁是切点</p>
-<p>（2）谁是通知</p>
-<p>（3）配置切面</p>
-</li>
-<li><p>配置要点</p>
-<p>（1）平台事务管理器配置</p>
-<p>（2）事务通知配置</p>
-<p>（3）事务aop织入配置</p>
-</li>
-</ol>
-<h2 id="基于注解的声明式事务控制"><a href="#基于注解的声明式事务控制" class="headerlink" title="基于注解的声明式事务控制"></a>基于注解的声明式事务控制</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111724.png"></p>
-<h1 id="Spring集成web环境"><a href="#Spring集成web环境" class="headerlink" title="Spring集成web环境"></a>Spring集成web环境</h1><h2 id="ApplicationContext应用上下文获取方式"><a href="#ApplicationContext应用上下文获取方式" class="headerlink" title="ApplicationContext应用上下文获取方式"></a>ApplicationContext应用上下文获取方式</h2><p>​    应用上下文对象是通过new ClasspathXmIApplicationContext(spring配置文件)方式获取的，但是每次从容器中获得Bean时都要编写new ClasspathXmIApplicationContext(spring配置文件)，这样的弊端是配置文件加载多次，应用上下文对象创建多次。</p>
-<p>​    在Web项目中，可以使用ServletContextListener监听Web应用的启动，我们可以在Web应用启动时，就加载Spring的配置文件，创建应用上下文对象ApplicationContext，在将其存储到最大的域servletContext域中，这样就可以在任意位置从域中获得应用上下文ApplicationContext对象了。</p>
-<h2 id="Spring提供获取应用上下文的工具"><a href="#Spring提供获取应用上下文的工具" class="headerlink" title="Spring提供获取应用上下文的工具"></a>Spring提供获取应用上下文的工具</h2><p>​    上面的分析不用手动实现，Spring提供了一个监听器ContextLoaderListener就是对上述功能的封装，该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext域中，提供了一个客户端工具WebApplicationContextUtils供使用者获得应用上下文对象。</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>（1）在web.xml中配置ContextLoaderListener监听器(导入spring-web坐标)</p>
-<p>（2）使用WebApplicationContextUtils获得应用上下文对象ApplicationContext</p>
 ]]></content>
       <categories>
         <category>Spring</category>
@@ -2384,6 +2329,84 @@
       </tags>
   </entry>
   <entry>
+    <title>Little eagle - SpringBoot实战管理系统(二)</title>
+    <url>/posts/50402.html</url>
+    <content><![CDATA[<h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>part1中利用HashMap模拟数据库实现了对数据的增删改查操作，对SpringBoot的特性和使用有了一定了解。</p>
+<p>part2整合各类主流的DataSource和数据库组件。</p>
+<p>涉及到的数据库源和相关技术点移步左侧一级标题。</p>
+<p>环境：jdk v.1.8.0</p>
+<p>项目地址：</p>
+<p>整合jdbc&amp;druid</p>
+<p><a href="https://github.com/codersliu/springboot04-jdbcLearning">https://github.com/codersliu/springboot04-jdbcLearning</a></p>
+<p>整合mybatis</p>
+<p><a href="https://github.com/codersliu/springboot05-mybatis/tree/master">https://github.com/codersliu/springboot05-mybatis/tree/master</a></p>
+<p>资源自取↑</p>
+<h1 id="整合JDBC"><a href="#整合JDBC" class="headerlink" title="整合JDBC"></a>整合JDBC</h1><p>创建项目时勾选web和JDBC相关依赖↓</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405100520648.png"></p>
+<p>新建resources&#x2F;application.yml代替原application.properties配置数据源</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/company?useUnicode=true&amp;characterEnconding=utf-8</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+
+<p>新建controller&#x2F;jdbcController逐步实现对数据库的增删改查，这里mysql下新建了一个数据源company，新建了一个user表，数据库操作在该表中实现，表结构↓</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405100958950.png"></p>
+<p>tips：controller文件夹文件结构一定要正确（project&#x2F;src&#x2F;main&#x2F;java&#x2F;com.xxxxxxx&#x2F;controller），刚开始编写时错放在project&#x2F;src&#x2F;main&#x2F;java&#x2F;controller下，导致无法访问到资源，找bug找了1h，麻中麻。</p>
+<p>crud开始！</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot04jdbclearning.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.sun.org.glassfish.gmbal.ParameterNames;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">jdbcController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询所有user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/jdbcSelect&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Map&lt;String, Object&gt;&gt; <span class="title function_">jdbcSelect</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;select * from user&quot;</span>;</span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; maps = jdbcTemplate.queryForList(sql);</span><br><span class="line">        <span class="keyword">return</span> maps;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//插入新user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/jdbcInsert&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jdbcInsert</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;insert into company.user(id, username, password) values (6, &#x27;junjw&#x27;, &#x27;4545456&#x27;)&quot;</span>;</span><br><span class="line">        jdbcTemplate.update(sql);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;insert ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据传入id修改user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/jdbcUpdate/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jdbcUpdate</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;update company.user set username=?, password=? where id=&quot;</span>+id;</span><br><span class="line">        Object[] newUser = <span class="keyword">new</span> <span class="title class_">Object</span>[<span class="number">2</span>];</span><br><span class="line">        newUser[<span class="number">0</span>] = <span class="string">&quot;yaoww&quot;</span>;</span><br><span class="line">        newUser[<span class="number">1</span>] = <span class="string">&quot;112233&quot;</span>;</span><br><span class="line">        jdbcTemplate.update(sql, newUser);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;update ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据传入id删除user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;jdbcDelete/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jdbcDelete</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;delete from company.user where id=?&quot;</span>;</span><br><span class="line">        jdbcTemplate.update(sql, id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;delete ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405102549408.png"></p>
+<h1 id="整合Druid"><a href="#整合Druid" class="headerlink" title="整合Druid"></a>整合Druid</h1><p><a href="https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">Druid-alibaba官方文档</a></p>
+<p>pom.xml中导入druid和log4j依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>application.yaml中对druid连接池等参数进行配置</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/company?useUnicode=true&amp;characterEnconding=utf-8</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line">      <span class="comment"># 下面为连接池的补充设置，应用到上面所有数据源中</span></span><br><span class="line">      <span class="comment"># 初始化大小，最小，最大</span></span><br><span class="line">      <span class="attr">initial-size:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">min-idle:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">max-active:</span> <span class="number">20</span></span><br><span class="line">      <span class="comment"># 配置获取连接等待超时的时间</span></span><br><span class="line">      <span class="attr">max-wait:</span> <span class="number">60000</span></span><br><span class="line">      <span class="comment"># 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒</span></span><br><span class="line">      <span class="attr">time-between-eviction-runs-millis:</span> <span class="number">60000</span></span><br><span class="line">      <span class="comment"># 配置一个连接在池中最小生存的时间，单位是毫秒</span></span><br><span class="line">      <span class="attr">min-evictable-idle-time-millis:</span> <span class="number">300000</span></span><br><span class="line">      <span class="attr">validation-query:</span> <span class="string">SELECT</span> <span class="number">1</span> <span class="string">FROM</span> <span class="string">DUAL</span></span><br><span class="line">      <span class="attr">test-while-idle:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">test-on-borrow:</span> <span class="literal">false</span></span><br><span class="line">      <span class="attr">test-on-return:</span> <span class="literal">false</span></span><br><span class="line">      <span class="comment"># 打开PSCache，并且指定每个连接上PSCache的大小</span></span><br><span class="line">      <span class="attr">pool-prepared-statements:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">max-pool-prepared-statement-per-connection-size:</span> <span class="number">20</span></span><br><span class="line">        <span class="comment"># 配置监控统计拦截的 Filter，去掉后监控界面 SQL 无法统计，wall 用于防火墙  日志 log4j</span></span><br><span class="line">      <span class="attr">filters:</span> <span class="string">stat,wall,log4j</span>  <span class="comment">#导入了log4j</span></span><br><span class="line">      <span class="attr">use-global-data-source-stat:</span> <span class="literal">true</span></span><br><span class="line">      <span class="comment"># 通过connectProperties属性来打开mergeSql功能；慢SQL记录</span></span><br><span class="line">      <span class="attr">connect-properties:</span> <span class="string">druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</span></span><br></pre></td></tr></table></figure>
+
+<p>整合Druid关键在于开启管理页面</p>
+<p>新建config&#x2F;DruidConfig，配置ServletRegistrationBean和FilterRegistrationBean</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot04jdbclearning.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.pool.DruidDataSource;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.support.http.StatViewServlet;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.support.http.WebStatFilter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.FilterRegistrationBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.ServletRegistrationBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DruidConfig</span> &#123;</span><br><span class="line">    <span class="meta">@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> DataSource <span class="title function_">dataSource</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DruidDataSource</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    后台监控：web.xml， ServletRegistrationBean</span></span><br><span class="line">    <span class="comment">//SpringBoot内置servlet容器，没有web.xml，使用替代类ServletRegistrationBean</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> ServletRegistrationBean <span class="title function_">statViewServlet</span><span class="params">()</span>&#123;</span><br><span class="line">        ServletRegistrationBean&lt;StatViewServlet&gt; bean = <span class="keyword">new</span> <span class="title class_">ServletRegistrationBean</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">StatViewServlet</span>(), <span class="string">&quot;/druid/*&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置后台登陆账号密码</span></span><br><span class="line">        HashMap&lt;String, String&gt; initParameters = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        initParameters.put(<span class="string">&quot;loginUsername&quot;</span>, <span class="string">&quot;admin&quot;</span>);</span><br><span class="line">        initParameters.put(<span class="string">&quot;loginPassword&quot;</span>, <span class="string">&quot;123456&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置白名单，允许访问的对象</span></span><br><span class="line">        initParameters.put(<span class="string">&quot;allow&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置黑名单</span></span><br><span class="line"><span class="comment">//        initParameters.put(&quot;sliu&quot;, &quot;192.168.11.12&quot;);</span></span><br><span class="line"></span><br><span class="line">        bean.setInitParameters(initParameters);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//filter 配置过滤器</span></span><br><span class="line">    <span class="comment">//和拦截器过滤可访问资源不同</span></span><br><span class="line">    <span class="comment">//该过滤器用于过滤哪些资源可以被druid监测到</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> FilterRegistrationBean <span class="title function_">webStatFilter</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">FilterRegistrationBean</span> <span class="variable">bean</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FilterRegistrationBean</span>();</span><br><span class="line">        bean.setFilter(<span class="keyword">new</span> <span class="title class_">WebStatFilter</span>());</span><br><span class="line"></span><br><span class="line">        Map&lt;String, String&gt; initParameters = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不进行监控的资源</span></span><br><span class="line">        initParameters.put(<span class="string">&quot;exclusions&quot;</span>, <span class="string">&quot;*.js,*.css,/druid/*&quot;</span>);</span><br><span class="line"></span><br><span class="line">        bean.setInitParameters(initParameters);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405152216615.png"></p>
+<h1 id="整合mybatis"><a href="#整合mybatis" class="headerlink" title="整合mybatis"></a>整合mybatis</h1><p>新建项目，导入以下依赖</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405155015878.png"></p>
+<p>pom.xml下手动导入mybatis依赖和lombok依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.22<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>新建resources&#x2F;application.yml配置数据源</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/company?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+
+<p>新建实体类&#x2F;pojo&#x2F;User.java封装数据库company下的user表</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot05mybatis.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>新建接口mapper&#x2F;UserMapper.java作为dao层封装对数据库的操作</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot05mybatis.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.springboot05mybatis.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> &#123;</span><br><span class="line">    List&lt;User&gt; <span class="title function_">getAllUser</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    User <span class="title function_">getUserById</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">addUser</span><span class="params">(User user)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">updateUser</span><span class="params">(User user)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">deleteUser</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>新建resources&#x2F;mybatis&#x2F;mapper&#x2F;UserMapper.xml完成mapper绑定</p>
+<p><a href="https://mybatis.org/mybatis-3/zh/getting-started.html">mybatis官方中文文档</a></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.example.springboot05mybatis.mapper.UserMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getAllUser&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        select * from user</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        select * from user where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        insert into user (id, username, password) values (#&#123;id&#125;,#&#123;username&#125;,#&#123;password&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updateUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        update user set uesrname=#&#123;username&#125;,password=#&#123;password&#125;, where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;deleteUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">        delete from user where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>application.yml下整合mybatis</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#整合mybatis</span></span><br><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="attr">type-aliases-package:</span> <span class="string">com.example.springboot05mybatis.pojo</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath:mybatis/mapper/*.xml</span></span><br></pre></td></tr></table></figure>
+
+<p>新建controller&#x2F;UserController封装业务</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot05mybatis.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.springboot05mybatis.mapper.UserMapper;</span><br><span class="line"><span class="keyword">import</span> com.example.springboot05mybatis.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/getAllUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getAllUser</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;User&gt; allUser = userMapper.getAllUser();</span><br><span class="line">        <span class="keyword">for</span> (User user : allUser) &#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> allUser;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/getUserById/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">getUserById</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> userMapper.getUserById(id);</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/addUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">addUser</span><span class="params">()</span>&#123;</span><br><span class="line">        userMapper.addUser(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">5</span>, <span class="string">&quot;jojo&quot;</span>, <span class="string">&quot;123456&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;addUser ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/updateUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">updateUser</span><span class="params">()</span>&#123;</span><br><span class="line">        userMapper.updateUser(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">5</span>, <span class="string">&quot;marry&quot;</span>, <span class="string">&quot;29934&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;updateUser ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;deleteUser/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">deleteUser</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        userMapper.deleteUser(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;deleteUser ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里get到一个疑问，为什么在写业务层时都使用@RestController而不是@Controller？</p>
+<p><a href="https://www.cnblogs.com/east7/p/10462279.html">@RestController和@Controller区别在于</a>前者无法返回指定页面，需要配合视图解析器InternalResourceViewResolver;而后者无法返回json等内容，需要配合@ResponseBody实现。</p>
+<p>整合mybatis最终效果如↓</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405193523893.png"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本节内容整合了常用数据源JDBC、Druid和Mybatis，完成了真实数据库下的编码。</p>
+<p>第3part中整合安全环境SpringSecurity和Shiro实现用户认证和授权等模块。</p>
+<p>数据库搞定！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/QQ20220331104633.gif"></p>
+]]></content>
+      <categories>
+        <category>Little eagle</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Little eagle - SpringBoot实战管理系统(一)</title>
     <url>/posts/1094.html</url>
     <content><![CDATA[<h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>记录狂神大佬的<a href="https://www.bilibili.com/video/BV1PE411i7CV?p=28">SpringBoot练手项目</a>，建议有空跟着视频kao一遍，笔记记录大体项目编写流程，并记录一些自身练习过程中碰到的疑难点、对相关技术原理进行拓展。</p>
@@ -2528,84 +2551,6 @@
 
 <h2 id="404页面"><a href="#404页面" class="headerlink" title="404页面"></a>404页面</h2><p>在resources&#x2F;templates下放入404.html</p>
 <p>okkk仿数据库的增删改查搞定！</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/QQ20220331104633.gif"></p>
-]]></content>
-      <categories>
-        <category>Little eagle</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Little eagle - SpringBoot实战管理系统(二)</title>
-    <url>/posts/50402.html</url>
-    <content><![CDATA[<h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>part1中利用HashMap模拟数据库实现了对数据的增删改查操作，对SpringBoot的特性和使用有了一定了解。</p>
-<p>part2整合各类主流的DataSource和数据库组件。</p>
-<p>涉及到的数据库源和相关技术点移步左侧一级标题。</p>
-<p>环境：jdk v.1.8.0</p>
-<p>项目地址：</p>
-<p>整合jdbc&amp;druid</p>
-<p><a href="https://github.com/codersliu/springboot04-jdbcLearning">https://github.com/codersliu/springboot04-jdbcLearning</a></p>
-<p>整合mybatis</p>
-<p><a href="https://github.com/codersliu/springboot05-mybatis/tree/master">https://github.com/codersliu/springboot05-mybatis/tree/master</a></p>
-<p>资源自取↑</p>
-<h1 id="整合JDBC"><a href="#整合JDBC" class="headerlink" title="整合JDBC"></a>整合JDBC</h1><p>创建项目时勾选web和JDBC相关依赖↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405100520648.png"></p>
-<p>新建resources&#x2F;application.yml代替原application.properties配置数据源</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/company?useUnicode=true&amp;characterEnconding=utf-8</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
-
-<p>新建controller&#x2F;jdbcController逐步实现对数据库的增删改查，这里mysql下新建了一个数据源company，新建了一个user表，数据库操作在该表中实现，表结构↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405100958950.png"></p>
-<p>tips：controller文件夹文件结构一定要正确（project&#x2F;src&#x2F;main&#x2F;java&#x2F;com.xxxxxxx&#x2F;controller），刚开始编写时错放在project&#x2F;src&#x2F;main&#x2F;java&#x2F;controller下，导致无法访问到资源，找bug找了1h，麻中麻。</p>
-<p>crud开始！</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot04jdbclearning.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.sun.org.glassfish.gmbal.ParameterNames;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">jdbcController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询所有user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/jdbcSelect&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Map&lt;String, Object&gt;&gt; <span class="title function_">jdbcSelect</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;select * from user&quot;</span>;</span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; maps = jdbcTemplate.queryForList(sql);</span><br><span class="line">        <span class="keyword">return</span> maps;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//插入新user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/jdbcInsert&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jdbcInsert</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;insert into company.user(id, username, password) values (6, &#x27;junjw&#x27;, &#x27;4545456&#x27;)&quot;</span>;</span><br><span class="line">        jdbcTemplate.update(sql);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;insert ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据传入id修改user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/jdbcUpdate/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jdbcUpdate</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;update company.user set username=?, password=? where id=&quot;</span>+id;</span><br><span class="line">        Object[] newUser = <span class="keyword">new</span> <span class="title class_">Object</span>[<span class="number">2</span>];</span><br><span class="line">        newUser[<span class="number">0</span>] = <span class="string">&quot;yaoww&quot;</span>;</span><br><span class="line">        newUser[<span class="number">1</span>] = <span class="string">&quot;112233&quot;</span>;</span><br><span class="line">        jdbcTemplate.update(sql, newUser);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;update ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据传入id删除user信息</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;jdbcDelete/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">jdbcDelete</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;delete from company.user where id=?&quot;</span>;</span><br><span class="line">        jdbcTemplate.update(sql, id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;delete ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405102549408.png"></p>
-<h1 id="整合Druid"><a href="#整合Druid" class="headerlink" title="整合Druid"></a>整合Druid</h1><p><a href="https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">Druid-alibaba官方文档</a></p>
-<p>pom.xml中导入druid和log4j依赖</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>application.yaml中对druid连接池等参数进行配置</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/company?useUnicode=true&amp;characterEnconding=utf-8</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line">      <span class="comment"># 下面为连接池的补充设置，应用到上面所有数据源中</span></span><br><span class="line">      <span class="comment"># 初始化大小，最小，最大</span></span><br><span class="line">      <span class="attr">initial-size:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">min-idle:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">max-active:</span> <span class="number">20</span></span><br><span class="line">      <span class="comment"># 配置获取连接等待超时的时间</span></span><br><span class="line">      <span class="attr">max-wait:</span> <span class="number">60000</span></span><br><span class="line">      <span class="comment"># 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒</span></span><br><span class="line">      <span class="attr">time-between-eviction-runs-millis:</span> <span class="number">60000</span></span><br><span class="line">      <span class="comment"># 配置一个连接在池中最小生存的时间，单位是毫秒</span></span><br><span class="line">      <span class="attr">min-evictable-idle-time-millis:</span> <span class="number">300000</span></span><br><span class="line">      <span class="attr">validation-query:</span> <span class="string">SELECT</span> <span class="number">1</span> <span class="string">FROM</span> <span class="string">DUAL</span></span><br><span class="line">      <span class="attr">test-while-idle:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">test-on-borrow:</span> <span class="literal">false</span></span><br><span class="line">      <span class="attr">test-on-return:</span> <span class="literal">false</span></span><br><span class="line">      <span class="comment"># 打开PSCache，并且指定每个连接上PSCache的大小</span></span><br><span class="line">      <span class="attr">pool-prepared-statements:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">max-pool-prepared-statement-per-connection-size:</span> <span class="number">20</span></span><br><span class="line">        <span class="comment"># 配置监控统计拦截的 Filter，去掉后监控界面 SQL 无法统计，wall 用于防火墙  日志 log4j</span></span><br><span class="line">      <span class="attr">filters:</span> <span class="string">stat,wall,log4j</span>  <span class="comment">#导入了log4j</span></span><br><span class="line">      <span class="attr">use-global-data-source-stat:</span> <span class="literal">true</span></span><br><span class="line">      <span class="comment"># 通过connectProperties属性来打开mergeSql功能；慢SQL记录</span></span><br><span class="line">      <span class="attr">connect-properties:</span> <span class="string">druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</span></span><br></pre></td></tr></table></figure>
-
-<p>整合Druid关键在于开启管理页面</p>
-<p>新建config&#x2F;DruidConfig，配置ServletRegistrationBean和FilterRegistrationBean</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot04jdbclearning.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.pool.DruidDataSource;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.support.http.StatViewServlet;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.support.http.WebStatFilter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.FilterRegistrationBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.ServletRegistrationBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DruidConfig</span> &#123;</span><br><span class="line">    <span class="meta">@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> DataSource <span class="title function_">dataSource</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DruidDataSource</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    后台监控：web.xml， ServletRegistrationBean</span></span><br><span class="line">    <span class="comment">//SpringBoot内置servlet容器，没有web.xml，使用替代类ServletRegistrationBean</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> ServletRegistrationBean <span class="title function_">statViewServlet</span><span class="params">()</span>&#123;</span><br><span class="line">        ServletRegistrationBean&lt;StatViewServlet&gt; bean = <span class="keyword">new</span> <span class="title class_">ServletRegistrationBean</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">StatViewServlet</span>(), <span class="string">&quot;/druid/*&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置后台登陆账号密码</span></span><br><span class="line">        HashMap&lt;String, String&gt; initParameters = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        initParameters.put(<span class="string">&quot;loginUsername&quot;</span>, <span class="string">&quot;admin&quot;</span>);</span><br><span class="line">        initParameters.put(<span class="string">&quot;loginPassword&quot;</span>, <span class="string">&quot;123456&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置白名单，允许访问的对象</span></span><br><span class="line">        initParameters.put(<span class="string">&quot;allow&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置黑名单</span></span><br><span class="line"><span class="comment">//        initParameters.put(&quot;sliu&quot;, &quot;192.168.11.12&quot;);</span></span><br><span class="line"></span><br><span class="line">        bean.setInitParameters(initParameters);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//filter 配置过滤器</span></span><br><span class="line">    <span class="comment">//和拦截器过滤可访问资源不同</span></span><br><span class="line">    <span class="comment">//该过滤器用于过滤哪些资源可以被druid监测到</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> FilterRegistrationBean <span class="title function_">webStatFilter</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">FilterRegistrationBean</span> <span class="variable">bean</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FilterRegistrationBean</span>();</span><br><span class="line">        bean.setFilter(<span class="keyword">new</span> <span class="title class_">WebStatFilter</span>());</span><br><span class="line"></span><br><span class="line">        Map&lt;String, String&gt; initParameters = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不进行监控的资源</span></span><br><span class="line">        initParameters.put(<span class="string">&quot;exclusions&quot;</span>, <span class="string">&quot;*.js,*.css,/druid/*&quot;</span>);</span><br><span class="line"></span><br><span class="line">        bean.setInitParameters(initParameters);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405152216615.png"></p>
-<h1 id="整合mybatis"><a href="#整合mybatis" class="headerlink" title="整合mybatis"></a>整合mybatis</h1><p>新建项目，导入以下依赖</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405155015878.png"></p>
-<p>pom.xml下手动导入mybatis依赖和lombok依赖</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.22<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>新建resources&#x2F;application.yml配置数据源</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/company?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
-
-<p>新建实体类&#x2F;pojo&#x2F;User.java封装数据库company下的user表</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot05mybatis.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>新建接口mapper&#x2F;UserMapper.java作为dao层封装对数据库的操作</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot05mybatis.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.springboot05mybatis.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> &#123;</span><br><span class="line">    List&lt;User&gt; <span class="title function_">getAllUser</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    User <span class="title function_">getUserById</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">addUser</span><span class="params">(User user)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">updateUser</span><span class="params">(User user)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">deleteUser</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>新建resources&#x2F;mybatis&#x2F;mapper&#x2F;UserMapper.xml完成mapper绑定</p>
-<p><a href="https://mybatis.org/mybatis-3/zh/getting-started.html">mybatis官方中文文档</a></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.example.springboot05mybatis.mapper.UserMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getAllUser&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        select * from user</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        select * from user where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        insert into user (id, username, password) values (#&#123;id&#125;,#&#123;username&#125;,#&#123;password&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updateUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">        update user set uesrname=#&#123;username&#125;,password=#&#123;password&#125;, where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;deleteUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">        delete from user where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>application.yml下整合mybatis</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#整合mybatis</span></span><br><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="attr">type-aliases-package:</span> <span class="string">com.example.springboot05mybatis.pojo</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath:mybatis/mapper/*.xml</span></span><br></pre></td></tr></table></figure>
-
-<p>新建controller&#x2F;UserController封装业务</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springboot05mybatis.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.springboot05mybatis.mapper.UserMapper;</span><br><span class="line"><span class="keyword">import</span> com.example.springboot05mybatis.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/getAllUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">getAllUser</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;User&gt; allUser = userMapper.getAllUser();</span><br><span class="line">        <span class="keyword">for</span> (User user : allUser) &#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> allUser;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/getUserById/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">getUserById</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> userMapper.getUserById(id);</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/addUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">addUser</span><span class="params">()</span>&#123;</span><br><span class="line">        userMapper.addUser(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">5</span>, <span class="string">&quot;jojo&quot;</span>, <span class="string">&quot;123456&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;addUser ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/updateUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">updateUser</span><span class="params">()</span>&#123;</span><br><span class="line">        userMapper.updateUser(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">5</span>, <span class="string">&quot;marry&quot;</span>, <span class="string">&quot;29934&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;updateUser ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;deleteUser/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">deleteUser</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="type">int</span> id)</span>&#123;</span><br><span class="line">        userMapper.deleteUser(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;message==&gt;deleteUser ok!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里get到一个疑问，为什么在写业务层时都使用@RestController而不是@Controller？</p>
-<p><a href="https://www.cnblogs.com/east7/p/10462279.html">@RestController和@Controller区别在于</a>前者无法返回指定页面，需要配合视图解析器InternalResourceViewResolver;而后者无法返回json等内容，需要配合@ResponseBody实现。</p>
-<p>整合mybatis最终效果如↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/image-20220405193523893.png"></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本节内容整合了常用数据源JDBC、Druid和Mybatis，完成了真实数据库下的编码。</p>
-<p>第3part中整合安全环境SpringSecurity和Shiro实现用户认证和授权等模块。</p>
-<p>数据库搞定！</p>
 <p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/QQ20220331104633.gif"></p>
 ]]></content>
       <categories>
@@ -3013,6 +2958,61 @@
       <tags>
         <tag>Java</tag>
         <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring(三)JDBC与事务控制</title>
+    <url>/posts/91b8dde3.html</url>
+    <content><![CDATA[<h1 id="Spring-JdbcTemplate基本使用"><a href="#Spring-JdbcTemplate基本使用" class="headerlink" title="Spring JdbcTemplate基本使用"></a>Spring JdbcTemplate基本使用</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    它是spring框架中提供的一个对象，是对原始繁琐的JdbcAPI对象的简单封装。spring框架为我们提供了很多的操作模板类。例如:操作关系型数据的JdbcTemplate和bernateTemplate，操作nosql数据库的RedisTemplate，操作消息队列的JmsTemplate等等。</p>
+<h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><p>（1）导入Spring-jdbc和spring-tx（transaction事务）坐标</p>
+<p>（2）创建数据库表和实体</p>
+<p>（3）创建JdbcTemplate对象</p>
+<p>（4）执行数据库操作</p>
+<h2 id="Spring产生JdbcTemplate对象"><a href="#Spring产生JdbcTemplate对象" class="headerlink" title="Spring产生JdbcTemplate对象"></a>Spring产生JdbcTemplate对象</h2><p>​    可以将JdbcTemplate的创建权交给Spring，将DataSource的创建权也交给Spring，在Spring</p>
+<p>容器内部将数据源DataSource注入到JdbcTemplate模版对象中，配置如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111426.png"></p>
+<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111454.png"></p>
+<h1 id="Spring的事务控制"><a href="#Spring的事务控制" class="headerlink" title="Spring的事务控制"></a>Spring的事务控制</h1><h2 id="编程式事务控制相关对象（了解）"><a href="#编程式事务控制相关对象（了解）" class="headerlink" title="编程式事务控制相关对象（了解）"></a>编程式事务控制相关对象（了解）</h2><ol>
+<li>PlateformTransactionManager（接口，封装事务行为）</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111530.png"></p>
+<ol start="2">
+<li><p>TransactionDefinition（封装事务参数）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111552.png"></p>
+</li>
+<li><p>TransactionStatus（封装事务状态信息）</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111614.png"></p>
+<h2 id="基于XML的声明式事务控制"><a href="#基于XML的声明式事务控制" class="headerlink" title="基于XML的声明式事务控制"></a>基于XML的声明式事务控制</h2><ol>
+<li><p>什么是声明式事务控制</p>
+<p>Spring的声明式事务顾名思义就是<strong>采用声明的方式来处理事务</strong>。这里所说的声明，就是指在配置文件中声明，</p>
+<p>用在Spring配置文件中声明式的处理事务来代替代码式的处理事务。</p>
+<p>Spring声明式事务控制底层就是AOP</p>
+</li>
+<li><p>声明式事务控制明确事项：</p>
+<p>（1）谁是切点</p>
+<p>（2）谁是通知</p>
+<p>（3）配置切面</p>
+</li>
+<li><p>配置要点</p>
+<p>（1）平台事务管理器配置</p>
+<p>（2）事务通知配置</p>
+<p>（3）事务aop织入配置</p>
+</li>
+</ol>
+<h2 id="基于注解的声明式事务控制"><a href="#基于注解的声明式事务控制" class="headerlink" title="基于注解的声明式事务控制"></a>基于注解的声明式事务控制</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111724.png"></p>
+<h1 id="Spring集成web环境"><a href="#Spring集成web环境" class="headerlink" title="Spring集成web环境"></a>Spring集成web环境</h1><h2 id="ApplicationContext应用上下文获取方式"><a href="#ApplicationContext应用上下文获取方式" class="headerlink" title="ApplicationContext应用上下文获取方式"></a>ApplicationContext应用上下文获取方式</h2><p>​    应用上下文对象是通过new ClasspathXmIApplicationContext(spring配置文件)方式获取的，但是每次从容器中获得Bean时都要编写new ClasspathXmIApplicationContext(spring配置文件)，这样的弊端是配置文件加载多次，应用上下文对象创建多次。</p>
+<p>​    在Web项目中，可以使用ServletContextListener监听Web应用的启动，我们可以在Web应用启动时，就加载Spring的配置文件，创建应用上下文对象ApplicationContext，在将其存储到最大的域servletContext域中，这样就可以在任意位置从域中获得应用上下文ApplicationContext对象了。</p>
+<h2 id="Spring提供获取应用上下文的工具"><a href="#Spring提供获取应用上下文的工具" class="headerlink" title="Spring提供获取应用上下文的工具"></a>Spring提供获取应用上下文的工具</h2><p>​    上面的分析不用手动实现，Spring提供了一个监听器ContextLoaderListener就是对上述功能的封装，该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext域中，提供了一个客户端工具WebApplicationContextUtils供使用者获得应用上下文对象。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>（1）在web.xml中配置ContextLoaderListener监听器(导入spring-web坐标)</p>
+<p>（2）使用WebApplicationContextUtils获得应用上下文对象ApplicationContext</p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
       </tags>
   </entry>
   <entry>
