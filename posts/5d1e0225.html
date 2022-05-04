@@ -213,18 +213,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -349,9 +349,9 @@
 <p>（3）任意一个节点到每一个叶子节点的路径所包含的黑色节点树相同。</p>
 <p>红黑树的自平衡通过三种操作实现：<strong>左旋</strong>、<strong>右旋</strong>和<strong>变色</strong></p>
 <p><strong>左旋</strong>：以某个结点作为支点(旋转结点)，其右子结点变为旋转结点的父结点，右子结点的左子结点变为旋转结点的右子结点，左子结点保持不变。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103419.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103419.png" alt=""></p>
 <p><strong>右旋</strong>：以某个结点作为支点(旋转结点)，其左子结点变为旋转结点的父结点，左子结点的右子结点变为旋转结点的左子结点，右子结点保持不变。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103440.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103440.png" alt=""></p>
 <p><strong>变色</strong>：结点的颜色由红变黑或由黑变红。</p>
 <h1 id="红黑树查找"><a href="#红黑树查找" class="headerlink" title="红黑树查找"></a>红黑树查找</h1><ol>
 <li><p>从根结点开始查找，把根结点设置为当前结点；</p>
@@ -367,7 +367,7 @@
 <li><p>若当前结点key小于查找key，把当前结点的右子结点设置为当前结点，重复步骤2；</p>
 </li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103534.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103534.png" alt=""></p>
 <h1 id="红黑树插入"><a href="#红黑树插入" class="headerlink" title="红黑树插入"></a>红黑树插入</h1><p>插入操作包括两部分工作：一查找插入的位置；二插入后自平衡。查找插入的父结点很简单，跟查找操作区别不大：</p>
 <ol>
 <li>从根结点开始查找；</li>
@@ -379,7 +379,7 @@
 <li>若当前结点key小于查找key，把当前结点的右子结点设置为当前结点，重复步骤4；</li>
 </ol>
 <p>插入时包含以下情景</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103708.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103708.png" alt=""></p>
 <h1 id="红黑树删除"><a href="#红黑树删除" class="headerlink" title="红黑树删除"></a>红黑树删除</h1><p>红黑树的删除操作也包括两部分工作：一查找目标结点；而删除后自平衡。查找目标结点显然可以复用查找操作，当不存在目标结点时，忽略本次操作；当存在目标结点时，删除后就得做自平衡处理了。删除了结点后我们还需要找结点来替代删除结点的位置，不然子树跟父辈结点断开了，除非删除结点刚好没子结点，那么就不需要替代。</p>
 <p>二叉树删除结点找替代结点有3种情情景：</p>
 <ul>
@@ -422,13 +422,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/47991e6b.html" rel="prev" title="请教我学数据结构（一）排序">
-                  <i class="fa fa-chevron-left"></i> 请教我学数据结构（一）排序
+                <a href="/posts/33157a3.html" rel="prev" title="请教我学计网（二）HTTP协议相关">
+                  <i class="fa fa-chevron-left"></i> 请教我学计网（二）HTTP协议相关
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/13e1009d.html" rel="next" title="请教我学Java（二）ConcurrentHashMap为什么是线程安全的">
-                  请教我学Java（二）ConcurrentHashMap为什么是线程安全的 <i class="fa fa-chevron-right"></i>
+                <a href="/posts/47991e6b.html" rel="next" title="请教我学数据结构（一）排序">
+                  请教我学数据结构（一）排序 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -505,6 +505,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script src="/js/third-party/comments/livere.js"></script>

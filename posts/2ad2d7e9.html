@@ -208,18 +208,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -342,38 +342,28 @@
 <li><p>三元组（a、b、c）中的元素必须按非降序排列。（即a≤b≤c）</p>
 </li>
 <li><p>解集中不能包含重复的三元组。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如，给定的数组 S = &#123;-<span class="number">10</span> <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> -<span class="number">10</span> -<span class="number">40</span>&#125;,解集为(-<span class="number">10</span>, <span class="number">0</span>, <span class="number">10</span>) (-<span class="number">10</span>, -<span class="number">10</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如，给定的数组 S = &#123;-<span class="number">10</span> <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> -<span class="number">10</span> -<span class="number">40</span>&#125;,解集为(-<span class="number">10</span>, <span class="number">0</span>, <span class="number">10</span>) (-<span class="number">10</span>, -<span class="number">10</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
 <p>返回值：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
-
 <p>说明：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有[],[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">3</span>],[<span class="number">1</span>,<span class="number">3</span>] <span class="number">4</span>种选取方式其中[<span class="number">1</span>,<span class="number">3</span>]选取最优，答案为<span class="number">4</span> </span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p>输入：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span>,[<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
 <p>输出：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">9</span></span><br></pre></td></tr></table></figure>
-
 <p>说明：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">其中[<span class="number">4</span>,<span class="number">5</span>]的选取方案是在满足不同时选取相邻位置的数的情况下是最优的答案 </span><br></pre></td></tr></table></figure>
-
-
-
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>该问题为动态规划问题。</p>
 <p>用一个长度为n+1的数组dp[n+1]来保存各个位置的最佳解。</p>
-<p>首先初始化dp[0] &#x3D; 0; dp[1] &#x3D;  array[0];</p>
+<p>首先初始化dp[0] = 0; dp[1] =  array[0];</p>
 <p>后续具体的状态转移过程可以描述为：</p>
-<p>dp[i] &#x3D; Math.max(dp[i-1], dp[i-2] + array[i-1])</p>
+<p>dp[i] = Math.max(dp[i-1], dp[i-2] + array[i-1])</p>
 <p>最终得到的dp[n]则为所求解。</p>
 <h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * 计算</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n int整型 数组的长度</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> array int整型一维数组 长度为n的数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> long长整型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">long</span> <span class="title function_">subsequence</span> <span class="params">(<span class="type">int</span> n, <span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="type">long</span>[] dp = <span class="keyword">new</span> <span class="title class_">long</span>[n+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">1</span>] = array[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            dp[i] = Math.max(dp[i-<span class="number">1</span>],dp[i-<span class="number">2</span>]+array[i-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -492,6 +482,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script src="/js/third-party/comments/livere.js"></script>

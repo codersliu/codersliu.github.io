@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="前言ssm: mybatis + spring + springMVC ssm &#x3D; JavaWeb做项目 Spring：IOC和AOP【重要】 SpringMVC的执行流程【重要】 回顾MVC模式模型（dao，service） 视图（jsp） 控制器（servlet） jsp：本质就是一个servlet 什么是SpringMVCSpring MVC是Spring Framework的一部">
+    <meta name="description" content="前言ssm: mybatis + spring + springMVC ssm &#x3D; JavaWeb做项目 Spring：IOC和AOP【重要】 SpringMVC的执行流程【重要】 回顾MVC模式模型（dao，service） 视图（jsp） 控制器（servlet） jsp：本质就是一个servlet 什么是SpringMVCSpring MVC是Spring Framework的一部分，是基于">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC（一）简介">
 <meta property="og:url" content="http://example.com/posts/678e6659.html">
 <meta property="og:site_name" content="请教我kao代码">
-<meta property="og:description" content="前言ssm: mybatis + spring + springMVC ssm &#x3D; JavaWeb做项目 Spring：IOC和AOP【重要】 SpringMVC的执行流程【重要】 回顾MVC模式模型（dao，service） 视图（jsp） 控制器（servlet） jsp：本质就是一个servlet 什么是SpringMVCSpring MVC是Spring Framework的一部">
+<meta property="og:description" content="前言ssm: mybatis + spring + springMVC ssm &#x3D; JavaWeb做项目 Spring：IOC和AOP【重要】 SpringMVC的执行流程【重要】 回顾MVC模式模型（dao，service） 视图（jsp） 控制器（servlet） jsp：本质就是一个servlet 什么是SpringMVCSpring MVC是Spring Framework的一部分，是基于">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111931.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111950.png">
@@ -213,18 +213,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -342,7 +342,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ssm: mybatis + spring + springMVC</p>
-<p>ssm &#x3D; JavaWeb做项目</p>
+<p>ssm = JavaWeb做项目</p>
 <p><strong>Spring：IOC和AOP【重要】</strong></p>
 <p><strong>SpringMVC的执行流程【重要】</strong></p>
 <h1 id="回顾MVC模式"><a href="#回顾MVC模式" class="headerlink" title="回顾MVC模式"></a>回顾MVC模式</h1><p>模型（dao，service） 视图（jsp） 控制器（servlet）</p>
@@ -355,14 +355,14 @@
 <p><strong>4.约定大于配置</strong></p>
 <p>5.功能强大：RESTful、数据验证、格式化、本地化、主题等</p>
 <p>6.简洁灵活</p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​    <strong>SpringMVC</strong>是一种基于Java实现的<strong>MVC****设计模式</strong>的请求驱动类型的轻量级<strong>Web****框架</strong>，</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​    <strong>SpringMVC</strong>是一种基于Java实现的<strong>MVC**</strong>设计模式<strong>的请求驱动类型的轻量级</strong>Web<strong>**框架</strong>，</p>
 <p>属于S<strong>pringFrameWork</strong>的后续产品，已经融合在SpringWebFlow中。</p>
 <p>概述：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111931.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111931.png" alt=""></p>
 <p>流程图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111950.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111950.png" alt=""></p>
 <h1 id="组件解析"><a href="#组件解析" class="headerlink" title="组件解析"></a>组件解析</h1><p>1）SpringMVC执行流程</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519112016.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519112016.png" alt=""></p>
 <p>2）SpringMVC注解解析</p>
 <p>@RequestMapping</p>
 <p>作用：用于建立请求URL和处理请求方法之间的对应关系</p>
@@ -376,8 +376,8 @@
 <li>value：用于指定请求的URL，和path属性的作用一样</li>
 <li>method：指定请求的方式</li>
 <li>params：指定新案子请求参数的条件。支持简单的表达式，要求请求参数的key和value必须和配置一模一样。例如</li>
-<li>params&#x3D;｛“accountName”｝</li>
-<li>params&#x3D;｛“money！100”｝</li>
+<li>params=｛“accountName”｝</li>
+<li>params=｛“money！100”｝</li>
 </ul>
 <h1 id="SpringMVC数据响应"><a href="#SpringMVC数据响应" class="headerlink" title="SpringMVC数据响应"></a>SpringMVC数据响应</h1><p>（1）数据响应方式</p>
 <p>​        ①页面跳转：</p>
@@ -386,7 +386,7 @@
 <p>​        ②回写数据：</p>
 <p>​            直接返回字符串</p>
 <p>​            返回对象或集合</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519112220.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519112220.png" alt=""></p>
 
     </div>
 
@@ -505,6 +505,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script src="/js/third-party/comments/livere.js"></script>

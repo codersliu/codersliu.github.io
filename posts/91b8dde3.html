@@ -214,18 +214,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -349,20 +349,20 @@
 <p>（4）执行数据库操作</p>
 <h2 id="Spring产生JdbcTemplate对象"><a href="#Spring产生JdbcTemplate对象" class="headerlink" title="Spring产生JdbcTemplate对象"></a>Spring产生JdbcTemplate对象</h2><p>​    可以将JdbcTemplate的创建权交给Spring，将DataSource的创建权也交给Spring，在Spring</p>
 <p>容器内部将数据源DataSource注入到JdbcTemplate模版对象中，配置如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111426.png"></p>
-<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111454.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111426.png" alt=""></p>
+<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111454.png" alt=""></p>
 <h1 id="Spring的事务控制"><a href="#Spring的事务控制" class="headerlink" title="Spring的事务控制"></a>Spring的事务控制</h1><h2 id="编程式事务控制相关对象（了解）"><a href="#编程式事务控制相关对象（了解）" class="headerlink" title="编程式事务控制相关对象（了解）"></a>编程式事务控制相关对象（了解）</h2><ol>
 <li>PlateformTransactionManager（接口，封装事务行为）</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111530.png"></p>
-<ol start="2">
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111530.png" alt=""></p>
+<ol>
 <li><p>TransactionDefinition（封装事务参数）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111552.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111552.png" alt=""></p>
 </li>
 <li><p>TransactionStatus（封装事务状态信息）</p>
 </li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111614.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111614.png" alt=""></p>
 <h2 id="基于XML的声明式事务控制"><a href="#基于XML的声明式事务控制" class="headerlink" title="基于XML的声明式事务控制"></a>基于XML的声明式事务控制</h2><ol>
 <li><p>什么是声明式事务控制</p>
 <p>Spring的声明式事务顾名思义就是<strong>采用声明的方式来处理事务</strong>。这里所说的声明，就是指在配置文件中声明，</p>
@@ -380,7 +380,7 @@
 <p>（3）事务aop织入配置</p>
 </li>
 </ol>
-<h2 id="基于注解的声明式事务控制"><a href="#基于注解的声明式事务控制" class="headerlink" title="基于注解的声明式事务控制"></a>基于注解的声明式事务控制</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111724.png"></p>
+<h2 id="基于注解的声明式事务控制"><a href="#基于注解的声明式事务控制" class="headerlink" title="基于注解的声明式事务控制"></a>基于注解的声明式事务控制</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519111724.png" alt=""></p>
 <h1 id="Spring集成web环境"><a href="#Spring集成web环境" class="headerlink" title="Spring集成web环境"></a>Spring集成web环境</h1><h2 id="ApplicationContext应用上下文获取方式"><a href="#ApplicationContext应用上下文获取方式" class="headerlink" title="ApplicationContext应用上下文获取方式"></a>ApplicationContext应用上下文获取方式</h2><p>​    应用上下文对象是通过new ClasspathXmIApplicationContext(spring配置文件)方式获取的，但是每次从容器中获得Bean时都要编写new ClasspathXmIApplicationContext(spring配置文件)，这样的弊端是配置文件加载多次，应用上下文对象创建多次。</p>
 <p>​    在Web项目中，可以使用ServletContextListener监听Web应用的启动，我们可以在Web应用启动时，就加载Spring的配置文件，创建应用上下文对象ApplicationContext，在将其存储到最大的域servletContext域中，这样就可以在任意位置从域中获得应用上下文ApplicationContext对象了。</p>
 <h2 id="Spring提供获取应用上下文的工具"><a href="#Spring提供获取应用上下文的工具" class="headerlink" title="Spring提供获取应用上下文的工具"></a>Spring提供获取应用上下文的工具</h2><p>​    上面的分析不用手动实现，Spring提供了一个监听器ContextLoaderListener就是对上述功能的封装，该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext域中，提供了一个客户端工具WebApplicationContextUtils供使用者获得应用上下文对象。</p>
@@ -503,6 +503,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script src="/js/third-party/comments/livere.js"></script>

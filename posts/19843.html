@@ -225,18 +225,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -367,9 +367,9 @@
 <p>而跨机器的方法调用依赖于网络实现，所以相比于本地方法调用，远程方法调用的难点就在于<strong>网络不可靠</strong></p>
 <p>okok，带着以上对远程方法调用的初步理解，来看看RPC的定义：</p>
 <p>RPC是指远程过程调用，是一种进程间通信方式，RPC是一种技术思想，而不是一种硬性规范，其实现方式具有一定的灵活性。RPC允许程序调用另一个地址空间（通常是共享网络上的另一台机器）上的过程或函数。对于编程人员来说，无论调用本地还是远程函数，应该是不可感知的，即调用代码基本相同。不用显式编码远程调用细节</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201137.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201137.png" alt=""></p>
 <p>步骤解析：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201113.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201113.png" alt=""></p>
 <p>RPC的两个<strong>核心模块：</strong></p>
 <ul>
 <li><strong>通讯</strong></li>
@@ -384,7 +384,7 @@
 <li>服务自动注册和发现</li>
 </ul>
 <p>其整体框架如↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201057.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201057.png" alt=""></p>
 <p>框架表明仅invoke为同步操作</p>
 <p><strong>Provider：暴露服务的服务提供方，服务提供方在启动时，向注册中心注册自身所提供的服务</strong></p>
 <p>Consumer：调用服务的消费方，启动时向注册中心订阅服务，Provider从地址列表中，基于软负载均衡算法，选一个Provider调用，如调用失败切换一台继续调用</p>
@@ -392,9 +392,9 @@
 <p><strong>Monitor：Consumer和Provider，在内存中累计调用次数和时间，定时每分钟发送一次统计数据到Monitor</strong></p>
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="zookeeper-控制中心"><a href="#zookeeper-控制中心" class="headerlink" title="zookeeper-控制中心"></a>zookeeper-控制中心</h3><p>利用<strong>zookeeper</strong>提供服务注册与发现（即Registry）</p>
 <p><a target="_blank" rel="noopener" href="https://dlcdn.apache.org/zookeeper/zookeeper-3.8.0/apache-zookeeper-3.8.0-bin.tar.gz">下载zookeeper</a>并解压，以<strong>管理员身份</strong>！！！运行bin目录下的zkserver.cmd启动服务（如遇闪退，出门右拐：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq279862451/article/details/79083522">Windows下Zookeeper启动zkServer.cmd闪退问题的解决方案</a>）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201041.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201041.png" alt=""></p>
 <p>运行zkcli.cmd客户端（需要先运行zkserver.cmd开启服务才能连接成功）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201015.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201015.png" alt=""></p>
 <h3 id="安装dubbo-admin"><a href="#安装dubbo-admin" class="headerlink" title="安装dubbo-admin"></a>安装dubbo-admin</h3><p>dubbo-admin是一个监控管理后台，能够查看注册了哪些服务以及哪些服务被消费了，配置过程如下</p>
 <ol>
 <li><p>下载并解压<a target="_blank" rel="noopener" href="https://github.com/apache/dubbo-admin/tree/master-0.2.0">dubbo-admin项目包</a></p>
@@ -403,59 +403,49 @@
 </li>
 </ol>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server.port</span>=<span class="string">7001</span></span><br><span class="line"><span class="attr">spring.velocity.cache</span>=<span class="string">false</span></span><br><span class="line"><span class="attr">spring.velocity.charset</span>=<span class="string">UTF-8</span></span><br><span class="line"><span class="attr">spring.velocity.layout-url</span>=<span class="string">/templates/default.vm</span></span><br><span class="line"><span class="attr">spring.messages.fallback-to-system-locale</span>=<span class="string">false</span></span><br><span class="line"><span class="attr">spring.messages.basename</span>=<span class="string">i18n/message</span></span><br><span class="line"><span class="attr">spring.root.password</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.guest.password</span>=<span class="string">guest</span></span><br><span class="line"></span><br><span class="line"><span class="attr">dubbo.registry.address</span>=<span class="string">zookeeper://127.0.0.1:2181</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
+<ol>
 <li><p>项目目录下打包dubbo-admin</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean <span class="keyword">package</span> -D maven.test.skip=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
 <p>如提示mvn不是内部或外部命令，查看<a target="_blank" rel="noopener" href="https://www.runoob.com/maven/maven-setup.html">Maven环境配置及介绍</a></p>
 </li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200959.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200959.png" alt=""></p>
 <p>打包完成后在dubbo-admin-master-0.2.0\dubbo-admin\target下构建了dubbo-admin-0.0.1-SNAPSHOT.jar包，将其放入zookeeper根目录下方便后续使用。双击启动jar包</p>
 <p>访问localhost:7071</p>
 <p>默认账号root密码root</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200943.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200943.png" alt=""></p>
 <p>登陆成功↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200928.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200928.png" alt=""></p>
 <h1 id="服务注册发现实战"><a href="#服务注册发现实战" class="headerlink" title="服务注册发现实战"></a>服务注册发现实战</h1><p>新建一个empty项目</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200915.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200915.png" alt=""></p>
 <p>project-server项目下新建一个spring initalizr模块provider-server</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200857.png"></p>
-<p>模拟一个买票服务，新建service&#x2F;TicketService及其实现类TicketServiceImpl</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200857.png" alt=""></p>
+<p>模拟一个买票服务，新建service/TicketService及其实现类TicketServiceImpl</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sliu.providerserver.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">TicketService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getTicket</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sliu.providerserver.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.dubbo.config.annotation.Service;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@Component</span>  <span class="comment">//  项目启动时将该服务注册到注册中心</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TicketServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">TicketService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getTicket</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;《程序员评测室》&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>服务端搞定，注册中心要注册的服务即为TicketService</p>
 <p>新建一个客户端spring initalizr模块consumer-server</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200843.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200843.png" alt=""></p>
 <p>分别在两个模块的application.properties下设置端口号，consumer-server设置为8001，provider-server设置为8002</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//consumer-server</span></span><br><span class="line">server.port=<span class="number">8001</span></span><br><span class="line"><span class="comment">//provider-server</span></span><br><span class="line">server.port=<span class="number">8002</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>provider-server</strong>下pom.xml下导入dubbo&amp;zookeeper依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        导入dubbo和zookeeper依赖--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.dubbo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>dubbo-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.sgroschupf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>zkclient<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.curator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>curator-framework<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.curator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>curator-recipes<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.zookeeper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>zookeeper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.14<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            排除这个slf4j-log4j12--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>application.properties下对dubbo进行配置</p>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server.port</span>=<span class="string">8002</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#服务应用名字</span></span><br><span class="line"><span class="attr">dubbo.application.name</span>=<span class="string">provider-server</span></span><br><span class="line"><span class="comment">#注册中心地址</span></span><br><span class="line"><span class="attr">dubbo.registry.address</span>=<span class="string">zookeeper://127.0.0.1:2181</span></span><br><span class="line"><span class="comment">#哪些路径下的服务被注册</span></span><br><span class="line"><span class="attr">dubbo.scan.base-packages</span>=<span class="string">com.sliu.providerserver.service</span></span><br></pre></td></tr></table></figure>
-
 <p>配置完成后开启ProviderServerApplication，启动后自动注册provicerserver</p>
 <p><a target="_blank" rel="noopener" href="http://localhost:7001/governance/providers">http://localhost:7001/governance/providers</a>    下可以观察到注册服务列表</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200826.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200826.png" alt=""></p>
 <p>该服务详细信息↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200813.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200813.png" alt=""></p>
 <p>OK！到此服务注册完毕，provider端配置完成。</p>
 <p>接下来编码Consumer端</p>
 <p>pom.xml下导入依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        导入dubbo和zookeeper依赖--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.dubbo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>dubbo-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.sgroschupf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>zkclient<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.curator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>curator-framework<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.curator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>curator-recipes<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.zookeeper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>zookeeper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.14<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            排除这个slf4j-log4j12--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>新建service&#x2F;UserService用于获取provider提供的ticket</p>
-<p>为了实现服务请求，需要将provider-server模块下service&#x2F;TicketService拷贝到consumer-server模块下service目录下。</p>
+<p>新建service/UserService用于获取provider提供的ticket</p>
+<p>为了实现服务请求，需要将provider-server模块下service/TicketService拷贝到consumer-server模块下service目录下。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sliu.consumerserver.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> jdk.nashorn.internal.ir.annotations.Reference;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span>    <span class="comment">//放到容器中，区别于dubbo包下的service用于标识注册到服务中心</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="comment">//拿到Provider-server提供的Ticket</span></span><br><span class="line">    <span class="meta">@Reference</span>  <span class="comment">//引用，   pom坐标，可以定义路径相同的接口名</span></span><br><span class="line">    TicketServiceImpl ticketService;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">buyTicket</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">ticket</span> <span class="operator">=</span> ticketService.getTicket();</span><br><span class="line">        System.out.println(<span class="string">&quot;注册中心获取=====&gt;&quot;</span>+ticket);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>新建test</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sliu.consumerserver;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.sliu.consumerserver.service.UserService;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConsumerServerApplicationTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserService userService;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">contextLoads</span><span class="params">()</span> &#123;</span><br><span class="line">        userService.buyTicket();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>运行test下contextLoads方法，搞定！</p>
 <p>梳理一下服务注册与发现流程，大体如下：</p>
 <p><strong>前提</strong>：zookeeper服务已开启</p>
@@ -477,7 +467,7 @@
 <p>撒花完结！</p>
 <p>Dubbo+ZooKeeper源码自取：</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/codersliu/project-server">https://github.com/codersliu/project-server</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/QQ20220331104633.gif"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/QQ20220331104633.gif" alt=""></p>
 
     </div>
 
@@ -520,6 +510,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/posts/34409.html" rel="next" title="Boom LeetCode入门（一）复杂度&简单排序算法">
+                  Boom LeetCode入门（一）复杂度&简单排序算法 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -595,6 +588,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script src="/js/third-party/comments/livere.js"></script>

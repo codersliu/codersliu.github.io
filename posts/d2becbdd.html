@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="简介是什么分布的Java SE&#x2F;EE应用full-stack轻量级开源框架，以IOC（Inverse of control****反转控制）和AOP（Aspect oriented programming****面向切片编程）为内核。 优势（1） 方便解耦，简化开发 （2）AOP编程的支持 （3）声明式事务的支持 （4）方便程序的测试 （5）方便集成各种优秀框架 （6）降低Java EE">
+    <meta name="description" content="简介是什么分布的Java SE&#x2F;EE应用full-stack轻量级开源框架，以IOC**（Inverse of control反转控制）和AOP（Aspect oriented programming**面向切片编程）为内核。 优势（1） 方便解耦，简化开发 （2）AOP编程的支持 （3）声明式事务的支持 （4）方便程序的测试 （5）方便集成各种优秀框架 （6）降低Java EE中API的使用难度">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring(一)简介与IOC">
 <meta property="og:url" content="http://example.com/posts/d2becbdd.html">
 <meta property="og:site_name" content="请教我kao代码">
-<meta property="og:description" content="简介是什么分布的Java SE&#x2F;EE应用full-stack轻量级开源框架，以IOC（Inverse of control****反转控制）和AOP（Aspect oriented programming****面向切片编程）为内核。 优势（1） 方便解耦，简化开发 （2）AOP编程的支持 （3）声明式事务的支持 （4）方便程序的测试 （5）方便集成各种优秀框架 （6）降低Java EE">
+<meta property="og:description" content="简介是什么分布的Java SE&#x2F;EE应用full-stack轻量级开源框架，以IOC**（Inverse of control反转控制）和AOP（Aspect oriented programming**面向切片编程）为内核。 优势（1） 方便解耦，简化开发 （2）AOP编程的支持 （3）声明式事务的支持 （4）方便程序的测试 （5）方便集成各种优秀框架 （6）降低Java EE中API的使用难度">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519104709.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519104749.png">
@@ -220,18 +220,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -348,15 +348,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>分布的Java SE&#x2F;EE应用full-stack<strong>轻量级</strong>开源框架，以<strong>IOC<strong><strong>（</strong></strong>Inverse of control****反转控制）</strong>和<strong>AOP<strong><strong>（</strong></strong>Aspect oriented programming****面向切片编程）</strong>为内核。</p>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>分布的Java SE/EE应用full-stack<strong>轻量级</strong>开源框架，以<strong>IOC**</strong>（<strong><strong>Inverse of control</strong></strong>反转控制）<strong>和</strong>AOP<strong><strong>（</strong></strong>Aspect oriented programming<strong>**面向切片编程）</strong>为内核。</p>
 <h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><p>（1） 方便解耦，简化开发</p>
 <p>（2）AOP编程的支持</p>
 <p>（3）声明式事务的支持</p>
 <p>（4）方便程序的测试</p>
 <p>（5）方便集成各种优秀框架</p>
 <p>（6）降低Java EE中API的使用难度</p>
-<h2 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519104709.png"></p>
-<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><h2 id="Spring程序开发步骤"><a href="#Spring程序开发步骤" class="headerlink" title="Spring程序开发步骤"></a>Spring程序开发步骤</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519104749.png"></p>
+<h2 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519104709.png" alt=""></p>
+<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><h2 id="Spring程序开发步骤"><a href="#Spring程序开发步骤" class="headerlink" title="Spring程序开发步骤"></a>Spring程序开发步骤</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519104749.png" alt=""></p>
 <p>（1）导入Spring开发的基本包坐标</p>
 <p>（2）编写Dao接口和实现类</p>
 <p>（3）创建Spring核心配置文件</p>
@@ -368,7 +368,7 @@
 <p>（1）<strong>id</strong>：Bean实例在Spring容器中的唯一标识</p>
 <p>（2）<strong>class</strong>：Bean的全限定名称</p>
 <h2 id="Bean标签范围配置"><a href="#Bean标签范围配置" class="headerlink" title="Bean标签范围配置"></a>Bean标签范围配置</h2><p>scope：对象的作用范围，取值如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519104843.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519104843.png" alt=""></p>
 <p>当范围取值不同时，<strong>对象创建的时机</strong>也不同</p>
 <ol>
 <li>当scope的取值为<strong>singleton</strong>时（<strong>加载配置文件时创建</strong>）</li>
@@ -379,8 +379,8 @@
 <li>对象创建:当应用加载，创建容器时，对象就被创建了对象运行:只要容器在，对象一直活着</li>
 <li>对象销毁:当应用卸载。销毁容器时，对象就被销毁了</li>
 </ul>
-<ol start="2">
-<li>当scope的取值为<strong>prototype</strong>时（<strong>使用对象时创建，<strong><strong>getBean</strong></strong>时</strong>）</li>
+<ol>
+<li>当scope的取值为<strong>prototype</strong>时（<strong>使用对象时创建，**</strong>getBean<strong>**时</strong>）</li>
 </ol>
 <ul>
 <li>Bean的实例化个数:多个</li>
@@ -388,7 +388,7 @@
 <li>对象创建:当使用对象时，创建新的对象实例对象运行:只要对象在使用中，就一直活着</li>
 <li>对象销毁:当对象长时间不用时，被Java的垃圾回收器回收了</li>
 </ul>
-<ol start="3">
+<ol>
 <li><p>Bean生命周期配置</p>
 <p>Init-method:指定类中的初始化方法名称</p>
 <p>Destroy-method:指定类中销毁方法名称</p>
@@ -411,9 +411,9 @@
 <li><p><strong>构造方法</strong></p>
 <p>有参构造</p>
 </li>
-<li><p><strong>set****方法</strong></p>
+<li><p><strong>set**</strong>方法**</p>
 <p>①简化方法</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105134.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105134.png" alt=""></p>
 <p>②在需要注入的Bean中增加新标签<property name="" ref=""></p>
 <p>（3）Bean依赖注入的数据类型</p>
 <p>上面的操作，都是注入的引用Bean，处了对象的引阿以注入，普通数据类型，集合等都可以在容器中进行注入。</p>
@@ -424,10 +424,10 @@
 <li>集合数据类型</li>
 </ul>
 <p>（4）引入其他配置文件（分模块开发）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105213.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105213.png" alt=""></p>
 </li>
 </ul>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105238.png"></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105238.png" alt=""></p>
 <h1 id="Spring相应api"><a href="#Spring相应api" class="headerlink" title="Spring相应api"></a>Spring相应api</h1><ol>
 <li><p>ApplicationContext的实现类</p>
 <p>（1）ClassPathXmlApplicationContext</p>
@@ -442,8 +442,8 @@
 <p>只存在一个可以使用通过类型创建。</p>
 </li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105321.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105337.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105321.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105337.png" alt=""></p>
 <h1 id="Spring配置数据源"><a href="#Spring配置数据源" class="headerlink" title="Spring配置数据源"></a>Spring配置数据源</h1><ol>
 <li><p>数据源（连接池）的作用</p>
 </li>
@@ -460,19 +460,19 @@
 </ol>
 <h1 id="Spring注解开发"><a href="#Spring注解开发" class="headerlink" title="Spring注解开发"></a>Spring注解开发</h1><ol>
 <li><p>Spring原始注解</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105419.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105419.png" alt=""></p>
 </li>
 </ol>
-<p><strong>注意</strong><strong>:</strong></p>
-<p>使用注解进行开发时，需要在<strong>applicationContext.xml****中配置组件扫描</strong>，作用是指定哪个包及其子包下的Bean需要进行扫描以便识别使用注解配置的类、字段和方法。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105439.png"></p>
-<ol start="2">
+<p><strong>注意**</strong>:**</p>
+<p>使用注解进行开发时，需要在<strong>applicationContext.xml**</strong>中配置组件扫描**，作用是指定哪个包及其子包下的Bean需要进行扫描以便识别使用注解配置的类、字段和方法。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105439.png" alt=""></p>
+<ol>
 <li><p>Spring新注解</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105502.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105502.png" alt=""></p>
 </li>
 </ol>
 <h1 id="Spring整合Junit"><a href="#Spring整合Junit" class="headerlink" title="Spring整合Junit"></a>Spring整合Junit</h1><p>​    Spring集成Junit步骤</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105545.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519105545.png" alt=""></p>
 
     </div>
 
@@ -590,6 +590,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script src="/js/third-party/comments/livere.js"></script>
