@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="题目 给定一个字符串，请编写一个函数判断该字符串是否回文。如果回文请返回true，否则返回false。 示例1 输入： 1&quot;absba&quot; 输出： 1true 示例2 输入： 1&quot;ranko&quot;">
+    <meta name="description" content="题目给定一个字符串，请编写一个函数判断该字符串是否回文。如果回文请返回true，否则返回false。 示例1输入： 1&quot;absba&quot; 输出： 1true 示例2输入： 1&quot;ranko&quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="牛客题解-NC141判断回文">
 <meta property="og:url" content="http://example.com/posts/77a66fad.html">
 <meta property="og:site_name" content="请教我kao代码">
-<meta property="og:description" content="题目 给定一个字符串，请编写一个函数判断该字符串是否回文。如果回文请返回true，否则返回false。 示例1 输入： 1&quot;absba&quot; 输出： 1true 示例2 输入： 1&quot;ranko&quot;">
+<meta property="og:description" content="题目给定一个字符串，请编写一个函数判断该字符串是否回文。如果回文请返回true，否则返回false。 示例1输入： 1&quot;absba&quot; 输出： 1true 示例2输入： 1&quot;ranko&quot;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-30T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-03-18T01:43:10.192Z">
@@ -336,35 +336,27 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="题目">题目</h1>
-<p>给定一个字符串，请编写一个函数判断该字符串是否回文。如果回文请返回true，否则返回false。</p>
-<h2 id="示例1">示例1</h2>
-<p>输入：</p>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个字符串，请编写一个函数判断该字符串是否回文。如果回文请返回true，否则返回false。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;absba&quot;</span></span><br></pre></td></tr></table></figure>
 <p>输出：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h2 id="示例2">示例2</h2>
-<p>输入：</p>
+<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p>输入：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;ranko&quot;</span></span><br></pre></td></tr></table></figure>
 <p>输出：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h2 id="示例3">示例3</h2>
-<p>输入：</p>
+<h2 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h2><p>输入：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;yamatomaya&quot;</span></span><br></pre></td></tr></table></figure>
 <p>输出：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h2 id="示例4">示例4</h2>
-<p>输入：</p>
+<h2 id="示例4"><a href="#示例4" class="headerlink" title="示例4"></a>示例4</h2><p>输入：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;a&quot;</span></span><br></pre></td></tr></table></figure>
 <p>输出：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p>tips:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符串长度不大于<span class="number">1000000</span>，且仅由小写字母组成</span><br></pre></td></tr></table></figure>
-<h1 id="思路">思路</h1>
-<h2 id="分析">分析</h2>
-<p>直接利用双索引，从第一个下标i和最后一个下标j开始比较，此后i++和j--逐一比较。直到遇到不同的字符则返回false，否则返回true。</p>
-<h1 id="实现">实现</h1>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> str string字符串 待判断的字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> bool布尔型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">judge</span> <span class="params">(String str)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = str.length()-<span class="number">1</span>; i&lt;j; i++,j--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(str.charAt(i) != str.charAt(j))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>直接利用双索引，从第一个下标i和最后一个下标j开始比较，此后i++和j—逐一比较。直到遇到不同的字符则返回false，否则返回true。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> str string字符串 待判断的字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> bool布尔型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">judge</span> <span class="params">(String str)</span> &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = str.length()-<span class="number">1</span>; i&lt;j; i++,j--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(str.charAt(i) != str.charAt(j))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -400,8 +392,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/36804329.html" rel="prev" title="牛客题解-NC38螺旋矩阵">
-                  <i class="fa fa-chevron-left"></i> 牛客题解-NC38螺旋矩阵
+                <a href="/posts/46772ae5.html" rel="prev" title="牛客题解-NC25删除有序链表中重复的元素">
+                  <i class="fa fa-chevron-left"></i> 牛客题解-NC25删除有序链表中重复的元素
                 </a>
             </div>
             <div class="post-nav-item">

@@ -435,15 +435,10 @@ mjx-container[display="true"] + br {
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="前言">前言</h1>
-<p>Boom
-LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入排序，这些排序算法的时间复杂度均为<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.606ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 2919.8 1083.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"/></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/></g><g data-mml-node="msup" transform="translate(1152,0)"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/></g><g data-mml-node="mn" transform="translate(975.3,363) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g></g><g data-mml-node="mo" transform="translate(2530.8,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></g></g></g></svg></mjx-container></span>，排序效率较低，而对于排序，结合二分法和归并思想能够有效提升算法查询效率，本部分中介绍<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="10.355ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 4577 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"/></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/></g><g data-mml-node="mi" transform="translate(2040,0)"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"/></g><g data-mml-node="mi" transform="translate(2338,0)"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"/></g><g data-mml-node="mi" transform="translate(2823,0)"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g><g data-mml-node="mi" transform="translate(3300,0)"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/></g><g data-mml-node="mo" transform="translate(4188,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></g></g></g></svg></mjx-container></span>时间复杂度的排序算法。</p>
-<h1 id="归并排序">归并排序</h1>
-<h2 id="算法思路">算法思路</h2>
-<p>归并排序通过<strong>递归地划分左右数组</strong>，对左右数组完成排序后，再<strong>合并两个数组</strong>，完成最终数组的排序，算法思路如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220508113028.png"></p>
-<h2 id="代码实现">代码实现</h2>
-<p>代码实现：</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Boom LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入排序，这些排序算法的时间复杂度均为<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.606ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 2919.8 1083.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"/></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/></g><g data-mml-node="msup" transform="translate(1152,0)"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/></g><g data-mml-node="mn" transform="translate(975.3,363) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g></g><g data-mml-node="mo" transform="translate(2530.8,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></g></g></g></svg></mjx-container>，排序效率较低，而对于排序，结合二分法和归并思想能够有效提升算法查询效率，本部分中介绍<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="10.355ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 4577 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"/></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/></g><g data-mml-node="mi" transform="translate(2040,0)"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"/></g><g data-mml-node="mi" transform="translate(2338,0)"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"/></g><g data-mml-node="mi" transform="translate(2823,0)"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g><g data-mml-node="mi" transform="translate(3300,0)"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/></g><g data-mml-node="mo" transform="translate(4188,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></g></g></g></svg></mjx-container>时间复杂度的排序算法。</p>
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><h2 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h2><p>归并排序通过<strong>递归地划分左右数组</strong>，对左右数组完成排序后，再<strong>合并两个数组</strong>，完成最终数组的排序，算法思路如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220508113028.png" alt></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>代码实现：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> p2.sort_nlogn;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">//归并排序</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MergeSort</span> {</span><br><span class="line"></span><br><span class="line">    <span class="comment">//处理输入输出</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">"请输入排序数字个数==========&gt;"</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">        <span class="type">int</span>[] nums = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        System.out.println(<span class="string">"请输入数据============&gt;"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">            nums[i]= sc.nextInt();</span><br><span class="line">        }</span><br><span class="line">        mergeSort(nums);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : nums) {</span><br><span class="line">            System.out.print(num + <span class="string">" "</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//调用函数</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">mergeSort</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="literal">null</span> || nums.length &lt; <span class="number">2</span>){</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        sort(nums, <span class="number">0</span>, nums.length - <span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//归并排序核心代码</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> l, <span class="type">int</span> r)</span> {</span><br><span class="line">        <span class="keyword">if</span>(l == r){</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> l + (r - l) / <span class="number">2</span>; <span class="comment">//int m = l + ((r - l) &gt;&gt; 1);</span></span><br><span class="line">        sort(nums, l , m);</span><br><span class="line">        sort(nums, m+<span class="number">1</span>, r);</span><br><span class="line">        merge(nums, l, m, r);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"><span class="comment">//    借助辅助数组完成左右数组合并</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> l, <span class="type">int</span> m, <span class="type">int</span> r)</span> {</span><br><span class="line">        <span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[r - l + <span class="number">1</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> l;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> m + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt;= m &amp;&amp; j &lt;= r){</span><br><span class="line">            arr[index++] = nums[i] &lt;= nums[j] ? nums[i++]:nums[j++];</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>(i &lt;= m){</span><br><span class="line">            arr[index++] = nums[i++];</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>(j &lt;= r){</span><br><span class="line">            arr[index++] = nums[j++];</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>; k &lt; arr.length; k++) {</span><br><span class="line">            nums[l + k] = arr[k];</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>以<a target="_blank" rel="noopener" href="https://www.csdn.net/tags/NtTaUg0sNzM1MjktYmxvZwO0O0OO0O0O.html">master公式</a>计算其时间复杂度为</p>
           <!--noindex-->
@@ -537,16 +532,14 @@ LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="前言">前言</h1>
-<p>BoomLeetCode系列笔记为学习左神视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13g41157hK?p=2">一周刷爆LeetCode</a>所总结笔记，一共38p，计划每天刷1p，笔记更新进度会比较慢</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>BoomLeetCode系列笔记为学习左神视频<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13g41157hK?p=2">一周刷爆LeetCode</a>所总结笔记，一共38p，计划每天刷1p，笔记更新进度会比较慢</p>
 <p>瑞思拜左神~</p>
 <p>文章时间复杂度均按最坏情况下计算</p>
-<h1 id="时间复杂度">时间复杂度</h1>
-<p>这部分对于有编程基础的来说不是问题，大体上快速过一遍，先以选择排序中的计算方式给出时间复杂度概念</p>
+<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>这部分对于有编程基础的来说不是问题，大体上快速过一遍，先以选择排序中的计算方式给出时间复杂度概念</p>
 <p>全部笔记已上传github：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220504164859.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220504164838.png"></p>
-<h1 id="简单排序算法">简单排序算法</h1>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220504164859.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220504164838.png" alt></p>
+<h1 id="简单排序算法"><a href="#简单排序算法" class="headerlink" title="简单排序算法"></a>简单排序算法</h1>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/34409.html#more" rel="contents">
@@ -632,10 +625,8 @@ LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="前言">前言</h1>
-<p>本部分所涉及到的分布式系统理论和RPC的概念这块较干，尽量以通熟易懂的例子为引子展开表述。便于理解~</p>
-<h1 id="分布式系统理论">分布式系统理论</h1>
-<p>分布式可以理解通过多个计算性能弱的服务器来完成计算资源需求大的计算任务</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本部分所涉及到的分布式系统理论和RPC的概念这块较干，尽量以通熟易懂的例子为引子展开表述。便于理解~</p>
+<h1 id="分布式系统理论"><a href="#分布式系统理论" class="headerlink" title="分布式系统理论"></a>分布式系统理论</h1><p>分布式可以理解通过多个计算性能弱的服务器来完成计算资源需求大的计算任务</p>
 <p>分布式和集群的概念很容易混淆</p>
 <p>弹幕看到一个浅显易懂的例子可以帮助理解什么是分布式↓</p>
 <p><em>小饭店原来只有一个厨师，切菜洗菜备料炒菜全干。后来客人多了，厨房一个厨师忙不过来，又请了个厨师，两个厨师都能<strong>炒一样的菜</strong>，这两个厨师的关系是<strong>集群</strong>。</em></p>
@@ -729,17 +720,109 @@ LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入�
     <div class="post-body" itemprop="articleBody">
           <p>项目<strong>源码</strong>自取↓：</p>
 <p>异步、邮件与定时任务：</p>
-<p>https://github.com/codersliu/springtest</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/codersliu/springtest">https://github.com/codersliu/springtest</a></p>
 <p>springboot整合redis:</p>
-<p>https://github.com/codersliu/springboot10-redisTest</p>
-<h1 id="异步任务">异步任务</h1>
-<p>在开发环境中，对于不能实时返回用户数据的处理过程，应当在处理前通知用户，并在计算完成后返回计算结果。即通过异步任务，在数据开始处理时通知用户当前信息正在处理，处理完毕后返回结果。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/codersliu/springboot10-redisTest">https://github.com/codersliu/springboot10-redisTest</a></p>
+<h1 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h1><p>在开发环境中，对于不能实时返回用户数据的处理过程，应当在处理前通知用户，并在计算完成后返回计算结果。即通过异步任务，在数据开始处理时通知用户当前信息正在处理，处理完毕后返回结果。</p>
 <p>通过一个example理解什么是异步任务</p>
 <p>新建AsynService用于暂停程序执行，模拟在异步任务中，数据处理过程中的计算</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sliu.springtest.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AsynService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hello</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;processing&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/35413.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/21568.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Shun Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="请教我kao代码">
+      <meta itemprop="description" content="We meansure the future">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 请教我kao代码">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/21568.html" class="post-title-link" itemprop="url">Little eagle - SpringBoot实战管理系统(三)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-04-30 00:00:00 / 修改时间：14:45:01" itemprop="dateCreated datePublished" datetime="2022-04-30T00:00:00+08:00">2022-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Little-eagle/" itemprop="url" rel="index"><span itemprop="name">Little eagle</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>上一part中掌握了如何使用常用数据源，jdbc、druid和mybatis</p>
+<p>在part1中为了防止用户在未登陆用户下访问到员工管理页面，用过滤器的方式实现了对该类请求的拦截。在本part中整合常用安全框架，以简单配置代替编码实现拦截器等其它安全功能。</p>
+<p>整合框架及所实现功能移步左侧一级标题</p>
+<p>项目地址(源码自取↓)：</p>
+<p>整合SpringSecurity:<a target="_blank" rel="noopener" href="https://github.com/codersliu/springboot06-springsecurity">https://github.com/codersliu/springboot06-springsecurity</a></p>
+<p>整合Shiro:<a target="_blank" rel="noopener" href="https://github.com/codersliu/springboot08-shiro">https://github.com/codersliu/springboot08-shiro</a></p>
+<h1 id="整合SpringSecurity"><a href="#整合SpringSecurity" class="headerlink" title="整合SpringSecurity"></a>整合SpringSecurity</h1><p>新建项目，导入以下依赖↓</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220430113933.png" alt></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/21568.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -828,8 +911,7 @@ LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="swagger简介">Swagger简介</h1>
-<p>当前开发中<strong>前后端分离</strong>通过API实现，前端页面封装数据在json文件中模拟pojo中的实体类信息，后端与前端交互时通过接口获取的信息替换json中的模拟数据，实现前后端的分离。该开发模式中前后端分离程度高，甚至可以将前后端部署在不同服务器上。</p>
+          <h1 id="Swagger简介"><a href="#Swagger简介" class="headerlink" title="Swagger简介"></a>Swagger简介</h1><p>当前开发中<strong>前后端分离</strong>通过API实现，前端页面封装数据在json文件中模拟pojo中的实体类信息，后端与前端交互时通过接口获取的信息替换json中的模拟数据，实现前后端的分离。该开发模式中前后端分离程度高，甚至可以将前后端部署在不同服务器上。</p>
 <p>存在的问题是<strong>前后端集成联调</strong>的过程中<strong>信息不同步</strong>会导致开发受阻（例如对于前端需求，后端开发了对应的接口，而此时需求变更，前端需要添加一个信息字段。后端就需要对数据库、接口等进行编码）。因而如何让需求变更在前后端开发人员之前保持实时同步，对于避免此类开发危机至关重要。</p>
 <p>早期的解决方案中，前端使用postman进行后端返回的接口测试。而后端负责提供接口，而关键就在于<strong>后端需要保证接口信息变动的实时同步</strong>，提前制定Schema。</p>
 <p>为了解决后端实时同步接口变动信息，Swagger应运而生。</p>
@@ -840,7 +922,7 @@ LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入�
 <li>支持多种语言</li>
 </ul>
 <p><a target="_blank" rel="noopener" href="https://swagger.io/">Swagger官网</a></p>
-<p>使用Swagger需要导入springbox jar包，包括：</p>
+<p>使用Swagger需要导入springbox    jar包，包括：</p>
 <ul>
 <li>swagger2</li>
 <li>ui</li>
@@ -848,101 +930,6 @@ LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入�
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/48572.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/21568.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Shun Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="请教我kao代码">
-      <meta itemprop="description" content="We meansure the future">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 请教我kao代码">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/21568.html" class="post-title-link" itemprop="url">Little eagle - SpringBoot实战管理系统(三)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-04-30 00:00:00 / 修改时间：14:45:01" itemprop="dateCreated datePublished" datetime="2022-04-30T00:00:00+08:00">2022-04-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Little-eagle/" itemprop="url" rel="index"><span itemprop="name">Little eagle</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="背景">背景</h1>
-<p>上一part中掌握了如何使用常用数据源，jdbc、druid和mybatis</p>
-<p>在part1中为了防止用户在未登陆用户下访问到员工管理页面，用过滤器的方式实现了对该类请求的拦截。在本part中整合常用安全框架，以简单配置代替编码实现拦截器等其它安全功能。</p>
-<p>整合框架及所实现功能移步左侧一级标题</p>
-<p>项目地址(源码自取↓)：</p>
-<p>整合SpringSecurity:https://github.com/codersliu/springboot06-springsecurity</p>
-<p>整合Shiro:https://github.com/codersliu/springboot08-shiro</p>
-<h1 id="整合springsecurity">整合SpringSecurity</h1>
-<p>新建项目，导入以下依赖↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220430113933.png"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/21568.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1031,16 +1018,15 @@ LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="项目背景">项目背景</h1>
-<p>part1中利用HashMap模拟数据库实现了对数据的增删改查操作，对SpringBoot的特性和使用有了一定了解。</p>
+          <h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>part1中利用HashMap模拟数据库实现了对数据的增删改查操作，对SpringBoot的特性和使用有了一定了解。</p>
 <p>part2整合各类主流的DataSource和数据库组件。</p>
 <p>涉及到的数据库源和相关技术点移步左侧一级标题。</p>
 <p>环境：jdk v.1.8.0</p>
 <p>项目地址：</p>
 <p>整合jdbc&amp;druid</p>
-<p>https://github.com/codersliu/springboot04-jdbcLearning</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/codersliu/springboot04-jdbcLearning">https://github.com/codersliu/springboot04-jdbcLearning</a></p>
 <p>整合mybatis</p>
-<p>https://github.com/codersliu/springboot05-mybatis/tree/master</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/codersliu/springboot05-mybatis/tree/master">https://github.com/codersliu/springboot05-mybatis/tree/master</a></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/50402.html#more" rel="contents">
@@ -1132,14 +1118,13 @@ LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="项目背景">项目背景</h1>
-<p>记录狂神大佬的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PE411i7CV?p=28">SpringBoot练手项目</a>，建议有空跟着视频kao一遍，笔记记录大体项目编写流程，并记录一些自身练习过程中碰到的疑难点、对相关技术原理进行拓展。</p>
+          <h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>记录狂神大佬的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PE411i7CV?p=28">SpringBoot练手项目</a>，建议有空跟着视频kao一遍，笔记记录大体项目编写流程，并记录一些自身练习过程中碰到的疑难点、对相关技术原理进行拓展。</p>
 <p>项目涉及到的模块功能、技术点请移步 左侧 一级标题</p>
 <p>文章（一）基于map结构模拟数据库进行数据的增删改查</p>
 <p>文章（二）接入真实数据库</p>
 <p>项目环境：</p>
-<p>​ Jdk：v.1.8</p>
-<p>完整项目地址（未接入数据库）：https://github.com/codersliu/springboot03-manasys</p>
+<p>​    Jdk：v.1.8</p>
+<p>完整项目地址（未接入数据库）：<a target="_blank" rel="noopener" href="https://github.com/codersliu/springboot03-manasys">https://github.com/codersliu/springboot03-manasys</a></p>
 <p>静态资源自取↑</p>
 <p>tips：方法变量命名啥的有自己的命名习惯，所以会稍有不同，但大体上是保持一致的，请放心食用~</p>
           <!--noindex-->
@@ -1233,18 +1218,13 @@ LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="题目">题目</h1>
-<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</p>
-<h1 id="思路">思路</h1>
-<h2 id="分析">分析</h2>
-<p>与斐波那契数列一样，只是初始状态改为</p>
+          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>与斐波那契数列一样，只是初始状态改为</p>
 <p>f（0）= f（1）= 1；</p>
 <p>状态转移方程仍然为：</p>
 <p>f（n） = f（n - 1） + f (n - 2);</p>
-<p>题目分析，假设f[i]表示在第i个台阶上可能的方法数。逆向思维。如果我从第n个台阶进行下台阶，下一步有2中可能，一种走到第n-1个台阶，一种是走到第n-2个台阶。所以f[n]
-= f[n-1] + f[n-2]. 那么初始条件了，f[0] = f[1] = 1。 所以就变成了：f[n]
-= f[n-1] + f[n-2], 初始值f[0]=1, f[1]=1，目标求f[n]</p>
-<h1 id="实现">实现</h1>
+<p>题目分析，假设f[i]表示在第i个台阶上可能的方法数。逆向思维。如果我从第n个台阶进行下台阶，下一步有2中可能，一种走到第n-1个台阶，一种是走到第n-2个台阶。所以f[n] = f[n-1] + f[n-2].<br>那么初始条件了，f[0] = f[1] = 1。<br>所以就变成了：f[n] = f[n-1] + f[n-2], 初始值f[0]=1, f[1]=1，目标求f[n]</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/5dbe7165.html#more" rel="contents">
@@ -1336,16 +1316,12 @@ LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入�
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>​</p>
-<h1 id="简介">简介</h1>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41328247/article/details/81868247">git、svn和cvs的主要区别</a>在于git是<strong>分布式</strong>版本控制系统，而svn和cvs则是<strong>集中式</strong>版本控制系统。集中式版本控制系统所有文件系统存放在中央服务器上，工作模式更像是一个C/S模式，本地用户通过安装客户端来与服务器进行版本的获取与更新操作。问题是当服务器处于脱机状态时，所有用户都要停止工作。</p>
+          <p>​     </p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41328247/article/details/81868247">git、svn和cvs的主要区别</a>在于git是<strong>分布式</strong>版本控制系统，而svn和cvs则是<strong>集中式</strong>版本控制系统。集中式版本控制系统所有文件系统存放在中央服务器上，工作模式更像是一个C/S模式，本地用户通过安装客户端来与服务器进行版本的获取与更新操作。问题是当服务器处于脱机状态时，所有用户都要停止工作。</p>
 <p>为了解决该问题，git则抛弃了这种机制，用户将所有文件包括版本信息下载到本地，提交和修改可以在本地执行，在修改确定后再与远程服务器保持同步。</p>
 <p>简单理解git是什么？</p>
-<p>git是一种<strong>开源</strong>的 <strong>分布式</strong>
-<strong>版本控制</strong> 工具</p>
-<h1 id="安装和配置">安装和配置</h1>
-<h2 id="linux下安装git">Linux下安装git</h2>
-<p>Ubuntu10.10及以上版本、Debain squeeze及以上版本使用以下命令：</p>
+<p>git是一种<strong>开源</strong>的 <strong>分布式</strong> <strong>版本控制</strong> 工具</p>
+<h1 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h1><h2 id="Linux下安装git"><a href="#Linux下安装git" class="headerlink" title="Linux下安装git"></a>Linux下安装git</h2><p>Ubuntu10.10及以上版本、Debain squeeze及以上版本使用以下命令：</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo aptitude install git</span><br><span class="line">$ sudo aptitude install git-doc git-svn git-email gitk //安装单独的软件依赖包</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
