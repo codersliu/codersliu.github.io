@@ -265,6 +265,111 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/674e848.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Shun Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="请教我kao代码">
+      <meta itemprop="description" content="We meansure the future">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 请教我kao代码">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/674e848.html" class="post-title-link" itemprop="url">请教我学Java（一）浅析重写equals方法后必须重写hashCode方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-08-14 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-14T00:00:00+08:00">2020-08-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-18 09:43:10" itemprop="dateModified" datetime="2022-03-18T09:43:10+08:00">2022-03-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>根据“<strong>类是否覆盖equals()方法</strong>”，将它分为2类。</p>
+<ol type="1">
+<li><p>若某个类没有覆盖equals()方法，当它的通过equals()比较两个对象时，实际上是比较两个对象是不是同一个对象。这时，等价于通过“==”去比较这两个对象。</p></li>
+<li><p>我们可以覆盖类的equals()方法，来让equals()通过其它方式比较两个对象是否相等。通常的做法是：若两个对象的内容相等，则equals()方法返回true；否则，返回fasle。</p></li>
+</ol>
+<p>“hashCode() 和 equals() ”是有关系的：</p>
+<p>​ 1)、如果两个对象相等，那么它们的hashCode()值一定相同。</p>
+<p>​ 这里的相等是指，通过equals()比较两个对象时返回true。</p>
+<p>​ 2)、如果两个对象hashCode()相等，它们并不一定相等。</p>
+<p>​
+因为在散列表中，hashCode()相等，即两个键值对的哈希值相等。然而哈希值相等</p>
+<p><strong>参考代码</strong> (ConflictHashCodeTest1.java)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="number">2</span> <span class="keyword">import</span> java.lang.Comparable;</span><br><span class="line"><span class="number">3</span> </span><br><span class="line"><span class="number">4</span> <span class="comment">/**</span></span><br><span class="line"><span class="comment">5 * <span class="doctag">@desc</span> 比较equals() 返回true 以及 返回false时， hashCode()的值。</span></span><br><span class="line"><span class="comment">6 *</span></span><br><span class="line"><span class="comment">7 * <span class="doctag">@author</span> skywang</span></span><br><span class="line"><span class="comment">8 * <span class="doctag">@emai</span> kuiwu-wang@163.com</span></span><br><span class="line"><span class="comment">9 */</span></span><br><span class="line"><span class="number">10</span> <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConflictHashCodeTest1</span>&#123;</span><br><span class="line"><span class="number">11</span> </span><br><span class="line"><span class="number">12</span>   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"><span class="number">13</span>     <span class="comment">// 新建Person对象，</span></span><br><span class="line"><span class="number">14</span>     <span class="type">Person</span> <span class="variable">p1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;eee&quot;</span>, <span class="number">100</span>);</span><br><span class="line"><span class="number">15</span>     <span class="type">Person</span> <span class="variable">p2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;eee&quot;</span>, <span class="number">100</span>);</span><br><span class="line"><span class="number">16</span>     <span class="type">Person</span> <span class="variable">p3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;aaa&quot;</span>, <span class="number">200</span>);</span><br><span class="line"><span class="number">17</span> </span><br><span class="line"><span class="number">18</span>     <span class="comment">// 新建HashSet对象 </span></span><br><span class="line"><span class="number">19</span>     <span class="type">HashSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashSet</span>();</span><br><span class="line"><span class="number">20</span>     set.add(p1);</span><br><span class="line"><span class="number">21</span>     set.add(p2);</span><br><span class="line"><span class="number">22</span>     set.add(p3);</span><br><span class="line"><span class="number">23</span> </span><br><span class="line"><span class="number">24</span>     <span class="comment">// 比较p1 和 p2， 并打印它们的hashCode()</span></span><br><span class="line"><span class="number">25</span>     System.out.printf(<span class="string">&quot;p1.equals(p2) : %s; p1(%d) p2(%d)\n&quot;</span>, p1.equals(p2), p1.hashCode(), p2.hashCode());</span><br><span class="line"><span class="number">26</span>     <span class="comment">// 打印set</span></span><br><span class="line"><span class="number">27</span>     System.out.printf(<span class="string">&quot;set:%s\n&quot;</span>, set);</span><br><span class="line"><span class="number">28</span>   &#125;</span><br><span class="line"><span class="number">29</span> </span><br><span class="line"><span class="number">30</span>   <span class="comment">/**</span></span><br><span class="line"><span class="comment">31   * <span class="doctag">@desc</span> Person类。</span></span><br><span class="line"><span class="comment">32   */</span></span><br><span class="line"><span class="number">33</span>   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"><span class="number">34</span>     <span class="type">int</span> age;</span><br><span class="line"><span class="number">35</span>     String name;</span><br><span class="line"><span class="number">36</span> </span><br><span class="line"><span class="number">37</span>     <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line"><span class="number">38</span>       <span class="built_in">this</span>.name = name;</span><br><span class="line"><span class="number">39</span>       <span class="built_in">this</span>.age = age;</span><br><span class="line"><span class="number">40</span>     &#125;</span><br><span class="line"><span class="number">41</span> </span><br><span class="line"><span class="number">42</span>     <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line"><span class="number">43</span>       <span class="keyword">return</span> <span class="string">&quot;(&quot;</span>+name + <span class="string">&quot;, &quot;</span> +age+<span class="string">&quot;)&quot;</span>;</span><br><span class="line"><span class="number">44</span>     &#125;</span><br><span class="line"><span class="number">45</span> </span><br><span class="line"><span class="number">46</span>     <span class="comment">/** </span></span><br><span class="line"><span class="comment">47     * <span class="doctag">@desc</span> 覆盖equals方法 </span></span><br><span class="line"><span class="comment">48     */</span> </span><br><span class="line"><span class="number">49</span>     <span class="meta">@Override</span></span><br><span class="line"><span class="number">50</span>     <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object obj)</span>&#123; </span><br><span class="line"><span class="number">51</span>       <span class="keyword">if</span>(obj == <span class="literal">null</span>)&#123; </span><br><span class="line"><span class="number">52</span>         <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line"><span class="number">53</span>       &#125; </span><br><span class="line"><span class="number">54</span>        </span><br><span class="line"><span class="number">55</span>       <span class="comment">//如果是同一个对象返回true，反之返回false </span></span><br><span class="line"><span class="number">56</span>       <span class="keyword">if</span>(<span class="built_in">this</span> == obj)&#123; </span><br><span class="line"><span class="number">57</span>         <span class="keyword">return</span> <span class="literal">true</span>; </span><br><span class="line"><span class="number">58</span>       &#125; </span><br><span class="line"><span class="number">59</span>        </span><br><span class="line"><span class="number">60</span>       <span class="comment">//判断是否类型相同 </span></span><br><span class="line"><span class="number">61</span>       <span class="keyword">if</span>(<span class="built_in">this</span>.getClass() != obj.getClass())&#123; </span><br><span class="line"><span class="number">62</span>         <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line"><span class="number">63</span>       &#125; </span><br><span class="line"><span class="number">64</span>        </span><br><span class="line"><span class="number">65</span>       <span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> (Person)obj; </span><br><span class="line"><span class="number">66</span>       <span class="keyword">return</span> name.equals(person.name) &amp;&amp; age==person.age; </span><br><span class="line"><span class="number">67</span>     &#125; </span><br><span class="line"><span class="number">68</span>   &#125;</span><br><span class="line"><span class="number">69</span> &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0);"><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/02/clip_image001.gif" alt="复制代码"></a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/674e848.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/posts/13e1009d.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -341,111 +446,6 @@ synchronized的方式实现。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/13e1009d.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/674e848.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Shun Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="请教我kao代码">
-      <meta itemprop="description" content="We meansure the future">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 请教我kao代码">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/674e848.html" class="post-title-link" itemprop="url">请教我学Java（一）浅析重写equals方法后必须重写hashCode方法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-08-14 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-14T00:00:00+08:00">2020-08-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-18 09:43:10" itemprop="dateModified" datetime="2022-03-18T09:43:10+08:00">2022-03-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>根据“<strong>类是否覆盖equals()方法</strong>”，将它分为2类。</p>
-<ol type="1">
-<li><p>若某个类没有覆盖equals()方法，当它的通过equals()比较两个对象时，实际上是比较两个对象是不是同一个对象。这时，等价于通过“==”去比较这两个对象。</p></li>
-<li><p>我们可以覆盖类的equals()方法，来让equals()通过其它方式比较两个对象是否相等。通常的做法是：若两个对象的内容相等，则equals()方法返回true；否则，返回fasle。</p></li>
-</ol>
-<p>“hashCode() 和 equals() ”是有关系的：</p>
-<p>​ 1)、如果两个对象相等，那么它们的hashCode()值一定相同。</p>
-<p>​ 这里的相等是指，通过equals()比较两个对象时返回true。</p>
-<p>​ 2)、如果两个对象hashCode()相等，它们并不一定相等。</p>
-<p>​
-因为在散列表中，hashCode()相等，即两个键值对的哈希值相等。然而哈希值相等</p>
-<p><strong>参考代码</strong> (ConflictHashCodeTest1.java)：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="number">2</span> <span class="keyword">import</span> java.lang.Comparable;</span><br><span class="line"><span class="number">3</span> </span><br><span class="line"><span class="number">4</span> <span class="comment">/**</span></span><br><span class="line"><span class="comment">5 * <span class="doctag">@desc</span> 比较equals() 返回true 以及 返回false时， hashCode()的值。</span></span><br><span class="line"><span class="comment">6 *</span></span><br><span class="line"><span class="comment">7 * <span class="doctag">@author</span> skywang</span></span><br><span class="line"><span class="comment">8 * <span class="doctag">@emai</span> kuiwu-wang@163.com</span></span><br><span class="line"><span class="comment">9 */</span></span><br><span class="line"><span class="number">10</span> <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConflictHashCodeTest1</span>&#123;</span><br><span class="line"><span class="number">11</span> </span><br><span class="line"><span class="number">12</span>   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"><span class="number">13</span>     <span class="comment">// 新建Person对象，</span></span><br><span class="line"><span class="number">14</span>     <span class="type">Person</span> <span class="variable">p1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;eee&quot;</span>, <span class="number">100</span>);</span><br><span class="line"><span class="number">15</span>     <span class="type">Person</span> <span class="variable">p2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;eee&quot;</span>, <span class="number">100</span>);</span><br><span class="line"><span class="number">16</span>     <span class="type">Person</span> <span class="variable">p3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;aaa&quot;</span>, <span class="number">200</span>);</span><br><span class="line"><span class="number">17</span> </span><br><span class="line"><span class="number">18</span>     <span class="comment">// 新建HashSet对象 </span></span><br><span class="line"><span class="number">19</span>     <span class="type">HashSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashSet</span>();</span><br><span class="line"><span class="number">20</span>     set.add(p1);</span><br><span class="line"><span class="number">21</span>     set.add(p2);</span><br><span class="line"><span class="number">22</span>     set.add(p3);</span><br><span class="line"><span class="number">23</span> </span><br><span class="line"><span class="number">24</span>     <span class="comment">// 比较p1 和 p2， 并打印它们的hashCode()</span></span><br><span class="line"><span class="number">25</span>     System.out.printf(<span class="string">&quot;p1.equals(p2) : %s; p1(%d) p2(%d)\n&quot;</span>, p1.equals(p2), p1.hashCode(), p2.hashCode());</span><br><span class="line"><span class="number">26</span>     <span class="comment">// 打印set</span></span><br><span class="line"><span class="number">27</span>     System.out.printf(<span class="string">&quot;set:%s\n&quot;</span>, set);</span><br><span class="line"><span class="number">28</span>   &#125;</span><br><span class="line"><span class="number">29</span> </span><br><span class="line"><span class="number">30</span>   <span class="comment">/**</span></span><br><span class="line"><span class="comment">31   * <span class="doctag">@desc</span> Person类。</span></span><br><span class="line"><span class="comment">32   */</span></span><br><span class="line"><span class="number">33</span>   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"><span class="number">34</span>     <span class="type">int</span> age;</span><br><span class="line"><span class="number">35</span>     String name;</span><br><span class="line"><span class="number">36</span> </span><br><span class="line"><span class="number">37</span>     <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line"><span class="number">38</span>       <span class="built_in">this</span>.name = name;</span><br><span class="line"><span class="number">39</span>       <span class="built_in">this</span>.age = age;</span><br><span class="line"><span class="number">40</span>     &#125;</span><br><span class="line"><span class="number">41</span> </span><br><span class="line"><span class="number">42</span>     <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line"><span class="number">43</span>       <span class="keyword">return</span> <span class="string">&quot;(&quot;</span>+name + <span class="string">&quot;, &quot;</span> +age+<span class="string">&quot;)&quot;</span>;</span><br><span class="line"><span class="number">44</span>     &#125;</span><br><span class="line"><span class="number">45</span> </span><br><span class="line"><span class="number">46</span>     <span class="comment">/** </span></span><br><span class="line"><span class="comment">47     * <span class="doctag">@desc</span> 覆盖equals方法 </span></span><br><span class="line"><span class="comment">48     */</span> </span><br><span class="line"><span class="number">49</span>     <span class="meta">@Override</span></span><br><span class="line"><span class="number">50</span>     <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object obj)</span>&#123; </span><br><span class="line"><span class="number">51</span>       <span class="keyword">if</span>(obj == <span class="literal">null</span>)&#123; </span><br><span class="line"><span class="number">52</span>         <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line"><span class="number">53</span>       &#125; </span><br><span class="line"><span class="number">54</span>        </span><br><span class="line"><span class="number">55</span>       <span class="comment">//如果是同一个对象返回true，反之返回false </span></span><br><span class="line"><span class="number">56</span>       <span class="keyword">if</span>(<span class="built_in">this</span> == obj)&#123; </span><br><span class="line"><span class="number">57</span>         <span class="keyword">return</span> <span class="literal">true</span>; </span><br><span class="line"><span class="number">58</span>       &#125; </span><br><span class="line"><span class="number">59</span>        </span><br><span class="line"><span class="number">60</span>       <span class="comment">//判断是否类型相同 </span></span><br><span class="line"><span class="number">61</span>       <span class="keyword">if</span>(<span class="built_in">this</span>.getClass() != obj.getClass())&#123; </span><br><span class="line"><span class="number">62</span>         <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line"><span class="number">63</span>       &#125; </span><br><span class="line"><span class="number">64</span>        </span><br><span class="line"><span class="number">65</span>       <span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> (Person)obj; </span><br><span class="line"><span class="number">66</span>       <span class="keyword">return</span> name.equals(person.name) &amp;&amp; age==person.age; </span><br><span class="line"><span class="number">67</span>     &#125; </span><br><span class="line"><span class="number">68</span>   &#125;</span><br><span class="line"><span class="number">69</span> &#125;</span><br></pre></td></tr></table></figure>
-<p><a href="javascript:void(0);"><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/02/clip_image001.gif" alt="复制代码"></a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/674e848.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -580,107 +580,6 @@ synchronized的方式实现。</p>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/5d1e0225.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Shun Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="请教我kao代码">
-      <meta itemprop="description" content="We meansure the future">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 请教我kao代码">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/5d1e0225.html" class="post-title-link" itemprop="url">请教我学数据结构（二）红黑树</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-08-14 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-14T00:00:00+08:00">2020-08-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-18 09:43:10" itemprop="dateModified" datetime="2022-03-18T09:43:10+08:00">2022-03-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="摘要">摘要</h1>
-<p><font size="3"></font></p>
-<p>红黑树是一种<strong>特殊的二叉查找树</strong>，能够通过操作实现<strong>自平衡</strong>。</p>
-<h1 id="定义和性质">定义和性质</h1>
-<p>（1）根节点和叶子节点都为黑色</p>
-<p>（2）红色节点的子节点都为黑色</p>
-<p>（3）任意一个节点到每一个叶子节点的路径所包含的黑色节点树相同。</p>
-<p>红黑树的自平衡通过三种操作实现：<strong>左旋</strong>、<strong>右旋</strong>和<strong>变色</strong></p>
-<p><strong>左旋</strong>：以某个结点作为支点(旋转结点)，其右子结点变为旋转结点的父结点，右子结点的左子结点变为旋转结点的右子结点，左子结点保持不变。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103419.png"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/5d1e0225.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/posts/33157a3.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -763,6 +662,107 @@ synchronized的方式实现。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/33157a3.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/5d1e0225.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Shun Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="请教我kao代码">
+      <meta itemprop="description" content="We meansure the future">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 请教我kao代码">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/5d1e0225.html" class="post-title-link" itemprop="url">请教我学数据结构（二）红黑树</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-08-14 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-14T00:00:00+08:00">2020-08-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-18 09:43:10" itemprop="dateModified" datetime="2022-03-18T09:43:10+08:00">2022-03-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="摘要">摘要</h1>
+<p><font size="3"></font></p>
+<p>红黑树是一种<strong>特殊的二叉查找树</strong>，能够通过操作实现<strong>自平衡</strong>。</p>
+<h1 id="定义和性质">定义和性质</h1>
+<p>（1）根节点和叶子节点都为黑色</p>
+<p>（2）红色节点的子节点都为黑色</p>
+<p>（3）任意一个节点到每一个叶子节点的路径所包含的黑色节点树相同。</p>
+<p>红黑树的自平衡通过三种操作实现：<strong>左旋</strong>、<strong>右旋</strong>和<strong>变色</strong></p>
+<p><strong>左旋</strong>：以某个结点作为支点(旋转结点)，其右子结点变为旋转结点的父结点，右子结点的左子结点变为旋转结点的右子结点，左子结点保持不变。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103419.png"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/5d1e0225.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1132,6 +1132,107 @@ Key”，填上任意Title，在Key文本框里粘贴<code>id_rsa.pub</code>文�
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/c81d78e6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Shun Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="请教我kao代码">
+      <meta itemprop="description" content="We meansure the future">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 请教我kao代码">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/c81d78e6.html" class="post-title-link" itemprop="url">牛客题解-NC134股票（无限次交易）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-07-04 00:00:00" itemprop="dateCreated datePublished" datetime="2020-07-04T00:00:00+08:00">2020-07-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-18 09:43:10" itemprop="dateModified" datetime="2022-03-18T09:43:10+08:00">2022-03-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%89%9B%E5%AE%A2%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">牛客题解</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="题目">题目</h1>
+<p>假定你知道某只股票每一天价格的变动。</p>
+<p>你最多可以同时持有一只股票。但你可以无限次的交易（买进和卖出均无手续费）。</p>
+<p>请设计一个函数，计算你所能获得的最大收益。</p>
+<h2 id="示例1">示例1</h2>
+<p>输入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>tips：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/c81d78e6.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/posts/36f0890c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1206,107 +1307,6 @@ Key”，填上任意Title，在Key文本框里粘贴<code>id_rsa.pub</code>文�
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/36f0890c.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/c81d78e6.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Shun Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="请教我kao代码">
-      <meta itemprop="description" content="We meansure the future">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 请教我kao代码">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/c81d78e6.html" class="post-title-link" itemprop="url">牛客题解-NC134股票（无限次交易）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-07-04 00:00:00" itemprop="dateCreated datePublished" datetime="2020-07-04T00:00:00+08:00">2020-07-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-18 09:43:10" itemprop="dateModified" datetime="2022-03-18T09:43:10+08:00">2022-03-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%89%9B%E5%AE%A2%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">牛客题解</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="题目">题目</h1>
-<p>假定你知道某只股票每一天价格的变动。</p>
-<p>你最多可以同时持有一只股票。但你可以无限次的交易（买进和卖出均无手续费）。</p>
-<p>请设计一个函数，计算你所能获得的最大收益。</p>
-<h2 id="示例1">示例1</h2>
-<p>输入：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p>tips：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/c81d78e6.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
