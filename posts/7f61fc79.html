@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="数据库索引的原理：数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 BTree 及其变种 B+Tree。 一般情况下,在没有建立索引的时候, mysql 需要扫描全表及扫描 10W 条数据找这条数据,如果我在 nickname 上建立索引,那么mysql只需要扫描一行数据及为我们找到这条 nickname&#x3D;’css’ 的数据,是不是感觉性能">
+    <meta name="description" content="数据库索引的原理：数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 BTree 及其变种 B+Tree。 一般情况下,在没有建立索引的时候, mysql 需要扫描全表及扫描 10W 条数据找这条数据,如果我在 nickname 上建立索引,那么mysql只需要扫描一行数据及为我们找到这条 nickname&#x3D;&#39;css&#39; 的数据,是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="请教我学MySQL（一）索引">
 <meta property="og:url" content="http://example.com/posts/7f61fc79.html">
 <meta property="og:site_name" content="请教我kao代码">
-<meta property="og:description" content="数据库索引的原理：数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 BTree 及其变种 B+Tree。 一般情况下,在没有建立索引的时候, mysql 需要扫描全表及扫描 10W 条数据找这条数据,如果我在 nickname 上建立索引,那么mysql只需要扫描一行数据及为我们找到这条 nickname&#x3D;’css’ 的数据,是不是感觉性能">
+<meta property="og:description" content="数据库索引的原理：数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 BTree 及其变种 B+Tree。 一般情况下,在没有建立索引的时候, mysql 需要扫描全表及扫描 10W 条数据找这条数据,如果我在 nickname 上建立索引,那么mysql只需要扫描一行数据及为我们找到这条 nickname&#x3D;&#39;css&#39; 的数据,是">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-14T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-03-18T01:43:10.206Z">
@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">索引的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E7%B4%A2%E5%BC%95"><span class="nav-number">2.1.</span> <span class="nav-text">单例索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E7%B4%A2%E5%BC%95"><span class="nav-number">2.2.</span> <span class="nav-text">组合索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%96%87%E7%B4%A2%E5%BC%95"><span class="nav-number">2.3.</span> <span class="nav-text">全文索引</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%A0%E9%99%A4"><span class="nav-number">3.</span> <span class="nav-text">索引的删除</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">使用索引的优点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">使用索引的缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-number">6.</span> <span class="nav-text">使用索引需要注意的地方</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8D%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">7.</span> <span class="nav-text">不创建索引的情况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL%E7%9A%84%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96"><span class="nav-number">8.</span> <span class="nav-text">MySQL的索引优化</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">索引的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E7%B4%A2%E5%BC%95"><span class="nav-number">2.1.</span> <span class="nav-text">单例索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E7%B4%A2%E5%BC%95"><span class="nav-number">2.2.</span> <span class="nav-text">组合索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%96%87%E7%B4%A2%E5%BC%95"><span class="nav-number">2.3.</span> <span class="nav-text">全文索引</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%A0%E9%99%A4"><span class="nav-number">3.</span> <span class="nav-text">索引的删除</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">使用索引的优点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">使用索引的缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-number">6.</span> <span class="nav-text">使用索引需要注意的地方</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8D%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">7.</span> <span class="nav-text">不创建索引的情况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql%E7%9A%84%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96"><span class="nav-number">8.</span> <span class="nav-text">MySQL的索引优化</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -336,67 +336,92 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><p>数据库索引的原理：数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 BTree 及其变种 B+Tree。</p>
-<p>一般情况下,在没有建立索引的时候, mysql 需要扫描全表及扫描 10W 条数据找这条数据,如果我在 nickname 上建立索引,那么mysql只需要扫描一行数据及为我们找到这条 nickname=’css’ 的数据,是不是感觉性能提升了好多咧….</p>
-<p>mysql 的索引分为 单例索引（主键索引、唯一索引、普通索引）和 组合索引。</p>
+        <h1 id="section"></h1>
+<p>数据库索引的原理：数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用
+BTree 及其变种 B+Tree。</p>
+<p>一般情况下,在没有建立索引的时候, mysql 需要扫描全表及扫描 10W
+条数据找这条数据,如果我在 nickname
+上建立索引,那么mysql只需要扫描一行数据及为我们找到这条 nickname='css'
+的数据,是不是感觉性能提升了好多咧....</p>
+<p>mysql 的索引分为 单例索引（主键索引、唯一索引、普通索引）和
+组合索引。</p>
 <ul>
 <li>单例索引：一个索引只包含一个列，一个表可以有多个单例索引。</li>
 <li>组合索引：一个组合索引包含两个或两个以上的列。</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `award` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &#x27;用户id&#x27;,</span><br><span class="line">  `aty_id` varchar(100) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;活动场景id&#x27;,</span><br><span class="line">  `nickname` varchar(12) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;用户昵称&#x27;,</span><br><span class="line">  `is_awarded` tinyint(1) NOT NULL DEFAULT 0 COMMENT &#x27;用户是否领奖&#x27;,</span><br><span class="line">  `award_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;领奖时间&#x27;,</span><br><span class="line">  `account` varchar(12) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;帐号&#x27;,</span><br><span class="line">  `password` char(32) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;密码&#x27;,</span><br><span class="line">  `message` varchar(255) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;获奖信息&#x27;,</span><br><span class="line">  `created_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;创建时间&#x27;,</span><br><span class="line">  `updated_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;更新时间&#x27;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line"> ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=&#x27;获奖信息表&#x27;;</span><br><span class="line"> </span><br><span class="line"> INSERT INTO `award` (`nickname`, `account`, `message`, `created_time`)</span><br><span class="line"> VALUES (&#x27;rSUQFzpkDz3R&#x27;, &#x27;DYxJoqZq2rd7&#x27;, &#x27;aaabbbccccxuxuxuxuuxux&#x27;, 1449567822);</span><br></pre></td></tr></table></figure>
-<h1 id="索引的创建"><a href="#索引的创建" class="headerlink" title="索引的创建"></a>索引的创建</h1><h2 id="单例索引"><a href="#单例索引" class="headerlink" title="单例索引"></a>单例索引</h2><ol>
+<h1 id="索引的创建">索引的创建</h1>
+<h2 id="单例索引">单例索引</h2>
+<ol type="1">
 <li>普通索引</li>
 </ol>
 <p>是最基本的索引。</p>
 <p>其 sql 格式是 :</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX IndexName ON `TableName`(`字段名`(length));</span><br></pre></td></tr></table></figure>
-<p> # 或者</p>
+<p># 或者</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE TableName ADD INDEX IndexName(`字段名`(length));</span><br></pre></td></tr></table></figure>
 <p>第一种方式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX account_Index ON `award`(`account`);</span><br></pre></td></tr></table></figure>
 <p>第二种方式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE award ADD INDEX account_Index(`account`);</span><br></pre></td></tr></table></figure>
-<p>如果是 CHAR , VARCHAR 类型, length 可以小于字段的实际长度,如果是BLOB和TEXT类型就必须指定长度。</p>
-<ol>
+<p>如果是 CHAR , VARCHAR 类型, length
+可以小于字段的实际长度,如果是BLOB和TEXT类型就必须指定长度。</p>
+<ol type="1">
 <li>唯一索引，与普通索引类似，但是不同的是唯一索引要求所有的列的值是唯一的，这一点和主键索引一样，但是它允许有空值。</li>
 </ol>
 <p>其 sql 格式是：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX IndexName ON `TableName`(`字段名`(length));</span><br></pre></td></tr></table></figure>
-<p> # 或者</p>
+<p># 或者</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE TableName ADD UNIQUE (column_list); </span><br></pre></td></tr></table></figure>
 <p>第一种方式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX account_UNIQUE_Index ON `award`(`account`);</span><br></pre></td></tr></table></figure>
-<ol>
-<li>主键索引，不允许有空值,（在     B+Tree 中的 InnoDB 引擎中，主键索引起到了至关重要的位置）</li>
+<ol type="1">
+<li>主键索引，不允许有空值,（在 B+Tree 中的 InnoDB
+引擎中，主键索引起到了至关重要的位置）</li>
 </ol>
-<p>主键索引建立的规则是 int 优于 varchar，一般在建表的时候创建，最好是与表的其他字段不相关的列或者是业务不相关的列。一般会设为 int 而且是 AUTO_INCREMENT 自增类型的。</p>
-<h2 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h2><p>一个表中含有多个单例索引不代表是组合索引，通俗一点讲，组合索引是：包含多个字段但是只有索引名称。</p>
+<p>主键索引建立的规则是 int 优于
+varchar，一般在建表的时候创建，最好是与表的其他字段不相关的列或者是业务不相关的列。一般会设为
+int 而且是 AUTO_INCREMENT 自增类型的。</p>
+<h2 id="组合索引">组合索引</h2>
+<p>一个表中含有多个单例索引不代表是组合索引，通俗一点讲，组合索引是：包含多个字段但是只有索引名称。</p>
 <p>其 sql 格式是：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX nickname_account_createdTime_Index ON `award`(`nickname`, `account`, `created_time`);</span><br></pre></td></tr></table></figure>
-<p>如果你建立了组合索引 (nickname_account_createdTime_Index)，那么它实际包含的是 3 个索引 (nickname) (nickname,account)(nickname,account,created_time)</p>
-<p>在使用查询的时候遵循 mysql 组合索引的 “最左前缀”，即索引 where 时的条件要按照建立索引的时候字段的排列方式。</p>
-<ol>
-<li>不按索引最左列开始查询（多列索引）     例如</li>
+<p>如果你建立了组合索引
+(nickname_account_createdTime_Index)，那么它实际包含的是 3 个索引
+(nickname) (nickname,account)(nickname,account,created_time)</p>
+<p>在使用查询的时候遵循 mysql 组合索引的 “最左前缀”，即索引 where
+时的条件要按照建立索引的时候字段的排列方式。</p>
+<ol type="1">
+<li>不按索引最左列开始查询（多列索引） 例如</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">index(‘c1’, ‘c2’, ‘c3’) where c2 = &#x27;aaa&#x27; # 不使用索引</span><br><span class="line">where c2 = &#x27;aaa&#x27; and c3=&#x27;sss&#x27; # 不能使用索引</span><br></pre></td></tr></table></figure>
-<ol>
+<ol type="1">
 <li>查询某个列有范围查询，则其右边的所有列都无法使用查询（多列查询）</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Where c1= &#x27;xxx&#x27; and c2 like &#x27;aa%&#x27; and c3=&#x27;sss&#x27;</span><br></pre></td></tr></table></figure>
-<p> # 该查询只会使用索引中的前两列,因为like是范围查询</p>
-<ol>
+<p># 该查询只会使用索引中的前两列,因为like是范围查询</p>
+<ol type="1">
 <li>不能跳过某个字段来进行查询，这样利用不到索引，比如：</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SELECT * FROM `award` WHERE nickname &gt; &#x27;rSUQFzpkDz3R&#x27; AND account = &#x27;DYxJoqZq2rd7&#x27; AND created_time = 1449567822; </span><br></pre></td></tr></table></figure>
-<p>因为我的索引是 (nickname, account, created_time)，如果第一个字段出现 范围符号 的查找，那么将不会用到索引，如果我是第二个或者第三个字段使用范围符号的查找，那么它会利用索引，利用的索引是 (nickname)，因为上面说了建立组合索引 (nickname, account, created_time)，会出现三个索引。</p>
-<h2 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h2><p>文本字段上（text）如果建立的是普通索引，那么只有对文本的字段内容前面的字符进行索引，其字符大小根据索引建立索引时声明的大小来规定。</p>
-<p>如果文本中出现多个一样的字符，而且需要查找的话，那么其条件只能是 where column like ‘%xxxx%’， 这样做会让索引失效</p>
+<p>因为我的索引是 (nickname, account, created_time)，如果第一个字段出现
+范围符号
+的查找，那么将不会用到索引，如果我是第二个或者第三个字段使用范围符号的查找，那么它会利用索引，利用的索引是
+(nickname)，因为上面说了建立组合索引 (nickname, account,
+created_time)，会出现三个索引。</p>
+<h2 id="全文索引">全文索引</h2>
+<p>文本字段上（text）如果建立的是普通索引，那么只有对文本的字段内容前面的字符进行索引，其字符大小根据索引建立索引时声明的大小来规定。</p>
+<p>如果文本中出现多个一样的字符，而且需要查找的话，那么其条件只能是
+where column like '%xxxx%'， 这样做会让索引失效</p>
 <p>这个时候全文索引就有作用了</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE TableName ADD FULLTEXT(column1, column2);</span><br><span class="line"></span><br><span class="line">ALTER TABLE `award` ADD FULLTEXT(`message`);</span><br></pre></td></tr></table></figure>
-<p>有了全文索引，就可以用 SELECT 查询命令去检索那些包含着一个或多个给定单词的数据记录了。</p>
+<p>有了全文索引，就可以用 SELECT
+查询命令去检索那些包含着一个或多个给定单词的数据记录了。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM TableName WHERE MATCH(column1, column2) AGAINST(&#x27;xxx&#x27;, &#x27;sss&#x27;, &#x27;ddd&#x27;);</span><br><span class="line"></span><br><span class="line"> EXPLAIN SELECT * FROM `award` WHERE MATCH(message) AGAINST(&#x27;aaa&#x27;);</span><br></pre></td></tr></table></figure>
-<p>上述命令将把 column1 和 column2 字段里有 xxx、sss、和 ddd 的数据记录全部查询出来。</p>
-<h1 id="索引的删除"><a href="#索引的删除" class="headerlink" title="索引的删除"></a>索引的删除</h1><ul>
+<p>上述命令将把 column1 和 column2 字段里有 xxx、sss、和 ddd
+的数据记录全部查询出来。</p>
+<h1 id="索引的删除">索引的删除</h1>
+<ul>
 <li>查询索引</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SHOW INDEX FROM TableName;</span><br><span class="line"></span><br><span class="line">SHOW INDEX FROM award;</span><br></pre></td></tr></table></figure>
@@ -404,30 +429,47 @@
 <li>删除索引</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP INDEX IndexName ON `TableName`;</span><br></pre></td></tr></table></figure>
-<h1 id="使用索引的优点"><a href="#使用索引的优点" class="headerlink" title="使用索引的优点"></a>使用索引的优点</h1><p>1）可以通过建立唯一索引或者主键索引，保证数据库表中每一行数据的唯一性</p>
+<h1 id="使用索引的优点">使用索引的优点</h1>
+<p>1）可以通过建立唯一索引或者主键索引，保证数据库表中每一行数据的唯一性</p>
 <p>2）建立索引可以大大提高检索的数据，以及减少表的检索行数</p>
 <p>3）在表连接的连接条件，可以加速表与表直接的相连</p>
-<p>4）在分组和排序字句进行数据检索，可以减少查询时间中 分组 和 排序 所消耗的时间（数据库的记录会重新排序）</p>
+<p>4）在分组和排序字句进行数据检索，可以减少查询时间中 分组 和 排序
+所消耗的时间（数据库的记录会重新排序）</p>
 <p>5）建立索引，在查询中使用索引，可以提高性能</p>
-<h1 id="使用索引的缺点"><a href="#使用索引的缺点" class="headerlink" title="使用索引的缺点"></a>使用索引的缺点</h1><p>1）创建索引和维护索引会消耗时间，随着数据量的增加而增加</p>
+<h1 id="使用索引的缺点">使用索引的缺点</h1>
+<p>1）创建索引和维护索引会消耗时间，随着数据量的增加而增加</p>
 <p>2）索引文件会占用物理空间，除了数据表需要占用物理空间之外，每一个索引还会占用一定的物理空间</p>
-<p>3）当对表的数据进行 INSERT,UPDATE,DELETE 的时候,索引也要动态的维护,这样就会降低数据的维护速度,(建立索引会占用磁盘空间的索引文件。一般情况这个问题不太严重，但如果你在一个大表上创建了多种组合索引，索引文件的会膨胀很快)。</p>
-<h1 id="使用索引需要注意的地方"><a href="#使用索引需要注意的地方" class="headerlink" title="使用索引需要注意的地方"></a>使用索引需要注意的地方</h1><p>在建立索引的时候应该考虑索引该建立在数据库表中的某些列上，哪一些索引需要建立，哪一些索引是多余的，一般来说：</p>
+<p>3）当对表的数据进行 INSERT,UPDATE,DELETE
+的时候,索引也要动态的维护,这样就会降低数据的维护速度,(建立索引会占用磁盘空间的索引文件。一般情况这个问题不太严重，但如果你在一个大表上创建了多种组合索引，索引文件的会膨胀很快)。</p>
+<h1 id="使用索引需要注意的地方">使用索引需要注意的地方</h1>
+<p>在建立索引的时候应该考虑索引该建立在数据库表中的某些列上，哪一些索引需要建立，哪一些索引是多余的，一般来说：</p>
 <p>1）在经常需要搜索的列上,可以加快索引的速度</p>
 <p>2）主键列上可以确保列的唯一性</p>
 <p>3）在表与表的连接条件上加上索引,可以加快连接查询的速度</p>
-<p>4）在经常需要排序 (order by) ,分组 (group by) 和的 distinct 列上加索引 可以加快排序查询的时间, (单独order by 用不了索引，索引考虑加where 或加limit)</p>
-<p>5）在一些 where 之后的 &lt; &lt;= &gt; &gt;= BETWEEN IN 以及某个情况下的like 建立字段的索引(B-TREE)</p>
-<p>6）like语句，前导模糊查询 like “%XXX” 不能使用索引，而非前导模糊查询 like “XXX%” 则可以</p>
-<p>7）索引不会包含 NULL 列,如果列中包含 NULL 值都将不会被包含在索引中,复合索引中如果有一列含有NULL值那么这个组合索引都将失效,一般需要给默认值0或者 ‘ ‘ 字符串</p>
-<p>8）使用短索引,如果你的一个字段是 Char(32) 或者 int(32) ,在创建索引的时候指定前缀长度 比如前10个字符 (前提是多数值是唯一的..)那么短索引可以提高查询速度,并且可以减少磁盘的空间,也可以减少I/0操作.</p>
+<p>4）在经常需要排序 (order by) ,分组 (group by) 和的 distinct
+列上加索引 可以加快排序查询的时间, (单独order by
+用不了索引，索引考虑加where 或加limit)</p>
+<p>5）在一些 where 之后的 &lt; &lt;= &gt; &gt;= BETWEEN IN
+以及某个情况下的like 建立字段的索引(B-TREE)</p>
+<p>6）like语句，前导模糊查询 like "%XXX" 不能使用索引，而非前导模糊查询
+like "XXX%" 则可以</p>
+<p>7）索引不会包含 NULL 列,如果列中包含 NULL
+值都将不会被包含在索引中,复合索引中如果有一列含有NULL值那么这个组合索引都将失效,一般需要给默认值0或者
+' ' 字符串</p>
+<p>8）使用短索引,如果你的一个字段是 Char(32) 或者 int(32)
+,在创建索引的时候指定前缀长度 比如前10个字符
+(前提是多数值是唯一的..)那么短索引可以提高查询速度,并且可以减少磁盘的空间,也可以减少I/0操作.</p>
 <p>9）不要在列上进行运算,这样会使得mysql索引失效,也会进行全表扫描</p>
-<p>10）选择越小的数据类型越好,因为通常越小的数据类型通常在磁盘,内存,cpu,缓存中 占用的空间很少,处理起来更快</p>
-<h1 id="不创建索引的情况"><a href="#不创建索引的情况" class="headerlink" title="不创建索引的情况"></a>不创建索引的情况</h1><p>1）查询中很少使用到的列不应该创建索引,如果建立了索引然而还会降低mysql的性能和增大了空间需求.</p>
-<p>2）很少数据的列也不应该建立索引,比如 一个性别字段 0或者1,在查询中,结果集的数据占了表中数据行的比例比较大,mysql需要扫描的行数很多,增加索引,并不能提高效率</p>
+<p>10）选择越小的数据类型越好,因为通常越小的数据类型通常在磁盘,内存,cpu,缓存中
+占用的空间很少,处理起来更快</p>
+<h1 id="不创建索引的情况">不创建索引的情况</h1>
+<p>1）查询中很少使用到的列不应该创建索引,如果建立了索引然而还会降低mysql的性能和增大了空间需求.</p>
+<p>2）很少数据的列也不应该建立索引,比如 一个性别字段
+0或者1,在查询中,结果集的数据占了表中数据行的比例比较大,mysql需要扫描的行数很多,增加索引,并不能提高效率</p>
 <p>3）定义为 text 和 image 和 bit 数据类型的列不应该增加索引</p>
 <p>4）当表的修改(UPDATE,INSERT,DELETE)操作远远大于检索(SELECT)操作时不应该创建索引,这两个操作是互斥的关系</p>
-<h1 id="MySQL的索引优化"><a href="#MySQL的索引优化" class="headerlink" title="MySQL的索引优化"></a>MySQL的索引优化</h1><ul>
+<h1 id="mysql的索引优化">MySQL的索引优化</h1>
+<ul>
 <li>负向条件不能使用索引</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select from order where status!=0 and status!=1</span><br><span class="line"></span><br><span class="line">not in/not exists # 都不是好习惯</span><br></pre></td></tr></table></figure>
@@ -455,18 +497,23 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select from order_ where date &lt; = &#x27;2017-01-01&#x27;</span><br></pre></td></tr></table></figure>
 <p><strong>并非周知的 SQL 实践</strong></p>
 <ul>
-<li>如果业务大部分是单条查询，使用     Hash 索引性能更好，例如用户中心</li>
+<li>如果业务大部分是单条查询，使用 Hash 索引性能更好，例如用户中心</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select from `user` where uid = ?</span><br><span class="line"> select from user where login_name=?</span><br></pre></td></tr></table></figure>
-<p>原因：B-Tree索引的时间复杂度是 O(log(n))；Hash 索引的时间复杂度是 O(1)</p>
+<p>原因：B-Tree索引的时间复杂度是 O(log(n))；Hash 索引的时间复杂度是
+O(1)</p>
 <ul>
 <li>允许 null的列，查询有潜在大坑</li>
 </ul>
-<p>单列索引不存 null 值，复合索引不存全为 null 的值，如果列允许为 null，可能会得到“不符合预期”的结果集</p>
+<p>单列索引不存 null 值，复合索引不存全为 null 的值，如果列允许为
+null，可能会得到“不符合预期”的结果集</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select from user where name != &#x27;shenjian&#x27;</span><br></pre></td></tr></table></figure>
-<p>如果 name 允许为 null，索引不存储null值，结果集中不会包含这些记录。所以，请使用 not null 约束以及默认值。</p>
+<p>如果 name 允许为
+null，索引不存储null值，结果集中不会包含这些记录。所以，请使用 not null
+约束以及默认值。</p>
 <ul>
-<li>复合索引最左前缀，并不是指 SQL     语句的 where顺序要和符合索引一致。</li>
+<li>复合索引最左前缀，并不是指 SQL 语句的
+where顺序要和符合索引一致。</li>
 </ul>
 <p>用户中心建立了 (login_name, password) 的符合索引</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select from user where login_name=? and passwd=?</span><br><span class="line"> select from user where passwd=? and login_name=?</span><br></pre></td></tr></table></figure>
@@ -478,22 +525,25 @@
 <ul>
 <li>使用 ENUM 而不是字符串</li>
 </ul>
-<p>ENUM 保存的是 TINYINT，别在枚举中搞一些“中国”“北京”“技术部”这样的字符串，字符串空间又大，效率又低。</p>
+<p>ENUM 保存的是
+TINYINT，别在枚举中搞一些“中国”“北京”“技术部”这样的字符串，字符串空间又大，效率又低。</p>
 <p><strong>小众但有用的 SQL 实践</strong></p>
 <ul>
-<li>如果明确知道只有一条结果返回，limit     1 能够提高效率</li>
+<li>如果明确知道只有一条结果返回，limit 1 能够提高效率</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select from user where login_name=?</span><br></pre></td></tr></table></figure>
 <p>可以优化为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select from user where login_name=? limit 1</span><br></pre></td></tr></table></figure>
 <p>原因：你知道只有一条结果，但数据库并不知道，明确告诉它，让它主动停止游标移动</p>
 <ul>
-<li>把计算放到业务层而不是数据库层，除了节省数据的     CPU，还有意想不到的查询缓存优化效果</li>
+<li>把计算放到业务层而不是数据库层，除了节省数据的
+CPU，还有意想不到的查询缓存优化效果</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select from order where date &lt; = CURDATE()</span><br></pre></td></tr></table></figure>
 <p>这不是一个号的 SQL 实践，应该优化为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$curDate = date(&#x27;Y-m-d&#x27;);</span><br><span class="line"> $res = mysqlquery(&#x27;select from order where date &lt; = $curDate&#x27;);</span><br></pre></td></tr></table></figure>
-<p>原因：释放了数据库的 CPU，多次调用，传入的SQL相同，才可以利用查询缓存</p>
+<p>原因：释放了数据库的
+CPU，多次调用，传入的SQL相同，才可以利用查询缓存</p>
 <ul>
 <li>强制类型转换会全表扫描</li>
 </ul>
@@ -533,13 +583,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/d5d6861e.html" rel="prev" title="请教我学操作系统（一）进线程与内存管理">
-                  <i class="fa fa-chevron-left"></i> 请教我学操作系统（一）进线程与内存管理
+                <a href="/posts/3e93542c.html" rel="prev" title="请教我学操作系统（二）IO多路复用技术">
+                  <i class="fa fa-chevron-left"></i> 请教我学操作系统（二）IO多路复用技术
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/688743a7.html" rel="next" title="请教我学MySQL（一）乐观锁vs悲观锁">
-                  请教我学MySQL（一）乐观锁vs悲观锁 <i class="fa fa-chevron-right"></i>
+                <a href="/posts/d5d6861e.html" rel="next" title="请教我学操作系统（一）进线程与内存管理">
+                  请教我学操作系统（一）进线程与内存管理 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
