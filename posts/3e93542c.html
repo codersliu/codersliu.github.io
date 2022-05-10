@@ -22,24 +22,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="基本概念   服务器端编程经常需要构造高性能的IO模型，常见的IO模型有四种： （1）同步阻塞IO（Blocking IO）：即传统的IO模型。 （2）同步非阻塞IO（Non-blocking IO）：默认创建的socket都是阻塞的，非阻塞IO要求socket被设置为NONBLOCK。注意这里所说的NIO并非Java的NIO（New IO）库。 （3）IO多路复用（IO Multiplexing">
+    <meta name="description" content="基本概念   服务器端编程经常需要构造高性能的IO模型，常见的IO模型有四种： （1）同步阻塞IO（Blocking IO）：即传统的IO模型。 （2）同步非阻塞IO（Non-blocking IO）：默认创建的socket都是阻塞的，非阻塞IO要求socket被设置为NONBLOCK。注意这里所说的NIO并非Java的NIO（New IO）库。 （3）IO多路复用（IO Mul">
 <meta property="og:type" content="article">
 <meta property="og:title" content="请教我学操作系统（二）IO多路复用技术">
 <meta property="og:url" content="http://example.com/posts/3e93542c.html">
 <meta property="og:site_name" content="请教我kao代码">
-<meta property="og:description" content="基本概念   服务器端编程经常需要构造高性能的IO模型，常见的IO模型有四种： （1）同步阻塞IO（Blocking IO）：即传统的IO模型。 （2）同步非阻塞IO（Non-blocking IO）：默认创建的socket都是阻塞的，非阻塞IO要求socket被设置为NONBLOCK。注意这里所说的NIO并非Java的NIO（New IO）库。 （3）IO多路复用（IO Multiplexing">
+<meta property="og:description" content="基本概念   服务器端编程经常需要构造高性能的IO模型，常见的IO模型有四种： （1）同步阻塞IO（Blocking IO）：即传统的IO模型。 （2）同步非阻塞IO（Non-blocking IO）：默认创建的socket都是阻塞的，非阻塞IO要求socket被设置为NONBLOCK。注意这里所说的NIO并非Java的NIO（New IO）库。 （3）IO多路复用（IO Mul">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095213.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095300.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095402.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095443.png">
 <meta property="article:published_time" content="2020-08-14T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-03-18T01:43:10.207Z">
 <meta property="article:author" content="Shun Liu">
 <meta property="article:tag" content="线程">
 <meta property="article:tag" content="IO">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095213.png">
 
 
 <link rel="canonical" href="http://example.com/posts/3e93542c.html">
@@ -155,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%98%BB%E5%A1%9E"><span class="nav-number"></span> <span class="nav-text">同步阻塞</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9EIO"><span class="nav-number"></span> <span class="nav-text">同步非阻塞IO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8"><span class="nav-number"></span> <span class="nav-text">IO多路复用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5IO"><span class="nav-number"></span> <span class="nav-text">异步IO</span></a></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%98%BB%E5%A1%9E"><span class="nav-number"></span> <span class="nav-text">同步阻塞</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9Eio"><span class="nav-number"></span> <span class="nav-text">同步非阻塞IO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8"><span class="nav-number"></span> <span class="nav-text">IO多路复用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5io"><span class="nav-number"></span> <span class="nav-text">异步IO</span></a></div>
         </div>
         <!--/noindex-->
 
@@ -213,7 +208,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -341,28 +336,39 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><font size=3>
-
-<ol>
+        <h2 id="基本概念">基本概念</h2>
+<p><font size=3></p>
+<ol type="1">
 <li><p>服务器端编程经常需要构造高性能的IO模型，常见的IO模型有四种：</p>
 <p>（1）同步阻塞IO（Blocking IO）：即传统的IO模型。</p>
-<p>（2）同步非阻塞IO（Non-blocking IO）：默认创建的socket都是阻塞的，非阻塞IO要求socket被设置为NONBLOCK。注意这里所说的NIO并非Java的NIO（New IO）库。</p>
-<p>（3）IO多路复用（IO Multiplexing）：即经典的Reactor设计模式，有时也称为异步阻塞IO，Java中的Selector和Linux中的epoll都是这种模型。</p>
-<p>（4）异步IO（Asynchronous IO）：即经典的Proactor设计模式，也称为异步非阻塞IO。</p>
-</li>
+<p>（2）同步非阻塞IO（Non-blocking
+IO）：默认创建的socket都是阻塞的，非阻塞IO要求socket被设置为NONBLOCK。注意这里所说的NIO并非Java的NIO（New
+IO）库。</p>
+<p>（3）IO多路复用（IO
+Multiplexing）：即经典的Reactor设计模式，有时也称为异步阻塞IO，Java中的Selector和Linux中的epoll都是这种模型。</p>
+<p>（4）异步IO（Asynchronous
+IO）：即经典的Proactor设计模式，也称为异步非阻塞IO。</p>
+<p><strong>同步和异步</strong>的概念描述的是用户线程与内核的交互方式：同步是指<strong>用户线程发起IO请求后需要等待或者轮询内核IO操作完成后才能继续执行</strong>；而异步是指用户线程发起IO请求后仍继续执行，当内核IO操作完成后会通知用户线程，或者调用用户线程注册的回调函数。</p>
+<p><strong>阻塞和非阻塞</strong>的概念描述的是用户线程调用内核IO操作的方式：<strong>阻塞是指IO操作需要彻底完成后才返回到用户空间</strong>；而非阻塞是指IO操作被调用后立即返回给用户一个状态值，无需等到IO操作彻底完成。</p></li>
 </ol>
-<p>   <strong>同步和异步</strong>的概念描述的是用户线程与内核的交互方式：同步是指<strong>用户线程发起IO请求后需要等待或者轮询内核IO操作完成后才能继续执行</strong>；而异步是指用户线程发起IO请求后仍继续执行，当内核IO操作完成后会通知用户线程，或者调用用户线程注册的回调函数。</p>
-<p>   <strong>阻塞和非阻塞</strong>的概念描述的是用户线程调用内核IO操作的方式：<strong>阻塞是指IO操作需要彻底完成后才返回到用户空间</strong>；而非阻塞是指IO操作被调用后立即返回给用户一个状态值，无需等到IO操作彻底完成。</p>
-<h1 id="同步阻塞"><a href="#同步阻塞" class="headerlink" title="同步阻塞"></a>同步阻塞</h1><p>同步阻塞IO模型是最简单的IO模型，用户线程在内核进行IO操作时被阻塞。</p>
-<p> <img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095213.png" alt=""></p>
-<h1 id="同步非阻塞IO"><a href="#同步非阻塞IO" class="headerlink" title="同步非阻塞IO"></a>同步非阻塞IO</h1><p>同步非阻塞IO是在同步阻塞IO的基础上，将socket设置为NONBLOCK。这样做用户线程可以在发起IO请求后可以立即返回。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095300.png" alt=""></p>
+<h1 id="同步阻塞">同步阻塞</h1>
+<p>同步阻塞IO模型是最简单的IO模型，用户线程在内核进行IO操作时被阻塞。</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095213.png" /></p>
+<h1 id="同步非阻塞io">同步非阻塞IO</h1>
+<p>同步非阻塞IO是在同步阻塞IO的基础上，将socket设置为NONBLOCK。这样做用户线程可以在发起IO请求后可以立即返回。</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095300.png" /></p>
 <p>整个IO请求的过程中，虽然用户线程每次发起IO请求后可以立即返回，但是为了等到数据，仍需要<strong>不断地轮询、重复请求</strong>，消耗了大量的CPU的资源。一般很少直接使用这种模型，而是在其他IO模型中使用非阻塞IO这一特性。</p>
-<h1 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h1><p>流程上来看，使用select函数进行IO请求和同步阻塞模型没有太大的区别，甚至还多了添加监视socket，以及调用select函数的额外操作，效率更差。但是，使用select以后最大的优势是用户可以在一个线程内同时处理多个socket的IO请求。用户可以注册多个socket，然后不断地调用select读取被激活的socket，即可达到在同<strong>一个线程内同时处理多个IO请求的目的</strong>。而在同步阻塞模型中，必须通过多线程的方式才能达到这个目的。</p>
-<p> <img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095402.png" alt=""></p>
+<h1 id="io多路复用">IO多路复用</h1>
+<p>流程上来看，使用select函数进行IO请求和同步阻塞模型没有太大的区别，甚至还多了添加监视socket，以及调用select函数的额外操作，效率更差。但是，使用select以后最大的优势是用户可以在一个线程内同时处理多个socket的IO请求。用户可以注册多个socket，然后不断地调用select读取被激活的socket，即可达到在同<strong>一个线程内同时处理多个IO请求的目的</strong>。而在同步阻塞模型中，必须通过多线程的方式才能达到这个目的。</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095402.png" /></p>
 <p>通过Reactor的方式，可以将用户线程轮询IO操作状态的工作统一交给handle_events事件循环进行处理。用户线程注册事件处理器之后可以继续执行做其他的工作（异步），而<strong>Reactor线程负责调用内核的select函数检查socket状态</strong>。当有socket被激活时，则通知相应的用户线程（或执行用户线程的回调函数），执行handle_event进行数据读取、处理的工作。由于select函数是阻塞的，因此多路IO复用模型也被称为异步阻塞IO模型。注意，这里的所说的阻塞是指select函数执行时线程被阻塞，而不是指socket。一般在使用IO多路复用模型时，socket都是设置为NONBLOCK的，不过这并不会产生影响，因为用户发起IO请求时，数据已经到达了，用户线程一定不会被阻塞。</p>
-<h1 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h1><p>“真正”的异步IO需要操作系统更强的支持。在IO多路复用模型中，事件循环将文件句柄的状态事件通知给用户线程，由用户线程自行读取数据、处理数据。而在异步IO模型中，当用户线程收到通知时，数据已经被内核读取完毕，并放在了用户线程指定的缓冲区内，内核在IO完成后通知用户线程直接使用即可。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095443.png" alt=""></p>
+<h1 id="异步io">异步IO</h1>
+<p>“真正”的异步IO需要操作系统更强的支持。在IO多路复用模型中，事件循环将文件句柄的状态事件通知给用户线程，由用户线程自行读取数据、处理数据。而在异步IO模型中，当用户线程收到通知时，数据已经被内核读取完毕，并放在了用户线程指定的缓冲区内，内核在IO完成后通知用户线程直接使用即可。</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210404095443.png" /></p>
 
     </div>
 
