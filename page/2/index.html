@@ -323,13 +323,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>与斐波那契数列一样，只是初始状态改为</p>
+          <h1 id="题目">题目</h1>
+<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</p>
+<h1 id="思路">思路</h1>
+<h2 id="分析">分析</h2>
+<p>与斐波那契数列一样，只是初始状态改为</p>
 <p>f（0）= f（1）= 1；</p>
 <p>状态转移方程仍然为：</p>
 <p>f（n） = f（n - 1） + f (n - 2);</p>
-<p>题目分析，假设f[i]表示在第i个台阶上可能的方法数。逆向思维。如果我从第n个台阶进行下台阶，下一步有2中可能，一种走到第n-1个台阶，一种是走到第n-2个台阶。所以f[n] = f[n-1] + f[n-2].<br>那么初始条件了，f[0] = f[1] = 1。<br>所以就变成了：f[n] = f[n-1] + f[n-2], 初始值f[0]=1, f[1]=1，目标求f[n]</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1>
+<p>题目分析，假设f[i]表示在第i个台阶上可能的方法数。逆向思维。如果我从第n个台阶进行下台阶，下一步有2中可能，一种走到第n-1个台阶，一种是走到第n-2个台阶。所以f[n]
+= f[n-1] + f[n-2]. 那么初始条件了，f[0] = f[1] = 1。 所以就变成了：f[n]
+= f[n-1] + f[n-2], 初始值f[0]=1, f[1]=1，目标求f[n]</p>
+<h1 id="实现">实现</h1>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/5dbe7165.html#more" rel="contents">
@@ -421,12 +426,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>​     </p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41328247/article/details/81868247">git、svn和cvs的主要区别</a>在于git是<strong>分布式</strong>版本控制系统，而svn和cvs则是<strong>集中式</strong>版本控制系统。集中式版本控制系统所有文件系统存放在中央服务器上，工作模式更像是一个C/S模式，本地用户通过安装客户端来与服务器进行版本的获取与更新操作。问题是当服务器处于脱机状态时，所有用户都要停止工作。</p>
+          <p>​</p>
+<h1 id="简介">简介</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41328247/article/details/81868247">git、svn和cvs的主要区别</a>在于git是<strong>分布式</strong>版本控制系统，而svn和cvs则是<strong>集中式</strong>版本控制系统。集中式版本控制系统所有文件系统存放在中央服务器上，工作模式更像是一个C/S模式，本地用户通过安装客户端来与服务器进行版本的获取与更新操作。问题是当服务器处于脱机状态时，所有用户都要停止工作。</p>
 <p>为了解决该问题，git则抛弃了这种机制，用户将所有文件包括版本信息下载到本地，提交和修改可以在本地执行，在修改确定后再与远程服务器保持同步。</p>
 <p>简单理解git是什么？</p>
-<p>git是一种<strong>开源</strong>的 <strong>分布式</strong> <strong>版本控制</strong> 工具</p>
-<h1 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h1><h2 id="Linux下安装git"><a href="#Linux下安装git" class="headerlink" title="Linux下安装git"></a>Linux下安装git</h2><p>Ubuntu10.10及以上版本、Debain squeeze及以上版本使用以下命令：</p>
+<p>git是一种<strong>开源</strong>的 <strong>分布式</strong>
+<strong>版本控制</strong> 工具</p>
+<h1 id="安装和配置">安装和配置</h1>
+<h2 id="linux下安装git">Linux下安装git</h2>
+<p>Ubuntu10.10及以上版本、Debain squeeze及以上版本使用以下命令：</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo aptitude install git</span><br><span class="line">$ sudo aptitude install git-doc git-svn git-email gitk //安装单独的软件依赖包</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -519,15 +528,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Golang的学习方向"><a href="#Golang的学习方向" class="headerlink" title="Golang的学习方向"></a>Golang的学习方向</h1><p>当前使用的领域主要是在：</p>
-<ol>
+          <h1 id="golang的学习方向">Golang的学习方向</h1>
+<p>当前使用的领域主要是在：</p>
+<ol type="1">
 <li>区块链研发工程师</li>
 <li>Go服务器端 / 游戏软件工程师</li>
 <li>Go分布式 / 云计算软件工程师</li>
 </ol>
-<p>特性就是 既能够达到动态编译语言所具有的速度和性能，又能够达到动态编译语言在开发过程中的高效率</p>
+<p>特性就是
+既能够达到动态编译语言所具有的速度和性能，又能够达到动态编译语言在开发过程中的高效率</p>
 <p>在学习一门语言时，需要思考的细节包括：</p>
-<ol>
+<ol type="1">
 <li>怎么使用更规范</li>
 <li>使用陷阱</li>
 <li>需要使用时，应该注意些什么</li>
@@ -624,8 +635,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>分布的Java SE/EE应用full-stack<strong>轻量级</strong>开源框架，以<strong>IOC**</strong>（<strong><strong>Inverse of control</strong></strong>反转控制）<strong>和</strong>AOP<strong><strong>（</strong></strong>Aspect oriented programming<strong>**面向切片编程）</strong>为内核。</p>
-<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><p>（1） 方便解耦，简化开发</p>
+          <h1 id="简介">简介</h1>
+<h2 id="是什么">是什么</h2>
+<p>分布的Java
+SE/EE应用full-stack<strong>轻量级</strong>开源框架，以<strong>IOC（Inverse
+of control反转控制）</strong>和<strong>AOP（Aspect oriented
+programming面向切片编程）</strong>为内核。</p>
+<h2 id="优势">优势</h2>
+<p>（1） 方便解耦，简化开发</p>
 <p>（2）AOP编程的支持</p>
 <p>（3）声明式事务的支持</p>
 <p>（4）方便程序的测试</p>
@@ -722,12 +739,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Spring-JdbcTemplate基本使用"><a href="#Spring-JdbcTemplate基本使用" class="headerlink" title="Spring JdbcTemplate基本使用"></a>Spring JdbcTemplate基本使用</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    它是spring框架中提供的一个对象，是对原始繁琐的JdbcAPI对象的简单封装。spring框架为我们提供了很多的操作模板类。例如:操作关系型数据的JdbcTemplate和bernateTemplate，操作nosql数据库的RedisTemplate，操作消息队列的JmsTemplate等等。</p>
-<h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><p>（1）导入Spring-jdbc和spring-tx（transaction事务）坐标</p>
+          <h1 id="spring-jdbctemplate基本使用">Spring JdbcTemplate基本使用</h1>
+<h2 id="概念">概念</h2>
+<p>​
+它是spring框架中提供的一个对象，是对原始繁琐的JdbcAPI对象的简单封装。spring框架为我们提供了很多的操作模板类。例如:操作关系型数据的JdbcTemplate和bernateTemplate，操作nosql数据库的RedisTemplate，操作消息队列的JmsTemplate等等。</p>
+<h2 id="开发步骤">开发步骤</h2>
+<p>（1）导入Spring-jdbc和spring-tx（transaction事务）坐标</p>
 <p>（2）创建数据库表和实体</p>
 <p>（3）创建JdbcTemplate对象</p>
 <p>（4）执行数据库操作</p>
-<h2 id="Spring产生JdbcTemplate对象"><a href="#Spring产生JdbcTemplate对象" class="headerlink" title="Spring产生JdbcTemplate对象"></a>Spring产生JdbcTemplate对象</h2><p>​    可以将JdbcTemplate的创建权交给Spring，将DataSource的创建权也交给Spring，在Spring</p>
+<h2 id="spring产生jdbctemplate对象">Spring产生JdbcTemplate对象</h2>
+<p>​
+可以将JdbcTemplate的创建权交给Spring，将DataSource的创建权也交给Spring，在Spring</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/91b8dde3.html#more" rel="contents">
@@ -819,13 +842,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>​    动态代理通过反射实现，是OOP（面向对象编程）的延伸。</p>
-<p>​    可以对业务逻辑的各个部分进行隔离，从而实现解耦合。</p>
-<h2 id="作用及优势"><a href="#作用及优势" class="headerlink" title="作用及优势"></a>作用及优势</h2><p>​    作用：在程序运行期间，在不修改源码的情况下对方法进行功能增强</p>
-<p>​    优势：减少重复代码，提高开发效率，并且便于维护</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110109.png" alt></p>
-<p>​    对单一功能进行增强，附加其它功能的思维。例如对于user的操作，不需要在每一个功能中</p>
-<p>​    写上日志控制功能，只需要在运行时将额外的日志控制功能附加到当前所运行功能上就可以了。从而实现了解耦。</p>
+          <h1 id="简介">简介</h1>
+<h2 id="是什么">是什么</h2>
+<p>​ 动态代理通过反射实现，是OOP（面向对象编程）的延伸。</p>
+<p>​ 可以对业务逻辑的各个部分进行隔离，从而实现解耦合。</p>
+<h2 id="作用及优势">作用及优势</h2>
+<p>​ 作用：在程序运行期间，在不修改源码的情况下对方法进行功能增强</p>
+<p>​ 优势：减少重复代码，提高开发效率，并且便于维护</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210519110109.png"></p>
+<p>​
+对单一功能进行增强，附加其它功能的思维。例如对于user的操作，不需要在每一个功能中</p>
+<p>​
+写上日志控制功能，只需要在运行时将额外的日志控制功能附加到当前所运行功能上就可以了。从而实现了解耦。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/d2e352f8.html#more" rel="contents">
@@ -917,13 +945,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ssm: mybatis + spring + springMVC</p>
+          <h1 id="前言">前言</h1>
+<p>ssm: mybatis + spring + springMVC</p>
 <p>ssm = JavaWeb做项目</p>
 <p><strong>Spring：IOC和AOP【重要】</strong></p>
 <p><strong>SpringMVC的执行流程【重要】</strong></p>
-<h1 id="回顾MVC模式"><a href="#回顾MVC模式" class="headerlink" title="回顾MVC模式"></a>回顾MVC模式</h1><p>模型（dao，service） 视图（jsp） 控制器（servlet）</p>
+<h1 id="回顾mvc模式">回顾MVC模式</h1>
+<p>模型（dao，service） 视图（jsp） 控制器（servlet）</p>
 <p><strong>jsp：本质就是一个servlet</strong></p>
-<h1 id="什么是SpringMVC"><a href="#什么是SpringMVC" class="headerlink" title="什么是SpringMVC"></a>什么是SpringMVC</h1><p>Spring MVC是Spring Framework的一部分，是基于java实现MVC的轻量级Web框架。</p>
+<h1 id="什么是springmvc">什么是SpringMVC</h1>
+<p>Spring MVC是Spring
+Framework的一部分，是基于java实现MVC的轻量级Web框架。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/678e6659.html#more" rel="contents">
@@ -1015,27 +1047,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h1><font size="3">
-
-<p>当要对数据库中的一条数据进行修改的时候，为了避免同时被其他人修改，最好的办法就是直接对该数据进行加锁以防止并发。这种借助数据库锁机制，在修改数据之前先锁定，再修改的方式被称之为悲观并发控制【Pessimistic Concurrency Control，缩写“PCC”，又名“悲观锁”】。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210330102059.png" alt></p>
+          <h1 id="悲观锁">悲观锁</h1>
+<p><font size="3"></font></p>
+<p>当要对数据库中的一条数据进行修改的时候，为了避免同时被其他人修改，最好的办法就是直接对该数据进行加锁以防止并发。这种借助数据库锁机制，在修改数据之前先锁定，再修改的方式被称之为悲观并发控制【Pessimistic
+Concurrency Control，缩写“PCC”，又名“悲观锁”】。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210330102059.png"></p>
 <p>之所以叫做悲观锁，是因为这是一种对数据的修改持有悲观态度的并发控制方式。总是<strong>假设最坏的情况</strong>，每次读取数据的时候都默认其他线程会更改数据，因此需要进行加锁操作，当其他线程想要访问数据时，都需要阻塞挂起。悲观锁的实现：</p>
-<ol>
+<ol type="1">
 <li>传统的关系型数据库使用这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。</li>
 <li>Java 里面的同步 synchronized]关键字的实现。</li>
 </ol>
 <p><strong>悲观锁分为共享（读）锁和排他（写）锁</strong></p>
-<p><strong>共享锁</strong>【shared locks】又称为读锁，简称S锁。顾名思义，共享锁就是多个事务对于同一数据可以共享一把锁，都能访问到数据，但是只能读不能修改。</p>
-<p><strong>排他锁</strong>【exclusive locks】又称为写锁，简称X锁。顾名思义，排他锁就是不能与其他锁并存，如果一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁，包括共享锁和排他锁，但是获取排他锁的事务是可以对数据行读取和修改。</p>
-<h1 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h1><p>乐观锁是相对悲观锁而言的，乐观锁假设数据一般情况下不会造成冲突，所以在<strong>数据进行提交更新的时候，才会正式对数据的冲突与否进行检测</strong>，如果发现冲突了，则返回给用户错误的信息，让用户决定如何去做。乐观锁适用于读操作多的场景，这样可以提高程序的吞吐量。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210330102206.png" alt></p>
-<p>乐观锁机制采取了更加宽松的加锁机制。乐观锁是相对悲观锁而言，也是为了避免数据库幻读、业务处理时间过长等原因引起数据处理错误的一种机制，但乐观锁不会刻意使用数据库本身的锁机制，而是依据数据本身来保证数据的正确性。乐观锁的实现：</p>
-<ol>
-<li>CAS 实现：Java 中java.util.concurrent.atomic包下面的原子变量使用了乐观锁的一种 CAS 实现方式。</li>
-<li>版本号控制：一般是在数据表中加上一个数据版本号 version 字段，表示数据被修改的次数。当数据被修改时，version 值会+1。当线程A要更新数据值时，在读取数据的同时也会读取 version 值，在提交更新时，若刚才读取到的 version 值与当前数据库中的 version 值相等时才更新，否则重试更新操作，直到更新成功。</li>
-</ol>
-<p> 乐观并发控制相信事务之间的数据竞争(data race)的概率是比较小的，因此尽可能直接做下去，直到提交的时候才去锁定，所以不会产生任何锁和死锁。</p>
-</font>
+<p><strong>共享锁</strong>【shared
+locks】又称为读锁，简称S锁。顾名思义，共享锁就是多个事务对于同一数据可以共享一把锁，都能访问到数据，但是只能读不能修改。</p>
+<p><strong>排他锁</strong>【exclusive
+locks】又称为写锁，简称X锁。顾名思义，排他锁就是不能与其他锁并存，如果一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁，包括共享锁和排他锁，但是获取排他锁的事务是可以对数据行读取和修改。</p>
+<h1 id="乐观锁">乐观锁</h1>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/688743a7.html#more" rel="contents">
@@ -1127,15 +1154,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id><a href="#" class="headerlink" title=" "></a> </h1><p>数据库索引的原理：数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 BTree 及其变种 B+Tree。</p>
-<p>一般情况下,在没有建立索引的时候, mysql 需要扫描全表及扫描 10W 条数据找这条数据,如果我在 nickname 上建立索引,那么mysql只需要扫描一行数据及为我们找到这条 nickname=’css’ 的数据,是不是感觉性能提升了好多咧….</p>
-<p>mysql 的索引分为 单例索引（主键索引、唯一索引、普通索引）和 组合索引。</p>
+          <h1 id="section"></h1>
+<p>数据库索引的原理：数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用
+BTree 及其变种 B+Tree。</p>
+<p>一般情况下,在没有建立索引的时候, mysql 需要扫描全表及扫描 10W
+条数据找这条数据,如果我在 nickname
+上建立索引,那么mysql只需要扫描一行数据及为我们找到这条 nickname='css'
+的数据,是不是感觉性能提升了好多咧....</p>
+<p>mysql 的索引分为 单例索引（主键索引、唯一索引、普通索引）和
+组合索引。</p>
 <ul>
 <li>单例索引：一个索引只包含一个列，一个表可以有多个单例索引。</li>
 <li>组合索引：一个组合索引包含两个或两个以上的列。</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `award` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &#x27;用户id&#x27;,</span><br><span class="line">  `aty_id` varchar(100) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;活动场景id&#x27;,</span><br><span class="line">  `nickname` varchar(12) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;用户昵称&#x27;,</span><br><span class="line">  `is_awarded` tinyint(1) NOT NULL DEFAULT 0 COMMENT &#x27;用户是否领奖&#x27;,</span><br><span class="line">  `award_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;领奖时间&#x27;,</span><br><span class="line">  `account` varchar(12) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;帐号&#x27;,</span><br><span class="line">  `password` char(32) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;密码&#x27;,</span><br><span class="line">  `message` varchar(255) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;获奖信息&#x27;,</span><br><span class="line">  `created_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;创建时间&#x27;,</span><br><span class="line">  `updated_time` int(11) NOT NULL DEFAULT 0 COMMENT &#x27;更新时间&#x27;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line"> ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=&#x27;获奖信息表&#x27;;</span><br><span class="line"> </span><br><span class="line"> INSERT INTO `award` (`nickname`, `account`, `message`, `created_time`)</span><br><span class="line"> VALUES (&#x27;rSUQFzpkDz3R&#x27;, &#x27;DYxJoqZq2rd7&#x27;, &#x27;aaabbbccccxuxuxuxuuxux&#x27;, 1449567822);</span><br></pre></td></tr></table></figure>
-<h1 id="索引的创建"><a href="#索引的创建" class="headerlink" title="索引的创建"></a>索引的创建</h1><h2 id="单例索引"><a href="#单例索引" class="headerlink" title="单例索引"></a>单例索引</h2><ol>
+<h1 id="索引的创建">索引的创建</h1>
+<h2 id="单例索引">单例索引</h2>
+<ol type="1">
 <li>普通索引</li>
 </ol>
 <p>是最基本的索引。</p>
@@ -1230,18 +1265,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="什么是操作系统"><a href="#什么是操作系统" class="headerlink" title="什么是操作系统"></a>什么是操作系统</h2><ol>
-<li><p>操作系统是管理计算机软硬件资源的程序，是计算机的基石。</p>
-</li>
-<li><p>本质上是一个应用程序。</p>
-</li>
-<li><p>操作系统的存在屏蔽了硬件设备的复杂性，由操作系统统一管理和分配。</p>
-</li>
+          <h2 id="什么是操作系统">什么是操作系统</h2>
+<ol type="1">
+<li><p>操作系统是管理计算机软硬件资源的程序，是计算机的基石。</p></li>
+<li><p>本质上是一个应用程序。</p></li>
+<li><p>操作系统的存在屏蔽了硬件设备的复杂性，由操作系统统一管理和分配。</p></li>
 <li><p>内核是操作系统的核心部分。负责系统的内存管理，硬件设备管理，文件系统管理和应用程序管理。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327105916.png" alt></p>
-</li>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210327105916.png"></p></li>
 </ol>
-<h1 id="什么是系统调用"><a href="#什么是系统调用" class="headerlink" title="什么是系统调用"></a>什么是系统调用</h1><p>用户态：该状态运行的进程可以直接读取用户程序的数据。</p>
+<h1 id="什么是系统调用">什么是系统调用</h1>
+<p>用户态：该状态运行的进程可以直接读取用户程序的数据。</p>
 <p>系统态：该状态运行的进程或程序可以访问计算机任意资源。</p>
 <p>程序运行在用户态时想要调用操作系统提供的系统态子功能时需要进行系统调用。</p>
 <p>系统调用按功能大致分为：</p>
