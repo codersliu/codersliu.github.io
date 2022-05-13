@@ -315,7 +315,7 @@ mjx-container[display="true"] + br {
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -368,6 +368,101 @@ mjx-container[display="true"] + br {
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/46035.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Shun Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="请教我kao代码">
+      <meta itemprop="description" content="We meansure the future">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 请教我kao代码">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/46035.html" class="post-title-link" itemprop="url">Boom LeetCode入门（五）二叉树</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-05-13 00:00:00 / 修改时间：15:34:28" itemprop="dateCreated datePublished" datetime="2022-05-13T00:00:00+08:00">2022-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Boom-LeetCode/" itemprop="url" rel="index"><span itemprop="name">Boom LeetCode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="二叉树的前中后序遍历">二叉树的前、中、后序遍历</h1>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220513153104.png"></p>
+<p>二叉树经典问题之一，有关前中后序的遍历，主要通过递归和利用栈两种方式来实现，其中递归实现比较简单，思路如下↓</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-preorder-traversal/">二叉树的前序遍历</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() {}</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) { this.val = val; }</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) {</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     }</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">postorderTraversal</span><span class="params">(TreeNode root)</span> {</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="literal">null</span>){</span><br><span class="line">            <span class="comment">//前序遍历</span></span><br><span class="line">            res.add(root.val);</span><br><span class="line">            postorderTraversal(root.left);</span><br><span class="line">            <span class="comment">//中序遍历</span></span><br><span class="line">            <span class="comment">//res.add(root.val);</span></span><br><span class="line">            postorderTraversal(root.right);</span><br><span class="line">            <span class="comment">//后序遍历</span></span><br><span class="line">            <span class="comment">//res.add(root.val);</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>借助栈实现三种遍历时，每种遍历下如何出栈入栈又有所区别，分别展开来讲</p>
+<h2 id="前序遍历">前序遍历</h2>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-preorder-traversal/">二叉树的前序遍历</a></p>
+<p>前序遍历下，先让根节点入栈</p>
+<p>之后逐步出栈，并判断出栈节点左右孩子是否为空，不为空则入栈</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/46035.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1241,107 +1336,6 @@ LeetCode(一)中介绍了常用排序算法选择排序、冒泡排序和插入�
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/50402.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/1094.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Shun Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="请教我kao代码">
-      <meta itemprop="description" content="We meansure the future">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 请教我kao代码">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/1094.html" class="post-title-link" itemprop="url">Little eagle - SpringBoot实战管理系统(一)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-03-29 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-29T00:00:00+08:00">2022-03-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-31 11:09:48" itemprop="dateModified" datetime="2022-03-31T11:09:48+08:00">2022-03-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Little-eagle/" itemprop="url" rel="index"><span itemprop="name">Little eagle</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="项目背景">项目背景</h1>
-<p>记录狂神大佬的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PE411i7CV?p=28">SpringBoot练手项目</a>，建议有空跟着视频kao一遍，笔记记录大体项目编写流程，并记录一些自身练习过程中碰到的疑难点、对相关技术原理进行拓展。</p>
-<p>项目涉及到的模块功能、技术点请移步 左侧 一级标题</p>
-<p>文章（一）基于map结构模拟数据库进行数据的增删改查</p>
-<p>文章（二）接入真实数据库</p>
-<p>项目环境：</p>
-<p>​ Jdk：v.1.8</p>
-<p>完整项目地址（未接入数据库）：https://github.com/codersliu/springboot03-manasys</p>
-<p>静态资源自取↑</p>
-<p>tips：方法变量命名啥的有自己的命名习惯，所以会稍有不同，但大体上是保持一致的，请放心食用~</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/1094.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

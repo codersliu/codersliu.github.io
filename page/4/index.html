@@ -203,7 +203,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -256,6 +256,111 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/a7ec5e47.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Shun Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="请教我kao代码">
+      <meta itemprop="description" content="We meansure the future">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 请教我kao代码">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/a7ec5e47.html" class="post-title-link" itemprop="url">Git学习日记（二）远程仓库与分支管理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-07-22 00:00:00" itemprop="dateCreated datePublished" datetime="2020-07-22T00:00:00+08:00">2020-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-18 09:43:10" itemprop="dateModified" datetime="2022-03-18T09:43:10+08:00">2022-03-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><font size="3"></font></p>
+<h1 id="远程仓库">远程仓库</h1>
+<p><a target="_blank" rel="noopener" href="https://github.com/">GitHub</a>提供Git仓库托管服务的，所以，只要注册一个GitHub账号，就可以免费获得Git远程仓库。</p>
+<p>第1步：创建SSH
+Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git
+Bash），创建SSH Key：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;youremail@example.com&quot;</span></span><br></pre></td></tr></table></figure>
+<p>你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。</p>
+<p>如果一切顺利的话，可以在用户主目录里找到<code>.ssh</code>目录，里面有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件，这两个就是SSH
+Key的秘钥对，<code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥，可以放心地告诉任何人。</p>
+<p>第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：</p>
+<p>然后，点“Add SSH
+Key”，填上任意Title，在Key文本框里粘贴<code>id_rsa.pub</code>文件的内容</p>
+<h2 id="添加远程库">添加远程库</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/a7ec5e47.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -978,108 +1083,6 @@ Tree），具有以下性质：它是一棵空树或它的左右两个子树的�
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/36804329.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Shun Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="请教我kao代码">
-      <meta itemprop="description" content="We meansure the future">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 请教我kao代码">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/36804329.html" class="post-title-link" itemprop="url">牛客题解-NC38螺旋矩阵</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-07-01 00:00:00" itemprop="dateCreated datePublished" datetime="2020-07-01T00:00:00+08:00">2020-07-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-18 09:43:10" itemprop="dateModified" datetime="2022-03-18T09:43:10+08:00">2022-03-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%89%9B%E5%AE%A2%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">牛客题解</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="题目">题目</h1>
-<p>给定一个m x
-n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。</p>
-<h2 id="示例1">示例1</h2>
-<p>输入：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-<h1 id="思路">思路</h1>
-<h2 id="分析">分析</h2>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212049.png"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/36804329.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/posts/46c69418.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1181,7 +1184,7 @@ n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有�
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/e8e45288.html">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/36804329.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -1199,7 +1202,7 @@ n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有�
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/e8e45288.html" class="post-title-link" itemprop="url">牛客题解-NC3链表中环的入口节点</a>
+          <a href="/posts/36804329.html" class="post-title-link" itemprop="url">牛客题解-NC38螺旋矩阵</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1210,7 +1213,7 @@ n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有�
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2020-06-29 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-29T00:00:00+08:00">2020-06-29</time>
+      <time title="创建时间：2020-07-01 00:00:00" itemprop="dateCreated datePublished" datetime="2020-07-01T00:00:00+08:00">2020-07-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1240,18 +1243,19 @@ n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有�
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="题目">题目</h1>
-<p>对于一个给定的链表，返回环的入口节点，如果没有环，返回null</p>
-<p>拓展：</p>
-<p>你能给出不利用额外空间的解法么？</p>
+<p>给定一个m x
+n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。</p>
+<h2 id="示例1">示例1</h2>
+<p>输入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
 <h1 id="思路">思路</h1>
 <h2 id="分析">分析</h2>
-<p>利用快慢指针确定链表是否存在环。</p>
-<p>是：此时的slow指针和fast指针相遇且均在环内。此时将另一个指针slow2指向链表头结点，并让slow2和slow指针同时一次移动一步。由于slow指针在环内，所以两节点一旦相遇。一定是在环的入口节点处。</p>
-<p>否：返回null。</p>
-<h1 id="实现">实现</h1>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210325212049.png"></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/e8e45288.html#more" rel="contents">
+              <a class="btn" href="/posts/36804329.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
