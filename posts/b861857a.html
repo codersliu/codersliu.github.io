@@ -22,19 +22,21 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="windows下的安装 下载安装 安装完成后配置 12$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot; 创建版本库 版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有">
+    <meta name="description" content="windows下的安装下载安装 安装完成后配置 12$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot; 创建版本库版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被G">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git学习日记（一）安装与时光机">
 <meta property="og:url" content="http://example.com/posts/b861857a.html">
 <meta property="og:site_name" content="请教我kao代码">
-<meta property="og:description" content="windows下的安装 下载安装 安装完成后配置 12$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot; 创建版本库 版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有">
+<meta property="og:description" content="windows下的安装下载安装 安装完成后配置 12$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot; 创建版本库版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被G">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416202617.png">
 <meta property="article:published_time" content="2020-07-21T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-03-18T01:43:10.195Z">
 <meta property="article:author" content="Shun Liu">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="仓库">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416202617.png">
 
 
 <link rel="canonical" href="http://example.com/posts/b861857a.html">
@@ -336,26 +338,20 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><font size = 3></p>
-<h1 id="windows下的安装">windows下的安装</h1>
-<p>下载安装</p>
+        <font size = 3>
+
+<h1 id="windows下的安装"><a href="#windows下的安装" class="headerlink" title="windows下的安装"></a>windows下的安装</h1><p>下载安装</p>
 <p>安装完成后配置</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">&quot;Your Name&quot;</span></span><br><span class="line">$ git config --global user.email <span class="string">&quot;email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-<h1 id="创建版本库">创建版本库</h1>
-<p>版本库又名仓库，英文名<strong>repository</strong>，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
-<h2 id="创建目录">创建目录</h2>
-<p>首先，选择一个合适的地方，创建一个空目录：</p>
+<h1 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h1><p>版本库又名仓库，英文名<strong>repository</strong>，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
+<h2 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h2><p>首先，选择一个合适的地方，创建一个空目录：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir learngit<span class="comment">//创建目录</span></span><br><span class="line">$ cd learngit<span class="comment">//切换到刚刚创建的目录下</span></span><br><span class="line">$ pwd<span class="comment">//显示当前所在目录</span></span><br><span class="line">/Users/michael/learngit</span><br></pre></td></tr></table></figure>
-<h2 id="初始化仓库">初始化仓库</h2>
-<p>第二步，通过<code>git init</code>命令把这个目录变成Git可以管理的仓库：</p>
+<h2 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h2><p>第二步，通过<code>git init</code>命令把这个目录变成Git可以管理的仓库：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository in /Users/michael/learngit/.git/</span><br></pre></td></tr></table></figure>
 <p>目录下多了一个<code>.git</code>的目录，这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。</p>
 <p>如果你没有看到<code>.git</code>目录，那是因为这个目录默认是隐藏的，用<code>ls -ah</code>命令就可以看见。</p>
-<h2 id="添加文件到版本库">添加文件到版本库</h2>
-<p>对于文件编码，如果没有历史遗留问题，强烈建议使用标准的<strong>UTF-8</strong>编码</p>
-<p>不要使用windows子代记事本，下载<a
-target="_blank" rel="noopener" href="http://notepad-plus-plus.org/">Notepad++</a>代替记事本，不但功能强大，而且免费！记得把Notepad++的默认编码设置为UTF-8
-without BOM即可。</p>
+<h2 id="添加文件到版本库"><a href="#添加文件到版本库" class="headerlink" title="添加文件到版本库"></a>添加文件到版本库</h2><p>对于文件编码，如果没有历史遗留问题，强烈建议使用标准的<strong>UTF-8</strong>编码</p>
+<p>不要使用windows子代记事本，下载<a target="_blank" rel="noopener" href="http://notepad-plus-plus.org/">Notepad++</a>代替记事本，不但功能强大，而且免费！记得把Notepad++的默认编码设置为UTF-8 without BOM即可。</p>
 <p>在任意位置创建一个txt（readme.txt），添加文本内容。</p>
 <p>第一步，用命令<code>git add</code>告诉Git，把文件添加到仓库：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.txt</span><br></pre></td></tr></table></figure>
@@ -364,9 +360,7 @@ without BOM即可。</p>
 <p><code>-m</code>后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。</p>
 <p>为什么Git添加文件需要<code>add</code>，<code>commit</code>一共两步呢？因为<code>commit</code>可以一次提交很多文件，所以你可以多次<code>add</code>不同的文件，比如：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add file1.txt</span><br><span class="line">$ git add file2.txt file3.txt</span><br><span class="line">$ git commit -m <span class="string">&quot;add 3 files.&quot;</span></span><br></pre></td></tr></table></figure>
-<h1 id="时光穿梭">时光穿梭</h1>
-<h2 id="版本回退">版本回退</h2>
-<p>在实际工作中，我们脑子里怎么可能记得一个几千行的文件每次都改了什么内容，不然要版本控制系统干什么。版本控制系统肯定有某个命令可以告诉我们历史记录，在Git中，我们用<code>git log</code>命令查看。</p>
+<h1 id="时光穿梭"><a href="#时光穿梭" class="headerlink" title="时光穿梭"></a>时光穿梭</h1><h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>在实际工作中，我们脑子里怎么可能记得一个几千行的文件每次都改了什么内容，不然要版本控制系统干什么。版本控制系统肯定有某个命令可以告诉我们历史记录，在Git中，我们用<code>git log</code>命令查看。</p>
 <p>要把当前版本<code>append GPL</code>回退到上一个版本<code>add distributed</code>，就可以使用<code>git reset</code>命令：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br><span class="line">HEAD is now at e475afc add distributed</span><br></pre></td></tr></table></figure>
 <p>指定回到未来的某个版本：</p>
@@ -374,18 +368,14 @@ without BOM即可。</p>
 <p>版本号没必要写全，前几位就可以了，Git会自动去找。当然也不能只写前一两位，因为Git可能会找到多个版本号，就无法确定是哪一个了。</p>
 <p>Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">e475afc HEAD@&#123;<span class="number">1</span>&#125;: reset: moving to HEAD^</span><br><span class="line">1094adb (HEAD -&gt; master) HEAD@&#123;<span class="number">2</span>&#125;: commit: append GPL</span><br><span class="line">e475afc HEAD@&#123;<span class="number">3</span>&#125;: commit: add distributed</span><br><span class="line">eaadf4e HEAD@&#123;<span class="number">4</span>&#125;: commit (initial): wrote a readme file</span><br></pre></td></tr></table></figure>
-<h2 id="工作区和暂存区">工作区和暂存区</h2>
-<p><img
-src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416202617.png" /></p>
+<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416202617.png" alt=""></p>
 <p>我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
 <p>第一步是用<code>git add</code>把文件添加进去，实际上就是把文件修改添加到暂存区；</p>
 <p>第二步是用<code>git commit</code>提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
 <p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个<code>master</code>分支，所以，现在，<code>git commit</code>就是往<code>master</code>分支上提交更改。</p>
 <p>你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
 <p>tips：用<code>git status</code>查看一下状态</p>
-<h1 id="管理修改">管理修改</h1>
-<h1 id="撤销修改">撤销修改</h1>
-<p><code>git checkout -- file</code>可以丢弃工作区的修改：</p>
+<h1 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h1><h1 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h1><p><code>git checkout -- file</code>可以丢弃工作区的修改：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
 <p>命令<code>git checkout -- readme.txt</code>意思就是，把<code>readme.txt</code>文件在工作区的修改全部撤销，这里有两种情况：</p>
 <p>一种是<code>readme.txt</code>自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
@@ -393,9 +383,8 @@ src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210416202617.png" /></p
 <p><strong>总之，就是让这个文件回到最近一次<code>git commit</code>或<code>git add</code>时的状态。</strong></p>
 <p>用命令<code>git reset HEAD &lt;file&gt;</code>可以把暂存区的修改撤销掉（unstage），重新放回工作区：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD readme.txt</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M	readme.txt</span><br></pre></td></tr></table></figure>
-<p><code>git reset</code>命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用<code>HEAD</code>时，表示最新的版本。</p>
-<h2 id="删除文件">删除文件</h2>
-<p>在Git中，删除也是一个修改操作，我们实战一下，先添加一个新文件<code>test.txt</code>到Git并且提交：</p>
+<p><code>git reset</code>命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用<code>HEAD</code>时，表示最新的版本。 </p>
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><p>在Git中，删除也是一个修改操作，我们实战一下，先添加一个新文件<code>test.txt</code>到Git并且提交：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git add test.txt</span><br><span class="line"></span><br><span class="line">$ git commit -m <span class="string">&quot;add test.txt&quot;</span></span><br><span class="line">[master b84166e] add test.txt</span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">1</span> insertion(+)</span><br><span class="line"> create mode <span class="number">100644</span> test.txt</span><br></pre></td></tr></table></figure>
 <p>一般情况下，你通常直接在文件管理器中把没用的文件删了，或者用<code>rm</code>命令删了：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm test.txt</span><br></pre></td></tr></table></figure>
