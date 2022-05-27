@@ -22,15 +22,13 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="浏览器输入url-&gt;&gt;显示主页的过程浏览器输入url-&gt;&gt;显示主页的过程大致过程： 浏览器通过DNS解析查找域名对应的IP地址（DNS解析） 浏览器向web服务器发送一个HTTP请求（TCP连接 → 发送HTTP请求） 服务器处理请求 服务器发回HTML响应（服务器处理请求并返回HTTP报文） 浏览器显示HTML（浏览器解析渲染界面 → 连接结束）状态码  状态码 一图流解">
+    <meta name="description" content="浏览器输入url-&gt;&gt;显示主页的过程 浏览器输入url-&gt;&gt;显示主页的过程 大致过程：  浏览器通过DNS解析查找域名对应的IP地址（DNS解析） 浏览器向web服务器发送一个HTTP请求（TCP连接 → 发送HTTP请求） 服务器处理请求 服务器发回HTML响应（服务器处理请求并返回HTTP报文） 浏览器显示HTML（浏览器解析渲染界面 → 连接结束）状态">
 <meta property="og:type" content="article">
 <meta property="og:title" content="请教我学计网（二）HTTP协议相关">
 <meta property="og:url" content="http://example.com/posts/33157a3.html">
 <meta property="og:site_name" content="请教我kao代码">
-<meta property="og:description" content="浏览器输入url-&gt;&gt;显示主页的过程浏览器输入url-&gt;&gt;显示主页的过程大致过程： 浏览器通过DNS解析查找域名对应的IP地址（DNS解析） 浏览器向web服务器发送一个HTTP请求（TCP连接 → 发送HTTP请求） 服务器处理请求 服务器发回HTML响应（服务器处理请求并返回HTTP报文） 浏览器显示HTML（浏览器解析渲染界面 → 连接结束）状态码  状态码 一图流解">
+<meta property="og:description" content="浏览器输入url-&gt;&gt;显示主页的过程 浏览器输入url-&gt;&gt;显示主页的过程 大致过程：  浏览器通过DNS解析查找域名对应的IP地址（DNS解析） 浏览器向web服务器发送一个HTTP请求（TCP连接 → 发送HTTP请求） 服务器处理请求 服务器发回HTML响应（服务器处理请求并返回HTTP报文） 浏览器显示HTML（浏览器解析渲染界面 → 连接结束）状态">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326151225.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326151429.png">
 <meta property="article:published_time" content="2020-08-13T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-03-18T01:43:10.205Z">
 <meta property="article:author" content="Shun Liu">
@@ -38,7 +36,6 @@
 <meta property="article:tag" content="DNS">
 <meta property="article:tag" content="会话">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326151225.png">
 
 
 <link rel="canonical" href="http://example.com/posts/33157a3.html">
@@ -154,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url-gt-gt-%E6%98%BE%E7%A4%BA%E4%B8%BB%E9%A1%B5%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">浏览器输入url-&gt;&gt;显示主页的过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url-gt-gt-%E6%98%BE%E7%A4%BA%E4%B8%BB%E9%A1%B5%E7%9A%84%E8%BF%87%E7%A8%8B-1"><span class="nav-number">2.</span> <span class="nav-text">浏览器输入url-&gt;&gt;显示主页的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E8%87%B4%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">大致过程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%9B%BE%E6%B5%81%E8%A7%A3%E9%87%8A%E5%90%84%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%88HTTP%E3%80%81TCP%E3%80%81IP%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">一图流解释各协议的作用（HTTP、TCP、IP）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie%E5%92%8CSession%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">Cookie和Session的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP1-0%E5%92%8C1-1%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">HTTP1.0和1.1的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URI%E5%92%8CURL%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text">URI和URL的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP%E5%92%8CHTTPS%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">6.</span> <span class="nav-text">HTTP和HTTPS的区别</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url-%E6%98%BE%E7%A4%BA%E4%B8%BB%E9%A1%B5%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">浏览器输入url-&gt;&gt;显示主页的过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url-%E6%98%BE%E7%A4%BA%E4%B8%BB%E9%A1%B5%E7%9A%84%E8%BF%87%E7%A8%8B-1"><span class="nav-number">2.</span> <span class="nav-text">浏览器输入url-&gt;&gt;显示主页的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E8%87%B4%E8%BF%87%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">大致过程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%9B%BE%E6%B5%81%E8%A7%A3%E9%87%8A%E5%90%84%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BD%9C%E7%94%A8httptcpip"><span class="nav-number">2.3.</span> <span class="nav-text">一图流解释各协议的作用（HTTP、TCP、IP）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">Cookie和Session的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http1.0%E5%92%8C1.1%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">HTTP1.0和1.1的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#uri%E5%92%8Curl%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text">URI和URL的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http%E5%92%8Chttps%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">6.</span> <span class="nav-text">HTTP和HTTPS的区别</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -212,7 +209,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -340,44 +337,59 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="浏览器输入url-gt-gt-显示主页的过程"><a href="#浏览器输入url-gt-gt-显示主页的过程" class="headerlink" title="浏览器输入url-&gt;&gt;显示主页的过程"></a>浏览器输入url-&gt;&gt;显示主页的过程</h1><h1 id="浏览器输入url-gt-gt-显示主页的过程-1"><a href="#浏览器输入url-gt-gt-显示主页的过程-1" class="headerlink" title="浏览器输入url-&gt;&gt;显示主页的过程"></a>浏览器输入url-&gt;&gt;显示主页的过程</h1><h2 id="大致过程："><a href="#大致过程：" class="headerlink" title="大致过程："></a>大致过程：</h2><ol>
+        <h1
+id="浏览器输入url-显示主页的过程">浏览器输入url-&gt;&gt;显示主页的过程</h1>
+<h1
+id="浏览器输入url-显示主页的过程-1">浏览器输入url-&gt;&gt;显示主页的过程</h1>
+<h2 id="大致过程">大致过程：</h2>
+<ol type="1">
 <li>浏览器通过DNS解析查找域名对应的IP地址（DNS解析）</li>
 <li>浏览器向web服务器发送一个HTTP请求（TCP连接 → 发送HTTP请求）</li>
 <li>服务器处理请求</li>
 <li>服务器发回HTML响应（服务器处理请求并返回HTTP报文）</li>
 <li>浏览器显示HTML（浏览器解析渲染界面 → 连接结束）状态码</li>
 </ol>
-<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326151225.png" alt=""></p>
-<h2 id="一图流解释各协议的作用（HTTP、TCP、IP）"><a href="#一图流解释各协议的作用（HTTP、TCP、IP）" class="headerlink" title="一图流解释各协议的作用（HTTP、TCP、IP）"></a>一图流解释各协议的作用（HTTP、TCP、IP）</h2><p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326151429.png" alt=""></p>
-<h1 id="Cookie和Session的区别"><a href="#Cookie和Session的区别" class="headerlink" title="Cookie和Session的区别"></a>Cookie和Session的区别</h1><ol>
-<li>Cookie 主要用于保存用户信息，session     的主要作⽤就是通过服务端记录⽤户的状态 。</li>
-<li>Cookie     数据保存在客户端(浏览器端)， Session 数据保存在服务器端 </li>
+<h2 id="状态码">状态码</h2>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326151225.png" /></p>
+<h2
+id="一图流解释各协议的作用httptcpip">一图流解释各协议的作用（HTTP、TCP、IP）</h2>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210326151429.png" /></p>
+<h1 id="cookie和session的区别">Cookie和Session的区别</h1>
+<ol type="1">
+<li>Cookie 主要用于保存用户信息，session
+的主要作⽤就是通过服务端记录⽤户的状态 。</li>
+<li>Cookie 数据保存在客户端(浏览器端)， Session 数据保存在服务器端</li>
 <li>相对来说 Session 安全性更⾼</li>
 </ol>
-<h1 id="HTTP1-0和1-1的区别"><a href="#HTTP1-0和1-1的区别" class="headerlink" title="HTTP1.0和1.1的区别"></a>HTTP1.0和1.1的区别</h1><ol>
-<li><p>长连接：1.0默认短连接，HTTP协议是基于TCP协议的，每一次建立断开连接都需要三次握手，四次挥手。1.1默认长连接（Connection：keep alive）。持续方式包括非流水线式和流水线式。</p>
-</li>
+<h1 id="http1.0和1.1的区别">HTTP1.0和1.1的区别</h1>
+<ol type="1">
+<li><p>长连接：1.0默认短连接，HTTP协议是基于TCP协议的，每一次建立断开连接都需要三次握手，四次挥手。1.1默认长连接（Connection：keep
+alive）。持续方式包括非流水线式和流水线式。</p></li>
 <li><p>错误状态响应码：1.1中新增了24个错误状态响应码，如409（Conflict）表示请求的</p>
-<p>资源与资源的当前状态发⽣冲突； 410（Gone）表示服务器上的某个资源被永久性的删除。</p>
-</li>
+<p>资源与资源的当前状态发⽣冲突；
+410（Gone）表示服务器上的某个资源被永久性的删除。</p></li>
 <li><p>缓存处理：1.0中主要使⽤header⾥的If-Modified-Since,Expires来做为缓存判断的标</p>
-<p>准 。1.1则引⼊了更多的缓存控制策略例如Entity tag， If-Unmodified-Since, If-Match,</p>
-<p>If-None-Match等更多可供选择的缓存头来控制缓存策略 </p>
-</li>
-<li><p>带宽优化及网络连接的使用：1.0中，存在⼀些浪费带宽的现象，例如客户端只是需要某个对象的⼀部分，⽽服务器却将整个对象送过来了，并且不⽀持断点续传功能， HTTP1.1则在请求头引⼊了range头域，它允许只请求资源的某个部分，即返回码是206（PartialContent），这样就⽅便了开发者⾃由的选择以便于充分利⽤带宽和连接 </p>
-</li>
+<p>准 。1.1则引⼊了更多的缓存控制策略例如Entity tag，
+If-Unmodified-Since, If-Match,</p>
+<p>If-None-Match等更多可供选择的缓存头来控制缓存策略</p></li>
+<li><p>带宽优化及网络连接的使用：1.0中，存在⼀些浪费带宽的现象，例如客户端只是需要某个对象的⼀部分，⽽服务器却将整个对象送过来了，并且不⽀持断点续传功能，
+HTTP1.1则在请求头引⼊了range头域，它允许只请求资源的某个部分，即返回码是206（PartialContent），这样就⽅便了开发者⾃由的选择以便于充分利⽤带宽和连接</p></li>
 </ol>
-<h1 id="URI和URL的区别"><a href="#URI和URL的区别" class="headerlink" title="URI和URL的区别"></a>URI和URL的区别</h1><p>URI是统一资源标志符，可以唯一标识一个资源</p>
+<h1 id="uri和url的区别">URI和URL的区别</h1>
+<p>URI是统一资源标志符，可以唯一标识一个资源</p>
 <p>URL是统一资源定位符，除了可以唯一标识一个资源，还指明了如何local到这个资源。</p>
-<h1 id="HTTP和HTTPS的区别"><a href="#HTTP和HTTPS的区别" class="headerlink" title="HTTP和HTTPS的区别"></a>HTTP和HTTPS的区别</h1><ol>
-<li><p>端口：HTTP端口默认为80；HTTPS为443</p>
-</li>
-<li><p>安全性和资源消耗：HTTP运行在TCP上，传输内容均为明文，客户端与服务器无法验证对方身份。HTTPS运行在SSL/TLS上，而SSL/TLS运行在TCP上，所有传输内容都采用对称加密，且对称加密的密钥采用了服务器的非对称加密。所以：HTTP 安全性没有 HTTPS⾼，但是 HTTPS ⽐HTTP耗费更多服务器资源 。</p>
-</li>
+<h1 id="http和https的区别">HTTP和HTTPS的区别</h1>
+<ol type="1">
+<li><p>端口：HTTP端口默认为80；HTTPS为443</p></li>
+<li><p>安全性和资源消耗：HTTP运行在TCP上，传输内容均为明文，客户端与服务器无法验证对方身份。HTTPS运行在SSL/TLS上，而SSL/TLS运行在TCP上，所有传输内容都采用对称加密，且对称加密的密钥采用了服务器的非对称加密。所以：HTTP
+安全性没有 HTTPS⾼，但是 HTTPS ⽐HTTP耗费更多服务器资源 。</p></li>
 <li><p>补充（对称加密与非对称加密）：</p>
-<p>对称加密：密钥只有⼀个，加密解密为同⼀个密码，且加解密速度快，典型的对称加密算法有DES、 AES等；</p>
-<p>⾮对称加密：密钥成对出现（且根据公钥⽆法推知私钥，根据私钥也⽆法推知公钥），加密解密使⽤不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称加密速度较慢，典型的⾮对称加密算法有RSA、 DSA等。 </p>
-</li>
+<p>对称加密：密钥只有⼀个，加密解密为同⼀个密码，且加解密速度快，典型的对称加密算法有DES、
+AES等；</p>
+<p>⾮对称加密：密钥成对出现（且根据公钥⽆法推知私钥，根据私钥也⽆法推知公钥），加密解密使⽤不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称加密速度较慢，典型的⾮对称加密算法有RSA、
+DSA等。</p></li>
 </ol>
 
     </div>

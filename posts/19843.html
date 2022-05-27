@@ -22,27 +22,13 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="前言本部分所涉及到的分布式系统理论和RPC的概念这块较干，尽量以通熟易懂的例子为引子展开表述。便于理解~ 分布式系统理论分布式可以理解通过多个计算性能弱的服务器来完成计算资源需求大的计算任务 分布式和集群的概念很容易混淆 弹幕看到一个浅显易懂的例子可以帮助理解什么是分布式↓ 小饭店原来只有一个厨师，切菜洗菜备料炒菜全干。后来客人多了，厨房一个厨师忙不过来，又请了个厨师，两个厨师都能炒一样的菜，这两">
+    <meta name="description" content="前言 本部分所涉及到的分布式系统理论和RPC的概念这块较干，尽量以通熟易懂的例子为引子展开表述。便于理解~ 分布式系统理论 分布式可以理解通过多个计算性能弱的服务器来完成计算资源需求大的计算任务 分布式和集群的概念很容易混淆 弹幕看到一个浅显易懂的例子可以帮助理解什么是分布式↓ 小饭店原来只有一个厨师，切菜洗菜备料炒菜全干。后来客人多了，厨房一个厨师忙不过来，又请了个厨师，两个厨师都能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Little eagle - SpringBoot实战管理系统(六)分布式">
 <meta property="og:url" content="http://example.com/posts/19843.html">
 <meta property="og:site_name" content="请教我kao代码">
-<meta property="og:description" content="前言本部分所涉及到的分布式系统理论和RPC的概念这块较干，尽量以通熟易懂的例子为引子展开表述。便于理解~ 分布式系统理论分布式可以理解通过多个计算性能弱的服务器来完成计算资源需求大的计算任务 分布式和集群的概念很容易混淆 弹幕看到一个浅显易懂的例子可以帮助理解什么是分布式↓ 小饭店原来只有一个厨师，切菜洗菜备料炒菜全干。后来客人多了，厨房一个厨师忙不过来，又请了个厨师，两个厨师都能炒一样的菜，这两">
+<meta property="og:description" content="前言 本部分所涉及到的分布式系统理论和RPC的概念这块较干，尽量以通熟易懂的例子为引子展开表述。便于理解~ 分布式系统理论 分布式可以理解通过多个计算性能弱的服务器来完成计算资源需求大的计算任务 分布式和集群的概念很容易混淆 弹幕看到一个浅显易懂的例子可以帮助理解什么是分布式↓ 小饭店原来只有一个厨师，切菜洗菜备料炒菜全干。后来客人多了，厨房一个厨师忙不过来，又请了个厨师，两个厨师都能">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201137.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201113.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201057.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201041.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201015.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200959.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200943.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200928.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200915.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200857.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200843.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200826.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200813.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/QQ20220331104633.gif">
 <meta property="article:published_time" content="2022-05-02T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-05-03T12:12:19.061Z">
 <meta property="article:author" content="Shun Liu">
@@ -51,7 +37,6 @@
 <meta property="article:tag" content="Dubbo">
 <meta property="article:tag" content="Zookeeper">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201137.png">
 
 
 <link rel="canonical" href="http://example.com/posts/19843.html">
@@ -167,7 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%90%86%E8%AE%BA"><span class="nav-number">2.</span> <span class="nav-text">分布式系统理论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RPC"><span class="nav-number">3.</span> <span class="nav-text">RPC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dubbo"><span class="nav-number">4.</span> <span class="nav-text">Dubbo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">4.2.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zookeeper-%E6%8E%A7%E5%88%B6%E4%B8%AD%E5%BF%83"><span class="nav-number">4.2.1.</span> <span class="nav-text">zookeeper-控制中心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85dubbo-admin"><span class="nav-number">4.2.2.</span> <span class="nav-text">安装dubbo-admin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0%E5%AE%9E%E6%88%98"><span class="nav-number">5.</span> <span class="nav-text">服务注册发现实战</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%90%86%E8%AE%BA"><span class="nav-number">2.</span> <span class="nav-text">分布式系统理论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rpc"><span class="nav-number">3.</span> <span class="nav-text">RPC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dubbo"><span class="nav-number">4.</span> <span class="nav-text">Dubbo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">4.2.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zookeeper-%E6%8E%A7%E5%88%B6%E4%B8%AD%E5%BF%83"><span class="nav-number">4.2.1.</span> <span class="nav-text">zookeeper-控制中心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85dubbo-admin"><span class="nav-number">4.2.2.</span> <span class="nav-text">安装dubbo-admin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0%E5%AE%9E%E6%88%98"><span class="nav-number">5.</span> <span class="nav-text">服务注册发现实战</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +210,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -347,85 +332,118 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本部分所涉及到的分布式系统理论和RPC的概念这块较干，尽量以通熟易懂的例子为引子展开表述。便于理解~</p>
-<h1 id="分布式系统理论"><a href="#分布式系统理论" class="headerlink" title="分布式系统理论"></a>分布式系统理论</h1><p>分布式可以理解通过多个计算性能弱的服务器来完成计算资源需求大的计算任务</p>
+        <h1 id="前言">前言</h1>
+<p>本部分所涉及到的分布式系统理论和RPC的概念这块较干，尽量以通熟易懂的例子为引子展开表述。便于理解~</p>
+<h1 id="分布式系统理论">分布式系统理论</h1>
+<p>分布式可以理解通过多个计算性能弱的服务器来完成计算资源需求大的计算任务</p>
 <p>分布式和集群的概念很容易混淆</p>
 <p>弹幕看到一个浅显易懂的例子可以帮助理解什么是分布式↓</p>
 <p><em>小饭店原来只有一个厨师，切菜洗菜备料炒菜全干。后来客人多了，厨房一个厨师忙不过来，又请了个厨师，两个厨师都能<strong>炒一样的菜</strong>，这两个厨师的关系是<strong>集群</strong>。</em></p>
 <p><em>为了让厨师专心炒菜，把菜做到极致，又请了个配菜师负责切菜，备菜，备料，<strong>厨师和配菜师</strong>的关系是<strong>分布式</strong>，一个配菜师也忙不过来了，又请了个配菜师，两个配菜师关系是集群</em></p>
 <p>简单理解，分布式是一个系统，而集群是一个模块</p>
 <p>分布式系统<strong>概念</strong>：建立在网络上的软件系统。由一组通过网络进行通信，为了完成共同的任务而协调工作的计算机节点组成的系统，利用廉价、普通机器完成单个计算机无法完成的计算存储任务。其目的是利用更多的机器，处理更多的数据。</p>
-<h1 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/36427583">什么是RPC（remote procedure call）</a>中一个例子很好的诠释了什么是远程调用：</p>
+<h1 id="rpc">RPC</h1>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/36427583">什么是RPC（remote
+procedure call）</a>中一个例子很好的诠释了什么是远程调用：</p>
 <p><em>一个阳光明媚的早晨，老婆又在翻看我订阅的技术杂志。</em></p>
-<p><em>“老公，什么是RPC呀，为什么你们程序员那么多黑话！”，老婆还是一如既往的好奇。</em><br><em>“RPC，就是<strong>Remote Procedure Call</strong>的简称呀，翻译成中文就是<strong>远程过程调用</strong>嘛”，我一边看着书，一边漫不经心的回答着。</em><br><em>“啥？你在说啥？谁不知道翻译成中文是什么意思？你个废柴，快给我滚去洗碗！”</em><br><em>“我去。。。”，我如梦初醒，我对面坐着的可不是一个程序员，为了不去洗碗，我瞬间调动起全部脑细胞，星辰大海在我脑中汇聚，灵感涌现……</em></p>
-<p><em>“是这样，远程过程调用，自然是相对于本地过程调用来说的嘛。”</em><br><em>“嗯哼，那先给老娘讲讲，本地过程调用是啥子？”</em><br><em>“本地过程调用，就好比你现在在家里，你要想洗碗，那你直接把碗放进洗碗机，打开洗碗机开关就可以洗了。这就叫本地过程调用。”</em></p>
-<p><em>“哎呦，我可不干，那啥是远程过程调用？”</em><br><em>“远程嘛，那就是你现在不在家，跟姐妹们浪去了，突然发现碗还没洗，打了个电话过来，叫我去洗碗，这就是远程过程调用啦”，多么通俗易懂的解释，我真是天才！</em></p>
-<p><em>“哦！我明白了”，说着，老婆开始收拾包包。</em><br><em>“你这是干啥去哦”</em><br><em>“我？我要出门浪去呀，待会记得接收我的远程调用哦，哦不，咱们要专业点，应该说，待会记得接收我的RPC哦！”</em><br><em>……</em></p>
+<p><em>“老公，什么是RPC呀，为什么你们程序员那么多黑话！”，老婆还是一如既往的好奇。</em>
+<em>“RPC，就是<strong>Remote Procedure
+Call</strong>的简称呀，翻译成中文就是<strong>远程过程调用</strong>嘛”，我一边看着书，一边漫不经心的回答着。</em>
+<em>“啥？你在说啥？谁不知道翻译成中文是什么意思？你个废柴，快给我滚去洗碗！”</em>
+<em>“我去。。。”，我如梦初醒，我对面坐着的可不是一个程序员，为了不去洗碗，我瞬间调动起全部脑细胞，星辰大海在我脑中汇聚，灵感涌现……</em></p>
+<p><em>“是这样，远程过程调用，自然是相对于本地过程调用来说的嘛。”</em>
+<em>“嗯哼，那先给老娘讲讲，本地过程调用是啥子？”</em>
+<em>“本地过程调用，就好比你现在在家里，你要想洗碗，那你直接把碗放进洗碗机，打开洗碗机开关就可以洗了。这就叫本地过程调用。”</em></p>
+<p><em>“哎呦，我可不干，那啥是远程过程调用？”</em>
+<em>“远程嘛，那就是你现在不在家，跟姐妹们浪去了，突然发现碗还没洗，打了个电话过来，叫我去洗碗，这就是远程过程调用啦”，多么通俗易懂的解释，我真是天才！</em></p>
+<p><em>“哦！我明白了”，说着，老婆开始收拾包包。</em>
+<em>“你这是干啥去哦”</em>
+<em>“我？我要出门浪去呀，待会记得接收我的远程调用哦，哦不，咱们要专业点，应该说，待会记得接收我的RPC哦！”</em>
+<em>……</em></p>
 <p>RPC远程方法调用，首先要理解什么是<strong>远程方法调用</strong>，区分于本地方法调用。</p>
 <p>例如在本地程序中A方法中调用了B方法为本地方法调用。</p>
 <p>而如果要调用的B方法在另一台机器上呢，这时<strong>跨机器</strong>的方法调用即为远程方法调用。</p>
 <p>而跨机器的方法调用依赖于网络实现，所以相比于本地方法调用，远程方法调用的难点就在于<strong>网络不可靠</strong></p>
 <p>okok，带着以上对远程方法调用的初步理解，来看看RPC的定义：</p>
 <p>RPC是指远程过程调用，是一种进程间通信方式，RPC是一种技术思想，而不是一种硬性规范，其实现方式具有一定的灵活性。RPC允许程序调用另一个地址空间（通常是共享网络上的另一台机器）上的过程或函数。对于编程人员来说，无论调用本地还是远程函数，应该是不可感知的，即调用代码基本相同。不用显式编码远程调用细节</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201137.png" alt=""></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201137.png" /></p>
 <p>步骤解析：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201113.png" alt=""></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201113.png" /></p>
 <p>RPC的两个<strong>核心模块：</strong></p>
 <ul>
 <li><strong>通讯</strong></li>
 <li><strong>序列化</strong>(用于机器间的对象传输)</li>
 </ul>
-<h1 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>RPC介绍中了解到其为一种思想，而Dubbo即为该思想的一个具体实现，Dubbo是一种高可用的RPC框架。</p>
+<h1 id="dubbo">Dubbo</h1>
+<h2 id="概念">概念</h2>
+<p>RPC介绍中了解到其为一种思想，而Dubbo即为该思想的一个具体实现，Dubbo是一种高可用的RPC框架。</p>
 <p><a target="_blank" rel="noopener" href="https://dubbo.apache.org/zh/index.html">Dubbo官网</a></p>
-<p>什么是Dubbo？Apache Dubbo是一款高性能、轻量级的开源Java RPC框架，其三大核心能力：</p>
+<p>什么是Dubbo？Apache Dubbo是一款高性能、轻量级的开源Java
+RPC框架，其三大核心能力：</p>
 <ul>
 <li>面向接口的远程方法调用</li>
 <li>智能容错和负载均衡</li>
 <li>服务自动注册和发现</li>
 </ul>
 <p>其整体框架如↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201057.png" alt=""></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201057.png" /></p>
 <p>框架表明仅invoke为同步操作</p>
 <p><strong>Provider：暴露服务的服务提供方，服务提供方在启动时，向注册中心注册自身所提供的服务</strong></p>
 <p>Consumer：调用服务的消费方，启动时向注册中心订阅服务，Provider从地址列表中，基于软负载均衡算法，选一个Provider调用，如调用失败切换一台继续调用</p>
 <p><strong>Registry：注册中心返回Provider列表给Consumer，如有变动，注册中心将基于长连接推送变更数据给Consumer</strong></p>
 <p><strong>Monitor：Consumer和Provider，在内存中累计调用次数和时间，定时每分钟发送一次统计数据到Monitor</strong></p>
-<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="zookeeper-控制中心"><a href="#zookeeper-控制中心" class="headerlink" title="zookeeper-控制中心"></a>zookeeper-控制中心</h3><p>利用<strong>zookeeper</strong>提供服务注册与发现（即Registry）</p>
-<p><a target="_blank" rel="noopener" href="https://dlcdn.apache.org/zookeeper/zookeeper-3.8.0/apache-zookeeper-3.8.0-bin.tar.gz">下载zookeeper</a>并解压，以<strong>管理员身份</strong>！！！运行bin目录下的zkserver.cmd启动服务（如遇闪退，出门右拐：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq279862451/article/details/79083522">Windows下Zookeeper启动zkServer.cmd闪退问题的解决方案</a>）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201041.png" alt=""></p>
+<h2 id="环境搭建">环境搭建</h2>
+<h3 id="zookeeper-控制中心">zookeeper-控制中心</h3>
+<p>利用<strong>zookeeper</strong>提供服务注册与发现（即Registry）</p>
+<p><a
+target="_blank" rel="noopener" href="https://dlcdn.apache.org/zookeeper/zookeeper-3.8.0/apache-zookeeper-3.8.0-bin.tar.gz">下载zookeeper</a>并解压，以<strong>管理员身份</strong>！！！运行bin目录下的zkserver.cmd启动服务（如遇闪退，出门右拐：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq279862451/article/details/79083522">Windows下Zookeeper启动zkServer.cmd闪退问题的解决方案</a>）</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201041.png" /></p>
 <p>运行zkcli.cmd客户端（需要先运行zkserver.cmd开启服务才能连接成功）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201015.png" alt=""></p>
-<h3 id="安装dubbo-admin"><a href="#安装dubbo-admin" class="headerlink" title="安装dubbo-admin"></a>安装dubbo-admin</h3><p>dubbo-admin是一个监控管理后台，能够查看注册了哪些服务以及哪些服务被消费了，配置过程如下</p>
-<ol>
-<li><p>下载并解压<a target="_blank" rel="noopener" href="https://github.com/apache/dubbo-admin/tree/master-0.2.0">dubbo-admin项目包</a></p>
-</li>
-<li><p>修改dubbo-admin-master-0.2.0\dubbo-admin\src\main\resources\application.properties指定zookeeper地址</p>
-</li>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503201015.png" /></p>
+<h3 id="安装dubbo-admin">安装dubbo-admin</h3>
+<p>dubbo-admin是一个监控管理后台，能够查看注册了哪些服务以及哪些服务被消费了，配置过程如下</p>
+<ol type="1">
+<li><p>下载并解压<a
+target="_blank" rel="noopener" href="https://github.com/apache/dubbo-admin/tree/master-0.2.0">dubbo-admin项目包</a></p></li>
+<li><p>修改dubbo-admin-master-0.2.0-admin.properties指定zookeeper地址</p></li>
 </ol>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server.port</span>=<span class="string">7001</span></span><br><span class="line"><span class="attr">spring.velocity.cache</span>=<span class="string">false</span></span><br><span class="line"><span class="attr">spring.velocity.charset</span>=<span class="string">UTF-8</span></span><br><span class="line"><span class="attr">spring.velocity.layout-url</span>=<span class="string">/templates/default.vm</span></span><br><span class="line"><span class="attr">spring.messages.fallback-to-system-locale</span>=<span class="string">false</span></span><br><span class="line"><span class="attr">spring.messages.basename</span>=<span class="string">i18n/message</span></span><br><span class="line"><span class="attr">spring.root.password</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.guest.password</span>=<span class="string">guest</span></span><br><span class="line"></span><br><span class="line"><span class="attr">dubbo.registry.address</span>=<span class="string">zookeeper://127.0.0.1:2181</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ol>
+<ol start="3" type="1">
 <li><p>项目目录下打包dubbo-admin</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean <span class="keyword">package</span> -D maven.test.skip=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>如提示mvn不是内部或外部命令，查看<a target="_blank" rel="noopener" href="https://www.runoob.com/maven/maven-setup.html">Maven环境配置及介绍</a></p>
-</li>
+<p>如提示mvn不是内部或外部命令，查看<a
+target="_blank" rel="noopener" href="https://www.runoob.com/maven/maven-setup.html">Maven环境配置及介绍</a></p></li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200959.png" alt=""></p>
-<p>打包完成后在dubbo-admin-master-0.2.0\dubbo-admin\target下构建了dubbo-admin-0.0.1-SNAPSHOT.jar包，将其放入zookeeper根目录下方便后续使用。双击启动jar包</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200959.png" /></p>
+<p>打包完成后在dubbo-admin-master-0.2.0-admin-admin-0.0.1-SNAPSHOT.jar包，将其放入zookeeper根目录下方便后续使用。双击启动jar包</p>
 <p>访问localhost:7071</p>
 <p>默认账号root密码root</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200943.png" alt=""></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200943.png" /></p>
 <p>登陆成功↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200928.png" alt=""></p>
-<h1 id="服务注册发现实战"><a href="#服务注册发现实战" class="headerlink" title="服务注册发现实战"></a>服务注册发现实战</h1><p>新建一个empty项目</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200915.png" alt=""></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200928.png" /></p>
+<h1 id="服务注册发现实战">服务注册发现实战</h1>
+<p>新建一个empty项目</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200915.png" /></p>
 <p>project-server项目下新建一个spring initalizr模块provider-server</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200857.png" alt=""></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200857.png" /></p>
 <p>模拟一个买票服务，新建service/TicketService及其实现类TicketServiceImpl</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sliu.providerserver.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">TicketService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getTicket</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sliu.providerserver.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.dubbo.config.annotation.Service;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@Component</span>  <span class="comment">//  项目启动时将该服务注册到注册中心</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TicketServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">TicketService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getTicket</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;《程序员评测室》&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>服务端搞定，注册中心要注册的服务即为TicketService</p>
 <p>新建一个客户端spring initalizr模块consumer-server</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200843.png" alt=""></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200843.png" /></p>
 <p>分别在两个模块的application.properties下设置端口号，consumer-server设置为8001，provider-server设置为8002</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//consumer-server</span></span><br><span class="line">server.port=<span class="number">8001</span></span><br><span class="line"><span class="comment">//provider-server</span></span><br><span class="line">server.port=<span class="number">8002</span></span><br></pre></td></tr></table></figure>
 <p><strong>provider-server</strong>下pom.xml下导入dubbo&amp;zookeeper依赖</p>
@@ -433,10 +451,13 @@
 <p>application.properties下对dubbo进行配置</p>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server.port</span>=<span class="string">8002</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#服务应用名字</span></span><br><span class="line"><span class="attr">dubbo.application.name</span>=<span class="string">provider-server</span></span><br><span class="line"><span class="comment">#注册中心地址</span></span><br><span class="line"><span class="attr">dubbo.registry.address</span>=<span class="string">zookeeper://127.0.0.1:2181</span></span><br><span class="line"><span class="comment">#哪些路径下的服务被注册</span></span><br><span class="line"><span class="attr">dubbo.scan.base-packages</span>=<span class="string">com.sliu.providerserver.service</span></span><br></pre></td></tr></table></figure>
 <p>配置完成后开启ProviderServerApplication，启动后自动注册provicerserver</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:7001/governance/providers">http://localhost:7001/governance/providers</a>    下可以观察到注册服务列表</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200826.png" alt=""></p>
+<p>http://localhost:7001/governance/providers
+下可以观察到注册服务列表</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200826.png" /></p>
 <p>该服务详细信息↓</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200813.png" alt=""></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20220503200813.png" /></p>
 <p>OK！到此服务注册完毕，provider端配置完成。</p>
 <p>接下来编码Consumer端</p>
 <p>pom.xml下导入依赖</p>
@@ -449,25 +470,27 @@
 <p>运行test下contextLoads方法，搞定！</p>
 <p>梳理一下服务注册与发现流程，大体如下：</p>
 <p><strong>前提</strong>：zookeeper服务已开启</p>
-<ol>
-<li>provider提供服务<ul>
+<ol type="1">
+<li>provider提供服务
+<ul>
 <li>导入依赖</li>
 <li>配置注册中心信息</li>
 <li>要注册的服务上添加注解@Service</li>
-</ul>
-</li>
-<li>consumer消费<ul>
+</ul></li>
+<li>consumer消费
+<ul>
 <li>导入依赖</li>
 <li>配置注册中心信息</li>
 <li>从远程注入服务@Reference</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>该part后，狂神springboot练手项目告一段落</p>
+<h1 id="总结">总结</h1>
+<p>该part后，狂神springboot练手项目告一段落</p>
 <p>撒花完结！</p>
 <p>Dubbo+ZooKeeper源码自取：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/codersliu/project-server">https://github.com/codersliu/project-server</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/QQ20220331104633.gif" alt=""></p>
+<p>https://github.com/codersliu/project-server</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/QQ20220331104633.gif" /></p>
 
     </div>
 
