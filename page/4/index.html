@@ -265,7 +265,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/5d1e0225.html">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/47991e6b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -283,7 +283,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/5d1e0225.html" class="post-title-link" itemprop="url">请教我学数据结构（二）红黑树</a>
+          <a href="/posts/47991e6b.html" class="post-title-link" itemprop="url">请教我学数据结构（一）排序</a>
         </h2>
 
         <div class="post-meta-container">
@@ -324,18 +324,21 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="摘要">摘要</h1>
+<h2 id="分类">分类</h2>
 <p><font size="3"></font></p>
-<p>红黑树是一种<strong>特殊的二叉查找树</strong>，能够通过操作实现<strong>自平衡</strong>。</p>
-<h1 id="定义和性质">定义和性质</h1>
-<p>（1）根节点和叶子节点都为黑色</p>
-<p>（2）红色节点的子节点都为黑色</p>
-<p>（3）任意一个节点到每一个叶子节点的路径所包含的黑色节点树相同。</p>
-<p>红黑树的自平衡通过三种操作实现：<strong>左旋</strong>、<strong>右旋</strong>和<strong>变色</strong></p>
-<p><strong>左旋</strong>：以某个结点作为支点(旋转结点)，其右子结点变为旋转结点的父结点，右子结点的左子结点变为旋转结点的右子结点，左子结点保持不变。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/20210412103419.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/1156494-ab4cecff133d87b3.png"></p>
+<ol start="2" type="1">
+<li>性能分析</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/ls19970727/CDN2/image/1156494-62f859c2ac6f95ff.png"></p>
+<h1 id="实现">实现</h1>
+<h2 id="插入排序">插入排序</h2>
+<h3 id="直接插入排序">直接插入排序</h3>
+<p>直接插入排序的核心思想就是：将数组中的所有元素依次跟前面已经排好的元素相比较，如果选择的元素比已排序的元素小，则交换，直到全部元素都比较过。
+因此，从上面的描述中我们可以发现，直接插入排序可以用两个循环完成：</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/5d1e0225.html#more" rel="contents">
+              <a class="btn" href="/posts/47991e6b.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
